@@ -63,3 +63,16 @@ C:\Users\carlos\Documents\IS\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstanda
 C:\Users\carlos\Documents\IS\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.csproj.CopyComplete
 C:\Users\carlos\Documents\IS\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.dll
 C:\Users\carlos\Documents\IS\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.pdb
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Negocios\bin\Debug\netstandard2.0\Negocios.deps.json
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Negocios\bin\Debug\netstandard2.0\Negocios.dll
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Negocios\bin\Debug\netstandard2.0\Negocios.pdb
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Negocios\bin\Debug\netstandard2.0\DatosSQL.dll
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Negocios\bin\Debug\netstandard2.0\Entidades.dll
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Negocios\bin\Debug\netstandard2.0\Entidades.pdb
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.csprojAssemblyReference.cache
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.csproj.CoreCompileInputs.cache
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.AssemblyInfoInputs.cache
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.AssemblyInfo.cs
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.csproj.CopyComplete
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.dll
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.pdb

@@ -43,3 +43,12 @@ C:\Users\carlos\Documents\IS\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstand
 C:\Users\carlos\Documents\IS\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.AssemblyInfo.cs
 C:\Users\carlos\Documents\IS\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.dll
 C:\Users\carlos\Documents\IS\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.pdb
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Entidades\bin\Debug\netstandard2.0\Entidades.deps.json
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Entidades\bin\Debug\netstandard2.0\Entidades.dll
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Entidades\bin\Debug\netstandard2.0\Entidades.pdb
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.csprojAssemblyReference.cache
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.AssemblyInfoInputs.cache
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.AssemblyInfo.cs
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.dll
+C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.pdb

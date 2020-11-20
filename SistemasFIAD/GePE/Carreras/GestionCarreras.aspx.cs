@@ -136,15 +136,22 @@ namespace GePE.Carreras
       string R = NC.InsertaCarreras(ControlesWebForm_ObjetoEntidad());
       lblTituloAccion.Text = R;
       if (R.Contains("Exito"))
-        InicializaControles();
+            {
+                Response.Write("<script language=javascript>alert('Grabado con exito')</script>");
+                InicializaControles();
+            }
+        
     }
     protected void BtnBorrar_Click(object sender, EventArgs e)
     {
       string R = NC.BorraCarreras(Convert.ToInt32(hfIdCarrera.Value));
       lblTituloAccion.Text = R;
       if (R.Contains("Exito"))
-        InicializaControles();
-    }
+            {
+                Response.Write("<script language=javascript>alert('Borrado con exito')</script>");
+                InicializaControles();
+            }
+        }
     protected void BtnModificar_Click(object sender, EventArgs e)
     {
       E_Carreras Cliente = ControlesWebForm_ObjetoEntidad();
@@ -153,8 +160,11 @@ namespace GePE.Carreras
       lblTituloAccion.Text = R;
 
       if (R.Contains("Exito"))
-        InicializaControles();
-    }
+            {
+                Response.Write("<script language=javascript>alert('Modificado con exito')</script>");
+                InicializaControles();
+            }
+        }
     protected void BtnMnuEditar_Click(object sender, EventArgs e)
     {
       BtnModificar.Visible = true;
