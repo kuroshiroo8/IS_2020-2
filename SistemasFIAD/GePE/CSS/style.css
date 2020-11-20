@@ -1,0 +1,39 @@
+﻿body {
+}
+
+.table {
+    width: 800px;
+}
+
+.header {
+    height: 50px;
+    text-align: center;
+    background-color: #034c81;
+    color: #ffffff;
+    font-size: large;
+}
+
+.menu {
+    height: 300px;
+    width: 200px;
+    text-align: center;
+    background-color: #77bef1;
+    color: #ffffff;
+    font-size: medium;
+}
+
+.content {
+    width: 600px;
+    text-align: center;
+    color: #034c81;
+    font-size: medium;
+}
+
+.footer {
+    height: 40px;
+    text-align: center;
+    margin-top: 8px;
+    background-color: #302929;
+    color: #ffffff;
+    font-size: large;
+}
