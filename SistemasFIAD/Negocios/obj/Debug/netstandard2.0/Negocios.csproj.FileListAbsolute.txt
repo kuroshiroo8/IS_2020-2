@@ -37,3 +37,16 @@ C:\Users\daly_\Downloads\IS-2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.
 C:\Users\daly_\Downloads\IS-2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.csproj.CopyComplete
 C:\Users\daly_\Downloads\IS-2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.dll
 C:\Users\daly_\Downloads\IS-2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.pdb
+C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Negocios\bin\Debug\netstandard2.0\Negocios.deps.json
+C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Negocios\bin\Debug\netstandard2.0\Negocios.dll
+C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Negocios\bin\Debug\netstandard2.0\Negocios.pdb
+C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Negocios\bin\Debug\netstandard2.0\DatosSQL.dll
+C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Negocios\bin\Debug\netstandard2.0\Entidades.dll
+C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Negocios\bin\Debug\netstandard2.0\Entidades.pdb
+C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.csprojAssemblyReference.cache
+C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.csproj.CoreCompileInputs.cache
+C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.AssemblyInfoInputs.cache
+C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.AssemblyInfo.cs
+C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.csproj.CopyComplete
+C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.dll
+C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Negocios\obj\Debug\netstandard2.0\Negocios.pdb

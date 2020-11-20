@@ -202,11 +202,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\daly_\\Downloads\\IS-2020-2\\SistemasFIAD\\Negocios\\Negocios.csproj",
+      "projectUniqueName": "C:\\Users\\daly_\\OneDrive\\Documentos\\escuela\\IS\\IS_2020-2\\SistemasFIAD\\Negocios\\Negocios.csproj",
       "projectName": "Negocios",
-      "projectPath": "C:\\Users\\daly_\\Downloads\\IS-2020-2\\SistemasFIAD\\Negocios\\Negocios.csproj",
+      "projectPath": "C:\\Users\\daly_\\OneDrive\\Documentos\\escuela\\IS\\IS_2020-2\\SistemasFIAD\\Negocios\\Negocios.csproj",
       "packagesPath": "C:\\Users\\daly_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\daly_\\Downloads\\IS-2020-2\\SistemasFIAD\\Negocios\\obj\\",
+      "outputPath": "C:\\Users\\daly_\\OneDrive\\Documentos\\escuela\\IS\\IS_2020-2\\SistemasFIAD\\Negocios\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -225,8 +225,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\daly_\\Downloads\\IS-2020-2\\SistemasFIAD\\Entidades\\Entidades.csproj": {
-              "projectPath": "C:\\Users\\daly_\\Downloads\\IS-2020-2\\SistemasFIAD\\Entidades\\Entidades.csproj"
+            "C:\\Users\\daly_\\OneDrive\\Documentos\\escuela\\IS\\IS_2020-2\\SistemasFIAD\\Entidades\\Entidades.csproj": {
+              "projectPath": "C:\\Users\\daly_\\OneDrive\\Documentos\\escuela\\IS\\IS_2020-2\\SistemasFIAD\\Entidades\\Entidades.csproj"
             }
           }
         }

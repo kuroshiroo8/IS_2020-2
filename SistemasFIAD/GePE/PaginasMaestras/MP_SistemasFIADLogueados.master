@@ -13,7 +13,7 @@
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="https://localhost:44393/Carreras/GestionCarreras.aspx">
                     <div>
                         <%--carga del logo de uabc--%>
-                        <img src="../Imagenes/oficial.png" class="img-fluid" alt="Responsive image">
+                        <img src="../Imagenes/oficialprueba.png" class="img-fluid" alt="Responsive image">
                     </div>
                 </a>
                 <!-- Divider -->
@@ -26,7 +26,7 @@
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="https://localhost:44393/Carreras/GestionCarreras.aspx" aria-expanded="true">
                         <i class="fas fa-fw fa-cog"></i>
-                        <span>Gestión de arreras</span>
+                        <span>Gestión de carreras</span>
                     </a>
 
                     <a class="nav-link collapsed" href="https://localhost:44393/Materias/GestionMaterias.aspx" aria-expanded="true">
@@ -36,7 +36,7 @@
 
                     <a class="nav-link collapsed" href="https://localhost:44393/PlanesDeEstudios/GestionPlanesDeEstudio.aspx" aria-expanded="true"">
                         <i class="fas fa-fw fa-cog"></i>
-                        <span>Gestión de planes de estudio</span>
+                        <span>Gestión planes de estudio</span>
                     </a>         
                 </li>
 
@@ -95,13 +95,13 @@
                 </div>
                 <!-- End of Main Content -->
                 <!-- Footer -->
-                <footer class="sticky-footer bg-white">
+                <%--<footer class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
                             <span>Copyright &copy; Your Website 2019</span>
                         </div>
                     </div>
-                </footer>
+                </footer>--%>
                 <!-- End of Footer -->
             </div>
             <!-- End of Content Wrapper -->

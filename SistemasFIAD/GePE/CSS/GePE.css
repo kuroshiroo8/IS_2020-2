@@ -2,8 +2,8 @@
 }
 
 .bg-gradient-uabc {
-    background-color: #00C56D;
-    /*background-color: #00723f;*/
+    /*background-color: #00C56D;*/
+    background-color: #00723f;
     background-image: linear-gradient(180deg,#00C56D 10%, #024731 100%);
     /*background-image: linear-gradient(180deg,#00723f 10%, #024731 100%);*/
     background-size: cover;
