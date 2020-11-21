@@ -121,13 +121,13 @@ namespace GePE.Carreras {
         protected global::System.Web.UI.WebControls.LinkButton BtnGrabar;
         
         /// <summary>
-        /// Control BtnBorrar.
+        /// Control BtnBorrarModal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BtnBorrar;
+        protected global::System.Web.UI.WebControls.LinkButton BtnBorrarModal;
         
         /// <summary>
         /// Control BtnModificar.
@@ -182,6 +182,15 @@ namespace GePE.Carreras {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GrvCarreras;
+        
+        /// <summary>
+        /// Control BtnBorrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BtnBorrar;
         
         /// <summary>
         /// Control hfIdCarrera.

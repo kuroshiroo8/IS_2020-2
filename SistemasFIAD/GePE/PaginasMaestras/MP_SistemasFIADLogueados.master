@@ -2,13 +2,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphPrincipal" runat="server">
     <div>
-        <div class="bg-verde-obscuro">
-            <h5 class="text-center text-warning">Universidad Autónoma de Baja California</h5>
+        <div align="center" class="bg-verde-obscuro">
+            <%--<h5 class="text-center text-warning">Universidad Autónoma de Baja California</h5>--%>
+            <img src="../Imagenes/logo.png" class="img-fluid" alt="Responsive image" >
         </div>
         <!-- Page Wrapper -->
         <div id="wrapper">
             <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-uabc sidebar sidebar-dark accordion" id="accordionSidebar">
+            <ul class="navbar-nav bg-gradient-uabc sidebar sidebar-dark accordion toggled" id="accordionSidebar">
                 <!-- Sidebar - Brand -->
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="https://localhost:44393/Carreras/GestionCarreras.aspx">
                     <div>
@@ -64,8 +65,9 @@
                         </button>
 
                         <!-- Topbar Navbar -->
+                        
                         <ul class="navbar-nav ml-auto">
-
+                            
                             <!-- Nav Item - User Information -->
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -64,7 +64,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #858796;
+  color: #3c3e46;
   text-align: left;
   background-color: #fff;
 }
@@ -1368,7 +1368,7 @@ pre code {
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: #858796;
+  color: #000000;
 }
 
 .table th,
@@ -1398,7 +1398,7 @@ pre code {
 
 .table-bordered th,
 .table-bordered td {
-  border: 1px solid #e3e6f0;
+  border: 1px solid #828282;
 }
 
 .table-bordered thead th,
@@ -2289,14 +2289,14 @@ fieldset:disabled a.btn {
 
 .btn-secondary {
   color: #fff;
-  background-color: #858796;
-  border-color: #858796;
+  background-color: #00723f;
+  border-color: #00723f;
 }
 
 .btn-secondary:hover {
   color: #fff;
-  background-color: #717384;
-  border-color: #6b6d7d;
+  background-color: #109e5f;
+  border-color: #109e5f;
 }
 
 .btn-secondary:focus, .btn-secondary.focus {
@@ -2323,14 +2323,14 @@ fieldset:disabled a.btn {
 
 .btn-success {
   color: #fff;
-  background-color: #1cc88a;
-  border-color: #1cc88a;
+  background-color: #00723f;
+  border-color: #00723f;
 }
 
 .btn-success:hover {
   color: #fff;
-  background-color: #17a673;
-  border-color: #169b6b;
+  background-color: #109e5f;
+  border-color: #109e5f;
 }
 
 .btn-success:focus, .btn-success.focus {
@@ -2493,8 +2493,8 @@ fieldset:disabled a.btn {
 
 .btn-dark {
   color: #fff;
-  background-color: #5a5c69;
-  border-color: #5a5c69;
+  background-color: #151517;
+  border-color: #151515;
 }
 
 .btn-dark:hover {
@@ -6224,7 +6224,7 @@ button.bg-secondary:focus {
 }
 
 .bg-success {
-  background-color: #1cc88a !important;
+  background-color: #00723f !important;
 }
 
 a.bg-success:hover, a.bg-success:focus,
@@ -6274,7 +6274,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #5a5c69 !important;
+  background-color: #00723f !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
@@ -6360,7 +6360,7 @@ button.bg-dark:focus {
 }
 
 .border-dark {
-  border-color: #5a5c69 !important;
+  border-color: #00723f !important;
 }
 
 .border-white {
@@ -9419,7 +9419,7 @@ a.text-light:hover, a.text-light:focus {
 }
 
 .text-dark {
-  color: #5a5c69 !important;
+  color: #483e46 !important;
 }
 
 a.text-dark:hover, a.text-dark:focus {
@@ -9542,7 +9542,7 @@ a.text-dark:hover, a.text-dark:focus {
   .table-dark td,
   .table-dark thead th,
   .table-dark tbody + tbody {
-    border-color: #e3e6f0;
+    border-color: #828282;
   }
   .table .thead-dark th {
     color: inherit;

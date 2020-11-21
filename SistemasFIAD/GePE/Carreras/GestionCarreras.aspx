@@ -16,7 +16,7 @@
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="row">
                     <div class="col-lg-8 col-md-6 col-sm-6">
-                        <asp:TextBox ID="TbCriterioBusqueda" runat="server" CssClass="form-control" placeholder="Criterio de búsqueda"></asp:TextBox>
+                        <asp:TextBox ID="TbCriterioBusqueda" runat="server" CssClass="form-control" placeholder="Criterio de búsqueda" tyle="text-align:center"></asp:TextBox>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <asp:LinkButton ID="BtnBuscar" runat="server" CssClass="btn btn-sm btn btn-success " CausesValidation="false" OnClick="BtnBuscar_Click"><i class="fas fa-search"></i> Buscar</asp:LinkButton>
@@ -29,7 +29,7 @@
             <h4>
                 <asp:Label ID="lblNombreAccion" runat="server" class="text-cebter text-primary"></asp:Label></h4>
         </div>
-
+        <%-------------------------------seccion agregar--------------------------------------%>
         <asp:Panel ID="PnlCapturaDatos" runat="server">
             <div class="container">
                 <div class="card">
@@ -59,24 +59,24 @@
                                 <div class="form-group">
                                     <p class="text-dark font-weight-bold m-0">Alias</p>
                                     <uc1:wfucAlfabeticoRequerido runat="server" ID="TbAliasCarrera" />
-
                                 </div>
                             </div>
-
+                            <br />
                             <div class="row pl-2 pr-2">
                                 <div class="col-lg-12">
                                     <div class="form-group">
+                                        <br />
                                         <asp:CheckBox ID="cbActivaCarrera" runat="server" CssClass="font-weight-bold" Text="Carrera activa " TextAlign="Left" ToolTip="Seleccione si la carrera está activa" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer text-muted">
-                            <asp:LinkButton ID="BtnGrabar" runat="server" CssClass="btn btn-md btn btn-success  pr-3" CausesValidation="true" OnClick="BtnGrabar_Click"><i class="fas fa-plus-square"></i> Grabar</asp:LinkButton>
-                            <asp:LinkButton ID="BtnBorrar" runat="server" CssClass="btn btn-md btn btn-danger pr-3" CausesValidation="false" OnClick="BtnBorrar_Click"><i class="fas fa-minus-square"></i> Borrar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnGrabar" runat="server" CssClass="btn btn-md btn btn-success  pr-3" CausesValidation="true" OnClick="BtnGrabar_Click"><i class="fas fa-plus-square"></i> Insertar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnBorrarModal" runat="server" CssClass="btn btn-md btn btn-danger pr-3" data-toggle="modal" CausesValidation="false" data-target="#BorrarModal"><i class="fas fa-trash-alt"></i>Borrar</asp:LinkButton>
                             <asp:LinkButton ID="BtnModificar" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="true" OnClick="BtnModificar_Click"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
-                            <asp:LinkButton ID="BtnMnuEditar" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="true" OnClick="BtnMnuEditar_Click"><i class="fas fa-edit"></i> Editar</asp:LinkButton>
-                            <asp:LinkButton ID="BtnMnuBorrar" runat="server" CssClass="btn btn-md btn btn-danger pr-3" CausesValidation="false" OnClick="BtnMnuBorrar_Click"><i class="fas fa-minus-square"></i> Borrar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnMnuEditar" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="true" OnClick="BtnMnuEditar_Click"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnMnuBorrar" runat="server" CssClass="btn btn-md btn btn-danger pr-3" CausesValidation="false" OnClick="BtnMnuBorrar_Click"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton>
                             <asp:LinkButton ID="BtnCancelar" runat="server" CssClass="btn btn-md btn btn-dark pr-3" CausesValidation="false" OnClick="BtnCancelar_Click"><i class="fas fa-window-close"></i> Cancelar</asp:LinkButton>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
                             <ItemTemplate>
                                 <asp:LinkButton ID="GrvBtnEditar" runat="server" CssClass="btn btn-sm btn-primary "
-                                    CausesValidation="false" CommandName="Edit"><i class="fas fa-edit"></i> Editar</asp:LinkButton>
+                                    CausesValidation="false" CommandName="Edit"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -115,6 +115,41 @@
                 </asp:GridView>
             </div>
         </asp:Panel>
+        <%------------modal-borrar---------------------%>
+        <div class="modal fade" id="BorrarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">¿Estas seguro de borrar este registro?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Si lo estas, presiona "Borrar". </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-md btn btn-dark pr-3" type="button" data-dismiss="modal"><i class="fas fa-window-close"></i>Cancelar</button>
+                        <asp:LinkButton ID="BtnBorrar" runat="server" CssClass="btn btn-md btn btn-danger pr-3" CausesValidation="false" OnClick="BtnBorrar_Click"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%------------modal-exito--------------------%>
+        <div class="modal fade" id="ModalExito" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel2">Exito!</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">La operacion se completo con exito. </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-md btn btn-primary pr-3" type="button" data-dismiss="modal"><i class="fas fa-check"></i>Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <asp:HiddenField ID="hfIdCarrera" runat="server" />
 </asp:Content>
