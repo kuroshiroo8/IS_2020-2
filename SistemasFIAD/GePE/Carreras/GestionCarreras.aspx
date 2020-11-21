@@ -9,10 +9,9 @@
 
         <div class="row bg-light border pl-2">
             <div class="col-lg-8 col-md-6 col-sm-6">
-                <asp:LinkButton ID="BtnMnuNuevo" runat="server" CssClass="btn btn-sm btn-secondary fa fa-plus-square pr-3" CausesValidation="false" OnClick="BtnMnuNuevo_Click"> Nueva carrera</asp:LinkButton>
-                <asp:LinkButton ID="BtnMnuListado" runat="server" CssClass="btn btn-sm btn-secondary fa fa-list-alt pr-3" CausesValidation="false" OnClick="BtnMnuListado_Click"> Listado</asp:LinkButton>
-                <asp:LinkButton ID="BtnMnuAsignaPLanDeEstudio" runat="server" CssClass="btn btn-sm btn-secondary fa fa-list-alt pr-3" CausesValidation="false" OnClick="BtnMnuAsignaPlanDeEstudio_Click"> Asignar plan de estudios</asp:LinkButton>
-                <asp:LinkButton ID="BtnMnuPDF" runat="server" CssClass="btn btn-sm btn-secondary fa fa-file-pdf pr-3" CausesValidation="false" OnClick="BtnMnuPDF_Click"> PDF-Carreas</asp:LinkButton>
+
+                <asp:LinkButton ID="BtnMnuNuevo" runat="server" CssClass="btn btn-sm btn-secondary  pr-3" CausesValidation="false" OnClick="BtnMnuNuevo_Click"><i class="fas fa-plus-square"></i> Nueva carrera</asp:LinkButton>
+                <asp:LinkButton ID="BtnMnuListado" runat="server" CssClass="btn btn-sm btn-secondary pr-3" CausesValidation="false" OnClick="BtnMnuListado_Click"><i class="fas fa-list"></i> Listado</asp:LinkButton>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="row">
@@ -20,7 +19,7 @@
                         <asp:TextBox ID="TbCriterioBusqueda" runat="server" CssClass="form-control" placeholder="Criterio de búsqueda"></asp:TextBox>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <asp:LinkButton ID="BtnBuscar" runat="server" CssClass="btn btn-sm btn btn-success fa fa-file-search" CausesValidation="false" OnClick="BtnBuscar_Click"> Buscar</asp:LinkButton>
+                        <asp:LinkButton ID="BtnBuscar" runat="server" CssClass="btn btn-sm btn btn-success " CausesValidation="false" OnClick="BtnBuscar_Click"><i class="fas fa-search"></i> Buscar</asp:LinkButton>
                     </div>
                 </div>
             </div>
@@ -59,7 +58,8 @@
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <p class="text-dark font-weight-bold m-0">Alias</p>
-                                    <asp:TextBox ID="TbAliasCarrera" runat="server" CssClass="form-control" placeholder="Alias de la carrera"></asp:TextBox>
+                                    <uc1:wfucAlfabeticoRequerido runat="server" ID="TbAliasCarrera" />
+
                                 </div>
                             </div>
 
@@ -72,12 +72,12 @@
                             </div>
                         </div>
                         <div class="card-footer text-muted">
-                            <asp:LinkButton ID="BtnGrabar" runat="server" CssClass="btn btn-md btn btn-success fa fa-plus-square  pr-3" CausesValidation="true" OnClick="BtnGrabar_Click"> Grabar</asp:LinkButton>
-                            <asp:LinkButton ID="BtnBorrar" runat="server" CssClass="btn btn-md btn btn-danger  fa fa-minus-square pr-3" CausesValidation="false" OnClick="BtnBorrar_Click"> Borrar</asp:LinkButton>
-                            <asp:LinkButton ID="BtnModificar" runat="server" CssClass="btn btn-md btn btn-primary  fa fa-check-square pr-3" CausesValidation="true" OnClick="BtnModificar_Click"> Modificar</asp:LinkButton>
-                            <asp:LinkButton ID="BtnMnuEditar" runat="server" CssClass="btn btn-md btn btn-primary  fa fa-edit pr-3" CausesValidation="true" OnClick="BtnMnuEditar_Click"> Editar</asp:LinkButton>
-                            <asp:LinkButton ID="BtnMnuBorrar" runat="server" CssClass="btn btn-md btn btn-danger  fa fa-trash-alt pr-3" CausesValidation="false" OnClick="BtnMnuBorrar_Click"> Borrar</asp:LinkButton>
-                            <asp:LinkButton ID="BtnCancelar" runat="server" CssClass="btn btn-md btn btn-dark  fa fa-times-circle pr-3" CausesValidation="false" OnClick="BtnCancelar_Click"> Cancelar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnGrabar" runat="server" CssClass="btn btn-md btn btn-success  pr-3" CausesValidation="true" OnClick="BtnGrabar_Click"><i class="fas fa-plus-square"></i> Grabar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnBorrar" runat="server" CssClass="btn btn-md btn btn-danger pr-3" CausesValidation="false" OnClick="BtnBorrar_Click"><i class="fas fa-minus-square"></i> Borrar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnModificar" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="true" OnClick="BtnModificar_Click"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnMnuEditar" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="true" OnClick="BtnMnuEditar_Click"><i class="fas fa-edit"></i> Editar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnMnuBorrar" runat="server" CssClass="btn btn-md btn btn-danger pr-3" CausesValidation="false" OnClick="BtnMnuBorrar_Click"><i class="fas fa-minus-square"></i> Borrar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnCancelar" runat="server" CssClass="btn btn-md btn btn-dark pr-3" CausesValidation="false" OnClick="BtnCancelar_Click"><i class="fas fa-window-close"></i> Cancelar</asp:LinkButton>
                         </div>
                     </div>
                 </div>
@@ -99,22 +99,15 @@
                         <asp:BoundField DataField="NombreCarrera" HeaderText="NOMBRE DEL COORDINADOR" />
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
                             <ItemTemplate>
-                                <asp:LinkButton ID="GrvBtnEditar" runat="server" CssClass="btn btn-sm btn-primary fa fa-edit"
-                                    CausesValidation="false" CommandName="Edit"> Editar</asp:LinkButton>
+                                <asp:LinkButton ID="GrvBtnEditar" runat="server" CssClass="btn btn-sm btn-primary "
+                                    CausesValidation="false" CommandName="Edit"><i class="fas fa-edit"></i> Editar</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="ACCIONES">
                             <ItemTemplate>
-                                <asp:LinkButton ID="GrvBtnBorrar" runat="server" CssClass="btn btn-sm btn-danger fa fa-trash-alt"
-                                    CausesValidation="false" CommandName="Delete"> Borrar</asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-
-                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="GrvBtnAsignarr" runat="server" CssClass="btn btn-sm btn-warning fa fa-trash-alt"
-                                    CausesValidation="false" CommandName="Selected"> Asignar P. estudio</asp:LinkButton>
+                                <asp:LinkButton ID="GrvBtnBorrar" runat="server" CssClass="btn btn-sm btn-danger"
+                                    CausesValidation="false" CommandName="Delete"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

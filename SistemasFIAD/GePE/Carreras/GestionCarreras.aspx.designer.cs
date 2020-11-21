@@ -31,24 +31,6 @@ namespace GePE.Carreras {
         protected global::System.Web.UI.WebControls.LinkButton BtnMnuListado;
         
         /// <summary>
-        /// Control BtnMnuAsignaPLanDeEstudio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BtnMnuAsignaPLanDeEstudio;
-        
-        /// <summary>
-        /// Control BtnMnuPDF.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BtnMnuPDF;
-        
-        /// <summary>
         /// Control TbCriterioBusqueda.
         /// </summary>
         /// <remarks>
@@ -118,7 +100,7 @@ namespace GePE.Carreras {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbAliasCarrera;
+        protected global::GePE.Controles.wfucAlfabeticoRequerido TbAliasCarrera;
         
         /// <summary>
         /// Control cbActivaCarrera.
