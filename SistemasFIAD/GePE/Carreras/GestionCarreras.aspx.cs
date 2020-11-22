@@ -33,6 +33,13 @@ namespace GePE.Carreras
             BtnMnuEditar.Visible = false;
             BtnMnuBorrar.Visible = false;
             BtnCancelar.Visible = false;
+            BtnAceptar.Visible = false;
+
+            //*********Label de careras******************************
+            lbAliasCarrera.Visible = false;
+            lbNombreCarrera.Visible = false;
+            lbClaveCarrera.Visible = false;
+            //*******************************************************
 
             PnlCapturaDatos.Visible = false;
             PnlGrvCarreras.Visible = false;
@@ -51,6 +58,11 @@ namespace GePE.Carreras
             TbNombreCarrera.Enabled = TrueOrFalse;
             TbAliasCarrera.Enabled = TrueOrFalse;
             cbActivaCarrera.Enabled = TrueOrFalse;
+            //*********Label de careras******************************
+            lbAliasCarrera.Enabled = TrueOrFalse;
+            lbNombreCarrera.Enabled = TrueOrFalse;
+            lbClaveCarrera.Enabled = TrueOrFalse;
+            //*******************************************************
         }
         #endregion
 
@@ -83,8 +95,17 @@ namespace GePE.Carreras
             InicializaControles();
             lblTituloAccion.Text = "Nueva carrera";
             PnlCapturaDatos.Visible = true;
+            TbClaveCarrera.Visible = true;
+            TbNombreCarrera.Visible = true;
+            TbAliasCarrera.Visible = true;
+            cbActivaCarrera.Visible = true;
             BtnGrabar.Visible = true;
             BtnCancelar.Visible = true;
+            //*************Label Carrera*****************
+            lbAliasCarrera.Visible = true;
+            lbNombreCarrera.Visible = true;
+            lbClaveCarrera.Visible = true;
+            //*********************************************
         }
         protected void BtnMnuListado_Click(object sender, EventArgs e)
         {
@@ -109,12 +130,22 @@ namespace GePE.Carreras
                 }
                 else if (LstCarrera.Count.Equals(1))
                 {
+                    InicializaControles();
+                    lblTituloAccion.Text = "Resultado de busqueda";
+                    TbClaveCarrera.Visible = true;
+                    TbNombreCarrera.Visible = true;
+                    TbAliasCarrera.Visible = true;
+                    cbActivaCarrera.Visible = true;
+                    //********Label carrera*********************
+                    lbAliasCarrera.Visible = true;
+                    lbNombreCarrera.Visible = true;
+                    lbClaveCarrera.Visible = true;
                     hfIdCarrera.Value = LstCarrera[0].IdCarrera.ToString();
                     ObjetoEntidad_ControlesWebForm(Convert.ToInt32(hfIdCarrera.Value));
-                    ControlesOnOFF(false);
                     PnlCapturaDatos.Visible = true;
                     BtnMnuEditar.Visible = true;
                     BtnMnuBorrar.Visible = true;
+                    PnlGrvCarreras.Visible = false;
                 }
                 else
                 {
@@ -137,18 +168,42 @@ namespace GePE.Carreras
         {
             string R = NC.InsertaCarreras(ControlesWebForm_ObjetoEntidad());
             lblTituloAccion.Text = R;
-            if (R.Contains("Exito"))
+            TbClaveCarrera.Visible = false;
+            TbNombreCarrera.Visible = false;
+            TbAliasCarrera.Visible = false;
+            cbActivaCarrera.Visible = false;
+            //********Label carrera*********************
+            lbAliasCarrera.Visible = false;
+            lbNombreCarrera.Visible = false;
+            lbClaveCarrera.Visible = false;
+            //****************************************
+            BtnGrabar.Visible = false;
+            BtnCancelar.Visible = false;
+            BtnAceptar.Visible = true;
+            if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
-                Response.Write("<script language=javascript>alert('Grabado con exito')</script>");
                 InicializaControles();
             }
 
         }
+
         protected void BtnBorrar_Click(object sender, EventArgs e)
         {
             string R = NC.BorraCarreras(Convert.ToInt32(hfIdCarrera.Value));
             lblTituloAccion.Text = R;
-            if (R.Contains("Exito"))
+            TbClaveCarrera.Visible = false;
+            TbNombreCarrera.Visible = false;
+            TbAliasCarrera.Visible = false;
+            cbActivaCarrera.Visible = false;
+            //********Label carrera*********************
+            lbAliasCarrera.Visible = false;
+            lbNombreCarrera.Visible = false;
+            lbClaveCarrera.Visible = false;
+            //****************************************
+            BtnBorrarModal.Visible = false;
+            BtnCancelar.Visible = false;
+            BtnAceptar.Visible = true;
+            if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
                 InicializaControles();
             }
@@ -159,10 +214,20 @@ namespace GePE.Carreras
             Cliente.IdCarrera = Convert.ToInt32(hfIdCarrera.Value);
             string R = NC.ModificaCarreras(Cliente);
             lblTituloAccion.Text = R;
-
-            if (R.Contains("Exito"))
+            TbClaveCarrera.Visible = false;
+            TbNombreCarrera.Visible = false;
+            TbAliasCarrera.Visible = false;
+            cbActivaCarrera.Visible = false;
+            //********Label carrera*********************
+            lbAliasCarrera.Visible = false;
+            lbNombreCarrera.Visible = false;
+            lbClaveCarrera.Visible = false;
+            //****************************************
+            BtnModificar.Visible = false;
+            BtnCancelar.Visible = false;
+            BtnAceptar.Visible = true;
+            if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
-                Response.Write("<script language=javascript>alert('Modificado con exito')</script>");
                 InicializaControles();
             }
         }
@@ -181,10 +246,12 @@ namespace GePE.Carreras
             BtnCancelar.Visible = true;
             BtnMnuBorrar.Visible = false;
             BtnMnuEditar.Visible = false;
+
             ControlesOnOFF(false);
         }
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {
+
             InicializaControles();
         }
         #endregion
@@ -199,6 +266,15 @@ namespace GePE.Carreras
 
             ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdCarrera.Value));
             ControlesOnOFF(false);
+            TbClaveCarrera.Visible = true;
+            TbNombreCarrera.Visible = true;
+            TbAliasCarrera.Visible = true;
+            cbActivaCarrera.Visible = true;
+            //********Label carrera*********************
+            lbAliasCarrera.Visible = true;
+            lbNombreCarrera.Visible = true;
+            lbClaveCarrera.Visible = true;
+            //****************************************
             PnlCapturaDatos.Visible = true;
             BtnBorrar.Visible = true;
             BtnBorrarModal.Visible = true;
@@ -214,8 +290,17 @@ namespace GePE.Carreras
             ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdCarrera.Value));
             ControlesOnOFF(true);
             PnlCapturaDatos.Visible = true;
+            TbClaveCarrera.Visible = true;
+            TbNombreCarrera.Visible = true;
+            TbAliasCarrera.Visible = true;
+            cbActivaCarrera.Visible = true;
             BtnModificar.Visible = true;
             BtnCancelar.Visible = true;
+            //********Label carrera*********************
+            lbAliasCarrera.Visible = true;
+            lbNombreCarrera.Visible = true;
+            lbClaveCarrera.Visible = true;
+            //****************************************
         }
 
         #endregion

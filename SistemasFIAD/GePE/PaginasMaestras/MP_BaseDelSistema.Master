@@ -20,6 +20,7 @@
     <%--<link href="../CSS/bootstrap.css" rel="stylesheet" />--%>
 
     <title>Sistemas-FIAD</title>
+
 </head>
 
 <body id="page-top" class="bg-verde-obscuro">
@@ -34,6 +35,7 @@
     <!-- Custom scripts for all pages-->
     <script src="../js/sb-admin-2.js"></script>
     <script src="../js/fontawesome.js"></script>
+
 
 </body>
 </html>

@@ -42,13 +42,13 @@
                         <div class="row pl-2 pr-2">
                             <div class="col-lg-2 col-md-12 col-12">
                                 <div class="form-group">
-                                    <p class="text-dark font-weight-bold m-0">Clave de la carrera</p>
+                                    <asp:Label ID="lbClaveCarrera" class="text-dark font-weight-bold m-0" runat="server">Clave de la carrera</asp:Label>
                                     <uc1:wfucAlfabeticoRequerido runat="server" ID="TbClaveCarrera" />
                                 </div>
                             </div>
                             <div class="col-lg-10 col-md-12 col-12">
                                 <div class="form-group">
-                                    <p class="text-dark font-weight-bold m-0">Nombre de la carrera</p>
+                                    <asp:Label ID="lbNombreCarrera" class="text-dark font-weight-bold m-0" runat="server">Nombre de la carrera</asp:Label>
                                     <uc1:wfucAlfabeticoRequerido runat="server" ID="TbNombreCarrera" />
                                 </div>
                             </div>
@@ -57,7 +57,7 @@
                         <div class="row pl-2 pr-2">
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
-                                    <p class="text-dark font-weight-bold m-0">Alias</p>
+                                    <asp:Label ID="lbAliasCarrera" class="text-dark font-weight-bold m-0" runat="server">Alias</asp:Label>
                                     <uc1:wfucAlfabeticoRequerido runat="server" ID="TbAliasCarrera" />
                                 </div>
                             </div>
@@ -71,13 +71,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer text-muted">
+                        <div class="card-footer text-muted" align="center">
                             <asp:LinkButton ID="BtnGrabar" runat="server" CssClass="btn btn-md btn btn-success  pr-3" CausesValidation="true" OnClick="BtnGrabar_Click"><i class="fas fa-plus-square"></i> Insertar</asp:LinkButton>
                             <asp:LinkButton ID="BtnBorrarModal" runat="server" CssClass="btn btn-md btn btn-danger pr-3" data-toggle="modal" CausesValidation="false" data-target="#BorrarModal"><i class="fas fa-trash-alt"></i>Borrar</asp:LinkButton>
                             <asp:LinkButton ID="BtnModificar" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="true" OnClick="BtnModificar_Click"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
                             <asp:LinkButton ID="BtnMnuEditar" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="true" OnClick="BtnMnuEditar_Click"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
                             <asp:LinkButton ID="BtnMnuBorrar" runat="server" CssClass="btn btn-md btn btn-danger pr-3" CausesValidation="false" OnClick="BtnMnuBorrar_Click"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton>
                             <asp:LinkButton ID="BtnCancelar" runat="server" CssClass="btn btn-md btn btn-dark pr-3" CausesValidation="false" OnClick="BtnCancelar_Click"><i class="fas fa-window-close"></i> Cancelar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnAceptar" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="false" OnClick="BtnCancelar_Click"><i class="fas fa-check"></i> Aceptar</asp:LinkButton>
                         </div>
                     </div>
                 </div>
@@ -133,23 +134,7 @@
                 </div>
             </div>
         </div>
-        <%------------modal-exito--------------------%>
-        <div class="modal fade" id="ModalExito" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel2">Exito!</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">La operacion se completo con exito. </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-md btn btn-primary pr-3" type="button" data-dismiss="modal"><i class="fas fa-check"></i>Aceptar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
     <asp:HiddenField ID="hfIdCarrera" runat="server" />
 </asp:Content>

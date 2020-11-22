@@ -76,6 +76,15 @@ namespace GePE.Carreras {
         protected global::System.Web.UI.WebControls.Label lblTituloAccion;
         
         /// <summary>
+        /// Control lbClaveCarrera.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbClaveCarrera;
+        
+        /// <summary>
         /// Control TbClaveCarrera.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace GePE.Carreras {
         protected global::GePE.Controles.wfucAlfabeticoRequerido TbClaveCarrera;
         
         /// <summary>
+        /// Control lbNombreCarrera.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbNombreCarrera;
+        
+        /// <summary>
         /// Control TbNombreCarrera.
         /// </summary>
         /// <remarks>
@@ -92,6 +110,15 @@ namespace GePE.Carreras {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::GePE.Controles.wfucAlfabeticoRequerido TbNombreCarrera;
+        
+        /// <summary>
+        /// Control lbAliasCarrera.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbAliasCarrera;
         
         /// <summary>
         /// Control TbAliasCarrera.
@@ -164,6 +191,15 @@ namespace GePE.Carreras {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton BtnCancelar;
+        
+        /// <summary>
+        /// Control BtnAceptar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BtnAceptar;
         
         /// <summary>
         /// Control PnlGrvCarreras.
