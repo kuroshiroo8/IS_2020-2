@@ -72,9 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Carreras\GestionCarreras.aspx" />
-    <Content Include="Controles\wefucNumeroEnteroPositivoReq.ascx" />
-    <Content Include="Controles\wfucAlfabeticoRequerido.ascx" />
-    <Content Include="Controles\wfucAlfanumericoReq.ascx" />
+    <Content Include="Controles\wfucNumeroEnteroPositivoRequerido.ascx" />
+    <Content Include="Controles\wfucAlfanumericoRequerido.ascx" />
+    <Content Include="Controles\wfucTbAlfabeticoRequerido.ascx" />
     <Content Include="CSS\bootstrap.css" />
     <Content Include="CSS\SistemasFIAD.css" />
     <Content Include="CSS\sb-admin-2.css" />
@@ -99,26 +99,26 @@
     <Compile Include="Carreras\GestionCarreras.aspx.designer.cs">
       <DependentUpon>GestionCarreras.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controles\wefucNumeroEnteroPositivoReq.ascx.cs">
-      <DependentUpon>wefucNumeroEnteroPositivoReq.ascx</DependentUpon>
+    <Compile Include="Controles\wfucNumeroEnteroPositivoRequerido.ascx.cs">
+      <DependentUpon>wfucNumeroEnteroPositivoRequerido.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controles\wefucNumeroEnteroPositivoReq.ascx.designer.cs">
-      <DependentUpon>wefucNumeroEnteroPositivoReq.ascx</DependentUpon>
+    <Compile Include="Controles\wfucNumeroEnteroPositivoRequerido.ascx.designer.cs">
+      <DependentUpon>wfucNumeroEnteroPositivoRequerido.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controles\wfucAlfabeticoRequerido.ascx.cs">
-      <DependentUpon>wfucAlfabeticoRequerido.ascx</DependentUpon>
+    <Compile Include="Controles\wfucAlfanumericoRequerido.ascx.cs">
+      <DependentUpon>wfucAlfanumericoRequerido.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controles\wfucAlfabeticoRequerido.ascx.designer.cs">
-      <DependentUpon>wfucAlfabeticoRequerido.ascx</DependentUpon>
+    <Compile Include="Controles\wfucAlfanumericoRequerido.ascx.designer.cs">
+      <DependentUpon>wfucAlfanumericoRequerido.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controles\wfucAlfanumericoReq.ascx.cs">
-      <DependentUpon>wfucAlfanumericoReq.ascx</DependentUpon>
+    <Compile Include="Controles\wfucTbAlfabeticoRequerido.ascx.cs">
+      <DependentUpon>wfucTbAlfabeticoRequerido.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controles\wfucAlfanumericoReq.ascx.designer.cs">
-      <DependentUpon>wfucAlfanumericoReq.ascx</DependentUpon>
+    <Compile Include="Controles\wfucTbAlfabeticoRequerido.ascx.designer.cs">
+      <DependentUpon>wfucTbAlfabeticoRequerido.ascx</DependentUpon>
     </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>

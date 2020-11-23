@@ -91,7 +91,7 @@ namespace GePE.Carreras {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::GePE.Controles.wfucAlfabeticoRequerido TbClaveCarrera;
+        protected global::Presentacion.Controles.efucNumeroEnteroPositivoReq TbClaveCarrera;
         
         /// <summary>
         /// Control lbNombreCarrera.

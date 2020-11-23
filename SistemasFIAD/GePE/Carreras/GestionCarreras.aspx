@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginasMaestras/MP_SistemasFIADLogueados.master" AutoEventWireup="true" CodeBehind="GestionCarreras.aspx.cs" Inherits="GePE.Carreras.GestionCarreras" %>
 
-<%@ Register Src="~/Controles/wefucNumeroEnteroPositivoReq.ascx" TagPrefix="uc1" TagName="wefucNumeroEnteroPositivoReq" %>
-<%@ Register Src="~/Controles/wfucAlfabeticoRequerido.ascx" TagPrefix="uc1" TagName="wfucAlfabeticoRequerido" %>
+<%@ Register Src="~/Controles/wfucAlfanumericoRequerido.ascx" TagPrefix="uc1" TagName="wfucAlfanumericoRequerido" %>
+<%@ Register Src="~/Controles/wfucNumeroEnteroPositivoRequerido.ascx" TagPrefix="uc1" TagName="wfucNumeroEnteroPositivoRequerido" %>
+<%@ Register Src="~/Controles/wfucTbAlfabeticoRequerido.ascx" TagPrefix="uc1" TagName="wfucTbAlfabeticoRequerido" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
@@ -43,13 +44,13 @@
                             <div class="col-lg-2 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbClaveCarrera" class="text-dark font-weight-bold m-0" runat="server">Clave de la carrera</asp:Label>
-                                    <uc1:wfucAlfabeticoRequerido runat="server" ID="TbClaveCarrera" />
+                                    <uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbClaveCarrera" />
                                 </div>
                             </div>
                             <div class="col-lg-10 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbNombreCarrera" class="text-dark font-weight-bold m-0" runat="server">Nombre de la carrera</asp:Label>
-                                    <uc1:wfucAlfabeticoRequerido runat="server" ID="TbNombreCarrera" />
+                                    <uc1:wfucAlfanumericoRequerido runat="server" ID="TbNombreCarrera" />
                                 </div>
                             </div>
                         </div>
@@ -58,7 +59,7 @@
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbAliasCarrera" class="text-dark font-weight-bold m-0" runat="server">Alias</asp:Label>
-                                    <uc1:wfucAlfabeticoRequerido runat="server" ID="TbAliasCarrera" />
+                                    <uc1:wfucAlfanumericoRequerido runat="server" ID="TbAliasCarrera" />
                                 </div>
                             </div>
                             <br />
