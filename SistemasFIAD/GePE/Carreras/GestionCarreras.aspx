@@ -26,9 +26,9 @@
             </div>
         </div>
 
-        <div>
+        <div align="center">
             <h4>
-                <asp:Label ID="lblNombreAccion" runat="server" class="text-cebter text-primary"></asp:Label></h4>
+                <asp:Label ID="lblNombreAccion" runat="server" class="text-ceter text-primary"></asp:Label></h4>
         </div>
         <%-------------------------------seccion agregar--------------------------------------%>
         <asp:Panel ID="PnlCapturaDatos" runat="server">
@@ -41,13 +41,13 @@
 
                     <div class="card-body">
                         <div class="row pl-2 pr-2">
-                            <div class="col-lg-2 col-md-12 col-12">
+                            <div class="col-lg-3 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbClaveCarrera" class="text-dark font-weight-bold m-0" runat="server">Clave de la carrera</asp:Label>
                                     <uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbClaveCarrera" />
                                 </div>
                             </div>
-                            <div class="col-lg-10 col-md-12 col-12">
+                            <div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbNombreCarrera" class="text-dark font-weight-bold m-0" runat="server">Nombre de la carrera</asp:Label>
                                     <uc1:wfucAlfanumericoRequerido runat="server" ID="TbNombreCarrera" />
@@ -101,14 +101,14 @@
                         <asp:BoundField DataField="NombreCarrera" HeaderText="NOMBRE DEL COORDINADOR" />
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
                             <ItemTemplate>
-                                <asp:LinkButton ID="GrvBtnEditar" runat="server" CssClass="btn btn-sm btn-primary "
+                                <asp:LinkButton ID="GrvBtnEditar" runat="server" CssClass="btn btn-md btn-primary "
                                     CausesValidation="false" CommandName="Edit"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="ACCIONES">
                             <ItemTemplate>
-                                <asp:LinkButton ID="GrvBtnBorrar" runat="server" CssClass="btn btn-sm btn-danger"
+                                <asp:LinkButton ID="GrvBtnBorrar" runat="server" CssClass="btn btn-md btn-danger"
                                     CausesValidation="false" CommandName="Delete"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>

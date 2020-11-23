@@ -12,5 +12,5 @@
 <asp:RegularExpressionValidator ID="revTbAlfanumericoRequerido" runat="server" CssClass="text-danger"
     ControlToValidate="TbAlfanumericoRequerido"
     ErrorMessage="*Sólo alfanumericos."
-    ValidationExpression="^[a-zA-Z0-9]+$"
+    ValidationExpression="^[a-zA-Z0-9 ]+$"
     Display="Dynamic"></asp:RegularExpressionValidator>

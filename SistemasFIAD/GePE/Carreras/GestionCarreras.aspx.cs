@@ -51,6 +51,8 @@ namespace GePE.Carreras
             TbNombreCarrera.Text = string.Empty;
             TbAliasCarrera.Text = string.Empty;
             cbActivaCarrera.Checked = false;
+            lblNombreAccion.Text = string.Empty;
+            lblTituloAccion.Text = string.Empty;
         }
         protected void ControlesOnOFF(bool TrueOrFalse)
         {
@@ -126,7 +128,8 @@ namespace GePE.Carreras
                 List<E_Carreras> LstCarrera = NC.BuscaCarrera(TbCriterioBusqueda.Text.Trim());
                 if (LstCarrera.Count.Equals(0))
                 {
-                    lblNombreAccion.Text = "No se encontran datos con el criterio de busqueda";
+                    InicializaControles();
+                    lblNombreAccion.Text = "No se encontraron datos con el criterio de busqueda";
                 }
                 else if (LstCarrera.Count.Equals(1))
                 {
@@ -136,6 +139,11 @@ namespace GePE.Carreras
                     TbNombreCarrera.Visible = true;
                     TbAliasCarrera.Visible = true;
                     cbActivaCarrera.Visible = true;
+                    //*******no editable************************
+                    TbClaveCarrera.Enabled = false;
+                    TbNombreCarrera.Enabled = false;
+                    TbAliasCarrera.Enabled = false;
+                    cbActivaCarrera.Enabled = false;
                     //********Label carrera*********************
                     lbAliasCarrera.Visible = true;
                     lbNombreCarrera.Visible = true;
@@ -233,6 +241,7 @@ namespace GePE.Carreras
         }
         protected void BtnMnuEditar_Click(object sender, EventArgs e)
         {
+            lblTituloAccion.Text = "Modificar Carrera";
             BtnModificar.Visible = true;
             BtnCancelar.Visible = true;
             BtnMnuBorrar.Visible = false;
@@ -241,6 +250,7 @@ namespace GePE.Carreras
         }
         protected void BtnMnuBorrar_Click(object sender, EventArgs e)
         {
+            lblTituloAccion.Text = "Borrar Carrera";
             BtnBorrar.Visible = true;
             BtnBorrarModal.Visible = true;
             BtnCancelar.Visible = true;
@@ -282,7 +292,7 @@ namespace GePE.Carreras
         }
         protected void GrvCarreras_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            ControlesOFF();
+            InicializaControles();
             e.Cancel = true; //Deshabilitar las ediciones del registro
             hfIdCarrera.Value = GrvCarreras.DataKeys[e.NewEditIndex].Value.ToString();
             lblTituloAccion.Text = "Modificar Carrera";
