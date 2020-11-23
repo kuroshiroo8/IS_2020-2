@@ -89,4 +89,12 @@ namespace Negocios
 			return (from Materias in LstMaterias() where Materias.IdMateria == pIdMateria select Materias).FirstOrDefault();
 		}
 
-	}}
+        public List<E_Materias> BuscaMateria(string CriterioBusqueda)
+        {
+            return (from Materias in LstMaterias()
+                    where
+Materias.NombreMateria.ToUpper().Contains(CriterioBusqueda.ToUpper())
+                    select Materias).ToList();
+        }
+    }
+}
