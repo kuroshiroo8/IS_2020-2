@@ -34,10 +34,22 @@ namespace GePE.Materias
             BtnMnuBorrar.Visible = false;
             BtnCancelar.Visible = false;
             BtnAceptar.Visible = false;
+            
 
             //*********Label de careras******************************
             lbNombreMateria.Visible = false;
             lbClaveMateria.Visible = false;
+            lbHoraClaseMateria.Visible = false;
+            lbHoraTallerMateria.Visible = false;
+            lbHoraLaboratorioMateria.Visible = false;
+            lbHoraExtraClaseMateria.Visible = false;
+            lbCreditosMateria.Visible = false;
+            lbEtapaFormacionMateria.Visible = false;
+            lbCaracteristicasFormacionMateria.Visible = false;
+            lbSemestreMateria.Visible = false;
+            lbAreaConocimientoMateria.Visible = false;
+            lbPathPUAnoOficialMateria.Visible = false;
+            lbPathPUAOficialMateria.Visible = false;
             //*******************************************************
 
             PnlCapturaDatos.Visible = false;
@@ -50,14 +62,49 @@ namespace GePE.Materias
             TbNombreMateria.Text = string.Empty;
             lblNombreAccion.Text = string.Empty;
             lblTituloAccion.Text = string.Empty;
+            TbHoraClaseMateria.Text = string.Empty;
+            TbHoraTallerMateria.Text = string.Empty;
+            TbHoraLaboratorioMateria.Text = string.Empty;
+            TbHoraExtraClaseMateria.Text = string.Empty;
+            TbCreditosMateria.Text = string.Empty;
+            TbEtapaFormacionMateria.Text = string.Empty;
+            TbCaracteristicasFormacionMateria.Text = string.Empty;
+            TbSemestreMateria.Text = string.Empty;
+            TbAreaConocimientoMateria.Text = string.Empty;
+            TbPathPUAnoOficialMateria.Text = string.Empty;
+            TbPathPUAOficialMateria.Text = string.Empty;
         }
         protected void ControlesOnOFF(bool TrueOrFalse)
         {
             TbClaveMateria.Enabled = TrueOrFalse;
             TbNombreMateria.Enabled = TrueOrFalse;
+            lblNombreAccion.Enabled = TrueOrFalse;
+            lblTituloAccion.Enabled = TrueOrFalse;
+            TbHoraClaseMateria.Enabled = TrueOrFalse;
+            TbHoraTallerMateria.Enabled = TrueOrFalse;
+            TbHoraLaboratorioMateria.Enabled = TrueOrFalse;
+            TbHoraExtraClaseMateria.Enabled = TrueOrFalse;
+            TbCreditosMateria.Enabled = TrueOrFalse;
+            TbEtapaFormacionMateria.Enabled = TrueOrFalse;
+            TbCaracteristicasFormacionMateria.Enabled = TrueOrFalse;
+            TbSemestreMateria.Enabled = TrueOrFalse;
+            TbAreaConocimientoMateria.Enabled = TrueOrFalse;
+            TbPathPUAnoOficialMateria.Enabled = TrueOrFalse;
+            TbPathPUAOficialMateria.Enabled = TrueOrFalse;
             //*********Label de materias******************************
             lbNombreMateria.Enabled = TrueOrFalse;
             lbClaveMateria.Enabled = TrueOrFalse;
+            lbHoraClaseMateria.Enabled = TrueOrFalse;
+            lbHoraTallerMateria.Enabled = TrueOrFalse;
+            lbHoraLaboratorioMateria.Enabled = TrueOrFalse;
+            lbHoraExtraClaseMateria.Enabled = TrueOrFalse;
+            lbCreditosMateria.Enabled = TrueOrFalse;
+            lbEtapaFormacionMateria.Enabled = TrueOrFalse;
+            lbCaracteristicasFormacionMateria.Enabled = TrueOrFalse;
+            lbSemestreMateria.Enabled = TrueOrFalse;
+            lbAreaConocimientoMateria.Enabled = TrueOrFalse;
+            lbPathPUAnoOficialMateria.Enabled = TrueOrFalse;
+            lbPathPUAOficialMateria.Enabled = TrueOrFalse;
             //*******************************************************
         }
         #endregion
@@ -89,7 +136,7 @@ namespace GePE.Materias
             TbNombreMateria.Visible = true;
             BtnGrabar.Visible = true;
             BtnCancelar.Visible = true;
-            //*************Label Carrera*****************
+            //*************Label Materia*****************
             lbNombreMateria.Visible = true;
             lbClaveMateria.Visible = true;
             //*********************************************
@@ -121,7 +168,7 @@ namespace GePE.Materias
                     //*******no editable************************
                     TbClaveMateria.Enabled = false;
                     TbNombreMateria.Enabled = false;
-                    //********Label carrera*********************
+                    //********Label materia*********************
                     lbNombreMateria.Visible = true;
                     lbClaveMateria.Visible = true;
                     hfIdMateria.Value = LstMateria[0].IdMateria.ToString();
@@ -148,7 +195,7 @@ namespace GePE.Materias
             lblTituloAccion.Text = R;
             TbClaveMateria.Visible = false;
             TbNombreMateria.Visible = false;
-            //********Label carrera*********************
+            //********Label materia*********************
             lbNombreMateria.Visible = false;
             lbClaveMateria.Visible = false;
             //****************************************
@@ -168,7 +215,7 @@ namespace GePE.Materias
             lblTituloAccion.Text = R;
             TbClaveMateria.Visible = false;
             TbNombreMateria.Visible = false;
-            //********Label carrera*********************
+            //********Label materia*********************
             lbNombreMateria.Visible = false;
             lbClaveMateria.Visible = false;
             //****************************************
@@ -188,7 +235,7 @@ namespace GePE.Materias
             lblTituloAccion.Text = R;
             TbClaveMateria.Visible = false;
             TbNombreMateria.Visible = false;
-            //********Label carrera*********************
+            //********Label materia*********************
             lbNombreMateria.Visible = false;
             lbClaveMateria.Visible = false;
             //****************************************
@@ -202,7 +249,7 @@ namespace GePE.Materias
         }
         protected void BtnMnuEditar_Click(object sender, EventArgs e)
         {
-            lblTituloAccion.Text = "Modificar Carrera";
+            lblTituloAccion.Text = "Modificar Materia";
             BtnModificar.Visible = true;
             BtnCancelar.Visible = true;
             BtnMnuBorrar.Visible = false;
@@ -211,7 +258,7 @@ namespace GePE.Materias
         }
         protected void BtnMnuBorrar_Click(object sender, EventArgs e)
         {
-            lblTituloAccion.Text = "Borrar Carrera";
+            lblTituloAccion.Text = "Borrar Materia";
             BtnBorrar.Visible = true;
             BtnBorrarModal.Visible = true;
             BtnCancelar.Visible = true;
@@ -228,18 +275,18 @@ namespace GePE.Materias
         #endregion
 
         #region Métodos del GridView
-        protected void GrvCarreras_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void GrvMaterias_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             ControlesOFF();
             e.Cancel = true; //Deshabilitar las ediciones del registro
             hfIdMateria.Value = GrvMateria.DataKeys[e.RowIndex].Value.ToString();
-            lblTituloAccion.Text = "Borrar Carrera";
+            lblTituloAccion.Text = "Borrar Materia";
 
             ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdMateria.Value));
             ControlesOnOFF(false);
             TbClaveMateria.Visible = true;
             TbNombreMateria.Visible = true;
-            //********Label carrera*********************
+            //********Label materia*********************
             lbNombreMateria.Visible = true;
             lbClaveMateria.Visible = true;
             //****************************************
@@ -248,12 +295,12 @@ namespace GePE.Materias
             BtnBorrarModal.Visible = true;
             BtnCancelar.Visible = true;
         }
-        protected void GrvCarreras_RowEditing(object sender, GridViewEditEventArgs e)
+        protected void GrvMaterias_RowEditing(object sender, GridViewEditEventArgs e)
         {
             InicializaControles();
             e.Cancel = true; //Deshabilitar las ediciones del registro
             hfIdMateria.Value = GrvMateria.DataKeys[e.NewEditIndex].Value.ToString();
-            lblTituloAccion.Text = "Modificar Carrera";
+            lblTituloAccion.Text = "Modificar Materia";
 
             ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdMateria.Value));
             ControlesOnOFF(true);
@@ -262,7 +309,7 @@ namespace GePE.Materias
             TbNombreMateria.Visible = true;
             BtnModificar.Visible = true;
             BtnCancelar.Visible = true;
-            //********Label carrera*********************
+            //********Label materia*********************
             lbNombreMateria.Visible = true;
             lbClaveMateria.Visible = true;
             //****************************************
