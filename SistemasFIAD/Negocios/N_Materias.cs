@@ -75,7 +75,7 @@ namespace Negocios
 		// Listado generales de la clase Materias en formato DataTable y List<E_Materias>.
 		public DataTable DT_LstMaterias()
 		{
-			return NM.DT_ListadoGeneral("Materias", "[PonerCampoDeOrdenacion]");
+			return NM.DT_ListadoGeneral("Materias", "ClaveMateria");
 		}
 
 		public List<E_Materias> LstMaterias()

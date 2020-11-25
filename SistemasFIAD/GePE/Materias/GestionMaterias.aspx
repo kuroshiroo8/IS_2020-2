@@ -95,28 +95,36 @@
                                 <div class="form-group">
                                     <asp:Label ID="lbEtapaFormacionMateria" class="text-dark font-weight-bold m-0" runat="server">Etapa</asp:Label>
                                     <%--<uc1:wfucAlfanumericoRequerido runat="server" ID="TbEtapaFormacionMateria" />--%>
-                                    <asp:TextBox ID="TbEtapaFormacionMateria" runat="server"></asp:TextBox>
+                                    <%--<asp:TextBox ID="TbEtapaFormacionMateria" runat="server"></asp:TextBox>--%>
+                                    <asp:DropDownList ID="LstEtapaFormacion" runat="server" style="width:100%;max-width:500px;"></asp:DropDownList>
                                 </div>
                             </div>
                             <div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbCaracteristicasFormacionMateria" class="text-dark font-weight-bold m-0" runat="server">Caracteristicas de formacion</asp:Label>
                                     <%--<uc1:wfucAlfanumericoRequerido runat="server" ID="TbCaracteristicasFormacionMateria" />--%>
-                                    <asp:TextBox ID="TbCaracteristicasFormacionMateria" runat="server"></asp:TextBox>
+                                    <%--<asp:TextBox ID="TbCaracteristicasFormacionMateria" runat="server"></asp:TextBox>--%>
+                                    <asp:DropDownList ID="LstCaracteristicas" runat="server" style="width:100%;max-width:500px;"></asp:DropDownList>
                                 </div>
                             </div>
                             <div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbSemestreMateria" class="text-dark font-weight-bold m-0" runat="server">Semestre</asp:Label>
                                     <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbSemestreMateria" />--%>
-                                    <asp:TextBox ID="TbSemestreMateria" runat="server"></asp:TextBox>
+                                    <%--<asp:TextBox ID="TbSemestreMateria" runat="server"></asp:TextBox>--%>
+                                   <asp:DropDownList ID="LstSemestre" runat="server" style="width:100%;max-width:500px;"/>
+                                    <asp:RequiredFieldValidator ID="rfvLstSemestre" runat="server" CssClass="text-danger"
+                                         InitialValue="1" ControlToValidate="LstSemestre" SetFocusOnError="true" Text=""
+                                         ErrorMessage="*Este campo es requerido."
+                                         Display="Dynamic"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
                             <div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbAreaConocimientoMateria" class="text-dark font-weight-bold m-0" runat="server">Area de conocimiento</asp:Label>
                                     <%--<uc1:wfucAlfanumericoRequerido runat="server" ID="TbAreaConocimientoMateria" />--%>
-                                    <asp:TextBox ID="TbAreaConocimientoMateria" runat="server"></asp:TextBox>
+                                    <%--<asp:TextBox ID="TbAreaConocimientoMateria" runat="server"></asp:TextBox>--%>
+                                    <asp:DropDownList ID="LstAreaConocimiento" runat="server" style="width:100%;max-width:500px;"></asp:DropDownList>
                                 </div>
                             </div>
                             <div class="col-lg-9 col-md-12 col-12">

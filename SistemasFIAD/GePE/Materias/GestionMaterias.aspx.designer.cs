@@ -211,13 +211,13 @@ namespace GePE.Materias {
         protected global::System.Web.UI.WebControls.Label lbEtapaFormacionMateria;
         
         /// <summary>
-        /// Control TbEtapaFormacionMateria.
+        /// Control LstEtapaFormacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbEtapaFormacionMateria;
+        protected global::System.Web.UI.WebControls.DropDownList LstEtapaFormacion;
         
         /// <summary>
         /// Control lbCaracteristicasFormacionMateria.
@@ -229,13 +229,13 @@ namespace GePE.Materias {
         protected global::System.Web.UI.WebControls.Label lbCaracteristicasFormacionMateria;
         
         /// <summary>
-        /// Control TbCaracteristicasFormacionMateria.
+        /// Control LstCaracteristicas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbCaracteristicasFormacionMateria;
+        protected global::System.Web.UI.WebControls.DropDownList LstCaracteristicas;
         
         /// <summary>
         /// Control lbSemestreMateria.
@@ -247,13 +247,22 @@ namespace GePE.Materias {
         protected global::System.Web.UI.WebControls.Label lbSemestreMateria;
         
         /// <summary>
-        /// Control TbSemestreMateria.
+        /// Control LstSemestre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbSemestreMateria;
+        protected global::System.Web.UI.WebControls.DropDownList LstSemestre;
+        
+        /// <summary>
+        /// Control rfvLstSemestre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLstSemestre;
         
         /// <summary>
         /// Control lbAreaConocimientoMateria.
@@ -265,13 +274,13 @@ namespace GePE.Materias {
         protected global::System.Web.UI.WebControls.Label lbAreaConocimientoMateria;
         
         /// <summary>
-        /// Control TbAreaConocimientoMateria.
+        /// Control LstAreaConocimiento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbAreaConocimientoMateria;
+        protected global::System.Web.UI.WebControls.DropDownList LstAreaConocimiento;
         
         /// <summary>
         /// Control lbPathPUAnoOficialMateria.

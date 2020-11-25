@@ -67,10 +67,14 @@ namespace GePE.Materias
             TbHoraLaboratorioMateria.Text = string.Empty;
             TbHoraExtraClaseMateria.Text = string.Empty;
             TbCreditosMateria.Text = string.Empty;
-            TbEtapaFormacionMateria.Text = string.Empty;
-            TbCaracteristicasFormacionMateria.Text = string.Empty;
-            TbSemestreMateria.Text = string.Empty;
-            TbAreaConocimientoMateria.Text = string.Empty;
+            //TbEtapaFormacionMateria.Text = string.Empty;
+            //TbCaracteristicasFormacionMateria.Text = string.Empty;
+            //TbSemestreMateria.Text = string.Empty;  
+            LstSemestre.Items.Clear();
+            LstCaracteristicas.Items.Clear();
+            LstEtapaFormacion.Items.Clear();
+            LstAreaConocimiento.Items.Clear();
+            //TbAreaConocimientoMateria.Text = string.Empty;
             TbPathPUAnoOficialMateria.Text = string.Empty;
             TbPathPUAOficialMateria.Text = string.Empty;
         }
@@ -85,10 +89,14 @@ namespace GePE.Materias
             TbHoraLaboratorioMateria.Enabled = TrueOrFalse;
             TbHoraExtraClaseMateria.Enabled = TrueOrFalse;
             TbCreditosMateria.Enabled = TrueOrFalse;
-            TbEtapaFormacionMateria.Enabled = TrueOrFalse;
-            TbCaracteristicasFormacionMateria.Enabled = TrueOrFalse;
-            TbSemestreMateria.Enabled = TrueOrFalse;
-            TbAreaConocimientoMateria.Enabled = TrueOrFalse;
+            //TbEtapaFormacionMateria.Enabled = TrueOrFalse;
+            //TbCaracteristicasFormacionMateria.Enabled = TrueOrFalse;
+            //TbSemestreMateria.Enabled = TrueOrFalse;
+            LstSemestre.Enabled = TrueOrFalse;
+            LstCaracteristicas.Enabled = TrueOrFalse;
+            LstEtapaFormacion.Enabled = TrueOrFalse;
+            //TbAreaConocimientoMateria.Enabled = TrueOrFalse;
+            LstAreaConocimiento.Enabled = TrueOrFalse;
             TbPathPUAnoOficialMateria.Enabled = TrueOrFalse;
             TbPathPUAOficialMateria.Enabled = TrueOrFalse;
             //*********Label de materias******************************
@@ -113,17 +121,28 @@ namespace GePE.Materias
         {
             E_Materias Materia = new E_Materias()
             {
+                //accede a la base de datos para hacer la lista
                 ClaveMateria = TbClaveMateria.Text,
                 NombreMateria = TbNombreMateria.Text,
+                SemestreMateria = LstSemestre.SelectedIndex,
+                CaracteristicasFormacionMateria = LstCaracteristicas.SelectedItem.Text,
+                EtapaFormacionMateria=LstEtapaFormacion.SelectedItem.Text,
+                AreaConocimientoMateria=LstAreaConocimiento.SelectedItem.Text,
             };
             return Materia;
         }
         protected void ObjetoEntidad_ControlesWebForm(int IdMateria)
         {
+            //agrega los datos a la base de datos
             E_Materias Materia = NM.BuscaMateriasPorId(IdMateria);
 
             TbClaveMateria.Text = Materia.ClaveMateria.Trim();
             TbNombreMateria.Text = Materia.NombreMateria.Trim();
+            LstSemestre.SelectedIndex = LstSemestre.SelectedIndex + 1;
+            LstSemestre.SelectedIndex = Materia.SemestreMateria;
+            LstCaracteristicas.SelectedItem.Value = Materia.CaracteristicasFormacionMateria;
+            LstEtapaFormacion.SelectedItem.Value = Materia.EtapaFormacionMateria;
+            LstAreaConocimiento.SelectedItem.Value = Materia.AreaConocimientoMateria;
         }
         #endregion
         #region Botones menu de navegación 
@@ -134,11 +153,87 @@ namespace GePE.Materias
             PnlCapturaDatos.Visible = true;
             TbClaveMateria.Visible = true;
             TbNombreMateria.Visible = true;
+            TbHoraClaseMateria.Visible = true;
+            TbHoraTallerMateria.Visible = true;
+            TbHoraLaboratorioMateria.Visible = true;
+            TbHoraExtraClaseMateria.Visible = true;
+            TbCreditosMateria.Visible = true;
+            //TbEtapaFormacionMateria.Visible = true;
+            //TbCaracteristicasFormacionMateria.Visible = true;
+            //TbSemestreMateria.Visible = true;
+            LstEtapaFormacion.Visible = true;
+            ListItem E;
+            E = new ListItem("", "1");
+            LstEtapaFormacion.Items.Add(E);
+            E = new ListItem("BASICA", "2");
+            LstEtapaFormacion.Items.Add(E);
+            E = new ListItem("DISIPLINARIA", "3");
+            LstEtapaFormacion.Items.Add(E);
+            E = new ListItem("TERMINAL", "4");
+            LstEtapaFormacion.Items.Add(E);
+            LstCaracteristicas.Visible = true;
+            ListItem c;
+            c = new ListItem("", "1");
+            LstCaracteristicas.Items.Add(c);
+            c = new ListItem("OBLIGATORIA", "2");
+            LstCaracteristicas.Items.Add(c);
+            c = new ListItem("OPTATIVA", "3");
+            LstCaracteristicas.Items.Add(c);
+            LstSemestre.Visible = true;           
+            ListItem i;
+            i = new ListItem("", "1");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("1.º", "2");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("2.º", "3");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("3.º", "4");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("4.º", "5");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("5.º", "6");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("6.º", "7");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("7.º", "8");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("8.º", "9");
+            LstSemestre.Items.Add(i);
+            //TbAreaConocimientoMateria.Visible = true;
+            LstAreaConocimiento.Visible = true;
+            ListItem a;
+            a = new ListItem("", "1");
+            LstAreaConocimiento.Items.Add(a);
+            a = new ListItem("CIENCIAS BASICAS", "2");
+            LstAreaConocimiento.Items.Add(a);
+            a = new ListItem("CIENCIAS SOCIALES Y HUMANIDADES", "3");
+            LstAreaConocimiento.Items.Add(a);
+            a = new ListItem("CIENCIAS ECONOMICAS ADMINISTRATIVAS", "4");
+            LstAreaConocimiento.Items.Add(a);
+            a = new ListItem("CIENCIAS DE LA INGENIERIA", "5");
+            LstAreaConocimiento.Items.Add(a);
+            a = new ListItem("INGENIERIA APLICADA", "6");
+            LstAreaConocimiento.Items.Add(a);
+            a = new ListItem("DISEÑO EN INGENIERIA", "7");
+            LstAreaConocimiento.Items.Add(a);
+            TbPathPUAnoOficialMateria.Visible = true;
+            TbPathPUAOficialMateria.Visible = true;
             BtnGrabar.Visible = true;
             BtnCancelar.Visible = true;
             //*************Label Materia*****************
             lbNombreMateria.Visible = true;
             lbClaveMateria.Visible = true;
+            lbHoraClaseMateria.Visible = true;
+            lbHoraTallerMateria.Visible = true;
+            lbHoraLaboratorioMateria.Visible = true;
+            lbHoraExtraClaseMateria.Visible = true;
+            lbCreditosMateria.Visible = true;
+            lbEtapaFormacionMateria.Visible = true;
+            lbCaracteristicasFormacionMateria.Visible = true;
+            lbSemestreMateria.Visible = true;
+            lbAreaConocimientoMateria.Visible = true;
+            lbPathPUAnoOficialMateria.Visible = true;
+            lbPathPUAOficialMateria.Visible = true;
             //*********************************************
         }
         protected void BtnMnuListado_Click(object sender, EventArgs e)
@@ -163,14 +258,56 @@ namespace GePE.Materias
                 {
                     InicializaControles();
                     lblTituloAccion.Text = "Resultado de busqueda";
+                    //texbox visibles**************************
                     TbClaveMateria.Visible = true;
                     TbNombreMateria.Visible = true;
+                    TbHoraClaseMateria.Visible = true;
+                    TbHoraTallerMateria.Visible = true;
+                    TbHoraLaboratorioMateria.Visible = true;
+                    TbHoraExtraClaseMateria.Visible = true;
+                    TbCreditosMateria.Visible = true;
+                    //TbEtapaFormacionMateria.Visible = true;
+                    //TbCaracteristicasFormacionMateria.Visible = true;
+                    //TbSemestreMateria.Visible = true;
+                    LstSemestre.Visible = true;
+                    LstCaracteristicas.Visible = true;
+                    LstEtapaFormacion.Visible = true;
+                    LstAreaConocimiento.Visible = true;
+                    //TbAreaConocimientoMateria.Visible = true;
+                    TbPathPUAnoOficialMateria.Visible = true;
+                    TbPathPUAOficialMateria.Visible = true;
                     //*******no editable************************
                     TbClaveMateria.Enabled = false;
                     TbNombreMateria.Enabled = false;
+                    TbHoraClaseMateria.Enabled = false;
+                    TbHoraTallerMateria.Enabled = false;
+                    TbHoraLaboratorioMateria.Enabled = false;
+                    TbHoraExtraClaseMateria.Enabled = false;
+                    TbCreditosMateria.Enabled = false;
+                    //TbEtapaFormacionMateria.Enabled = false;
+                    //TbCaracteristicasFormacionMateria.Enabled = false;
+                    //TbSemestreMateria.Enabled = false;
+                    LstSemestre.Enabled = false;
+                    LstCaracteristicas.Enabled = false;
+                    LstEtapaFormacion.Enabled = false;
+                    LstAreaConocimiento.Enabled = false;
+                    //TbAreaConocimientoMateria.Enabled = false;
+                    TbPathPUAnoOficialMateria.Enabled = false;
+                    TbPathPUAOficialMateria.Enabled = false;
                     //********Label materia*********************
                     lbNombreMateria.Visible = true;
                     lbClaveMateria.Visible = true;
+                    lbHoraClaseMateria.Visible = true;
+                    lbHoraTallerMateria.Visible = true;
+                    lbHoraLaboratorioMateria.Visible = true;
+                    lbHoraExtraClaseMateria.Visible = true;
+                    lbCreditosMateria.Visible = true;
+                    lbEtapaFormacionMateria.Visible = true;
+                    lbCaracteristicasFormacionMateria.Visible = true;
+                    lbSemestreMateria.Visible = true;
+                    lbAreaConocimientoMateria.Visible = true;
+                    lbPathPUAnoOficialMateria.Visible = true;
+                    lbPathPUAOficialMateria.Visible = true;
                     hfIdMateria.Value = LstMateria[0].IdMateria.ToString();
                     ObjetoEntidad_ControlesWebForm(Convert.ToInt32(hfIdMateria.Value));
                     PnlCapturaDatos.Visible = true;
@@ -193,11 +330,38 @@ namespace GePE.Materias
         {
             string R = NM.InsertaMaterias(ControlesWebForm_ObjetoEntidad());
             lblTituloAccion.Text = R;
+            //texbox no visibles************************
             TbClaveMateria.Visible = false;
             TbNombreMateria.Visible = false;
+            TbHoraClaseMateria.Visible = false;
+            TbHoraTallerMateria.Visible =false;
+            TbHoraLaboratorioMateria.Visible = false;
+            TbHoraExtraClaseMateria.Visible = false;
+            TbCreditosMateria.Visible = false;
+            //TbEtapaFormacionMateria.Visible = false;
+            //TbCaracteristicasFormacionMateria.Visible = false;
+            //TbSemestreMateria.Visible = false;
+            LstSemestre.Visible = false;
+            LstCaracteristicas.Visible = false;
+            LstEtapaFormacion.Visible = false;
+            LstAreaConocimiento.Visible = false;
+            //TbAreaConocimientoMateria.Visible = false;
+            TbPathPUAnoOficialMateria.Visible = false;
+            TbPathPUAOficialMateria.Visible = false;
             //********Label materia*********************
             lbNombreMateria.Visible = false;
             lbClaveMateria.Visible = false;
+            lbHoraClaseMateria.Visible = false;
+            lbHoraTallerMateria.Visible = false;
+            lbHoraLaboratorioMateria.Visible = false;
+            lbHoraExtraClaseMateria.Visible = false;
+            lbCreditosMateria.Visible = false;
+            lbEtapaFormacionMateria.Visible = false;
+            lbCaracteristicasFormacionMateria.Visible = false;
+            lbSemestreMateria.Visible = false;
+            lbAreaConocimientoMateria.Visible = false;
+            lbPathPUAnoOficialMateria.Visible = false;
+            lbPathPUAOficialMateria.Visible = false;
             //****************************************
             BtnGrabar.Visible = false;
             BtnCancelar.Visible = false;
@@ -213,11 +377,38 @@ namespace GePE.Materias
         {
             string R = NM.BorraMaterias(Convert.ToInt32(hfIdMateria.Value));
             lblTituloAccion.Text = R;
+            //texbox no visibles**********************
             TbClaveMateria.Visible = false;
             TbNombreMateria.Visible = false;
+            TbHoraClaseMateria.Visible = false;
+            TbHoraTallerMateria.Visible = false;
+            TbHoraLaboratorioMateria.Visible = false;
+            TbHoraExtraClaseMateria.Visible = false;
+            TbCreditosMateria.Visible = false;
+            //TbEtapaFormacionMateria.Visible = false;
+            //TbCaracteristicasFormacionMateria.Visible = false;
+            //TbSemestreMateria.Visible = false;
+            LstSemestre.Visible = false;
+            LstCaracteristicas.Visible = false;
+            LstEtapaFormacion.Visible = false;
+            LstAreaConocimiento.Visible = false;
+            //TbAreaConocimientoMateria.Visible = false;
+            TbPathPUAnoOficialMateria.Visible = false;
+            TbPathPUAOficialMateria.Visible = false;
             //********Label materia*********************
             lbNombreMateria.Visible = false;
             lbClaveMateria.Visible = false;
+            lbHoraClaseMateria.Visible = false;
+            lbHoraTallerMateria.Visible = false;
+            lbHoraLaboratorioMateria.Visible = false;
+            lbHoraExtraClaseMateria.Visible = false;
+            lbCreditosMateria.Visible = false;
+            lbEtapaFormacionMateria.Visible = false;
+            lbCaracteristicasFormacionMateria.Visible = false;
+            lbSemestreMateria.Visible = false;
+            lbAreaConocimientoMateria.Visible = false;
+            lbPathPUAnoOficialMateria.Visible = false;
+            lbPathPUAOficialMateria.Visible = false;
             //****************************************
             BtnBorrarModal.Visible = false;
             BtnCancelar.Visible = false;
@@ -233,11 +424,38 @@ namespace GePE.Materias
             Cliente.IdMateria = Convert.ToInt32(hfIdMateria.Value);
             string R = NM.ModificaMaterias(Cliente);
             lblTituloAccion.Text = R;
+            //texbox no visibles**********************
             TbClaveMateria.Visible = false;
             TbNombreMateria.Visible = false;
+            TbHoraClaseMateria.Visible = false;
+            TbHoraTallerMateria.Visible = false;
+            TbHoraLaboratorioMateria.Visible = false;
+            TbHoraExtraClaseMateria.Visible = false;
+            TbCreditosMateria.Visible = false;
+            //TbEtapaFormacionMateria.Visible = false;
+            //TbCaracteristicasFormacionMateria.Visible = false;
+            //TbSemestreMateria.Visible = false;
+            LstSemestre.Visible = false;
+            LstCaracteristicas.Visible=false;
+            LstEtapaFormacion.Visible = false;
+            LstAreaConocimiento.Visible = false;
+            //TbAreaConocimientoMateria.Visible = false;
+            TbPathPUAnoOficialMateria.Visible = false;
+            TbPathPUAOficialMateria.Visible = false;
             //********Label materia*********************
             lbNombreMateria.Visible = false;
             lbClaveMateria.Visible = false;
+            lbHoraClaseMateria.Visible = false;
+            lbHoraTallerMateria.Visible = false;
+            lbHoraLaboratorioMateria.Visible = false;
+            lbHoraExtraClaseMateria.Visible = false;
+            lbCreditosMateria.Visible = false;
+            lbEtapaFormacionMateria.Visible = false;
+            lbCaracteristicasFormacionMateria.Visible = false;
+            lbSemestreMateria.Visible = false;
+            lbAreaConocimientoMateria.Visible = false;
+            lbPathPUAnoOficialMateria.Visible = false;
+            lbPathPUAOficialMateria.Visible = false;
             //****************************************
             BtnModificar.Visible = false;
             BtnCancelar.Visible = false;
@@ -281,14 +499,79 @@ namespace GePE.Materias
             e.Cancel = true; //Deshabilitar las ediciones del registro
             hfIdMateria.Value = GrvMateria.DataKeys[e.RowIndex].Value.ToString();
             lblTituloAccion.Text = "Borrar Materia";
-
+            LstEtapaFormacion.Visible = true;
+            ListItem E;
+            E = new ListItem("", "1");
+            LstEtapaFormacion.Items.Add(E);
+            E = new ListItem("BASICA", "2");
+            LstEtapaFormacion.Items.Add(E);
+            E = new ListItem("DISIPLINARIA", "3");
+            LstEtapaFormacion.Items.Add(E);
+            E = new ListItem("TERMINAL", "4");
+            LstEtapaFormacion.Items.Add(E);
+            LstSemestre.Visible = true;
+            ListItem i;
+            i = new ListItem("", "1");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("1.º", "2");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("2.º", "3");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("3.º", "4");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("4.º", "5");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("5.º", "6");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("6.º", "7");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("7.º", "8");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("8.º", "9");
+            LstSemestre.Items.Add(i);
+            LstCaracteristicas.Visible = true;
+            ListItem c;
+            c = new ListItem("", "1");
+            LstCaracteristicas.Items.Add(c);
+            c = new ListItem("OBLIGATORIA", "2");
+            LstCaracteristicas.Items.Add(c);
+            c = new ListItem("OPTATIVA", "3");
+            LstCaracteristicas.Items.Add(c);
             ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdMateria.Value));
             ControlesOnOFF(false);
             TbClaveMateria.Visible = true;
             TbNombreMateria.Visible = true;
+            TbClaveMateria.Visible = true;
+            TbNombreMateria.Visible = true;
+            TbHoraClaseMateria.Visible = true;
+            TbHoraTallerMateria.Visible = true;
+            TbHoraLaboratorioMateria.Visible = true;
+            TbHoraExtraClaseMateria.Visible = true;
+            TbCreditosMateria.Visible = true;
+            //TbEtapaFormacionMateria.Visible = true;
+            //TbCaracteristicasFormacionMateria.Visible = true;
+            //TbSemestreMateria.Visible = true;
+            LstSemestre.Visible = true;
+            LstCaracteristicas.Visible = true;
+            LstEtapaFormacion.Visible = true;
+            LstAreaConocimiento.Visible=true;
+            //TbAreaConocimientoMateria.Visible = true;
+            TbPathPUAnoOficialMateria.Visible = true;
+            TbPathPUAOficialMateria.Visible = true;
             //********Label materia*********************
             lbNombreMateria.Visible = true;
             lbClaveMateria.Visible = true;
+            lbHoraClaseMateria.Visible = true;
+            lbHoraTallerMateria.Visible = true;
+            lbHoraLaboratorioMateria.Visible = true;
+            lbHoraExtraClaseMateria.Visible = true;
+            lbCreditosMateria.Visible = true;
+            lbEtapaFormacionMateria.Visible = true;
+            lbCaracteristicasFormacionMateria.Visible = true;
+            lbSemestreMateria.Visible = true;
+            lbAreaConocimientoMateria.Visible = true;
+            lbPathPUAnoOficialMateria.Visible = true;
+            lbPathPUAOficialMateria.Visible = true;
             //****************************************
             PnlCapturaDatos.Visible = true;
             BtnBorrar.Visible = true;
@@ -302,19 +585,105 @@ namespace GePE.Materias
             hfIdMateria.Value = GrvMateria.DataKeys[e.NewEditIndex].Value.ToString();
             lblTituloAccion.Text = "Modificar Materia";
 
+            LstSemestre.Visible = true;
+            ListItem i;
+            i = new ListItem("", "1");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("1.º", "2");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("2.º", "3");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("3.º", "4");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("4.º", "5");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("5.º", "6");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("6.º", "7");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("7.º", "8");
+            LstSemestre.Items.Add(i);
+            i = new ListItem("8.º", "9");
+            LstSemestre.Items.Add(i);
+            LstCaracteristicas.Visible = true;
+            ListItem c;
+            c = new ListItem("", "1");
+            LstCaracteristicas.Items.Add(c);
+            c = new ListItem("OBLIGATORIA", "2");
+            LstCaracteristicas.Items.Add(c);
+            c = new ListItem("OPTATIVA", "3");
+            LstCaracteristicas.Items.Add(c);
+            LstEtapaFormacion.Visible = true;
+            ListItem E;
+            E = new ListItem("", "1");
+            LstEtapaFormacion.Items.Add(E);
+            E = new ListItem("BASICA", "2");
+            LstEtapaFormacion.Items.Add(E);
+            E = new ListItem("DISIPLINARIA", "3");
+            LstEtapaFormacion.Items.Add(E);
+            E = new ListItem("TERMINAL", "4");
+            LstEtapaFormacion.Items.Add(E);
+            LstAreaConocimiento.Visible = true;
+            ListItem a;
+            a = new ListItem("", "1");
+            LstAreaConocimiento.Items.Add(a);
+            a = new ListItem("CIENCIAS BASICAS", "2");
+            LstAreaConocimiento.Items.Add(a);
+            a = new ListItem("CIENCIAS SOCIALES Y HUMANIDADES", "3");
+            LstAreaConocimiento.Items.Add(a);
+            a = new ListItem("CIENCIAS ECONOMICAS ADMINISTRATIVAS", "4");
+            LstAreaConocimiento.Items.Add(a);
+            a = new ListItem("CIENCIAS DE LA INGENIERIA", "5");
+            LstAreaConocimiento.Items.Add(a);
+            a = new ListItem("INGENIERIA APLICADA", "6");
+            LstAreaConocimiento.Items.Add(a);
+            a = new ListItem("DISEÑO EN INGENIERIA", "7");
+            LstAreaConocimiento.Items.Add(a);
             ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdMateria.Value));
             ControlesOnOFF(true);
             PnlCapturaDatos.Visible = true;
             TbClaveMateria.Visible = true;
             TbNombreMateria.Visible = true;
+            TbClaveMateria.Visible = true;
+            TbNombreMateria.Visible = true;
+            TbHoraClaseMateria.Visible = true;
+            TbHoraTallerMateria.Visible = true;
+            TbHoraLaboratorioMateria.Visible = true;
+            TbHoraExtraClaseMateria.Visible = true;
+            TbCreditosMateria.Visible = true;
+            //TbEtapaFormacionMateria.Visible = true;
+            //TbCaracteristicasFormacionMateria.Visible = true;
+            //TbSemestreMateria.Visible = true;
+           
+            /*TbAreaConocimientoMateria.Visible = true*/;
+            TbPathPUAnoOficialMateria.Visible = true;
+            TbPathPUAOficialMateria.Visible = true;
             BtnModificar.Visible = true;
             BtnCancelar.Visible = true;
             //********Label materia*********************
             lbNombreMateria.Visible = true;
             lbClaveMateria.Visible = true;
+            lbHoraClaseMateria.Visible = true;
+            lbHoraTallerMateria.Visible = true;
+            lbHoraLaboratorioMateria.Visible = true;
+            lbHoraExtraClaseMateria.Visible = true;
+            lbCreditosMateria.Visible = true;
+            lbEtapaFormacionMateria.Visible = true;
+            lbCaracteristicasFormacionMateria.Visible = true;
+            lbSemestreMateria.Visible = true;
+            lbAreaConocimientoMateria.Visible = true;
+            lbPathPUAnoOficialMateria.Visible = true;
+            lbPathPUAOficialMateria.Visible = true;
             //****************************************
         }
-
+        
         #endregion
+        protected void GrvMaterias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblTituloAccion.Text = "AQUI SE ASIGNARA EL PLAN DE ESTUDIOS A LAS MATERIAS";
+        }
+        
+
     }
+
 }
