@@ -38,73 +38,159 @@
 
                     <div class="card-body">
                         <div class="row pl-2 pr-2">
-                            <div class="col-lg-3 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbClaveMateria" class="text-dark font-weight-bold m-0" runat="server">Clave de la materia</asp:Label>
+                                    <br />
                                     <asp:TextBox ID="TbClaveMateria" runat="server"> </asp:TextBox>
-                                    <%--<asp:RequiredFieldValidator ID="rfvTbClaveMateria" runat="server" CssClass="text-danger"
+                                    <br />
+                                    <asp:RequiredFieldValidator ID="rfvTbClaveMateriav" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbClaveMateria"
                                         ErrorMessage="*Este campo es requerido."
-                                        Display="Dynamic"></asp:RequiredFieldValidator>--%>
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="rfvTbClaveMaterianum" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbClaveMateria"
+                                        ErrorMessage="Sólo números positivos."
+                                        ValidationExpression="^\d+$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbNombreMateria" class="text-dark font-weight-bold m-0" runat="server">Nombre de la materia</asp:Label>
+                                    <br />
                                     <asp:TextBox ID="TbNombreMateria" runat="server"></asp:TextBox>
+                                    <br />
+                                    <asp:RequiredFieldValidator ID="rfvTbNombreMateria" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbNombreMateria"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revNombreMateriaSimbol" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbNombreMateria"
+                                        ErrorMessage="*Sólo letras."
+                                        ValidationExpression="^[a-zA-Z ]+$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbHC" class="text-dark font-weight-bold m-0" runat="server">Horas Clase</asp:Label>
+                                    <br />
                                     <asp:TextBox ID="TbHC" runat="server"></asp:TextBox>
+                                    <br />
+                                    <asp:RequiredFieldValidator ID="rfvHorasClase" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHC"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="rfvHorasClaseNum" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHC"
+                                        ErrorMessage="Sólo números positivos."
+                                        ValidationExpression="^\d+$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbHL" class="text-dark font-weight-bold m-0" runat="server">Horas Laboratorio</asp:Label>
+                                    <br />
                                     <asp:TextBox ID="TbHL" runat="server"></asp:TextBox>
+                                    <br />
+                                    <asp:RequiredFieldValidator ID="rfvHorsLab" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHL"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="rfvHorasLabNum" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHL"
+                                        ErrorMessage="Sólo números positivos."
+                                        ValidationExpression="^\d+$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbHT" class="text-dark font-weight-bold m-0" runat="server">Horas Taller</asp:Label>
+                                    <br />
                                     <asp:TextBox ID="TbHT" runat="server"></asp:TextBox>
+                                    <br />
+                                    <asp:RequiredFieldValidator ID="rfvHorasTaller" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHT"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="rfvHorasTallerNum" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHT"
+                                        ErrorMessage="Sólo números positivos."
+                                        ValidationExpression="^\d+$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbHE" class="text-dark font-weight-bold m-0" runat="server">Horas Extra Clase</asp:Label>
+                                    <br />
                                     <asp:TextBox ID="TbHE" runat="server"></asp:TextBox>
+                                    <br />
+                                    <asp:RequiredFieldValidator ID="rfvHorasExtraClase" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHE"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="rfvHorasExtraClaseNum" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHE"
+                                        ErrorMessage="Sólo números positivos."
+                                        ValidationExpression="^\d+$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbHPP" class="text-dark font-weight-bold m-0" runat="server">Horas Practicas Profesionales</asp:Label>
+                                    <br />
                                     <asp:TextBox ID="TbHPP" runat="server"></asp:TextBox>
+                                    <br />
+                                    <asp:RequiredFieldValidator ID="rfvHorasPracticasPrf" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHPP"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="rfvHorasPracticasPrfNum" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHPP"
+                                        ErrorMessage="Sólo números positivos."
+                                        ValidationExpression="^\d+$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbCR" class="text-dark font-weight-bold m-0" runat="server">Creditos</asp:Label>
+                                    <br />
                                     <asp:TextBox ID="TbCR" runat="server"></asp:TextBox>
+                                    <br />
+                                    <asp:RequiredFieldValidator ID="rfvCreditos" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbCR"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="rfvCreditosNum" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbCR"
+                                        ErrorMessage="Sólo números positivos."
+                                        ValidationExpression="^\d+$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <%--<div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbEstadoMateria" class="text-dark font-weight-bold m-0" runat="server">Seleccione si la materia está activa</asp:Label>
                                     <asp:CheckBox ID="cbEstadoMateria" runat="server" CssClass="font-weight-bold" Text="Materia activa " TextAlign="Left" ToolTip="Seleccione si la materia está activa" />
                                 </div>
-                            </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            </div>--%>
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbPathPUA" class="text-dark font-weight-bold m-0" runat="server">Pua oficial</asp:Label>
+                                    <br />
                                     <asp:TextBox ID="TbPathPUA" runat="server"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbPathPUAnoOficial" class="text-dark font-weight-bold m-0" runat="server">PUA no oficial</asp:Label>
+                                    <br />
                                     <asp:TextBox ID="TbPathPUAnoOficial" runat="server"></asp:TextBox>
                                 </div>
                             </div>
@@ -113,7 +199,7 @@
                             <asp:LinkButton ID="BtnGrabar" runat="server" CssClass="btn btn-md btn btn-success  pr-3" CausesValidation="true" OnClick="BtnGrabar_Click"><i class="fas fa-plus-square"></i> Insertar</asp:LinkButton>
                             <asp:LinkButton ID="BtnBorrarModal" runat="server" CssClass="btn btn-md btn btn-danger pr-3" data-toggle="modal" CausesValidation="false" data-target="#BorrarModal"><i class="fas fa-trash-alt"></i>Borrar</asp:LinkButton>
                             <asp:LinkButton ID="BtnModificar" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="true" OnClick="BtnModificar_Click"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
-                            <asp:LinkButton ID="BtnMnuEditar" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="true" OnClick="BtnMnuEditar_Click"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnMnuEditar" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="false" OnClick="BtnMnuEditar_Click"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
                             <asp:LinkButton ID="BtnMnuBorrar" runat="server" CssClass="btn btn-md btn btn-danger pr-3" CausesValidation="false" OnClick="BtnMnuBorrar_Click"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton>
                             <asp:LinkButton ID="BtnCancelar" runat="server" CssClass="btn btn-md btn btn-dark pr-3" CausesValidation="false" OnClick="BtnCancelar_Click"><i class="fas fa-window-close"></i> Cancelar</asp:LinkButton>
                             <asp:LinkButton ID="BtnAceptar" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="false" OnClick="BtnCancelar_Click"><i class="fas fa-check"></i> Aceptar</asp:LinkButton>
@@ -138,10 +224,11 @@
                         <asp:BoundField DataField="HL" HeaderText="HL" />
                         <asp:BoundField DataField="HT" HeaderText="HT" />
                         <asp:BoundField DataField="HE" HeaderText="HE" />
+                        <asp:BoundField DataField="HPP" HeaderText="HPP" />
                         <asp:BoundField DataField="CR" HeaderText="CR" />
-                        <asp:BoundField DataField="EstadoMateria" HeaderText="ETAPA DE FORMACION" />
-                        <asp:BoundField DataField="PathPUA" HeaderText="CARACTERISTICAS DE FORMACION" />
-                        <asp:BoundField DataField="PathPUAnoOficial" HeaderText="SEMESTRE" />
+                        <%--<asp:BoundField DataField="EstadoMateria" HeaderText="ESTADO" />--%>
+                        <asp:BoundField DataField="PathPUA" HeaderText="PUA OFICIAL" />
+                        <asp:BoundField DataField="PathPUAnoOficial" HeaderText="PUA NO OFICIAL" />
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
                             <ItemTemplate>
                                 <asp:LinkButton ID="GrvBtnEditar" runat="server" CssClass="btn btn-md btn-primary "

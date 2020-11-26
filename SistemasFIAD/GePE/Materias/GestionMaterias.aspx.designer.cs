@@ -94,6 +94,24 @@ namespace GePE.Materias {
         protected global::System.Web.UI.WebControls.TextBox TbClaveMateria;
         
         /// <summary>
+        /// Control rfvTbClaveMateriav.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbClaveMateriav;
+        
+        /// <summary>
+        /// Control rfvTbClaveMaterianum.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rfvTbClaveMaterianum;
+        
+        /// <summary>
         /// Control lbNombreMateria.
         /// </summary>
         /// <remarks>
@@ -110,6 +128,24 @@ namespace GePE.Materias {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbNombreMateria;
+        
+        /// <summary>
+        /// Control rfvTbNombreMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbNombreMateria;
+        
+        /// <summary>
+        /// Control revNombreMateriaSimbol.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revNombreMateriaSimbol;
         
         /// <summary>
         /// Control lbHC.
@@ -130,6 +166,24 @@ namespace GePE.Materias {
         protected global::System.Web.UI.WebControls.TextBox TbHC;
         
         /// <summary>
+        /// Control rfvHorasClase.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvHorasClase;
+        
+        /// <summary>
+        /// Control rfvHorasClaseNum.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rfvHorasClaseNum;
+        
+        /// <summary>
         /// Control lbHL.
         /// </summary>
         /// <remarks>
@@ -146,6 +200,24 @@ namespace GePE.Materias {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbHL;
+        
+        /// <summary>
+        /// Control rfvHorsLab.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvHorsLab;
+        
+        /// <summary>
+        /// Control rfvHorasLabNum.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rfvHorasLabNum;
         
         /// <summary>
         /// Control lbHT.
@@ -166,6 +238,24 @@ namespace GePE.Materias {
         protected global::System.Web.UI.WebControls.TextBox TbHT;
         
         /// <summary>
+        /// Control rfvHorasTaller.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvHorasTaller;
+        
+        /// <summary>
+        /// Control rfvHorasTallerNum.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rfvHorasTallerNum;
+        
+        /// <summary>
         /// Control lbHE.
         /// </summary>
         /// <remarks>
@@ -182,6 +272,24 @@ namespace GePE.Materias {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbHE;
+        
+        /// <summary>
+        /// Control rfvHorasExtraClase.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvHorasExtraClase;
+        
+        /// <summary>
+        /// Control rfvHorasExtraClaseNum.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rfvHorasExtraClaseNum;
         
         /// <summary>
         /// Control lbHPP.
@@ -202,6 +310,24 @@ namespace GePE.Materias {
         protected global::System.Web.UI.WebControls.TextBox TbHPP;
         
         /// <summary>
+        /// Control rfvHorasPracticasPrf.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvHorasPracticasPrf;
+        
+        /// <summary>
+        /// Control rfvHorasPracticasPrfNum.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rfvHorasPracticasPrfNum;
+        
+        /// <summary>
         /// Control lbCR.
         /// </summary>
         /// <remarks>
@@ -220,22 +346,22 @@ namespace GePE.Materias {
         protected global::System.Web.UI.WebControls.TextBox TbCR;
         
         /// <summary>
-        /// Control lbEstadoMateria.
+        /// Control rfvCreditos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbEstadoMateria;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCreditos;
         
         /// <summary>
-        /// Control cbEstadoMateria.
+        /// Control rfvCreditosNum.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbEstadoMateria;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rfvCreditosNum;
         
         /// <summary>
         /// Control lbPathPUA.

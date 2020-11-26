@@ -43,7 +43,7 @@ namespace GePE.Materias
             lbHE.Visible = false;
             lbHPP.Visible = false;
             lbCR.Visible = false;
-            lbEstadoMateria.Visible = false;
+            //lbEstadoMateria.Visible = false;
             lbPathPUA.Visible = false;
             lbPathPUAnoOficial.Visible = false;
 
@@ -70,7 +70,7 @@ namespace GePE.Materias
             TbPathPUAnoOficial.Text = string.Empty;
 
             //Clear CheckBox
-            cbEstadoMateria.Checked = false;
+            //cbEstadoMateria.Checked = false;
         }
         protected void ControlesOnOFF(bool TrueOrFalse)
         {
@@ -86,7 +86,7 @@ namespace GePE.Materias
             lbHE.Enabled = TrueOrFalse;
             lbHPP.Enabled = TrueOrFalse;
             lbCR.Enabled = TrueOrFalse;
-            lbEstadoMateria.Enabled = TrueOrFalse;
+            //lbEstadoMateria.Enabled = TrueOrFalse;
             lbPathPUA.Enabled = TrueOrFalse;
             lbPathPUAnoOficial.Enabled = TrueOrFalse;
 
@@ -103,7 +103,7 @@ namespace GePE.Materias
             TbPathPUAnoOficial.Enabled = TrueOrFalse;
 
             //Enabled CheckBox
-            cbEstadoMateria.Enabled = TrueOrFalse;
+            //cbEstadoMateria.Enabled = TrueOrFalse;
         }
         protected void VisibleOnOFF(bool TrueOrFalse)
         {
@@ -116,7 +116,7 @@ namespace GePE.Materias
             lbHE.Visible = TrueOrFalse;
             lbHPP.Visible = TrueOrFalse;
             lbCR.Visible = TrueOrFalse;
-            lbEstadoMateria.Visible = TrueOrFalse;
+            //lbEstadoMateria.Visible = TrueOrFalse;
             lbPathPUA.Visible = TrueOrFalse;
             lbPathPUAnoOficial.Visible = TrueOrFalse;
 
@@ -133,7 +133,7 @@ namespace GePE.Materias
             TbPathPUAnoOficial.Visible = TrueOrFalse;
 
             //Visible CheckBox
-            cbEstadoMateria.Visible = TrueOrFalse;
+            //cbEstadoMateria.Visible = TrueOrFalse;
         }
         #endregion
 
@@ -144,12 +144,13 @@ namespace GePE.Materias
             {
                 ClaveMateria = TbClaveMateria.Text,
                 NombreMateria = TbNombreMateria.Text,
-                //HC = TbHC.Text.Trim,
-                //HL = TbHL.Text,
-                //HT = TbHT.Text,
-                //HE = TbHE.Text,
-                //CR = TbCR.Text,
-                EstadoMateria = cbEstadoMateria.Checked,
+                HC = Convert.ToInt32(TbHC.Text),
+                HL = Convert.ToInt32(TbHL.Text),
+                HT = Convert.ToInt32(TbHT.Text),
+                HE = Convert.ToInt32(TbHE.Text),
+                CR = Convert.ToInt32(TbCR.Text),
+                HPP=Convert.ToInt32(TbHPP.Text),
+                //EstadoMateria = cbEstadoMateria.Checked,
                 PathPUA = TbPathPUA.Text,
                 PathPUAnoOficial = TbPathPUAnoOficial.Text
             };
@@ -162,12 +163,13 @@ namespace GePE.Materias
 
             TbClaveMateria.Text = Materia.ClaveMateria.Trim();
             TbNombreMateria.Text = Materia.NombreMateria.Trim();
-            //TbHC.Text = Materia.HC;
-            //TbHL.Text = Materia.HL;
-            //TbHT.Text = Materia.HT;
-            //TbHE.Text = Materia.HE;
-            //TbCR.Text = Materia.CR;
-            cbEstadoMateria.Checked = Materia.EstadoMateria;
+            TbHC.Text = Convert.ToString(Materia.HC);
+            TbHL.Text = Convert.ToString(Materia.HL);
+            TbHT.Text = Convert.ToString(Materia.HT);
+            TbHE.Text = Convert.ToString(Materia.HE);
+            TbCR.Text = Convert.ToString(Materia.CR);
+            TbHPP.Text = Convert.ToString(Materia.HPP);
+            //cbEstadoMateria.Checked = Materia.EstadoMateria;
             TbPathPUA.Text = Materia.PathPUA.Trim();
             TbPathPUAnoOficial.Text = Materia.PathPUAnoOficial.Trim();
         }
@@ -223,7 +225,7 @@ namespace GePE.Materias
                     TbCR.Enabled = false;
                     TbPathPUA.Enabled = false;
                     TbPathPUAnoOficial.Enabled = false;
-                    cbEstadoMateria.Enabled = false;
+                    //cbEstadoMateria.Enabled = false;
 
                     hfIdMateria.Value = LstMateria[0].IdMateria.ToString();
                     ObjetoEntidad_ControlesWebForm(Convert.ToInt32(hfIdMateria.Value));
