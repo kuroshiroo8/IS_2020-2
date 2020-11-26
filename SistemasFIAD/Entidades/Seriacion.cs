@@ -11,31 +11,31 @@ using System;
 
 namespace Entidades
 {
-	public class E_Seriacion
-	{
-		#region Atributos
-		private string _Accion;
-		private int _IdSeriacion;
-		private int _IdMateria;
-		private int _IdMateriaSeriada;
-		#endregion
+    public class E_Seriacion
+    {
+        #region Atributos
+        private string _Accion;
+        private int _IdSeriacion;
+        private int _IdMateria;
+        private int _IdMateriaSeriada;
+        #endregion
 
-		#region Constructor
-		public E_Seriacion()
-		{
-			_Accion = string.Empty;
-			_IdSeriacion = 0;
-			_IdMateria = 0;
-			_IdMateriaSeriada = 0;
-		}
-		#endregion
+        #region Constructor
+        public E_Seriacion()
+        {
+            _Accion = string.Empty;
+            _IdSeriacion = 0;
+            _IdMateria = 0;
+            _IdMateriaSeriada = 0;
+        }
+        #endregion
 
-		#region Encapsulamiento
-		public string Accion { get => _Accion; set => _Accion = value; }
-		public int IdSeriacion { get => _IdSeriacion; set => _IdSeriacion = value; }
-		public int IdMateria { get => _IdMateria; set => _IdMateria = value; }
-		public int IdMateriaSeriada { get => _IdMateriaSeriada; set => _IdMateriaSeriada = value; }
-		#endregion
-	}
+        #region Encapsulamiento
+        public string Accion { get => _Accion; set => _Accion = value; }
+        public int IdSeriacion { get => _IdSeriacion; set => _IdSeriacion = value; }
+        public int IdMateria { get => _IdMateria; set => _IdMateria = value; }
+        public int IdMateriaSeriada { get => _IdMateriaSeriada; set => _IdMateriaSeriada = value; }
+        #endregion
+    }
 }
 

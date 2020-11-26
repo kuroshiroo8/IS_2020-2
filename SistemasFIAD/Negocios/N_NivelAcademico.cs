@@ -9,7 +9,7 @@
 
 #region Using
 using System.Data;
-using System. Linq;
+using System.Linq;
 using System.Collections.Generic;
 
 using DatosSQL;
@@ -18,75 +18,76 @@ using Entidades;
 
 namespace Negocios
 {
-	public class N_NivelAcademico
-	{
-		D_SQL_Datos NNA = new D_SQL_Datos();
-		
-		// Acciones de Insertar, Borrar y Modificar los datos de la clase NivelAcademico.
-		public string InsertaNivelAcademico(E_NivelAcademico pEntidad)
-		{
-			pEntidad.Accion = "INSERTAR";
+    public class N_NivelAcademico
+    {
+        D_SQL_Datos NNA = new D_SQL_Datos();
 
-			string R = NNA.IBM_Entidad<E_NivelAcademico>("IBM_NivelAcademico", pEntidad);
+        // Acciones de Insertar, Borrar y Modificar los datos de la clase NivelAcademico.
+        public string InsertaNivelAcademico(E_NivelAcademico pEntidad)
+        {
+            pEntidad.Accion = "INSERTAR";
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos fueron insertados correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se insertaron en el sistema.";
-				else
-					return R;
-		}
+            string R = NNA.IBM_Entidad<E_NivelAcademico>("IBM_NivelAcademico", pEntidad);
 
-		public string BorraNivelAcademico(int pIdNivelAcademico)
-		{
-			E_NivelAcademico Entidad = new E_NivelAcademico
-			{
-				Accion = "BORRAR",
-				IdNivelAcademico = pIdNivelAcademico
-			};
+            if (R.Contains("Exito"))
+                return "Exito: Los datos fueron insertados correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se insertaron en el sistema.";
+            else
+                return R;
+        }
 
-			string R = NNA.IBM_Entidad<E_NivelAcademico>("IBM_NivelAcademico", Entidad);
+        public string BorraNivelAcademico(int pIdNivelAcademico)
+        {
+            E_NivelAcademico Entidad = new E_NivelAcademico
+            {
+                Accion = "BORRAR",
+                IdNivelAcademico = pIdNivelAcademico
+            };
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos de fueron borrados correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se borraron del sistema.";
-				else
-					return R;
-		}
+            string R = NNA.IBM_Entidad<E_NivelAcademico>("IBM_NivelAcademico", Entidad);
 
-		public string ModificaNivelAcademico(E_NivelAcademico pEntidad)
-		{
-			pEntidad.Accion = "MODIFICAR";
+            if (R.Contains("Exito"))
+                return "Exito: Los datos de fueron borrados correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se borraron del sistema.";
+            else
+                return R;
+        }
 
-			string R = NNA.IBM_Entidad<E_NivelAcademico>("IBM_NivelAcademico", pEntidad);
+        public string ModificaNivelAcademico(E_NivelAcademico pEntidad)
+        {
+            pEntidad.Accion = "MODIFICAR";
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos fueron modificado correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se modificaron en el sistema.";
-				else
-					return R;
-		}
+            string R = NNA.IBM_Entidad<E_NivelAcademico>("IBM_NivelAcademico", pEntidad);
 
-		// Listado generales de la clase NivelAcademico en formato DataTable y List<E_NivelAcademico>.
-		public DataTable DT_LstNivelAcademico()
-		{
-			return NNA.DT_ListadoGeneral("NivelAcademico", "[PonerCampoDeOrdenacion]");
-		}
+            if (R.Contains("Exito"))
+                return "Exito: Los datos fueron modificado correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se modificaron en el sistema.";
+            else
+                return R;
+        }
 
-		public List<E_NivelAcademico> LstNivelAcademico()
-		{
-			return D_ConvierteDatos.ConvertirDTALista<E_NivelAcademico>(DT_LstNivelAcademico());
-		}
+        // Listado generales de la clase NivelAcademico en formato DataTable y List<E_NivelAcademico>.
+        public DataTable DT_LstNivelAcademico()
+        {
+            return NNA.DT_ListadoGeneral("NivelAcademico", "[PonerCampoDeOrdenacion]");
+        }
 
-		// Busquedas de la claseNivelAcademico por diferente Criterios
-		public E_NivelAcademico BuscaNivelAcademicoPorId(int pIdNivelAcademico)
-		{
-			return (from NivelAcademico in LstNivelAcademico() where NivelAcademico.IdNivelAcademico == pIdNivelAcademico select NivelAcademico).FirstOrDefault();
-		}
+        public List<E_NivelAcademico> LstNivelAcademico()
+        {
+            return D_ConvierteDatos.ConvertirDTALista<E_NivelAcademico>(DT_LstNivelAcademico());
+        }
 
-	}}
+        // Busquedas de la claseNivelAcademico por diferente Criterios
+        public E_NivelAcademico BuscaNivelAcademicoPorId(int pIdNivelAcademico)
+        {
+            return (from NivelAcademico in LstNivelAcademico() where NivelAcademico.IdNivelAcademico == pIdNivelAcademico select NivelAcademico).FirstOrDefault();
+        }
+
+    }
+}

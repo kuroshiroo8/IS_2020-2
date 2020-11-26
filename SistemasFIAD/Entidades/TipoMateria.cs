@@ -11,34 +11,34 @@ using System;
 
 namespace Entidades
 {
-	public class E_TipoMateria
-	{
-		#region Atributos
-		private string _Accion;
-		private int _IdTipoMateria;
-		private string _NombreTipoMateria;
-		private string _Etapa;
-		private int _Semestre;
-		#endregion
+    public class E_TipoMateria
+    {
+        #region Atributos
+        private string _Accion;
+        private int _IdTipoMateria;
+        private string _NombreTipoMateria;
+        private string _Etapa;
+        private int _Semestre;
+        #endregion
 
-		#region Constructor
-		public E_TipoMateria()
-		{
-			_Accion = string.Empty;
-			_IdTipoMateria = 0;
-			_NombreTipoMateria = string.Empty;
-			_Etapa = string.Empty;
-			_Semestre = 0;
-		}
-		#endregion
+        #region Constructor
+        public E_TipoMateria()
+        {
+            _Accion = string.Empty;
+            _IdTipoMateria = 0;
+            _NombreTipoMateria = string.Empty;
+            _Etapa = string.Empty;
+            _Semestre = 0;
+        }
+        #endregion
 
-		#region Encapsulamiento
-		public string Accion { get => _Accion; set => _Accion = value; }
-		public int IdTipoMateria { get => _IdTipoMateria; set => _IdTipoMateria = value; }
-		public string NombreTipoMateria { get => _NombreTipoMateria; set => _NombreTipoMateria = value; }
-		public string Etapa { get => _Etapa; set => _Etapa = value; }
-		public int Semestre { get => _Semestre; set => _Semestre = value; }
-		#endregion
-	}
+        #region Encapsulamiento
+        public string Accion { get => _Accion; set => _Accion = value; }
+        public int IdTipoMateria { get => _IdTipoMateria; set => _IdTipoMateria = value; }
+        public string NombreTipoMateria { get => _NombreTipoMateria; set => _NombreTipoMateria = value; }
+        public string Etapa { get => _Etapa; set => _Etapa = value; }
+        public int Semestre { get => _Semestre; set => _Semestre = value; }
+        #endregion
+    }
 }
 

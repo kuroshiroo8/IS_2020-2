@@ -54,3 +54,5 @@ C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Entidades\obj\Debug
 C:\Users\manuel\Desktop\comoquieraswe\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.pdb
 C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Entidades\bin\Debug\netstandard2.0\DatosSQL.dll
 C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.csproj.CopyComplete
+C:\Users\carlos\Documents\IS\IS_2020-2\SistemasFIAD\Entidades\bin\Debug\netstandard2.0\DatosSQL.dll
+C:\Users\carlos\Documents\IS\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.csproj.CopyComplete

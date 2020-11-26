@@ -9,7 +9,7 @@
 
 #region Using
 using System.Data;
-using System. Linq;
+using System.Linq;
 using System.Collections.Generic;
 
 using DatosSQL;
@@ -18,75 +18,76 @@ using Entidades;
 
 namespace Negocios
 {
-	public class N_PlanEstudioMateria
-	{
-		D_SQL_Datos NPEM = new D_SQL_Datos();
-		
-		// Acciones de Insertar, Borrar y Modificar los datos de la clase PlanEstudioMateria.
-		public string InsertaPlanEstudioMateria(E_PlanEstudioMateria pEntidad)
-		{
-			pEntidad.Accion = "INSERTAR";
+    public class N_PlanEstudioMateria
+    {
+        D_SQL_Datos NPEM = new D_SQL_Datos();
 
-			string R = NPEM.IBM_Entidad<E_PlanEstudioMateria>("IBM_PlanEstudioMateria", pEntidad);
+        // Acciones de Insertar, Borrar y Modificar los datos de la clase PlanEstudioMateria.
+        public string InsertaPlanEstudioMateria(E_PlanEstudioMateria pEntidad)
+        {
+            pEntidad.Accion = "INSERTAR";
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos fueron insertados correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se insertaron en el sistema.";
-				else
-					return R;
-		}
+            string R = NPEM.IBM_Entidad<E_PlanEstudioMateria>("IBM_PlanEstudioMateria", pEntidad);
 
-		public string BorraPlanEstudioMateria(int pIdPlanEstudioMateria)
-		{
-			E_PlanEstudioMateria Entidad = new E_PlanEstudioMateria
-			{
-				Accion = "BORRAR",
-				IdPlanEstudioMateria = pIdPlanEstudioMateria
-			};
+            if (R.Contains("Exito"))
+                return "Exito: Los datos fueron insertados correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se insertaron en el sistema.";
+            else
+                return R;
+        }
 
-			string R = NPEM.IBM_Entidad<E_PlanEstudioMateria>("IBM_PlanEstudioMateria", Entidad);
+        public string BorraPlanEstudioMateria(int pIdPlanEstudioMateria)
+        {
+            E_PlanEstudioMateria Entidad = new E_PlanEstudioMateria
+            {
+                Accion = "BORRAR",
+                IdPlanEstudioMateria = pIdPlanEstudioMateria
+            };
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos de fueron borrados correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se borraron del sistema.";
-				else
-					return R;
-		}
+            string R = NPEM.IBM_Entidad<E_PlanEstudioMateria>("IBM_PlanEstudioMateria", Entidad);
 
-		public string ModificaPlanEstudioMateria(E_PlanEstudioMateria pEntidad)
-		{
-			pEntidad.Accion = "MODIFICAR";
+            if (R.Contains("Exito"))
+                return "Exito: Los datos de fueron borrados correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se borraron del sistema.";
+            else
+                return R;
+        }
 
-			string R = NPEM.IBM_Entidad<E_PlanEstudioMateria>("IBM_PlanEstudioMateria", pEntidad);
+        public string ModificaPlanEstudioMateria(E_PlanEstudioMateria pEntidad)
+        {
+            pEntidad.Accion = "MODIFICAR";
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos fueron modificado correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se modificaron en el sistema.";
-				else
-					return R;
-		}
+            string R = NPEM.IBM_Entidad<E_PlanEstudioMateria>("IBM_PlanEstudioMateria", pEntidad);
 
-		// Listado generales de la clase PlanEstudioMateria en formato DataTable y List<E_PlanEstudioMateria>.
-		public DataTable DT_LstPlanEstudioMateria()
-		{
-			return NPEM.DT_ListadoGeneral("PlanEstudioMateria", "[PonerCampoDeOrdenacion]");
-		}
+            if (R.Contains("Exito"))
+                return "Exito: Los datos fueron modificado correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se modificaron en el sistema.";
+            else
+                return R;
+        }
 
-		public List<E_PlanEstudioMateria> LstPlanEstudioMateria()
-		{
-			return D_ConvierteDatos.ConvertirDTALista<E_PlanEstudioMateria>(DT_LstPlanEstudioMateria());
-		}
+        // Listado generales de la clase PlanEstudioMateria en formato DataTable y List<E_PlanEstudioMateria>.
+        public DataTable DT_LstPlanEstudioMateria()
+        {
+            return NPEM.DT_ListadoGeneral("PlanEstudioMateria", "[PonerCampoDeOrdenacion]");
+        }
 
-		// Busquedas de la clasePlanEstudioMateria por diferente Criterios
-		public E_PlanEstudioMateria BuscaPlanEstudioMateriaPorId(int pIdPlanEstudioMateria)
-		{
-			return (from PlanEstudioMateria in LstPlanEstudioMateria() where PlanEstudioMateria.IdPlanEstudioMateria == pIdPlanEstudioMateria select PlanEstudioMateria).FirstOrDefault();
-		}
+        public List<E_PlanEstudioMateria> LstPlanEstudioMateria()
+        {
+            return D_ConvierteDatos.ConvertirDTALista<E_PlanEstudioMateria>(DT_LstPlanEstudioMateria());
+        }
 
-	}}
+        // Busquedas de la clasePlanEstudioMateria por diferente Criterios
+        public E_PlanEstudioMateria BuscaPlanEstudioMateriaPorId(int pIdPlanEstudioMateria)
+        {
+            return (from PlanEstudioMateria in LstPlanEstudioMateria() where PlanEstudioMateria.IdPlanEstudioMateria == pIdPlanEstudioMateria select PlanEstudioMateria).FirstOrDefault();
+        }
+
+    }
+}

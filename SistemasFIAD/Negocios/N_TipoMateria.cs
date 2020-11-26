@@ -9,7 +9,7 @@
 
 #region Using
 using System.Data;
-using System. Linq;
+using System.Linq;
 using System.Collections.Generic;
 
 using DatosSQL;
@@ -18,75 +18,76 @@ using Entidades;
 
 namespace Negocios
 {
-	public class N_TipoMateria
-	{
-		D_SQL_Datos NTM = new D_SQL_Datos();
-		
-		// Acciones de Insertar, Borrar y Modificar los datos de la clase TipoMateria.
-		public string InsertaTipoMateria(E_TipoMateria pEntidad)
-		{
-			pEntidad.Accion = "INSERTAR";
+    public class N_TipoMateria
+    {
+        D_SQL_Datos NTM = new D_SQL_Datos();
 
-			string R = NTM.IBM_Entidad<E_TipoMateria>("IBM_TipoMateria", pEntidad);
+        // Acciones de Insertar, Borrar y Modificar los datos de la clase TipoMateria.
+        public string InsertaTipoMateria(E_TipoMateria pEntidad)
+        {
+            pEntidad.Accion = "INSERTAR";
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos fueron insertados correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se insertaron en el sistema.";
-				else
-					return R;
-		}
+            string R = NTM.IBM_Entidad<E_TipoMateria>("IBM_TipoMateria", pEntidad);
 
-		public string BorraTipoMateria(int pIdTipoMateria)
-		{
-			E_TipoMateria Entidad = new E_TipoMateria
-			{
-				Accion = "BORRAR",
-				IdTipoMateria = pIdTipoMateria
-			};
+            if (R.Contains("Exito"))
+                return "Exito: Los datos fueron insertados correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se insertaron en el sistema.";
+            else
+                return R;
+        }
 
-			string R = NTM.IBM_Entidad<E_TipoMateria>("IBM_TipoMateria", Entidad);
+        public string BorraTipoMateria(int pIdTipoMateria)
+        {
+            E_TipoMateria Entidad = new E_TipoMateria
+            {
+                Accion = "BORRAR",
+                IdTipoMateria = pIdTipoMateria
+            };
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos de fueron borrados correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se borraron del sistema.";
-				else
-					return R;
-		}
+            string R = NTM.IBM_Entidad<E_TipoMateria>("IBM_TipoMateria", Entidad);
 
-		public string ModificaTipoMateria(E_TipoMateria pEntidad)
-		{
-			pEntidad.Accion = "MODIFICAR";
+            if (R.Contains("Exito"))
+                return "Exito: Los datos de fueron borrados correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se borraron del sistema.";
+            else
+                return R;
+        }
 
-			string R = NTM.IBM_Entidad<E_TipoMateria>("IBM_TipoMateria", pEntidad);
+        public string ModificaTipoMateria(E_TipoMateria pEntidad)
+        {
+            pEntidad.Accion = "MODIFICAR";
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos fueron modificado correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se modificaron en el sistema.";
-				else
-					return R;
-		}
+            string R = NTM.IBM_Entidad<E_TipoMateria>("IBM_TipoMateria", pEntidad);
 
-		// Listado generales de la clase TipoMateria en formato DataTable y List<E_TipoMateria>.
-		public DataTable DT_LstTipoMateria()
-		{
-			return NTM.DT_ListadoGeneral("TipoMateria", "[PonerCampoDeOrdenacion]");
-		}
+            if (R.Contains("Exito"))
+                return "Exito: Los datos fueron modificado correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se modificaron en el sistema.";
+            else
+                return R;
+        }
 
-		public List<E_TipoMateria> LstTipoMateria()
-		{
-			return D_ConvierteDatos.ConvertirDTALista<E_TipoMateria>(DT_LstTipoMateria());
-		}
+        // Listado generales de la clase TipoMateria en formato DataTable y List<E_TipoMateria>.
+        public DataTable DT_LstTipoMateria()
+        {
+            return NTM.DT_ListadoGeneral("TipoMateria", "[PonerCampoDeOrdenacion]");
+        }
 
-		// Busquedas de la claseTipoMateria por diferente Criterios
-		public E_TipoMateria BuscaTipoMateriaPorId(int pIdTipoMateria)
-		{
-			return (from TipoMateria in LstTipoMateria() where TipoMateria.IdTipoMateria == pIdTipoMateria select TipoMateria).FirstOrDefault();
-		}
+        public List<E_TipoMateria> LstTipoMateria()
+        {
+            return D_ConvierteDatos.ConvertirDTALista<E_TipoMateria>(DT_LstTipoMateria());
+        }
 
-	}}
+        // Busquedas de la claseTipoMateria por diferente Criterios
+        public E_TipoMateria BuscaTipoMateriaPorId(int pIdTipoMateria)
+        {
+            return (from TipoMateria in LstTipoMateria() where TipoMateria.IdTipoMateria == pIdTipoMateria select TipoMateria).FirstOrDefault();
+        }
+
+    }
+}

@@ -26,6 +26,12 @@ namespace GePE.Carreras
         }
         protected void ControlesOFF()
         {
+            //Visible Label
+            lbClaveCarrera.Visible = false;
+            lbAliasCarrera.Visible = false;
+            lbNombreCarrera.Visible = false;
+
+            //Visible LinkButton
             BtnGrabar.Visible = false;
             BtnBorrar.Visible = false;
             BtnBorrarModal.Visible = false;
@@ -35,36 +41,54 @@ namespace GePE.Carreras
             BtnCancelar.Visible = false;
             BtnAceptar.Visible = false;
 
-            //*********Label de careras******************************
-            lbAliasCarrera.Visible = false;
-            lbNombreCarrera.Visible = false;
-            lbClaveCarrera.Visible = false;
-            //*******************************************************
-
+            //Visible Panel
             PnlCapturaDatos.Visible = false;
             PnlGrvCarreras.Visible = false;
         }
         protected void ControlesClear()
         {
+            //Clear Label
+            lblNombreAccion.Text = string.Empty;
+            lblTituloAccion.Text = string.Empty;
+
+            //Clear TextBox
             TbCriterioBusqueda.Text = string.Empty;
             TbClaveCarrera.Text = string.Empty;
             TbNombreCarrera.Text = string.Empty;
             TbAliasCarrera.Text = string.Empty;
+
+            //Clear CheckBox
             cbActivaCarrera.Checked = false;
-            lblNombreAccion.Text = string.Empty;
-            lblTituloAccion.Text = string.Empty;
         }
         protected void ControlesOnOFF(bool TrueOrFalse)
         {
-            TbClaveCarrera.Enabled = TrueOrFalse;
-            TbNombreCarrera.Enabled = TrueOrFalse;
-            TbAliasCarrera.Enabled = TrueOrFalse;
-            cbActivaCarrera.Enabled = TrueOrFalse;
-            //*********Label de careras******************************
+            //Enabled Label
             lbAliasCarrera.Enabled = TrueOrFalse;
             lbNombreCarrera.Enabled = TrueOrFalse;
             lbClaveCarrera.Enabled = TrueOrFalse;
-            //*******************************************************
+
+            //Enabled TextBox
+            TbClaveCarrera.Enabled = TrueOrFalse;
+            TbNombreCarrera.Enabled = TrueOrFalse;
+            TbAliasCarrera.Enabled = TrueOrFalse;
+
+            //Enabled CheckBox
+            cbActivaCarrera.Enabled = TrueOrFalse;
+        }
+        protected void VisibleOnOFF(bool TrueOrFalse)
+        {
+            //Visible Label
+            lbAliasCarrera.Visible = TrueOrFalse;
+            lbNombreCarrera.Visible = TrueOrFalse;
+            lbClaveCarrera.Visible = TrueOrFalse;
+
+            //Visible TextBox
+            TbClaveCarrera.Visible = TrueOrFalse;
+            TbNombreCarrera.Visible = TrueOrFalse;
+            TbAliasCarrera.Visible = TrueOrFalse;
+
+            //Visible CheckBox
+            cbActivaCarrera.Visible = TrueOrFalse;
         }
         #endregion
 
@@ -97,17 +121,12 @@ namespace GePE.Carreras
             InicializaControles();
             lblTituloAccion.Text = "Nueva carrera";
             PnlCapturaDatos.Visible = true;
-            TbClaveCarrera.Visible = true;
-            TbNombreCarrera.Visible = true;
-            TbAliasCarrera.Visible = true;
-            cbActivaCarrera.Visible = true;
+
             BtnGrabar.Visible = true;
             BtnCancelar.Visible = true;
-            //*************Label Carrera*****************
-            lbAliasCarrera.Visible = true;
-            lbNombreCarrera.Visible = true;
-            lbClaveCarrera.Visible = true;
-            //*********************************************
+
+            //Aqui se ponen visibles los Label, TextBox y el CheckBox
+            VisibleOnOFF(true);
         }
         protected void BtnMnuListado_Click(object sender, EventArgs e)
         {
@@ -135,24 +154,25 @@ namespace GePE.Carreras
                 {
                     InicializaControles();
                     lblTituloAccion.Text = "Resultado de busqueda";
-                    TbClaveCarrera.Visible = true;
-                    TbNombreCarrera.Visible = true;
-                    TbAliasCarrera.Visible = true;
-                    cbActivaCarrera.Visible = true;
-                    //*******no editable************************
+
+                    //Aqui se ponen visibles los Label, TextBox y el CheckBox
+                    VisibleOnOFF(true);
+
+                    //Aqui se hacen no editables los TextBox
                     TbClaveCarrera.Enabled = false;
                     TbNombreCarrera.Enabled = false;
                     TbAliasCarrera.Enabled = false;
+
+                    //Aqui se hacen no editables el CheckBox
                     cbActivaCarrera.Enabled = false;
-                    //********Label carrera*********************
-                    lbAliasCarrera.Visible = true;
-                    lbNombreCarrera.Visible = true;
-                    lbClaveCarrera.Visible = true;
+
                     hfIdCarrera.Value = LstCarrera[0].IdCarrera.ToString();
                     ObjetoEntidad_ControlesWebForm(Convert.ToInt32(hfIdCarrera.Value));
-                    PnlCapturaDatos.Visible = true;
+
                     BtnMnuEditar.Visible = true;
                     BtnMnuBorrar.Visible = true;
+
+                    PnlCapturaDatos.Visible = true;
                     PnlGrvCarreras.Visible = false;
                 }
                 else
@@ -176,41 +196,31 @@ namespace GePE.Carreras
         {
             string R = NC.InsertaCarreras(ControlesWebForm_ObjetoEntidad());
             lblTituloAccion.Text = R;
-            TbClaveCarrera.Visible = false;
-            TbNombreCarrera.Visible = false;
-            TbAliasCarrera.Visible = false;
-            cbActivaCarrera.Visible = false;
-            //********Label carrera*********************
-            lbAliasCarrera.Visible = false;
-            lbNombreCarrera.Visible = false;
-            lbClaveCarrera.Visible = false;
-            //****************************************
+
+            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+            VisibleOnOFF(false);
+
             BtnGrabar.Visible = false;
             BtnCancelar.Visible = false;
             BtnAceptar.Visible = true;
+
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
                 InicializaControles();
             }
-
         }
-
         protected void BtnBorrar_Click(object sender, EventArgs e)
         {
             string R = NC.BorraCarreras(Convert.ToInt32(hfIdCarrera.Value));
             lblTituloAccion.Text = R;
-            TbClaveCarrera.Visible = false;
-            TbNombreCarrera.Visible = false;
-            TbAliasCarrera.Visible = false;
-            cbActivaCarrera.Visible = false;
-            //********Label carrera*********************
-            lbAliasCarrera.Visible = false;
-            lbNombreCarrera.Visible = false;
-            lbClaveCarrera.Visible = false;
-            //****************************************
+
+            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+            VisibleOnOFF(false);
+
             BtnBorrarModal.Visible = false;
             BtnCancelar.Visible = false;
             BtnAceptar.Visible = true;
+
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
                 InicializaControles();
@@ -222,18 +232,14 @@ namespace GePE.Carreras
             Cliente.IdCarrera = Convert.ToInt32(hfIdCarrera.Value);
             string R = NC.ModificaCarreras(Cliente);
             lblTituloAccion.Text = R;
-            TbClaveCarrera.Visible = false;
-            TbNombreCarrera.Visible = false;
-            TbAliasCarrera.Visible = false;
-            cbActivaCarrera.Visible = false;
-            //********Label carrera*********************
-            lbAliasCarrera.Visible = false;
-            lbNombreCarrera.Visible = false;
-            lbClaveCarrera.Visible = false;
-            //****************************************
+
+            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+            VisibleOnOFF(false);
+
             BtnModificar.Visible = false;
             BtnCancelar.Visible = false;
             BtnAceptar.Visible = true;
+
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
                 InicializaControles();
@@ -276,15 +282,10 @@ namespace GePE.Carreras
 
             ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdCarrera.Value));
             ControlesOnOFF(false);
-            TbClaveCarrera.Visible = true;
-            TbNombreCarrera.Visible = true;
-            TbAliasCarrera.Visible = true;
-            cbActivaCarrera.Visible = true;
-            //********Label carrera*********************
-            lbAliasCarrera.Visible = true;
-            lbNombreCarrera.Visible = true;
-            lbClaveCarrera.Visible = true;
-            //****************************************
+
+            //Aqui se ponen visibles los Label, TextBox y el CheckBox
+            VisibleOnOFF(true);
+
             PnlCapturaDatos.Visible = true;
             BtnBorrar.Visible = true;
             BtnBorrarModal.Visible = true;
@@ -299,18 +300,14 @@ namespace GePE.Carreras
 
             ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdCarrera.Value));
             ControlesOnOFF(true);
+
             PnlCapturaDatos.Visible = true;
-            TbClaveCarrera.Visible = true;
-            TbNombreCarrera.Visible = true;
-            TbAliasCarrera.Visible = true;
-            cbActivaCarrera.Visible = true;
+
+            //Aqui se ponen visibles los Label, TextBox y el CheckBox
+            VisibleOnOFF(true);
+
             BtnModificar.Visible = true;
             BtnCancelar.Visible = true;
-            //********Label carrera*********************
-            lbAliasCarrera.Visible = true;
-            lbNombreCarrera.Visible = true;
-            lbClaveCarrera.Visible = true;
-            //****************************************
         }
 
         #endregion

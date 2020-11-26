@@ -9,7 +9,7 @@
 
 #region Using
 using System.Data;
-using System. Linq;
+using System.Linq;
 using System.Collections.Generic;
 
 using DatosSQL;
@@ -18,76 +18,76 @@ using Entidades;
 
 namespace Negocios
 {
-	public class N_Materias
-	{
-		D_SQL_Datos NM = new D_SQL_Datos();
-		
-		// Acciones de Insertar, Borrar y Modificar los datos de la clase Materias.
-		public string InsertaMaterias(E_Materias pEntidad)
-		{
-			pEntidad.Accion = "INSERTAR";
+    public class N_Materias
+    {
+        D_SQL_Datos NM = new D_SQL_Datos();
 
-			string R = NM.IBM_Entidad<E_Materias>("IBM_Materias", pEntidad);
+        // Acciones de Insertar, Borrar y Modificar los datos de la clase Materias.
+        public string InsertaMaterias(E_Materias pEntidad)
+        {
+            pEntidad.Accion = "INSERTAR";
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos fueron insertados correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se insertaron en el sistema.";
-				else
-					return R;
-		}
+            string R = NM.IBM_Entidad<E_Materias>("IBM_Materias", pEntidad);
 
-		public string BorraMaterias(int pIdMaterias)
-		{
-			E_Materias Entidad = new E_Materias
-			{
-				Accion = "BORRAR",
-				IdMateria = pIdMaterias
-			};
+            if (R.Contains("Exito"))
+                return "Exito: Los datos fueron insertados correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se insertaron en el sistema.";
+            else
+                return R;
+        }
 
-			string R = NM.IBM_Entidad<E_Materias>("IBM_Materias", Entidad);
+        public string BorraMaterias(int pIdMaterias)
+        {
+            E_Materias Entidad = new E_Materias
+            {
+                Accion = "BORRAR",
+                IdMateria = pIdMaterias
+            };
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos de fueron borrados correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se borraron del sistema.";
-				else
-					return R;
-		}
+            string R = NM.IBM_Entidad<E_Materias>("IBM_Materias", Entidad);
 
-		public string ModificaMaterias(E_Materias pEntidad)
-		{
-			pEntidad.Accion = "MODIFICAR";
+            if (R.Contains("Exito"))
+                return "Exito: Los datos de fueron borrados correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se borraron del sistema.";
+            else
+                return R;
+        }
 
-			string R = NM.IBM_Entidad<E_Materias>("IBM_Materias", pEntidad);
+        public string ModificaMaterias(E_Materias pEntidad)
+        {
+            pEntidad.Accion = "MODIFICAR";
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos fueron modificado correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se modificaron en el sistema.";
-				else
-					return R;
-		}
+            string R = NM.IBM_Entidad<E_Materias>("IBM_Materias", pEntidad);
 
-		// Listado generales de la clase Materias en formato DataTable y List<E_Materias>.
-		public DataTable DT_LstMaterias()
-		{
-			return NM.DT_ListadoGeneral("Materias", "ClaveMateria");
-		}
+            if (R.Contains("Exito"))
+                return "Exito: Los datos fueron modificado correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se modificaron en el sistema.";
+            else
+                return R;
+        }
 
-		public List<E_Materias> LstMaterias()
-		{
-			return D_ConvierteDatos.ConvertirDTALista<E_Materias>(DT_LstMaterias());
-		}
+        // Listado generales de la clase Materias en formato DataTable y List<E_Materias>.
+        public DataTable DT_LstMaterias()
+        {
+            return NM.DT_ListadoGeneral("Materias", "ClaveMateria");
+        }
 
-		// Busquedas de la claseMaterias por diferente Criterios
-		public E_Materias BuscaMateriasPorId(int pIdMateria)
-		{
-			return (from Materias in LstMaterias() where Materias.IdMateria == pIdMateria select Materias).FirstOrDefault();
-		}
+        public List<E_Materias> LstMaterias()
+        {
+            return D_ConvierteDatos.ConvertirDTALista<E_Materias>(DT_LstMaterias());
+        }
+
+        // Busquedas de la claseMaterias por diferente Criterios
+        public E_Materias BuscaMateriasPorId(int pIdMateria)
+        {
+            return (from Materias in LstMaterias() where Materias.IdMateria == pIdMateria select Materias).FirstOrDefault();
+        }
 
         public List<E_Materias> BuscaMateria(string CriterioBusqueda)
         {

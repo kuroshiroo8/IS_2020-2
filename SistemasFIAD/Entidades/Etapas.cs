@@ -11,31 +11,31 @@ using System;
 
 namespace Entidades
 {
-	public class E_Etapas
-	{
-		#region Atributos
-		private string _Accion;
-		private int _IdEtapa;
-		private string _ClaveEtapa;
-		private string _NombreEtapa;
-		#endregion
+    public class E_Etapas
+    {
+        #region Atributos
+        private string _Accion;
+        private int _IdEtapa;
+        private string _ClaveEtapa;
+        private string _NombreEtapa;
+        #endregion
 
-		#region Constructor
-		public E_Etapas()
-		{
-			_Accion = string.Empty;
-			_IdEtapa = 0;
-			_ClaveEtapa = string.Empty;
-			_NombreEtapa = string.Empty;
-		}
-		#endregion
+        #region Constructor
+        public E_Etapas()
+        {
+            _Accion = string.Empty;
+            _IdEtapa = 0;
+            _ClaveEtapa = string.Empty;
+            _NombreEtapa = string.Empty;
+        }
+        #endregion
 
-		#region Encapsulamiento
-		public string Accion { get => _Accion; set => _Accion = value; }
-		public int IdEtapa { get => _IdEtapa; set => _IdEtapa = value; }
-		public string ClaveEtapa { get => _ClaveEtapa; set => _ClaveEtapa = value; }
-		public string NombreEtapa { get => _NombreEtapa; set => _NombreEtapa = value; }
-		#endregion
-	}
+        #region Encapsulamiento
+        public string Accion { get => _Accion; set => _Accion = value; }
+        public int IdEtapa { get => _IdEtapa; set => _IdEtapa = value; }
+        public string ClaveEtapa { get => _ClaveEtapa; set => _ClaveEtapa = value; }
+        public string NombreEtapa { get => _NombreEtapa; set => _NombreEtapa = value; }
+        #endregion
+    }
 }
 

@@ -9,7 +9,7 @@
 
 #region Using
 using System.Data;
-using System. Linq;
+using System.Linq;
 using System.Collections.Generic;
 
 using DatosSQL;
@@ -18,75 +18,76 @@ using Entidades;
 
 namespace Negocios
 {
-	public class N_PlanEstudio
-	{
-		D_SQL_Datos NPE = new D_SQL_Datos();
-		
-		// Acciones de Insertar, Borrar y Modificar los datos de la clase PlanEstudio.
-		public string InsertaPlanEstudio(E_PlanEstudio pEntidad)
-		{
-			pEntidad.Accion = "INSERTAR";
+    public class N_PlanEstudio
+    {
+        D_SQL_Datos NPE = new D_SQL_Datos();
 
-			string R = NPE.IBM_Entidad<E_PlanEstudio>("IBM_PlanEstudio", pEntidad);
+        // Acciones de Insertar, Borrar y Modificar los datos de la clase PlanEstudio.
+        public string InsertaPlanEstudio(E_PlanEstudio pEntidad)
+        {
+            pEntidad.Accion = "INSERTAR";
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos fueron insertados correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se insertaron en el sistema.";
-				else
-					return R;
-		}
+            string R = NPE.IBM_Entidad<E_PlanEstudio>("IBM_PlanEstudio", pEntidad);
 
-		public string BorraPlanEstudio(int pIdPlanEstudio)
-		{
-			E_PlanEstudio Entidad = new E_PlanEstudio
-			{
-				Accion = "BORRAR",
-				IdPlanEstudio = pIdPlanEstudio
-			};
+            if (R.Contains("Exito"))
+                return "Exito: Los datos fueron insertados correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se insertaron en el sistema.";
+            else
+                return R;
+        }
 
-			string R = NPE.IBM_Entidad<E_PlanEstudio>("IBM_PlanEstudio", Entidad);
+        public string BorraPlanEstudio(int pIdPlanEstudio)
+        {
+            E_PlanEstudio Entidad = new E_PlanEstudio
+            {
+                Accion = "BORRAR",
+                IdPlanEstudio = pIdPlanEstudio
+            };
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos de fueron borrados correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se borraron del sistema.";
-				else
-					return R;
-		}
+            string R = NPE.IBM_Entidad<E_PlanEstudio>("IBM_PlanEstudio", Entidad);
 
-		public string ModificaPlanEstudio(E_PlanEstudio pEntidad)
-		{
-			pEntidad.Accion = "MODIFICAR";
+            if (R.Contains("Exito"))
+                return "Exito: Los datos de fueron borrados correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se borraron del sistema.";
+            else
+                return R;
+        }
 
-			string R = NPE.IBM_Entidad<E_PlanEstudio>("IBM_PlanEstudio", pEntidad);
+        public string ModificaPlanEstudio(E_PlanEstudio pEntidad)
+        {
+            pEntidad.Accion = "MODIFICAR";
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos fueron modificado correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se modificaron en el sistema.";
-				else
-					return R;
-		}
+            string R = NPE.IBM_Entidad<E_PlanEstudio>("IBM_PlanEstudio", pEntidad);
 
-		// Listado generales de la clase PlanEstudio en formato DataTable y List<E_PlanEstudio>.
-		public DataTable DT_LstPlanEstudio()
-		{
-			return NPE.DT_ListadoGeneral("PlanEstudio", "[PonerCampoDeOrdenacion]");
-		}
+            if (R.Contains("Exito"))
+                return "Exito: Los datos fueron modificado correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se modificaron en el sistema.";
+            else
+                return R;
+        }
 
-		public List<E_PlanEstudio> LstPlanEstudio()
-		{
-			return D_ConvierteDatos.ConvertirDTALista<E_PlanEstudio>(DT_LstPlanEstudio());
-		}
+        // Listado generales de la clase PlanEstudio en formato DataTable y List<E_PlanEstudio>.
+        public DataTable DT_LstPlanEstudio()
+        {
+            return NPE.DT_ListadoGeneral("PlanEstudio", "[PonerCampoDeOrdenacion]");
+        }
 
-		// Busquedas de la clasePlanEstudio por diferente Criterios
-		public E_PlanEstudio BuscaPlanEstudioPorId(int pIdPlanEstudio)
-		{
-			return (from PlanEstudio in LstPlanEstudio() where PlanEstudio.IdPlanEstudio == pIdPlanEstudio select PlanEstudio).FirstOrDefault();
-		}
+        public List<E_PlanEstudio> LstPlanEstudio()
+        {
+            return D_ConvierteDatos.ConvertirDTALista<E_PlanEstudio>(DT_LstPlanEstudio());
+        }
 
-	}}
+        // Busquedas de la clasePlanEstudio por diferente Criterios
+        public E_PlanEstudio BuscaPlanEstudioPorId(int pIdPlanEstudio)
+        {
+            return (from PlanEstudio in LstPlanEstudio() where PlanEstudio.IdPlanEstudio == pIdPlanEstudio select PlanEstudio).FirstOrDefault();
+        }
+
+    }
+}

@@ -18,20 +18,15 @@ namespace Entidades
         private int _IdMateria;
         private string _ClaveMateria;
         private string _NombreMateria;
-        private int _HoraClaseMateria;
-        private int _HoraTallerMateria;
-        private int _HoraLaboratorioMateria;
-        private int _HoraExtraClaseMateria;
-        private int _CreditosMateria;
+        private int _HC;
+        private int _HL;
+        private int _HT;
+        private int _HE;
+        private int _HPP;
+        private int _CR;
         private Boolean _EstadoMateria;
-        private string _EtapaFormacionMateria;
-        private string _CaracteristicasFormacionMateria;
-        private int _SemestreMateria;
-        private string _AreaConocimientoMateria;
-        private string _PathPUAnoOficialMateria;
-        private string _PathPUAOficialMateria;
-        private string _IdPlanEstudio;
-        private string _StatusMateria;
+        private string _PathPUA;
+        private string _PathPUAnoOficial;
         private string _PropositoGeneral;
         private string _Competencia;
         private string _Evidencia;
@@ -40,7 +35,6 @@ namespace Entidades
         private string _BibliografiaBasica;
         private string _BibliografiaComplementaria;
         private string _PerfilDocente;
-        private int _HPP;
         #endregion
 
         #region Constructor
@@ -50,12 +44,15 @@ namespace Entidades
             _IdMateria = 0;
             _ClaveMateria = string.Empty;
             _NombreMateria = string.Empty;
-            _HoraClaseMateria = 0;
-            _HoraTallerMateria = 0;
-            _HoraLaboratorioMateria = 0;
-            _HoraExtraClaseMateria = 0;
-            _CreditosMateria = 0;
+            _HC = 0;
+            _HL = 0;
+            _HT = 0;
+            _HE = 0;
             _HPP = 0;
+            _CR = 0;
+            _EstadoMateria = false;
+            _PathPUA = string.Empty;
+            _PathPUAnoOficial = string.Empty;
             _PropositoGeneral = string.Empty;
             _Competencia = string.Empty;
             _Evidencia = string.Empty;
@@ -64,15 +61,6 @@ namespace Entidades
             _BibliografiaBasica = string.Empty;
             _BibliografiaComplementaria = string.Empty;
             _PerfilDocente = string.Empty;
-            _EstadoMateria = false;
-            _EtapaFormacionMateria = string.Empty;
-            _CaracteristicasFormacionMateria = string.Empty;
-            _SemestreMateria = 0;
-            _AreaConocimientoMateria = string.Empty;
-            _PathPUAnoOficialMateria = string.Empty;
-            _PathPUAOficialMateria = string.Empty;
-            _IdPlanEstudio = string.Empty;
-            _StatusMateria = string.Empty;
         }
         #endregion
 
@@ -81,12 +69,15 @@ namespace Entidades
         public int IdMateria { get => _IdMateria; set => _IdMateria = value; }
         public string ClaveMateria { get => _ClaveMateria; set => _ClaveMateria = value; }
         public string NombreMateria { get => _NombreMateria; set => _NombreMateria = value; }
-        public int HoraClaseMateria { get => _HoraClaseMateria; set => _HoraClaseMateria = value; }
-        public int HoraTallerMateria { get => _HoraTallerMateria; set => _HoraTallerMateria = value; }
-        public int HoraLaboratorioMateria { get => _HoraLaboratorioMateria; set => _HoraLaboratorioMateria = value; }
-        public int HoraExtraClaseMateria { get => _HoraExtraClaseMateria; set => _HoraExtraClaseMateria = value; }
+        public int HC { get => _HC; set => _HC = value; }
+        public int HL { get => _HL; set => _HL = value; }
+        public int HT { get => _HT; set => _HT = value; }
+        public int HE { get => _HE; set => _HE = value; }
         public int HPP { get => _HPP; set => _HPP = value; }
-        public int CreditosMateria { get => _CreditosMateria; set => _CreditosMateria = value; }
+        public int CR { get => _CR; set => _CR = value; }
+        public Boolean EstadoMateria { get => _EstadoMateria; set => _EstadoMateria = value; }
+        public string PathPUA { get => _PathPUA; set => _PathPUA = value; }
+        public string PathPUAnoOficial { get => _PathPUAnoOficial; set => _PathPUAnoOficial = value; }
         public string PropositoGeneral { get => _PropositoGeneral; set => _PropositoGeneral = value; }
         public string Competencia { get => _Competencia; set => _Competencia = value; }
         public string Evidencia { get => _Evidencia; set => _Evidencia = value; }
@@ -95,15 +86,6 @@ namespace Entidades
         public string BibliografiaBasica { get => _BibliografiaBasica; set => _BibliografiaBasica = value; }
         public string BibliografiaComplementaria { get => _BibliografiaComplementaria; set => _BibliografiaComplementaria = value; }
         public string PerfilDocente { get => _PerfilDocente; set => _PerfilDocente = value; }
-        public Boolean EstadoMateria { get => _EstadoMateria; set => _EstadoMateria = value; }
-        public string EtapaFormacionMateria { get => _EtapaFormacionMateria; set => _EtapaFormacionMateria = value; }
-        public string CaracteristicasFormacionMateria { get => _CaracteristicasFormacionMateria; set => _CaracteristicasFormacionMateria = value; }
-        public int SemestreMateria { get => _SemestreMateria; set => _SemestreMateria = value; }
-        public string AreaConocimientoMateria { get => _AreaConocimientoMateria; set => _AreaConocimientoMateria = value; }
-        public string PathPUAnoOficialMateria { get => _PathPUAnoOficialMateria; set => _PathPUAnoOficialMateria = value; }
-        public string PathPUAOficialMateria { get => _PathPUAOficialMateria; set => _PathPUAOficialMateria = value; }
-        public string IdPlanEstudio { get => _IdPlanEstudio; set => _IdPlanEstudio = value; }
-        public string StatusMateria { get => _StatusMateria; set => _StatusMateria = value; }
         #endregion
     }
 }

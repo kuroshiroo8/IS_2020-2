@@ -9,7 +9,7 @@
 
 #region Using
 using System.Data;
-using System. Linq;
+using System.Linq;
 using System.Collections.Generic;
 
 using DatosSQL;
@@ -18,75 +18,76 @@ using Entidades;
 
 namespace Negocios
 {
-	public class N_AreaConocimiento
-	{
-		D_SQL_Datos DAC = new D_SQL_Datos();
-		
-		// Acciones de Insertar, Borrar y Modificar los datos de la clase AreaConocimiento.
-		public string InsertaAreaConocimiento(E_AreaConocimiento pEntidad)
-		{
-			pEntidad.Accion = "INSERTAR";
+    public class N_AreaConocimiento
+    {
+        D_SQL_Datos DAC = new D_SQL_Datos();
 
-			string R = DAC.IBM_Entidad<E_AreaConocimiento>("IBM_AreaConocimiento", pEntidad);
+        // Acciones de Insertar, Borrar y Modificar los datos de la clase AreaConocimiento.
+        public string InsertaAreaConocimiento(E_AreaConocimiento pEntidad)
+        {
+            pEntidad.Accion = "INSERTAR";
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos fueron insertados correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se insertaron en el sistema.";
-				else
-					return R;
-		}
+            string R = DAC.IBM_Entidad<E_AreaConocimiento>("IBM_AreaConocimiento", pEntidad);
 
-		public string BorraAreaConocimiento(int pIdAreaConocimiento)
-		{
-			E_AreaConocimiento Entidad = new E_AreaConocimiento
-			{
-				Accion = "BORRAR",
-				IdAreaConocimiento = pIdAreaConocimiento
-			};
+            if (R.Contains("Exito"))
+                return "Exito: Los datos fueron insertados correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se insertaron en el sistema.";
+            else
+                return R;
+        }
 
-			string R = DAC.IBM_Entidad<E_AreaConocimiento>("IBM_AreaConocimiento", Entidad);
+        public string BorraAreaConocimiento(int pIdAreaConocimiento)
+        {
+            E_AreaConocimiento Entidad = new E_AreaConocimiento
+            {
+                Accion = "BORRAR",
+                IdAreaConocimiento = pIdAreaConocimiento
+            };
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos fueron borrados correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se borraron del sistema.";
-				else
-					return R;
-		}
+            string R = DAC.IBM_Entidad<E_AreaConocimiento>("IBM_AreaConocimiento", Entidad);
 
-		public string ModificaAreaConocimiento(E_AreaConocimiento pEntidad)
-		{
-			pEntidad.Accion = "MODIFICAR";
+            if (R.Contains("Exito"))
+                return "Exito: Los datos fueron borrados correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se borraron del sistema.";
+            else
+                return R;
+        }
 
-			string R = DAC.IBM_Entidad<E_AreaConocimiento>("IBM_AreaConocimiento", pEntidad);
+        public string ModificaAreaConocimiento(E_AreaConocimiento pEntidad)
+        {
+            pEntidad.Accion = "MODIFICAR";
 
-			if (R.Contains("Exito"))
-				return "Exito: Los datos fueron modificados correctamente.";
-			else
-				if (R.Contains("Error"))
-					 return "Error: Los datos no se modificaron en el sistema.";
-				else
-					return R;
-		}
+            string R = DAC.IBM_Entidad<E_AreaConocimiento>("IBM_AreaConocimiento", pEntidad);
 
-		// Listado generales de la clase AreaConocimiento en formato DataTable y List<E_AreaConocimiento>.
-		public DataTable DT_LstAreaConocimiento()
-		{
-			return DAC.DT_ListadoGeneral("AreaConocimiento", "[PonerCampoDeOrdenacion]");
-		}
+            if (R.Contains("Exito"))
+                return "Exito: Los datos fueron modificados correctamente.";
+            else
+                if (R.Contains("Error"))
+                return "Error: Los datos no se modificaron en el sistema.";
+            else
+                return R;
+        }
 
-		public List<E_AreaConocimiento> LstAreaConocimiento()
-		{
-			return D_ConvierteDatos.ConvertirDTALista<E_AreaConocimiento>(DT_LstAreaConocimiento());
-		}
+        // Listado generales de la clase AreaConocimiento en formato DataTable y List<E_AreaConocimiento>.
+        public DataTable DT_LstAreaConocimiento()
+        {
+            return DAC.DT_ListadoGeneral("AreaConocimiento", "[PonerCampoDeOrdenacion]");
+        }
 
-		// Busquedas de la claseAreaConocimiento por diferente Criterios
-		public E_AreaConocimiento BuscaAreaConocimientoPorId(int pIdAreaConocimiento)
-		{
-			return (from AreaConocimiento in LstAreaConocimiento() where AreaConocimiento.IdAreaConocimiento == pIdAreaConocimiento select AreaConocimiento).FirstOrDefault();
-		}
+        public List<E_AreaConocimiento> LstAreaConocimiento()
+        {
+            return D_ConvierteDatos.ConvertirDTALista<E_AreaConocimiento>(DT_LstAreaConocimiento());
+        }
 
-	}}
+        // Busquedas de la claseAreaConocimiento por diferente Criterios
+        public E_AreaConocimiento BuscaAreaConocimientoPorId(int pIdAreaConocimiento)
+        {
+            return (from AreaConocimiento in LstAreaConocimiento() where AreaConocimiento.IdAreaConocimiento == pIdAreaConocimiento select AreaConocimiento).FirstOrDefault();
+        }
+
+    }
+}

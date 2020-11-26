@@ -11,31 +11,31 @@ using System;
 
 namespace Entidades
 {
-	public class E_AreaConocimiento
-	{
-		#region Atributos
-		private string _Accion;
-		private int _IdAreaConocimiento;
-		private string _ClaveAreaConocimiento;
-		private string _DescripcionAreaConocimiento;
-		#endregion
+    public class E_AreaConocimiento
+    {
+        #region Atributos
+        private string _Accion;
+        private int _IdAreaConocimiento;
+        private string _ClaveAreaConocimiento;
+        private string _DescripcionAreaConocimiento;
+        #endregion
 
-		#region Constructor
-		public E_AreaConocimiento()
-		{
-			_Accion = string.Empty;
-			_IdAreaConocimiento = 0;
-			_ClaveAreaConocimiento = string.Empty;
-			_DescripcionAreaConocimiento = string.Empty;
-		}
-		#endregion
+        #region Constructor
+        public E_AreaConocimiento()
+        {
+            _Accion = string.Empty;
+            _IdAreaConocimiento = 0;
+            _ClaveAreaConocimiento = string.Empty;
+            _DescripcionAreaConocimiento = string.Empty;
+        }
+        #endregion
 
-		#region Encapsulamiento
-		public string Accion { get => _Accion; set => _Accion = value; }
-		public int IdAreaConocimiento { get => _IdAreaConocimiento; set => _IdAreaConocimiento = value; }
-		public string ClaveAreaConocimiento { get => _ClaveAreaConocimiento; set => _ClaveAreaConocimiento = value; }
-		public string DescripcionAreaConocimiento { get => _DescripcionAreaConocimiento; set => _DescripcionAreaConocimiento = value; }
-		#endregion
-	}
+        #region Encapsulamiento
+        public string Accion { get => _Accion; set => _Accion = value; }
+        public int IdAreaConocimiento { get => _IdAreaConocimiento; set => _IdAreaConocimiento = value; }
+        public string ClaveAreaConocimiento { get => _ClaveAreaConocimiento; set => _ClaveAreaConocimiento = value; }
+        public string DescripcionAreaConocimiento { get => _DescripcionAreaConocimiento; set => _DescripcionAreaConocimiento = value; }
+        #endregion
+    }
 }
 

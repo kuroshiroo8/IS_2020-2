@@ -16,12 +16,12 @@ namespace Entidades
         #region Atributos
         private string _Accion;
         private int _IdCarrera;
-        private int _IdCoordinador;
+        //private int _IdCoordinador;
         private string _ClaveCarrera;
         private string _NombreCarrera;
         private string _AliasCarrera;
         private Boolean _EstadoCarrera;
-        private string _StatusCarrera;
+        //private string _StatusCarrera;
         #endregion
 
         #region Constructor
@@ -29,24 +29,24 @@ namespace Entidades
         {
             _Accion = string.Empty;
             _IdCarrera = 0;
-            _IdCoordinador = 0;
+            //_IdCoordinador = 0;
             _ClaveCarrera = string.Empty;
             _NombreCarrera = string.Empty;
             _AliasCarrera = string.Empty;
             _EstadoCarrera = false;
-            _StatusCarrera = string.Empty;
+            //_StatusCarrera = string.Empty;
         }
         #endregion
 
         #region Encapsulamiento
         public string Accion { get => _Accion; set => _Accion = value; }
         public int IdCarrera { get => _IdCarrera; set => _IdCarrera = value; }
-        public int IdCoordinador { get => _IdCoordinador; set => _IdCoordinador = value; }
+        //public int IdCoordinador { get => _IdCoordinador; set => _IdCoordinador = value; }
         public string ClaveCarrera { get => _ClaveCarrera; set => _ClaveCarrera = value; }
         public string NombreCarrera { get => _NombreCarrera; set => _NombreCarrera = value; }
         public string AliasCarrera { get => _AliasCarrera; set => _AliasCarrera = value; }
         public Boolean EstadoCarrera { get => _EstadoCarrera; set => _EstadoCarrera = value; }
-        public string StatusCarrera { get => _StatusCarrera; set => _StatusCarrera = value; }
+        //public string StatusCarrera { get => _StatusCarrera; set => _StatusCarrera = value; }
         #endregion
     }
 }

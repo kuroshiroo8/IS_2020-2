@@ -112,211 +112,166 @@ namespace GePE.Materias {
         protected global::System.Web.UI.WebControls.TextBox TbNombreMateria;
         
         /// <summary>
-        /// Control lbHoraClaseMateria.
+        /// Control lbHC.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbHoraClaseMateria;
+        protected global::System.Web.UI.WebControls.Label lbHC;
         
         /// <summary>
-        /// Control TbHoraClaseMateria.
+        /// Control TbHC.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbHoraClaseMateria;
+        protected global::System.Web.UI.WebControls.TextBox TbHC;
         
         /// <summary>
-        /// Control lbHoraTallerMateria.
+        /// Control lbHL.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbHoraTallerMateria;
+        protected global::System.Web.UI.WebControls.Label lbHL;
         
         /// <summary>
-        /// Control TbHoraTallerMateria.
+        /// Control TbHL.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbHoraTallerMateria;
+        protected global::System.Web.UI.WebControls.TextBox TbHL;
         
         /// <summary>
-        /// Control lbHoraLaboratorioMateria.
+        /// Control lbHT.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbHoraLaboratorioMateria;
+        protected global::System.Web.UI.WebControls.Label lbHT;
         
         /// <summary>
-        /// Control TbHoraLaboratorioMateria.
+        /// Control TbHT.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbHoraLaboratorioMateria;
+        protected global::System.Web.UI.WebControls.TextBox TbHT;
         
         /// <summary>
-        /// Control lbHoraExtraClaseMateria.
+        /// Control lbHE.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbHoraExtraClaseMateria;
+        protected global::System.Web.UI.WebControls.Label lbHE;
         
         /// <summary>
-        /// Control TbHoraExtraClaseMateria.
+        /// Control TbHE.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbHoraExtraClaseMateria;
+        protected global::System.Web.UI.WebControls.TextBox TbHE;
         
         /// <summary>
-        /// Control lbCreditosMateria.
+        /// Control lbHPP.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbCreditosMateria;
+        protected global::System.Web.UI.WebControls.Label lbHPP;
         
         /// <summary>
-        /// Control TbCreditosMateria.
+        /// Control TbHPP.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbCreditosMateria;
+        protected global::System.Web.UI.WebControls.TextBox TbHPP;
         
         /// <summary>
-        /// Control lbEtapaFormacionMateria.
+        /// Control lbCR.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbEtapaFormacionMateria;
+        protected global::System.Web.UI.WebControls.Label lbCR;
         
         /// <summary>
-        /// Control LstEtapaFormacion.
+        /// Control TbCR.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList LstEtapaFormacion;
+        protected global::System.Web.UI.WebControls.TextBox TbCR;
         
         /// <summary>
-        /// Control lbCaracteristicasFormacionMateria.
+        /// Control lbEstadoMateria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbCaracteristicasFormacionMateria;
+        protected global::System.Web.UI.WebControls.Label lbEstadoMateria;
         
         /// <summary>
-        /// Control LstCaracteristicas.
+        /// Control cbEstadoMateria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList LstCaracteristicas;
+        protected global::System.Web.UI.WebControls.CheckBox cbEstadoMateria;
         
         /// <summary>
-        /// Control lbSemestreMateria.
+        /// Control lbPathPUA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbSemestreMateria;
+        protected global::System.Web.UI.WebControls.Label lbPathPUA;
         
         /// <summary>
-        /// Control LstSemestre.
+        /// Control TbPathPUA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList LstSemestre;
+        protected global::System.Web.UI.WebControls.TextBox TbPathPUA;
         
         /// <summary>
-        /// Control rfvLstSemestre.
+        /// Control lbPathPUAnoOficial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLstSemestre;
+        protected global::System.Web.UI.WebControls.Label lbPathPUAnoOficial;
         
         /// <summary>
-        /// Control lbAreaConocimientoMateria.
+        /// Control TbPathPUAnoOficial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbAreaConocimientoMateria;
-        
-        /// <summary>
-        /// Control LstAreaConocimiento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList LstAreaConocimiento;
-        
-        /// <summary>
-        /// Control lbPathPUAnoOficialMateria.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbPathPUAnoOficialMateria;
-        
-        /// <summary>
-        /// Control TbPathPUAnoOficialMateria.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbPathPUAnoOficialMateria;
-        
-        /// <summary>
-        /// Control lbPathPUAOficialMateria.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbPathPUAOficialMateria;
-        
-        /// <summary>
-        /// Control TbPathPUAOficialMateria.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbPathPUAOficialMateria;
+        protected global::System.Web.UI.WebControls.TextBox TbPathPUAnoOficial;
         
         /// <summary>
         /// Control BtnGrabar.
