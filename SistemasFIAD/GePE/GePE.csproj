@@ -176,6 +176,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="FilesSection\" />
     <Folder Include="Imagenes\" />
   </ItemGroup>
   <ItemGroup>

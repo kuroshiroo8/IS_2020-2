@@ -36,7 +36,7 @@
                             <asp:Label ID="lblTituloAccion" runat="server" CssClass="text-white"></asp:Label></h5>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body" align="center">
                         <div class="row pl-2 pr-2">
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
@@ -53,6 +53,7 @@
                                         ErrorMessage="Sólo números positivos."
                                         ValidationExpression="^\d+$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
+                                    <br />
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -70,6 +71,7 @@
                                         ErrorMessage="*Sólo letras."
                                         ValidationExpression="^[a-zA-Z ]+$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
+                                    <br />
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -87,6 +89,7 @@
                                         ErrorMessage="Sólo números positivos."
                                         ValidationExpression="^\d+$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
+                                    <br />
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -104,6 +107,7 @@
                                         ErrorMessage="Sólo números positivos."
                                         ValidationExpression="^\d+$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
+                                    <br />
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -121,6 +125,7 @@
                                         ErrorMessage="Sólo números positivos."
                                         ValidationExpression="^\d+$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
+                                    <br />
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -138,6 +143,7 @@
                                         ErrorMessage="Sólo números positivos."
                                         ValidationExpression="^\d+$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
+                                    <br />
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -155,6 +161,7 @@
                                         ErrorMessage="Sólo números positivos."
                                         ValidationExpression="^\d+$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
+                                    <br />
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -163,7 +170,11 @@
                                     <br />
                                     <asp:TextBox ID="TbCR" runat="server"></asp:TextBox>
                                     <br />
-                                    <asp:RequiredFieldValidator ID="rfvCreditos" runat="server" CssClass="text-danger"
+                                    <asp:Label runat="server" ID="lbStatusCR" Text="Estado de la carga: " />
+                                    <%--<asp:LinkButton ID="BtnActualizarCR" runat="server" CssClass="btn btn-md btn btn-success  pr-3"
+                                        CausesValidation="false" OnClick="BtnActualizarCR_Click"><i class="fas fa-sync-alt"></i> Actualizar Creditos</asp:LinkButton>--%>
+                                    <br />
+                                    <%--<asp:RequiredFieldValidator ID="rfvCreditos" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbCR"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
@@ -171,7 +182,7 @@
                                         ControlToValidate="TbCR"
                                         ErrorMessage="Sólo números positivos."
                                         ValidationExpression="^\d+$"
-                                        Display="Dynamic"></asp:RegularExpressionValidator>
+                                        Display="Dynamic"></asp:RegularExpressionValidator>--%>
                                 </div>
                             </div>
                             <%--<div class="col-lg-9 col-md-12 col-12">
@@ -184,14 +195,36 @@
                                 <div class="form-group">
                                     <asp:Label ID="lbPathPUA" class="text-dark font-weight-bold m-0" runat="server">Pua oficial</asp:Label>
                                     <br />
-                                    <asp:TextBox ID="TbPathPUA" runat="server"></asp:TextBox>
+                                    <asp:FileUpload ID="FuPathPUA" runat="server" />
+                                    <br />
+                                    <%--<asp:LinkButton ID="BtnPathPUA" runat="server" CssClass="btn btn-md btn btn-success  pr-3"
+                                        CausesValidation="false" OnClick="BtnPathPUA_Click"><i class="fas fa-upload"></i> Agregar PUA</asp:LinkButton>--%>
+                                    <br />
+                                    <asp:Label runat="server" ID="lbStatusPathPUA" Text="Estado de la carga: " />
+                                    <br />
+                                    <asp:RequiredFieldValidator ID="RfvPathPUA" runat="server" CssClass="text-danger"
+                                        ControlToValidate="FuPathPUA"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <br />
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbPathPUAnoOficial" class="text-dark font-weight-bold m-0" runat="server">PUA no oficial</asp:Label>
                                     <br />
-                                    <asp:TextBox ID="TbPathPUAnoOficial" runat="server"></asp:TextBox>
+                                    <asp:FileUpload ID="FuPathPUAnoOficial" runat="server" />
+                                    <br />
+                                    <%--<asp:LinkButton ID="BtnPathPUAnoOficial" runat="server" CssClass="btn btn-md btn btn-success  pr-3"
+                                        CausesValidation="false" OnClick="BtnPathPUAnoOficial_Click"><i class="fas fa-upload"></i> Agregar PUA no oficial</asp:LinkButton>--%>
+                                    <br />
+                                    <asp:Label runat="server" ID="lbStatusPathPUAnoOficial" Text="Estado de la carga: " />
+                                    <br />
+                                    <asp:RequiredFieldValidator ID="RfvPathPUAnoOficial" runat="server" CssClass="text-danger"
+                                        ControlToValidate="FuPathPUAnoOficial"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <br />
                                 </div>
                             </div>
                         </div>
@@ -227,8 +260,10 @@
                         <asp:BoundField DataField="HPP" HeaderText="HPP" />
                         <asp:BoundField DataField="CR" HeaderText="CR" />
                         <%--<asp:BoundField DataField="EstadoMateria" HeaderText="ESTADO" />--%>
-                        <asp:BoundField DataField="PathPUA" HeaderText="PUA OFICIAL" />
-                        <asp:BoundField DataField="PathPUAnoOficial" HeaderText="PUA NO OFICIAL" />
+                        <%--<asp:BoundField DataField="PathPUA" HeaderText="PUA OFICIAL" />--%>
+                        <asp:HyperLinkField DataNavigateUrlFields="PathPUA" HeaderText="PathPUA" DataNavigateUrlFormatString="" DataTextField="PathPUA" />
+                        <%--<asp:BoundField DataField="PathPUAnoOficial" HeaderText="PUA NO OFICIAL" />--%>
+                        <asp:HyperLinkField DataNavigateUrlFields="PathPUAnoOficial" HeaderText="PathPUAnoOficial" DataNavigateUrlFormatString="" DataTextField="PathPUAnoOficial" />
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
                             <ItemTemplate>
                                 <asp:LinkButton ID="GrvBtnEditar" runat="server" CssClass="btn btn-md btn-primary "

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -35,6 +36,10 @@ namespace GePE.Materias
             BtnCancelar.Visible = false;
             BtnAceptar.Visible = false;
 
+            //BtnActualizarCR.Visible = false;
+            //BtnPathPUA.Visible = false;
+            //BtnPathPUAnoOficial.Visible = false;
+
             lbClaveMateria.Visible = false;
             lbNombreMateria.Visible = false;
             lbHC.Visible = false;
@@ -44,8 +49,14 @@ namespace GePE.Materias
             lbHPP.Visible = false;
             lbCR.Visible = false;
             //lbEstadoMateria.Visible = false;
+
             lbPathPUA.Visible = false;
+            FuPathPUA.Visible = false;
+            lbStatusPathPUA.Visible = false;
+
             lbPathPUAnoOficial.Visible = false;
+            FuPathPUAnoOficial.Visible = false;
+            lbStatusPathPUAnoOficial.Visible = false;
 
             PnlCapturaDatos.Visible = false;
             PnlGrvMateria.Visible = false;
@@ -66,8 +77,20 @@ namespace GePE.Materias
             TbHE.Text = string.Empty;
             TbHPP.Text = string.Empty;
             TbCR.Text = string.Empty;
-            TbPathPUA.Text = string.Empty;
-            TbPathPUAnoOficial.Text = string.Empty;
+            //TbPathPUA.Text = string.Empty;
+            //TbPathPUAnoOficial.Text = string.Empty;
+
+            //lbPathPUA.Text = string.Empty;
+            FuPathPUA.Dispose();
+            //FuPathPUA.PostedFile.InputStream.Dispose();
+            lbStatusPathPUA.Text = string.Empty;
+
+            //lbPathPUAnoOficial.Text = string.Empty;
+            FuPathPUAnoOficial.Dispose();
+            //FuPathPUAnoOficial.PostedFile.InputStream.Dispose();
+            lbStatusPathPUAnoOficial.Text = string.Empty;
+
+            lbStatusCR.Text = string.Empty;
 
             //Clear CheckBox
             //cbEstadoMateria.Checked = false;
@@ -87,8 +110,8 @@ namespace GePE.Materias
             lbHPP.Enabled = TrueOrFalse;
             lbCR.Enabled = TrueOrFalse;
             //lbEstadoMateria.Enabled = TrueOrFalse;
-            lbPathPUA.Enabled = TrueOrFalse;
-            lbPathPUAnoOficial.Enabled = TrueOrFalse;
+            //lbPathPUA.Enabled = TrueOrFalse;
+            //lbPathPUAnoOficial.Enabled = TrueOrFalse;
 
             //Enabled TextBox
             TbClaveMateria.Enabled = TrueOrFalse;
@@ -99,9 +122,19 @@ namespace GePE.Materias
             TbHE.Enabled = TrueOrFalse;
             TbHPP.Enabled = TrueOrFalse;
             TbCR.Enabled = TrueOrFalse;
-            TbPathPUA.Enabled = TrueOrFalse;
-            TbPathPUAnoOficial.Enabled = TrueOrFalse;
+            //TbPathPUA.Enabled = TrueOrFalse;
+            //TbPathPUAnoOficial.Enabled = TrueOrFalse;
 
+
+            lbPathPUA.Enabled = TrueOrFalse;
+            FuPathPUA.Enabled = TrueOrFalse;
+            lbStatusPathPUA.Enabled = TrueOrFalse;
+
+            lbPathPUAnoOficial.Enabled = TrueOrFalse;
+            FuPathPUAnoOficial.Enabled = TrueOrFalse;
+            lbStatusPathPUAnoOficial.Enabled = TrueOrFalse;
+
+            lbStatusCR.Enabled = TrueOrFalse;
             //Enabled CheckBox
             //cbEstadoMateria.Enabled = TrueOrFalse;
         }
@@ -117,8 +150,8 @@ namespace GePE.Materias
             lbHPP.Visible = TrueOrFalse;
             lbCR.Visible = TrueOrFalse;
             //lbEstadoMateria.Visible = TrueOrFalse;
-            lbPathPUA.Visible = TrueOrFalse;
-            lbPathPUAnoOficial.Visible = TrueOrFalse;
+            //lbPathPUA.Visible = TrueOrFalse;
+            //lbPathPUAnoOficial.Visible = TrueOrFalse;
 
             //Visible TextBox
             TbClaveMateria.Visible = TrueOrFalse;
@@ -129,11 +162,149 @@ namespace GePE.Materias
             TbHE.Visible = TrueOrFalse;
             TbHPP.Visible = TrueOrFalse;
             TbCR.Visible = TrueOrFalse;
-            TbPathPUA.Visible = TrueOrFalse;
-            TbPathPUAnoOficial.Visible = TrueOrFalse;
 
-            //Visible CheckBox
-            //cbEstadoMateria.Visible = TrueOrFalse;
+            //El TextBox de CR se hace no editable
+            TbCR.Enabled = false;
+            //BtnActualizarCR.Visible = TrueOrFalse;
+
+            //Hacer visible el PathPUA
+            lbPathPUA.Visible = TrueOrFalse;
+            FuPathPUA.Visible = TrueOrFalse;
+            //FuPathPUA.Enabled = false;
+            lbStatusPathPUA.Visible = TrueOrFalse;
+            //BtnPathPUA.Visible = TrueOrFalse;
+
+            //Hacer visible el PathPUAnoOficial
+            lbPathPUAnoOficial.Visible = TrueOrFalse;
+            FuPathPUAnoOficial.Visible = TrueOrFalse;
+            //FuPathPUAnoOficial.Enabled = false;
+            lbStatusPathPUAnoOficial.Visible = TrueOrFalse;
+            //BtnPathPUAnoOficial.Visible = TrueOrFalse;
+
+            lbStatusCR.Visible = TrueOrFalse;
+        }
+        protected int ActualizarCR()
+        {
+            if (TbHC.Text != "" &&
+                TbHL.Text != "" &&
+                TbHT.Text != "" &&
+                TbHE.Text != "" &&
+                TbHPP.Text != "")
+            {
+                int CR = 0;
+                CR = (Convert.ToInt32(TbHC.Text) * 2)
+                    + (Convert.ToInt32(TbHL.Text) * 1)
+                    + (Convert.ToInt32(TbHT.Text) * 1)
+                    + (Convert.ToInt32(TbHE.Text) * 0)
+                    + (Convert.ToInt32(TbHPP.Text) * 1);
+                TbCR.Text = Convert.ToString(CR);
+                return 0;
+            }
+            else
+            {
+                Console.WriteLine("Por favor llena los campos de horas");
+                return 1;
+            }
+
+        }
+        protected int AgregarPathPUA()
+        {
+            //Especifique la ruta en el servidor para guardar el archivo subido.
+            string savePath = @"~/FilesSection/";
+            //Antes de intentar guardar el archivo, compruebe que el control FileUpload contiene un archivo.
+            if (FuPathPUA.HasFile)
+            {
+                // Consigue el nombre del archivo para subirlo.
+                string fileName = Server.HtmlEncode(FuPathPUA.FileName);
+                // Obtener la extensión del archivo subido.
+                string extension = System.IO.Path.GetExtension(fileName);
+                // Obtener el tamaño en bytes del archivo a subir.
+                int fileSize = FuPathPUA.PostedFile.ContentLength;
+                //Permita que sólo se suban archivos con extensiones .doc o .xls.
+                if (extension == ".pdf")
+                {
+                    // Permitir sólo archivos de menos de 4,000,000 de bytes (aproximadamente 4 MB) para ser subidos.
+                    if (fileSize < 4000000)
+                    {
+                        // Añade el nombre del archivo subido a la ruta.
+                        savePath += fileName;
+                        //Llama al método SaveAs para guardar el archivo cargado en la ruta especificada.
+                        //Si ya existe un archivo con el mismo nombre en la ruta especificada, el archivo cargado lo sobrescribe.
+                        FuPathPUA.SaveAs(Server.MapPath("~/FilesSection/" + FuPathPUA.FileName));
+                        // Notificar al usuario que el archivo fue subido con éxito.
+                        lbStatusPathPUA.Text = "Tu archivo fue subido con éxito.";
+                        return 0;
+                    }
+                    else
+                    {
+                        // Notificar al usuario por qué su archivo no fue subido.
+                        lbStatusPathPUA.Text = "Tu archivo no fue subido porque excede el límite de tamaño de 4 MB.";
+                        return 1;
+                    }
+                }
+                else
+                {
+                    // Notificar al usuario por qué su archivo no fue subido.
+                    lbStatusPathPUA.Text = "Tu archivo no fue subido porque no tiene una extensión .pdf";
+                    return 2;
+                }
+            }
+            else
+            {
+                // Notificar al usuario que un archivo no fue subido.
+                lbStatusPathPUA.Text = "No especificaste un archivo para subir.";
+                return 3;
+            }
+        }
+        protected int AgregarPathPUAnoOficial()
+        {
+            //Especifique la ruta en el servidor para guardar el archivo subido.
+            string savePath = @"~/FilesSection/";
+            //Antes de intentar guardar el archivo, compruebe que el control FileUpload contiene un archivo.
+            if (FuPathPUAnoOficial.HasFile)
+            {
+                // Consigue el nombre del archivo para subirlo.
+                string fileName = Server.HtmlEncode(FuPathPUAnoOficial.FileName);
+                // Obtener la extensión del archivo subido.
+                string extension = System.IO.Path.GetExtension(fileName);
+                // Obtener el tamaño en bytes del archivo a subir.
+                int fileSize = FuPathPUAnoOficial.PostedFile.ContentLength;
+                //Permita que sólo se suban archivos con extensiones .doc o .xls.
+                if (extension == ".pdf")
+                {
+                    // Permitir sólo archivos de menos de 4,000,000 de bytes (aproximadamente 4 MB) para ser subidos.
+                    if (fileSize < 4000000)
+                    {
+                        // Añade el nombre del archivo subido a la ruta.
+                        savePath += fileName;
+                        //Llama al método SaveAs para guardar el archivo cargado en la ruta especificada.
+                        //Si ya existe un archivo con el mismo nombre en la ruta especificada, el archivo cargado lo sobrescribe.
+                        //FuPathPUAnoOficial.SaveAs(savePath);
+                        FuPathPUAnoOficial.SaveAs(Server.MapPath("~/FilesSection/" + FuPathPUAnoOficial.FileName));
+                        // Notificar al usuario que el archivo fue subido con éxito.
+                        lbStatusPathPUAnoOficial.Text = "Tu archivo fue subido con éxito.";
+                        return 0;
+                    }
+                    else
+                    {
+                        // Notificar al usuario por qué su archivo no fue subido.
+                        lbStatusPathPUAnoOficial.Text = "Tu archivo no fue subido porque excede el límite de tamaño de 4 MB.";
+                        return 1;
+                    }
+                }
+                else
+                {
+                    // Notificar al usuario por qué su archivo no fue subido.
+                    lbStatusPathPUAnoOficial.Text = "Tu archivo no fue subido porque no tiene una extensión .pdf";
+                    return 2;
+                }
+            }
+            else
+            {
+                // Notificar al usuario que un archivo no fue subido.
+                lbStatusPathPUAnoOficial.Text = "No especificaste un archivo para subir.";
+                return 3;
+            }
         }
         #endregion
 
@@ -148,11 +319,15 @@ namespace GePE.Materias
                 HL = Convert.ToInt32(TbHL.Text),
                 HT = Convert.ToInt32(TbHT.Text),
                 HE = Convert.ToInt32(TbHE.Text),
-                CR = Convert.ToInt32(TbCR.Text),
-                HPP=Convert.ToInt32(TbHPP.Text),
+                HPP = Convert.ToInt32(TbHPP.Text),
+                CR = (Convert.ToInt32(TbHC.Text) * 2) +
+                    (Convert.ToInt32(TbHL.Text) * 1) +
+                    (Convert.ToInt32(TbHT.Text) * 1) +
+                    (Convert.ToInt32(TbHE.Text) * 0) +
+                    (Convert.ToInt32(TbHPP.Text) * 1),
                 //EstadoMateria = cbEstadoMateria.Checked,
-                PathPUA = TbPathPUA.Text,
-                PathPUAnoOficial = TbPathPUAnoOficial.Text
+                PathPUA = "~/FilesSection/" + FuPathPUA.FileName,
+                PathPUAnoOficial = "~/FilesSection/" + FuPathPUAnoOficial.FileName
             };
             return Materia;
         }
@@ -167,11 +342,12 @@ namespace GePE.Materias
             TbHL.Text = Convert.ToString(Materia.HL);
             TbHT.Text = Convert.ToString(Materia.HT);
             TbHE.Text = Convert.ToString(Materia.HE);
-            TbCR.Text = Convert.ToString(Materia.CR);
             TbHPP.Text = Convert.ToString(Materia.HPP);
+            TbCR.Text = Convert.ToString(Materia.CR);
             //cbEstadoMateria.Checked = Materia.EstadoMateria;
-            TbPathPUA.Text = Materia.PathPUA.Trim();
-            TbPathPUAnoOficial.Text = Materia.PathPUAnoOficial.Trim();
+
+            //FuPathPUA.SaveAs(Materia.PathPUA.Trim());
+            //FuPathPUAnoOficial.SaveAs(Materia.PathPUAnoOficial.Trim());
         }
         #endregion
 
@@ -223,9 +399,13 @@ namespace GePE.Materias
                     TbHE.Enabled = false;
                     TbHPP.Enabled = false;
                     TbCR.Enabled = false;
-                    TbPathPUA.Enabled = false;
-                    TbPathPUAnoOficial.Enabled = false;
+                    FuPathPUA.Enabled = false;
+                    FuPathPUAnoOficial.Enabled = false;
                     //cbEstadoMateria.Enabled = false;
+
+                    //BtnActualizarCR.Visible = false;
+                    //BtnPathPUA.Visible = false;
+                    //BtnPathPUAnoOficial.Visible = false;
 
                     hfIdMateria.Value = LstMateria[0].IdMateria.ToString();
                     ObjetoEntidad_ControlesWebForm(Convert.ToInt32(hfIdMateria.Value));
@@ -248,7 +428,90 @@ namespace GePE.Materias
         #region Botones IBM (WebForm captura datos del cliente)
         protected void BtnGrabar_Click(object sender, EventArgs e)
         {
+            int RespuestaCR = 0;
+            int RespuestaFuPathPUA = 0;
+            int RespuestaFuPathPUAnoOficial = 0;
+            int SumaRespuestaCR = 0;
+            int SumaRespuestaFuPathPUA = 0;
+            int SumaRespuestaFuPathPUAnoOficial = 0;
+
             string R = NM.InsertaMaterias(ControlesWebForm_ObjetoEntidad());
+            lblTituloAccion.Text = R;
+
+            do
+            {
+                RespuestaCR = ActualizarCR();
+                if (RespuestaCR == 0)
+                {
+                    SumaRespuestaCR = 0;
+                    lblTituloAccion.Text = R;
+                }
+                else if (RespuestaCR == 1)
+                {
+                    lbStatusCR.Text = "Por favor llena los campos de horas";
+                    SumaRespuestaCR = 1;
+                    lblTituloAccion.Text = "Error";
+                }
+
+                RespuestaFuPathPUA = AgregarPathPUA();
+                if (RespuestaFuPathPUA == 0)
+                {
+                    SumaRespuestaFuPathPUA = 0;
+                    lblTituloAccion.Text = R;
+                }
+                else if (RespuestaFuPathPUA == 1)
+                {
+                    lbStatusPathPUA.Text = "Tu archivo no fue subido porque excede el límite de tamaño de 4 MB.";
+                    SumaRespuestaFuPathPUA = 1;
+                    lblTituloAccion.Text = "Error";
+                    FuPathPUA.Dispose();
+                }
+                else if (RespuestaFuPathPUA == 2)
+                {
+                    lbStatusPathPUA.Text = "Tu archivo no fue subido porque no tiene una extensión .pdf";
+                    SumaRespuestaFuPathPUA = 1;
+                    lblTituloAccion.Text = "Error";
+                    FuPathPUA.Dispose();
+                }
+                else if (RespuestaFuPathPUA == 3)
+                {
+                    lbStatusPathPUA.Text = "No especificaste un archivo para subir.";
+                    SumaRespuestaFuPathPUA = 1;
+                    lblTituloAccion.Text = "Error";
+                    FuPathPUA.Dispose();
+                }
+
+                RespuestaFuPathPUAnoOficial = AgregarPathPUAnoOficial();
+                if (RespuestaFuPathPUA == 0)
+                {
+                    SumaRespuestaFuPathPUAnoOficial = 0;
+                    lblTituloAccion.Text = R;
+                }
+                else if (RespuestaFuPathPUAnoOficial == 1)
+                {
+                    lbStatusPathPUAnoOficial.Text = "Tu archivo no fue subido porque excede el límite de tamaño de 4 MB.";
+                    SumaRespuestaFuPathPUAnoOficial = 1;
+                    lblTituloAccion.Text = "Error";
+                    FuPathPUAnoOficial.Dispose();
+                }
+                else if (RespuestaFuPathPUAnoOficial == 2)
+                {
+                    lbStatusPathPUAnoOficial.Text = "Tu archivo no fue subido porque no tiene una extensión .pdf";
+                    SumaRespuestaFuPathPUAnoOficial = 1;
+                    lblTituloAccion.Text = "Error";
+                    FuPathPUAnoOficial.Dispose();
+                }
+                else if (RespuestaFuPathPUAnoOficial == 3)
+                {
+                    lbStatusPathPUAnoOficial.Text = "No especificaste un archivo para subir.";
+                    SumaRespuestaFuPathPUAnoOficial = 1;
+                    lblTituloAccion.Text = "Error";
+                    FuPathPUAnoOficial.Dispose();
+                }
+
+            } while ((SumaRespuestaCR + SumaRespuestaFuPathPUA + SumaRespuestaFuPathPUAnoOficial) == 0);
+
+            R = NM.InsertaMaterias(ControlesWebForm_ObjetoEntidad());
             lblTituloAccion.Text = R;
 
             //Aqui se hacen no visible los Label, TextBox y el CheckBox
@@ -283,21 +546,84 @@ namespace GePE.Materias
         }
         protected void BtnModificar_Click(object sender, EventArgs e)
         {
+            int RespuestaCR = 0;
+            int RespuestaFuPathPUA = 0;
+            int RespuestaFuPathPUAnoOficial = 0;
+            int SumaRespuestaCR = 0;
+            int SumaRespuestaFuPathPUA = 0;
+            int SumaRespuestaFuPathPUAnoOficial = 0;
+
             E_Materias Cliente = ControlesWebForm_ObjetoEntidad();
             Cliente.IdMateria = Convert.ToInt32(hfIdMateria.Value);
             string R = NM.ModificaMaterias(Cliente);
             lblTituloAccion.Text = R;
 
-            //Aqui se hacen no visible los Label, TextBox y el CheckBox
-            VisibleOnOFF(false);
-
-            BtnModificar.Visible = false;
-            BtnCancelar.Visible = false;
-            BtnAceptar.Visible = true;
-
-            if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
+            RespuestaCR = ActualizarCR();
+            if (RespuestaCR == 0)
             {
-                InicializaControles();
+                SumaRespuestaCR = 0;
+            }
+            else if (RespuestaCR == 1)
+            {
+                lbStatusCR.Text = "Por favor llena los campos de horas";
+                SumaRespuestaCR = 1;
+            }
+
+            RespuestaFuPathPUA = AgregarPathPUA();
+            if (RespuestaFuPathPUA == 0)
+            {
+                SumaRespuestaFuPathPUA = 0;
+            }
+            else if (RespuestaFuPathPUA == 1)
+            {
+                lbStatusPathPUA.Text = "Tu archivo no fue subido porque excede el límite de tamaño de 4 MB.";
+                SumaRespuestaFuPathPUA = 1;
+            }
+            else if (RespuestaFuPathPUA == 2)
+            {
+                lbStatusPathPUA.Text = "Tu archivo no fue subido porque no tiene una extensión .pdf";
+                SumaRespuestaFuPathPUA = 1;
+            }
+            else if (RespuestaFuPathPUA == 3)
+            {
+                lbStatusPathPUA.Text = "No especificaste un archivo para subir.";
+                SumaRespuestaFuPathPUA = 1;
+            }
+
+            RespuestaFuPathPUAnoOficial = AgregarPathPUAnoOficial();
+            if (RespuestaFuPathPUA == 0)
+            {
+                SumaRespuestaFuPathPUAnoOficial = 0;
+            }
+            else if (RespuestaFuPathPUAnoOficial == 1)
+            {
+                lbStatusPathPUAnoOficial.Text = "Tu archivo no fue subido porque excede el límite de tamaño de 4 MB.";
+                SumaRespuestaFuPathPUAnoOficial = 1;
+            }
+            else if (RespuestaFuPathPUAnoOficial == 2)
+            {
+                lbStatusPathPUAnoOficial.Text = "Tu archivo no fue subido porque no tiene una extensión .pdf";
+                SumaRespuestaFuPathPUAnoOficial = 1;
+            }
+            else if (RespuestaFuPathPUAnoOficial == 3)
+            {
+                lbStatusPathPUAnoOficial.Text = "No especificaste un archivo para subir.";
+                SumaRespuestaFuPathPUAnoOficial = 1;
+            }
+
+            if ((SumaRespuestaCR + SumaRespuestaFuPathPUA + SumaRespuestaFuPathPUAnoOficial) == 0)
+            {
+                //Aqui se hacen no visible los Label, TextBox y el CheckBox
+                VisibleOnOFF(false);
+
+                BtnModificar.Visible = false;
+                BtnCancelar.Visible = false;
+                BtnAceptar.Visible = true;
+
+                if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
+                {
+                    InicializaControles();
+                }
             }
         }
         protected void BtnMnuEditar_Click(object sender, EventArgs e)
@@ -308,6 +634,13 @@ namespace GePE.Materias
             BtnMnuBorrar.Visible = false;
             BtnMnuEditar.Visible = false;
             ControlesOnOFF(true);
+
+            TbCR.Enabled = false;
+            //para que aparescan
+            //BtnActualizarCR.Visible = true;
+            //BtnPathPUA.Visible = true;
+            //BtnPathPUAnoOficial.Visible = true;
+
         }
         protected void BtnMnuBorrar_Click(object sender, EventArgs e)
         {
@@ -322,7 +655,6 @@ namespace GePE.Materias
         }
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {
-
             InicializaControles();
         }
         #endregion
@@ -340,6 +672,10 @@ namespace GePE.Materias
 
             //Aqui se hacen no visible los Label, TextBox y el CheckBox
             VisibleOnOFF(true);
+
+            //BtnActualizarCR.Visible = false;
+            //BtnPathPUA.Visible = false;
+            //BtnPathPUAnoOficial.Visible = false;
 
             PnlCapturaDatos.Visible = true;
             BtnBorrar.Visible = true;

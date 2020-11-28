@@ -346,22 +346,13 @@ namespace GePE.Materias {
         protected global::System.Web.UI.WebControls.TextBox TbCR;
         
         /// <summary>
-        /// Control rfvCreditos.
+        /// Control lbStatusCR.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCreditos;
-        
-        /// <summary>
-        /// Control rfvCreditosNum.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator rfvCreditosNum;
+        protected global::System.Web.UI.WebControls.Label lbStatusCR;
         
         /// <summary>
         /// Control lbPathPUA.
@@ -373,13 +364,31 @@ namespace GePE.Materias {
         protected global::System.Web.UI.WebControls.Label lbPathPUA;
         
         /// <summary>
-        /// Control TbPathPUA.
+        /// Control FuPathPUA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbPathPUA;
+        protected global::System.Web.UI.WebControls.FileUpload FuPathPUA;
+        
+        /// <summary>
+        /// Control lbStatusPathPUA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbStatusPathPUA;
+        
+        /// <summary>
+        /// Control RfvPathPUA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvPathPUA;
         
         /// <summary>
         /// Control lbPathPUAnoOficial.
@@ -391,13 +400,31 @@ namespace GePE.Materias {
         protected global::System.Web.UI.WebControls.Label lbPathPUAnoOficial;
         
         /// <summary>
-        /// Control TbPathPUAnoOficial.
+        /// Control FuPathPUAnoOficial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbPathPUAnoOficial;
+        protected global::System.Web.UI.WebControls.FileUpload FuPathPUAnoOficial;
+        
+        /// <summary>
+        /// Control lbStatusPathPUAnoOficial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbStatusPathPUAnoOficial;
+        
+        /// <summary>
+        /// Control RfvPathPUAnoOficial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvPathPUAnoOficial;
         
         /// <summary>
         /// Control BtnGrabar.
