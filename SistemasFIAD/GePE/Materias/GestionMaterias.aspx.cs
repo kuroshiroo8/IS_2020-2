@@ -311,6 +311,7 @@ namespace GePE.Materias
         #region Objeto Cliente
         protected E_Materias ControlesWebForm_ObjetoEntidad()
         {
+            //agrega los datos a la base de datos
             E_Materias Materia = new E_Materias()
             {
                 ClaveMateria = TbClaveMateria.Text,
@@ -333,7 +334,7 @@ namespace GePE.Materias
         }
         protected void ObjetoEntidad_ControlesWebForm(int IdMateria)
         {
-            //agrega los datos a la base de datos
+            
             E_Materias Materia = NM.BuscaMateriasPorId(IdMateria);
 
             TbClaveMateria.Text = Materia.ClaveMateria.Trim();
@@ -345,8 +346,8 @@ namespace GePE.Materias
             TbHPP.Text = Convert.ToString(Materia.HPP);
             TbCR.Text = Convert.ToString(Materia.CR);
             //cbEstadoMateria.Checked = Materia.EstadoMateria;
-
-            //FuPathPUA.SaveAs(Materia.PathPUA.Trim());
+            
+            //FuPathPUA.FileName = Materia.PathPUA.Trim();
             //FuPathPUAnoOficial.SaveAs(Materia.PathPUAnoOficial.Trim());
         }
         #endregion
@@ -485,7 +486,7 @@ namespace GePE.Materias
             }
 
             RespuestaFuPathPUAnoOficial = AgregarPathPUAnoOficial();
-            if (RespuestaFuPathPUA == 0)
+            if (RespuestaFuPathPUAnoOficial == 0)
             {
                 SumaRespuestaFuPathPUAnoOficial = 0;
             }
