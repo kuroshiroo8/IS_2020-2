@@ -44,15 +44,21 @@
                                     <br />
                                     <asp:TextBox ID="TbClaveMateria" runat="server"> </asp:TextBox>
                                     <br />
-                                    <asp:RequiredFieldValidator ID="rfvTbClaveMateriav" runat="server" CssClass="text-danger"
+                                    <asp:RequiredFieldValidator ID="rfvTbClaveMateria" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbClaveMateria"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="rfvTbClaveMaterianum" runat="server" CssClass="text-danger"
+                                    <asp:RegularExpressionValidator ID="revTbClaveMateria" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbClaveMateria"
                                         ErrorMessage="Sólo números positivos."
                                         ValidationExpression="^\d+$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
+                                    <asp:CompareValidator ID="cvTbClaveMateria" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbClaveMateria"
+                                        ErrorMessage="Sólo números positivos."
+                                        Type="Integer"
+                                        Operator="DataTypeCheck"
+                                        Display="Dynamic"></asp:CompareValidator>
                                     <br />
                                 </div>
                             </div>
@@ -80,15 +86,22 @@
                                     <br />
                                     <asp:TextBox ID="TbHC" runat="server"></asp:TextBox>
                                     <br />
-                                    <asp:RequiredFieldValidator ID="rfvHorasClase" runat="server" CssClass="text-danger"
+                                    <asp:RequiredFieldValidator ID="rfvTbHC" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbHC"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="rfvHorasClaseNum" runat="server" CssClass="text-danger"
+                                    <asp:RegularExpressionValidator ID="revTbHC" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbHC"
                                         ErrorMessage="Sólo números positivos."
                                         ValidationExpression="^\d+$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
+                                    <asp:CompareValidator ID="cvTbHC" runat="server"
+                                        ControlToValidate="TbHC"
+                                        ErrorMessage="Sólo números positivos."
+                                        CssClass="text-danger"
+                                        Type="Integer"
+                                        Operator="DataTypeCheck"
+                                        Display="Dynamic"></asp:CompareValidator>
                                     <br />
                                 </div>
                             </div>
@@ -98,15 +111,22 @@
                                     <br />
                                     <asp:TextBox ID="TbHL" runat="server"></asp:TextBox>
                                     <br />
-                                    <asp:RequiredFieldValidator ID="rfvHorsLab" runat="server" CssClass="text-danger"
+                                    <asp:RequiredFieldValidator ID="rfvTbHL" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbHL"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="rfvHorasLabNum" runat="server" CssClass="text-danger"
+                                    <asp:RegularExpressionValidator ID="revTbHL" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbHL"
                                         ErrorMessage="Sólo números positivos."
                                         ValidationExpression="^\d+$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
+                                    <asp:CompareValidator ID="cvTbHL" runat="server"
+                                        ControlToValidate="TbHL"
+                                        ErrorMessage="Sólo números positivos."
+                                        CssClass="text-danger"
+                                        Type="Integer"
+                                        Operator="DataTypeCheck"
+                                        Display="Dynamic"></asp:CompareValidator>
                                     <br />
                                 </div>
                             </div>
@@ -116,15 +136,22 @@
                                     <br />
                                     <asp:TextBox ID="TbHT" runat="server"></asp:TextBox>
                                     <br />
-                                    <asp:RequiredFieldValidator ID="rfvHorasTaller" runat="server" CssClass="text-danger"
+                                    <asp:RequiredFieldValidator ID="rfvTbHT" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbHT"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="rfvHorasTallerNum" runat="server" CssClass="text-danger"
+                                    <asp:RegularExpressionValidator ID="revTbHT" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbHT"
                                         ErrorMessage="Sólo números positivos."
                                         ValidationExpression="^\d+$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
+                                    <asp:CompareValidator ID="cvTbHT" runat="server"
+                                        ControlToValidate="TbHT"
+                                        ErrorMessage="Sólo números positivos."
+                                        CssClass="text-danger"
+                                        Type="Integer"
+                                        Operator="DataTypeCheck"
+                                        Display="Dynamic"></asp:CompareValidator>
                                     <br />
                                 </div>
                             </div>
@@ -134,15 +161,22 @@
                                     <br />
                                     <asp:TextBox ID="TbHE" runat="server"></asp:TextBox>
                                     <br />
-                                    <asp:RequiredFieldValidator ID="rfvHorasExtraClase" runat="server" CssClass="text-danger"
+                                    <asp:RequiredFieldValidator ID="rfvTbHE" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbHE"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="rfvHorasExtraClaseNum" runat="server" CssClass="text-danger"
+                                    <asp:RegularExpressionValidator ID="revTbHE" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbHE"
                                         ErrorMessage="Sólo números positivos."
                                         ValidationExpression="^\d+$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
+                                    <asp:CompareValidator ID="cvTbHE" runat="server"
+                                        ControlToValidate="TbHE"
+                                        ErrorMessage="Sólo números positivos."
+                                        CssClass="text-danger"
+                                        Type="Integer"
+                                        Operator="DataTypeCheck"
+                                        Display="Dynamic"></asp:CompareValidator>
                                     <br />
                                 </div>
                             </div>
@@ -152,15 +186,22 @@
                                     <br />
                                     <asp:TextBox ID="TbHPP" runat="server"></asp:TextBox>
                                     <br />
-                                    <asp:RequiredFieldValidator ID="rfvHorasPracticasPrf" runat="server" CssClass="text-danger"
+                                    <asp:RequiredFieldValidator ID="rfvTbHPP" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbHPP"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="rfvHorasPracticasPrfNum" runat="server" CssClass="text-danger"
+                                    <asp:RegularExpressionValidator ID="revTbHPP" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbHPP"
                                         ErrorMessage="Sólo números positivos."
                                         ValidationExpression="^\d+$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
+                                    <asp:CompareValidator ID="cvTbHPP" runat="server"
+                                        ControlToValidate="TbHPP"
+                                        ErrorMessage="Sólo números positivos."
+                                        CssClass="text-danger"
+                                        Type="Integer"
+                                        Operator="DataTypeCheck"
+                                        Display="Dynamic"></asp:CompareValidator>
                                     <br />
                                 </div>
                             </div>
@@ -171,18 +212,7 @@
                                     <asp:TextBox ID="TbCR" runat="server"></asp:TextBox>
                                     <br />
                                     <asp:Label runat="server" ID="lbStatusCR" Text="Estado de la carga: " />
-                                    <%--<asp:LinkButton ID="BtnActualizarCR" runat="server" CssClass="btn btn-md btn btn-success  pr-3"
-                                        CausesValidation="false" OnClick="BtnActualizarCR_Click"><i class="fas fa-sync-alt"></i> Actualizar Creditos</asp:LinkButton>--%>
                                     <br />
-                                    <%--<asp:RequiredFieldValidator ID="rfvCreditos" runat="server" CssClass="text-danger"
-                                        ControlToValidate="TbCR"
-                                        ErrorMessage="*Este campo es requerido."
-                                        Display="Dynamic"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="rfvCreditosNum" runat="server" CssClass="text-danger"
-                                        ControlToValidate="TbCR"
-                                        ErrorMessage="Sólo números positivos."
-                                        ValidationExpression="^\d+$"
-                                        Display="Dynamic"></asp:RegularExpressionValidator>--%>
                                 </div>
                             </div>
                             <%--<div class="col-lg-9 col-md-12 col-12">
@@ -196,9 +226,6 @@
                                     <asp:Label ID="lbPathPUA" class="text-dark font-weight-bold m-0" runat="server">Pua oficial</asp:Label>
                                     <br />
                                     <asp:FileUpload ID="FuPathPUA" runat="server" />
-                                    <br />
-                                    <%--<asp:LinkButton ID="BtnPathPUA" runat="server" CssClass="btn btn-md btn btn-success  pr-3"
-                                        CausesValidation="false" OnClick="BtnPathPUA_Click"><i class="fas fa-upload"></i> Agregar PUA</asp:LinkButton>--%>
                                     <br />
                                     <asp:Label runat="server" ID="lbStatusPathPUA" Text="Estado de la carga: " />
                                     <br />
@@ -214,9 +241,6 @@
                                     <asp:Label ID="lbPathPUAnoOficial" class="text-dark font-weight-bold m-0" runat="server">PUA no oficial</asp:Label>
                                     <br />
                                     <asp:FileUpload ID="FuPathPUAnoOficial" runat="server" />
-                                    <br />
-                                    <%--<asp:LinkButton ID="BtnPathPUAnoOficial" runat="server" CssClass="btn btn-md btn btn-success  pr-3"
-                                        CausesValidation="false" OnClick="BtnPathPUAnoOficial_Click"><i class="fas fa-upload"></i> Agregar PUA no oficial</asp:LinkButton>--%>
                                     <br />
                                     <asp:Label runat="server" ID="lbStatusPathPUAnoOficial" Text="Estado de la carga: " />
                                     <br />
@@ -260,9 +284,7 @@
                         <asp:BoundField DataField="HPP" HeaderText="HPP" />
                         <asp:BoundField DataField="CR" HeaderText="CR" />
                         <%--<asp:BoundField DataField="EstadoMateria" HeaderText="ESTADO" />--%>
-                        <%--<asp:BoundField DataField="PathPUA" HeaderText="PUA OFICIAL" />--%>
                         <asp:HyperLinkField DataNavigateUrlFields="PathPUA" HeaderText="PathPUA" DataNavigateUrlFormatString="" DataTextField="PathPUA" />
-                        <%--<asp:BoundField DataField="PathPUAnoOficial" HeaderText="PUA NO OFICIAL" />--%>
                         <asp:HyperLinkField DataNavigateUrlFields="PathPUAnoOficial" HeaderText="PathPUAnoOficial" DataNavigateUrlFormatString="" DataTextField="PathPUAnoOficial" />
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
                             <ItemTemplate>

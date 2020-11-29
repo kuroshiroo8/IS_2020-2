@@ -434,98 +434,121 @@ namespace GePE.Materias
             int SumaRespuestaCR = 0;
             int SumaRespuestaFuPathPUA = 0;
             int SumaRespuestaFuPathPUAnoOficial = 0;
-
-            string R = NM.InsertaMaterias(ControlesWebForm_ObjetoEntidad());
-            lblTituloAccion.Text = R;
-
-            do
+            
+            RespuestaCR = ActualizarCR();
+            if (RespuestaCR == 0)
             {
-                RespuestaCR = ActualizarCR();
-                if (RespuestaCR == 0)
-                {
-                    SumaRespuestaCR = 0;
-                    lblTituloAccion.Text = R;
-                }
-                else if (RespuestaCR == 1)
-                {
-                    lbStatusCR.Text = "Por favor llena los campos de horas";
-                    SumaRespuestaCR = 1;
-                    lblTituloAccion.Text = "Error";
-                }
-
-                RespuestaFuPathPUA = AgregarPathPUA();
-                if (RespuestaFuPathPUA == 0)
-                {
-                    SumaRespuestaFuPathPUA = 0;
-                    lblTituloAccion.Text = R;
-                }
-                else if (RespuestaFuPathPUA == 1)
-                {
-                    lbStatusPathPUA.Text = "Tu archivo no fue subido porque excede el límite de tamaño de 4 MB.";
-                    SumaRespuestaFuPathPUA = 1;
-                    lblTituloAccion.Text = "Error";
-                    FuPathPUA.Dispose();
-                }
-                else if (RespuestaFuPathPUA == 2)
-                {
-                    lbStatusPathPUA.Text = "Tu archivo no fue subido porque no tiene una extensión .pdf";
-                    SumaRespuestaFuPathPUA = 1;
-                    lblTituloAccion.Text = "Error";
-                    FuPathPUA.Dispose();
-                }
-                else if (RespuestaFuPathPUA == 3)
-                {
-                    lbStatusPathPUA.Text = "No especificaste un archivo para subir.";
-                    SumaRespuestaFuPathPUA = 1;
-                    lblTituloAccion.Text = "Error";
-                    FuPathPUA.Dispose();
-                }
-
-                RespuestaFuPathPUAnoOficial = AgregarPathPUAnoOficial();
-                if (RespuestaFuPathPUA == 0)
-                {
-                    SumaRespuestaFuPathPUAnoOficial = 0;
-                    lblTituloAccion.Text = R;
-                }
-                else if (RespuestaFuPathPUAnoOficial == 1)
-                {
-                    lbStatusPathPUAnoOficial.Text = "Tu archivo no fue subido porque excede el límite de tamaño de 4 MB.";
-                    SumaRespuestaFuPathPUAnoOficial = 1;
-                    lblTituloAccion.Text = "Error";
-                    FuPathPUAnoOficial.Dispose();
-                }
-                else if (RespuestaFuPathPUAnoOficial == 2)
-                {
-                    lbStatusPathPUAnoOficial.Text = "Tu archivo no fue subido porque no tiene una extensión .pdf";
-                    SumaRespuestaFuPathPUAnoOficial = 1;
-                    lblTituloAccion.Text = "Error";
-                    FuPathPUAnoOficial.Dispose();
-                }
-                else if (RespuestaFuPathPUAnoOficial == 3)
-                {
-                    lbStatusPathPUAnoOficial.Text = "No especificaste un archivo para subir.";
-                    SumaRespuestaFuPathPUAnoOficial = 1;
-                    lblTituloAccion.Text = "Error";
-                    FuPathPUAnoOficial.Dispose();
-                }
-
-            } while ((SumaRespuestaCR + SumaRespuestaFuPathPUA + SumaRespuestaFuPathPUAnoOficial) == 0);
-
-            R = NM.InsertaMaterias(ControlesWebForm_ObjetoEntidad());
-            lblTituloAccion.Text = R;
-
-            //Aqui se hacen no visible los Label, TextBox y el CheckBox
-            VisibleOnOFF(false);
-
-            BtnGrabar.Visible = false;
-            BtnCancelar.Visible = false;
-            BtnAceptar.Visible = true;
-
-            if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
+                SumaRespuestaCR = 0;
+            }
+            else if (RespuestaCR == 1)
             {
-                InicializaControles();
+                lbStatusCR.Text = "Por favor llena los campos de horas.";
+                SumaRespuestaCR = 1;
+                lblTituloAccion.Text = "Error: Por favor llena los campos de horas.";
+                return;
             }
 
+            RespuestaFuPathPUA = AgregarPathPUA();
+            if (RespuestaFuPathPUA == 0)
+            {
+                SumaRespuestaFuPathPUA = 0;
+            }
+            else if (RespuestaFuPathPUA == 1)
+            {
+                lbStatusPathPUA.Text = "Tu archivo no fue subido porque excede el límite de tamaño de 4 MB.";
+                SumaRespuestaFuPathPUA = 1;
+                lblTituloAccion.Text = "Error: Tu archivo no fue subido porque excede el límite de tamaño de 4 MB.";
+                FuPathPUA.Dispose();
+                FuPathPUA.PostedFile.InputStream.Dispose();
+                FuPathPUA.Attributes.Clear();
+                return;
+            }
+            else if (RespuestaFuPathPUA == 2)
+            {
+                lbStatusPathPUA.Text = "Tu archivo no fue subido porque no tiene una extensión .pdf";
+                SumaRespuestaFuPathPUA = 1;
+                lblTituloAccion.Text = "Error: Tu archivo no fue subido porque no tiene una extensión .pdf";
+                FuPathPUA.Dispose();
+                FuPathPUA.PostedFile.InputStream.Dispose();
+                FuPathPUA.Attributes.Clear();
+                return;
+            }
+            else if (RespuestaFuPathPUA == 3)
+            {
+                lbStatusPathPUA.Text = "No especificaste un archivo para subir.";
+                SumaRespuestaFuPathPUA = 1;
+                lblTituloAccion.Text = "Error: No especificaste un archivo para subir.";
+                FuPathPUA.Dispose();
+                FuPathPUA.PostedFile.InputStream.Dispose();
+                FuPathPUA.Attributes.Clear();
+                return;
+            }
+
+            RespuestaFuPathPUAnoOficial = AgregarPathPUAnoOficial();
+            if (RespuestaFuPathPUA == 0)
+            {
+                SumaRespuestaFuPathPUAnoOficial = 0;
+            }
+            else if (RespuestaFuPathPUAnoOficial == 1)
+            {
+                lbStatusPathPUAnoOficial.Text = "Tu archivo no fue subido porque excede el límite de tamaño de 4 MB.";
+                SumaRespuestaFuPathPUAnoOficial = 1;
+                lblTituloAccion.Text = "Error: Tu archivo no fue subido porque excede el límite de tamaño de 4 MB.";
+                FuPathPUAnoOficial.Dispose();
+                FuPathPUAnoOficial.PostedFile.InputStream.Dispose();
+                FuPathPUAnoOficial.Attributes.Clear();
+                return;
+            }
+            else if (RespuestaFuPathPUAnoOficial == 2)
+            {
+                lbStatusPathPUAnoOficial.Text = "Tu archivo no fue subido porque no tiene una extensión .pdf";
+                SumaRespuestaFuPathPUAnoOficial = 1;
+                lblTituloAccion.Text = "Error: Tu archivo no fue subido porque no tiene una extensión .pdf";
+                FuPathPUAnoOficial.Dispose();
+                FuPathPUAnoOficial.PostedFile.InputStream.Dispose();
+                FuPathPUAnoOficial.Attributes.Clear();
+                return;
+            }
+            else if (RespuestaFuPathPUAnoOficial == 3)
+            {
+                lbStatusPathPUAnoOficial.Text = "No especificaste un archivo para subir.";
+                SumaRespuestaFuPathPUAnoOficial = 1;
+                lblTituloAccion.Text = "Error: No especificaste un archivo para subir.";
+                FuPathPUAnoOficial.Dispose();
+                FuPathPUAnoOficial.PostedFile.InputStream.Dispose();
+                FuPathPUAnoOficial.Attributes.Clear();
+                return;
+            }
+
+            if (SumaRespuestaCR == 0 && SumaRespuestaFuPathPUA == 0 && SumaRespuestaFuPathPUAnoOficial == 0)
+            {
+                string R = NM.InsertaMaterias(ControlesWebForm_ObjetoEntidad());
+                lblTituloAccion.Text = R;
+
+                //Aqui se hacen no visible los Label, TextBox y el CheckBox
+                VisibleOnOFF(false);
+
+                BtnGrabar.Visible = false;
+                BtnCancelar.Visible = false;
+                BtnAceptar.Visible = true;
+
+                if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
+                {
+                    lblTituloAccion.Text = R;
+                    InicializaControles();
+                }
+            }
+            else
+            {
+                lblTituloAccion.Text = "Error";
+                FuPathPUA.Dispose();
+                FuPathPUA.PostedFile.InputStream.Dispose();
+                FuPathPUA.Attributes.Clear();
+                FuPathPUAnoOficial.Dispose();
+                FuPathPUAnoOficial.PostedFile.InputStream.Dispose();
+                FuPathPUAnoOficial.Attributes.Clear();
+                return;
+            }
         }
         protected void BtnBorrar_Click(object sender, EventArgs e)
         {
@@ -553,11 +576,6 @@ namespace GePE.Materias
             int SumaRespuestaFuPathPUA = 0;
             int SumaRespuestaFuPathPUAnoOficial = 0;
 
-            E_Materias Cliente = ControlesWebForm_ObjetoEntidad();
-            Cliente.IdMateria = Convert.ToInt32(hfIdMateria.Value);
-            string R = NM.ModificaMaterias(Cliente);
-            lblTituloAccion.Text = R;
-
             RespuestaCR = ActualizarCR();
             if (RespuestaCR == 0)
             {
@@ -565,8 +583,10 @@ namespace GePE.Materias
             }
             else if (RespuestaCR == 1)
             {
-                lbStatusCR.Text = "Por favor llena los campos de horas";
+                lbStatusCR.Text = "Por favor llena los campos de horas.";
                 SumaRespuestaCR = 1;
+                lblTituloAccion.Text = "Error: Por favor llena los campos de horas.";
+                return;
             }
 
             RespuestaFuPathPUA = AgregarPathPUA();
@@ -578,16 +598,31 @@ namespace GePE.Materias
             {
                 lbStatusPathPUA.Text = "Tu archivo no fue subido porque excede el límite de tamaño de 4 MB.";
                 SumaRespuestaFuPathPUA = 1;
+                lblTituloAccion.Text = "Error: Tu archivo no fue subido porque excede el límite de tamaño de 4 MB.";
+                FuPathPUA.Dispose();
+                FuPathPUA.PostedFile.InputStream.Dispose();
+                FuPathPUA.Attributes.Clear();
+                return;
             }
             else if (RespuestaFuPathPUA == 2)
             {
                 lbStatusPathPUA.Text = "Tu archivo no fue subido porque no tiene una extensión .pdf";
                 SumaRespuestaFuPathPUA = 1;
+                lblTituloAccion.Text = "Error: Tu archivo no fue subido porque no tiene una extensión .pdf";
+                FuPathPUA.Dispose();
+                FuPathPUA.PostedFile.InputStream.Dispose();
+                FuPathPUA.Attributes.Clear();
+                return;
             }
             else if (RespuestaFuPathPUA == 3)
             {
                 lbStatusPathPUA.Text = "No especificaste un archivo para subir.";
                 SumaRespuestaFuPathPUA = 1;
+                lblTituloAccion.Text = "Error: No especificaste un archivo para subir.";
+                FuPathPUA.Dispose();
+                FuPathPUA.PostedFile.InputStream.Dispose();
+                FuPathPUA.Attributes.Clear();
+                return;
             }
 
             RespuestaFuPathPUAnoOficial = AgregarPathPUAnoOficial();
@@ -599,20 +634,41 @@ namespace GePE.Materias
             {
                 lbStatusPathPUAnoOficial.Text = "Tu archivo no fue subido porque excede el límite de tamaño de 4 MB.";
                 SumaRespuestaFuPathPUAnoOficial = 1;
+                lblTituloAccion.Text = "Error: Tu archivo no fue subido porque excede el límite de tamaño de 4 MB.";
+                FuPathPUAnoOficial.Dispose();
+                FuPathPUAnoOficial.PostedFile.InputStream.Dispose();
+                FuPathPUAnoOficial.Attributes.Clear();
+                return;
             }
             else if (RespuestaFuPathPUAnoOficial == 2)
             {
                 lbStatusPathPUAnoOficial.Text = "Tu archivo no fue subido porque no tiene una extensión .pdf";
                 SumaRespuestaFuPathPUAnoOficial = 1;
+                lblTituloAccion.Text = "Error: Tu archivo no fue subido porque no tiene una extensión .pdf";
+                FuPathPUAnoOficial.Dispose();
+                FuPathPUAnoOficial.PostedFile.InputStream.Dispose();
+                FuPathPUAnoOficial.Attributes.Clear();
+                return;
             }
             else if (RespuestaFuPathPUAnoOficial == 3)
             {
                 lbStatusPathPUAnoOficial.Text = "No especificaste un archivo para subir.";
                 SumaRespuestaFuPathPUAnoOficial = 1;
+                lblTituloAccion.Text = "Error: No especificaste un archivo para subir.";
+                FuPathPUAnoOficial.Dispose();
+                FuPathPUAnoOficial.PostedFile.InputStream.Dispose();
+                FuPathPUAnoOficial.Attributes.Clear();
+                return;
             }
 
-            if ((SumaRespuestaCR + SumaRespuestaFuPathPUA + SumaRespuestaFuPathPUAnoOficial) == 0)
+            if (SumaRespuestaCR == 0 && SumaRespuestaFuPathPUA == 0 && SumaRespuestaFuPathPUAnoOficial == 0)
             {
+                E_Materias Cliente = ControlesWebForm_ObjetoEntidad();
+                Cliente.IdMateria = Convert.ToInt32(hfIdMateria.Value);
+
+                string R = NM.ModificaMaterias(Cliente);
+                lblTituloAccion.Text = R;
+
                 //Aqui se hacen no visible los Label, TextBox y el CheckBox
                 VisibleOnOFF(false);
 
@@ -622,8 +678,20 @@ namespace GePE.Materias
 
                 if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
                 {
+                    lblTituloAccion.Text = R;
                     InicializaControles();
                 }
+            }
+            else
+            {
+                lblTituloAccion.Text = "Error";
+                FuPathPUA.Dispose();
+                FuPathPUA.PostedFile.InputStream.Dispose();
+                FuPathPUA.Attributes.Clear();
+                FuPathPUAnoOficial.Dispose();
+                FuPathPUAnoOficial.PostedFile.InputStream.Dispose();
+                FuPathPUAnoOficial.Attributes.Clear();
+                return;
             }
         }
         protected void BtnMnuEditar_Click(object sender, EventArgs e)
