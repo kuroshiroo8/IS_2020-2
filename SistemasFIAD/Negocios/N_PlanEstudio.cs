@@ -75,7 +75,7 @@ namespace Negocios
         // Listado generales de la clase PlanEstudio en formato DataTable y List<E_PlanEstudio>.
         public DataTable DT_LstPlanEstudio()
         {
-            return NPE.DT_ListadoGeneral("PlanEstudio", "[PonerCampoDeOrdenacion]");
+            return NPE.DT_ListadoGeneral("PlanEstudio", "ClavePlanEstudio");
         }
 
         public List<E_PlanEstudio> LstPlanEstudio()
@@ -89,5 +89,12 @@ namespace Negocios
             return (from PlanEstudio in LstPlanEstudio() where PlanEstudio.IdPlanEstudio == pIdPlanEstudio select PlanEstudio).FirstOrDefault();
         }
 
+        public List<E_PlanEstudio> BuscaPlanEstudio(string CriterioBusqueda)
+        {
+            return (from PlanEstudio in LstPlanEstudio()
+                    where
+                    PlanEstudio.PlanEstudio.ToUpper().Contains(CriterioBusqueda.ToUpper())
+                    select PlanEstudio).ToList();
+        }
     }
 }

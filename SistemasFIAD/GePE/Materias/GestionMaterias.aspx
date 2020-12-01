@@ -284,8 +284,15 @@
                         <asp:BoundField DataField="HPP" HeaderText="HPP" />
                         <asp:BoundField DataField="CR" HeaderText="CR" />
                         <%--<asp:BoundField DataField="EstadoMateria" HeaderText="ESTADO" />--%>
-                        <asp:HyperLinkField DataNavigateUrlFields="PathPUA" HeaderText="PathPUA" DataNavigateUrlFormatString="" DataTextField="PathPUA" />
-                        <asp:HyperLinkField DataNavigateUrlFields="PathPUAnoOficial" HeaderText="PathPUAnoOficial" DataNavigateUrlFormatString="" DataTextField="PathPUAnoOficial" />
+                        <asp:HyperLinkField DataNavigateUrlFields="PathPUA" HeaderText="PathPUA" DataNavigateUrlFormatString="" DataTextField="PathPUA" target="_BLANK"/>
+                        <asp:HyperLinkField DataNavigateUrlFields="PathPUAnoOficial" HeaderText="PathPUAnoOficial" DataNavigateUrlFormatString="" DataTextField="PathPUAnoOficial" target="_BLANK"></asp:HyperLinkField >
+                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="GrvBtnPua" runat="server" CssClass="btn btn-md btn-danger "
+                                DataNavigateUrlFields="PathPUAnoOficial" HeaderText="PathPUAnoOficial" DataNavigateUrlFormatString="" DataTextField="PathPUAnoOficial" target="_BLANK" >  <i class="fas fa-file-pdf"></i> Pua</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
                             <ItemTemplate>
                                 <asp:LinkButton ID="GrvBtnEditar" runat="server" CssClass="btn btn-md btn-primary "
