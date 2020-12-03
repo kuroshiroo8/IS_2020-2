@@ -210,7 +210,7 @@ namespace GePE.Materias
         protected int AgregarPathPUA()
         {
             //Especifique la ruta en el servidor para guardar el archivo subido.
-            string savePath = @"~/FilesSection/";
+            string savePath = @"../FilesSection/";
             //Antes de intentar guardar el archivo, compruebe que el control FileUpload contiene un archivo.
             if (FuPathPUA.HasFile)
             {
@@ -230,7 +230,7 @@ namespace GePE.Materias
                         savePath += fileName;
                         //Llama al método SaveAs para guardar el archivo cargado en la ruta especificada.
                         //Si ya existe un archivo con el mismo nombre en la ruta especificada, el archivo cargado lo sobrescribe.
-                        FuPathPUA.SaveAs(Server.MapPath("~/FilesSection/" + FuPathPUA.FileName));
+                        FuPathPUA.SaveAs(Server.MapPath("../FilesSection/" + FuPathPUA.FileName));
                         // Notificar al usuario que el archivo fue subido con éxito.
                         lbStatusPathPUA.Text = "Tu archivo fue subido con éxito.";
                         return 0;
@@ -259,7 +259,7 @@ namespace GePE.Materias
         protected int AgregarPathPUAnoOficial()
         {
             //Especifique la ruta en el servidor para guardar el archivo subido.
-            string savePath = @"~/FilesSection/";
+            string savePath = @"../FilesSection/";
             //Antes de intentar guardar el archivo, compruebe que el control FileUpload contiene un archivo.
             if (FuPathPUAnoOficial.HasFile)
             {
@@ -280,7 +280,7 @@ namespace GePE.Materias
                         //Llama al método SaveAs para guardar el archivo cargado en la ruta especificada.
                         //Si ya existe un archivo con el mismo nombre en la ruta especificada, el archivo cargado lo sobrescribe.
                         //FuPathPUAnoOficial.SaveAs(savePath);
-                        FuPathPUAnoOficial.SaveAs(Server.MapPath("~/FilesSection/" + FuPathPUAnoOficial.FileName));
+                        FuPathPUAnoOficial.SaveAs(Server.MapPath("../FilesSection/" + FuPathPUAnoOficial.FileName));
                         // Notificar al usuario que el archivo fue subido con éxito.
                         lbStatusPathPUAnoOficial.Text = "Tu archivo fue subido con éxito.";
                         return 0;
@@ -327,8 +327,8 @@ namespace GePE.Materias
                     (Convert.ToInt32(TbHE.Text) * 0) +
                     (Convert.ToInt32(TbHPP.Text) * 1),
                 //EstadoMateria = cbEstadoMateria.Checked,
-                PathPUA = "~/FilesSection/" + FuPathPUA.FileName,
-                PathPUAnoOficial = "~/FilesSection/" + FuPathPUAnoOficial.FileName
+                PathPUA = "../FilesSection/" + FuPathPUA.FileName,
+                PathPUAnoOficial = "../FilesSection/" + FuPathPUAnoOficial.FileName
             };
             return Materia;
         }

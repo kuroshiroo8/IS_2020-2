@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="wfucTbAlfabeticoRequerido.ascx.cs" Inherits="Presentacion.Controles._Ganancia" %>
 
-<link href="~/CSS/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="../CSS/bootstrap.css" rel="stylesheet" type="text/css" />
 
 <asp:TextBox ID="TbAlfabeticoRequerido" runat="server" CssClass="form-control"></asp:TextBox>
 
