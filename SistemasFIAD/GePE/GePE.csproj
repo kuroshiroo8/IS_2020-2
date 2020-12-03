@@ -76,14 +76,24 @@
     <Content Include="Controles\wfucAlfanumericoRequerido.ascx" />
     <Content Include="Controles\wfucTbAlfabeticoRequerido.ascx" />
     <Content Include="CSS\bootstrap.css" />
+    <Content Include="CSS\brands.css" />
+    <Content Include="CSS\regular.css" />
     <Content Include="CSS\SistemasFIAD.css" />
     <Content Include="CSS\sb-admin-2.css" />
     <Content Include="CSS\GePE.css" />
+    <Content Include="CSS\solid.css" />
     <Content Include="DLL\DatosSQL.dll" />
     <Content Include="Inicio.aspx" />
     <Content Include="js\bootstrap.js" />
+    <Content Include="js\brands.js" />
+    <Content Include="js\chart-area-demo.js" />
+    <Content Include="js\chart-pie-demo.js" />
+    <Content Include="js\Chart.js" />
     <Content Include="js\fontawesome.js" />
+    <Content Include="js\jquery.easing.js" />
+    <Content Include="js\regular.js" />
     <Content Include="js\sb-admin-2.js" />
+    <Content Include="js\solid.js" />
     <Content Include="Materias\GestionMaterias.aspx" />
     <Content Include="PlanesDeEstudios\GestionPlanesDeEstudio.aspx" />
     <Content Include="prueba.aspx" />
@@ -168,6 +178,7 @@
     <None Include="packages.config" />
     <Content Include="PaginasMaestras\MP_BaseDelSistema.Master" />
     <Content Include="PaginasMaestras\MP_SistemasFIADLogueados.master" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

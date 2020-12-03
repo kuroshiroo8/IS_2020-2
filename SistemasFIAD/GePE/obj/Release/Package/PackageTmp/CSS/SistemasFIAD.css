@@ -1,0 +1,59 @@
+﻿
+.body-height {
+  min-height: 900px;
+}
+
+.EndFooter {
+  left: 0px;
+  bottom: 0px;
+  width: 100%;  
+}
+
+.Icono{
+  width:30px;
+  height:30px
+}
+
+.Fondo {
+  width:100%;
+  height: 600px;
+  background-image: url("../Imagenes/DeptoVentas.jpg");
+  background-repeat: no-repeat;
+  background-position-x:center;
+  background-position-y:top;
+}
+
+.FondoFIAD {
+  background-image: url("../Imagenes/FIAD.gif");
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+}
+
+.Top5{
+  top:45px;
+}
+
+.Totales{
+  color:blueviolet;
+  text-align:right;
+  font-size:20px;
+  font-weight:bold;
+  margin-top:0;
+}
+.MinRen{
+  min-height: 600px;
+  background-color:blueviolet;
+}
+.bg-LigthGary{
+  background-color: #526d8e;
+  color:#ffffff;
+}
+
+.bg-verde-obscuro{
+  background-color: #0f4a2b;  
+}
+
+.bg-Blanco {
+    background-color: #EDEDED;
+}

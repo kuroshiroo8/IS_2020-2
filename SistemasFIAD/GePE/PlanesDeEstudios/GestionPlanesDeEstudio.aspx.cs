@@ -201,7 +201,7 @@ namespace GePE.PlanesDeEstudios
 
             DataTable subjects = new DataTable();
 
-            using (SqlConnection con = new SqlConnection("Data Source = localhost; Initial Catalog = Propuesta; Integrated Security = True"))
+            using (SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=Propuesta;Integrated Security=True"))
             {
 
                 try
