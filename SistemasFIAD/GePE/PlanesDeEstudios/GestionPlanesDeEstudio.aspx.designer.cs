@@ -76,6 +76,114 @@ namespace GePE.PlanesDeEstudios {
         protected global::System.Web.UI.WebControls.Label lblTituloAccion;
         
         /// <summary>
+        /// Control lbClavePlanEstudio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbClavePlanEstudio;
+        
+        /// <summary>
+        /// Control TbClavePlanEstudio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Presentacion.Controles.efucNumeroEnteroPositivoReq TbClavePlanEstudio;
+        
+        /// <summary>
+        /// Control lbNombrePlanEstudio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbNombrePlanEstudio;
+        
+        /// <summary>
+        /// Control TbNombrePlanEstudio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::GePE.Controles.wfucAlfabeticoRequerido TbNombrePlanEstudio;
+        
+        /// <summary>
+        /// Control lbProgramaPlanEstudio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbProgramaPlanEstudio;
+        
+        /// <summary>
+        /// Control ddlProgramaPlanEstudio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlProgramaPlanEstudio;
+        
+        /// <summary>
+        /// Control lbEstatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbEstatus;
+        
+        /// <summary>
+        /// Control ddlEstatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEstatus;
+        
+        /// <summary>
+        /// Control lbCheckPlan.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbCheckPlan;
+        
+        /// <summary>
+        /// Control cbActivaPlan.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbActivaPlan;
+        
+        /// <summary>
+        /// Control lbFecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbFecha;
+        
+        /// <summary>
+        /// Control tbFechaPlanEstudio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Presentacion.Controles.efucNumeroEnteroPositivoReq tbFechaPlanEstudio;
+        
+        /// <summary>
         /// Control BtnGrabar.
         /// </summary>
         /// <remarks>

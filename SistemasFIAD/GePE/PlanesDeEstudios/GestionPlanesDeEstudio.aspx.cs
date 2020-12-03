@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -29,6 +31,14 @@ namespace GePE.PlanesDeEstudios
         }
         protected void ControlesOFF()
         {
+            //Visible Label
+            lbClavePlanEstudio.Visible = false;
+            lbNombrePlanEstudio.Visible = false;
+            lbProgramaPlanEstudio.Visible = false;
+            lbEstatus.Visible = false;
+            lbCheckPlan.Visible = false;
+            lbFecha.Visible = false;
+
             //Visible LinkButton
             BtnGrabar.Visible = false;
             BtnBorrar.Visible = false;
@@ -48,18 +58,60 @@ namespace GePE.PlanesDeEstudios
             //Clear Label
             lblNombreAccion.Text = string.Empty;
             lblTituloAccion.Text = string.Empty;
+            
 
             //Clear TextBox
             TbCriterioBusqueda.Text = string.Empty;
+            TbClavePlanEstudio.Text = string.Empty;
+            TbNombrePlanEstudio.Text = string.Empty;
+            tbFechaPlanEstudio.Text = string.Empty;
 
+            //Clear CheckBox
+            cbActivaPlan.Checked = false;
         }
         protected void ControlesOnOFF(bool TrueOrFalse)
         {
-            
+            //Enabled Label
+            lbClavePlanEstudio.Enabled = TrueOrFalse;
+            lbNombrePlanEstudio.Enabled = TrueOrFalse;
+            lbProgramaPlanEstudio.Enabled = TrueOrFalse;
+            lbEstatus.Enabled = TrueOrFalse;
+            lbCheckPlan.Enabled = TrueOrFalse;
+            lbFecha.Enabled = TrueOrFalse;
+
+            //Enabled TextBox
+            TbClavePlanEstudio.Enabled = TrueOrFalse;
+            TbNombrePlanEstudio.Enabled = TrueOrFalse;
+            tbFechaPlanEstudio.Enabled = TrueOrFalse;
+
+            //Enabled DropDownList
+            ddlProgramaPlanEstudio.Enabled = TrueOrFalse;
+            ddlEstatus.Enabled = TrueOrFalse;
+
+            //Enabled CheckBox
+            cbActivaPlan.Enabled = TrueOrFalse;
         }
         protected void VisibleOnOFF(bool TrueOrFalse)
         {
-           
+            //Visible Label
+            lbClavePlanEstudio.Visible = TrueOrFalse;
+            lbNombrePlanEstudio.Visible = TrueOrFalse;
+            lbProgramaPlanEstudio.Visible = TrueOrFalse;
+            lbEstatus.Visible = TrueOrFalse;
+            lbCheckPlan.Visible = TrueOrFalse;
+            lbFecha.Visible = TrueOrFalse;
+
+            //Visible TextBox
+            TbClavePlanEstudio.Visible = TrueOrFalse;
+            TbNombrePlanEstudio.Visible = TrueOrFalse;
+            tbFechaPlanEstudio.Visible = TrueOrFalse;
+
+            //Visible DropDownList
+            ddlProgramaPlanEstudio.Visible = TrueOrFalse;
+            ddlEstatus.Visible = TrueOrFalse;
+
+            //Visible CheckBox
+            cbActivaPlan.Visible = TrueOrFalse;
         }
         #endregion
 
@@ -84,14 +136,16 @@ namespace GePE.PlanesDeEstudios
         protected void BtnMnuNuevo_Click(object sender, EventArgs e)
         {
             InicializaControles();
-            lblTituloAccion.Text = "Nueva plan de estudio";
-
+            lblTituloAccion.Text = "Nuevo plan de estudio";
+            PnlCapturaDatos.Visible = true;
 
             BtnGrabar.Visible = true;
             BtnCancelar.Visible = true;
 
             //Aqui se ponen visibles los Label, TextBox y el CheckBox
             VisibleOnOFF(true);
+            DroplistProgramaEducativo();
+            DroplistEstatus();
         }
         protected void BtnMnuListado_Click(object sender, EventArgs e)
         {
@@ -141,6 +195,51 @@ namespace GePE.PlanesDeEstudios
                 }
             }
         }
-        #endregion
-    }
+        //carga los datos de la base de datos y los pone en dropdownlist
+        private void DroplistProgramaEducativo()
+        {
+
+            DataTable subjects = new DataTable();
+
+            using (SqlConnection con = new SqlConnection("Data Source = localhost; Initial Catalog = Propuesta; Integrated Security = True"))
+            {
+
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdCarrera, NombreCarrera FROM Propuesta.dbo.Carreras", con);
+                    adapter.Fill(subjects);
+
+                    ddlProgramaPlanEstudio.DataSource = subjects;
+                    ddlProgramaPlanEstudio.DataTextField = "NombreCarrera";
+                    ddlProgramaPlanEstudio.DataValueField = "IdCarrera";
+                    ddlProgramaPlanEstudio.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    // Handle the error 
+                }
+
+            }
+
+            // Add the initial item - you can add this even if the options from the 
+            // db were not successfully loaded 
+            ddlProgramaPlanEstudio.Items.Insert(0, new ListItem("<Selecciona Carrera>", "0"));
+        }
+        //carga datos para estatus
+        private void DroplistEstatus()
+        {
+            ListItem i;
+            i = new ListItem("<Selecciona>", "0");
+            ddlEstatus.Items.Add(i);
+            i = new ListItem("APROVADO", "1");
+            ddlEstatus.Items.Add(i);
+            i = new ListItem("REVISION", "2");
+            ddlEstatus.Items.Add(i);
+            i = new ListItem("RECAPTURA", "3");
+            ddlEstatus.Items.Add(i);
+            i = new ListItem("EN ESPERA", "4");
+            ddlEstatus.Items.Add(i);
+        }
+            #endregion
+        }
 }

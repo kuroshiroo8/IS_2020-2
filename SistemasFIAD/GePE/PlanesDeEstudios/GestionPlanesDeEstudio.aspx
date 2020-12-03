@@ -40,38 +40,46 @@
                     </div>
 
                     <div class="card-body">
-                        <%--<div class="row pl-2 pr-2">
+                        <div class="row pl-2 pr-2">
                             <div class="col-lg-3 col-md-12 col-12">
                                 <div class="form-group">
-                                    <asp:Label ID="lbClaveCarrera" class="text-dark font-weight-bold m-0" runat="server">Clave de la carrera</asp:Label>
-                                    <uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbClaveCarrera" />
+                                    <asp:Label ID="lbClavePlanEstudio" class="text-dark font-weight-bold m-0" runat="server">Clave del plan de estudio</asp:Label>
+                                    <uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbClavePlanEstudio" />
                                 </div>
                             </div>
                             <div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
-                                    <asp:Label ID="lbNombreCarrera" class="text-dark font-weight-bold m-0" runat="server">Nombre de la carrera</asp:Label>
-                                    <uc1:wfucAlfanumericoRequerido runat="server" ID="TbNombreCarrera" />
+                                    <asp:Label ID="lbNombrePlanEstudio" class="text-dark font-weight-bold m-0" runat="server">Nombre del plan de estudio</asp:Label>
+                                    <uc1:wfucAlfanumericoRequerido runat="server" ID="TbNombrePlanEstudio" />
                                 </div>
                             </div>
-                        </div>--%>
-
-                        <%--<div class="row pl-2 pr-2">
-                            <div class="col-lg-6 col-md-12 col-12">
+                            <div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
-                                    <asp:Label ID="lbAliasCarrera" class="text-dark font-weight-bold m-0" runat="server">Alias</asp:Label>
-                                    <uc1:wfucAlfanumericoRequerido runat="server" ID="TbAliasCarrera" />
+                                    <asp:Label ID="lbProgramaPlanEstudio" class="text-dark font-weight-bold m-0" runat="server">Programa Educativo</asp:Label>
+                                    <asp:DropDownList runat="server" ID="ddlProgramaPlanEstudio" />
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbEstatus" class="text-dark font-weight-bold m-0" runat="server">Estatus</asp:Label>
+                                    <asp:DropDownList runat="server" ID="ddlEstatus" />
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbCheckPlan" class="text-dark font-weight-bold m-0" runat="server">Seleccione si el plan esta activo</asp:Label>
+                                    <asp:CheckBox ID="cbActivaPlan" runat="server" CssClass="font-weight-bold" />
                                 </div>
                             </div>
                             <br />
-                            <div class="row pl-2 pr-2">
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <br />
-                                        <asp:CheckBox ID="cbActivaCarrera" runat="server" CssClass="font-weight-bold" Text="Carrera activa " TextAlign="Left" ToolTip="Seleccione si la carrera está activa" />
-                                    </div>
+                            <div class="col-lg-9 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbFecha" class="text-dark font-weight-bold m-0" runat="server">Fecha y Hora</asp:Label>
+                                    <uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="tbFechaPlanEstudio" type="date" />
                                 </div>
                             </div>
-                        </div>--%>
+                        </div>
+                            
                         <div class="card-footer text-muted" align="center">
                             <asp:LinkButton ID="BtnGrabar" runat="server" CssClass="btn btn-md btn btn-success  pr-3" CausesValidation="true" ><i class="fas fa-plus-square"></i> Insertar</asp:LinkButton>
                             <asp:LinkButton ID="BtnBorrarModal" runat="server" CssClass="btn btn-md btn btn-danger pr-3" data-toggle="modal" CausesValidation="false" data-target="#BorrarModal"><i class="fas fa-trash-alt"></i>Borrar</asp:LinkButton>
