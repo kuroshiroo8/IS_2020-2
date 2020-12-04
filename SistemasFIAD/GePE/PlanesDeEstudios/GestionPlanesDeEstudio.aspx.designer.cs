@@ -109,7 +109,7 @@ namespace GePE.PlanesDeEstudios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::GePE.Controles.wfucAlfabeticoRequerido TbNombrePlanEstudio;
+        protected global::Presentacion.Controles.efucNumeroEnteroPositivoReq TbNombrePlanEstudio;
         
         /// <summary>
         /// Control lbProgramaPlanEstudio.
@@ -175,13 +175,67 @@ namespace GePE.PlanesDeEstudios {
         protected global::System.Web.UI.WebControls.Label lbFecha;
         
         /// <summary>
-        /// Control tbFechaPlanEstudio.
+        /// Control TbFechaPlanEstudio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbFechaPlanEstudio;
+        protected global::System.Web.UI.WebControls.TextBox TbFechaPlanEstudio;
+        
+        /// <summary>
+        /// Control lbGradoAcademico.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbGradoAcademico;
+        
+        /// <summary>
+        /// Control TbGradoAcademico.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::GePE.Controles.wfucAlfabeticoRequerido TbGradoAcademico;
+        
+        /// <summary>
+        /// Control lbCampoOcupacional.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbCampoOcupacional;
+        
+        /// <summary>
+        /// Control TbCampoOcupacional.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::GePE.Controles.wfucAlfabeticoRequerido TbCampoOcupacional;
+        
+        /// <summary>
+        /// Control lbUnidadAcademica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbUnidadAcademica;
+        
+        /// <summary>
+        /// Control TbUnidadAcademica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::GePE.Controles.wfucAlfabeticoRequerido TbUnidadAcademica;
         
         /// <summary>
         /// Control BtnGrabar.

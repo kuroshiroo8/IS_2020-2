@@ -28,6 +28,8 @@ namespace Entidades
         private string _PerfilDeIngreso;
         private string _PerfilDeEgreso;
         private string _CampoOcupacional;
+        private string _UnidadAcademica;
+        private string _Estatus;
         #endregion
 
         #region Constructor
@@ -47,6 +49,8 @@ namespace Entidades
             _PerfilDeIngreso = string.Empty;
             _PerfilDeEgreso = string.Empty;
             _CampoOcupacional = string.Empty;
+            _UnidadAcademica = string.Empty;
+            _Estatus = string.Empty;
         }
         #endregion
 
@@ -65,6 +69,8 @@ namespace Entidades
         public string PerfilDeIngreso { get => _PerfilDeIngreso; set => _PerfilDeIngreso = value; }
         public string PerfilDeEgreso { get => _PerfilDeEgreso; set => _PerfilDeEgreso = value; }
         public string CampoOcupacional { get => _CampoOcupacional; set => _CampoOcupacional = value; }
+        public string UnidadAcademica { get => _UnidadAcademica; set => _UnidadAcademica = value; }
+        public string Estatus { get => _Estatus; set => _Estatus = value; }
         #endregion
     }
 }
