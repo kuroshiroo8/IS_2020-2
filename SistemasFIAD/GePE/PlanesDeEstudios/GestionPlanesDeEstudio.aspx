@@ -74,14 +74,14 @@
                             <br />
                             <div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
-                                    <asp:Label ID="lbFecha" class="text-dark font-weight-bold m-0" runat="server">Fecha y Hora</asp:Label>
-                                    <asp:TextBox runat="server" ID="TbFechaPlanEstudio" type=""></asp:TextBox>
+                                    <asp:Label ID="lbFecha" class="text-dark font-weight-bold m-0" runat="server">Fecha</asp:Label>
+                                    <asp:TextBox runat="server" ID="TbFechaPlanEstudio" type="date"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbGradoAcademico" class="text-dark font-weight-bold m-0" runat="server">Grado academico</asp:Label>
-                                    <uc1:wfucAlfanumericoRequerido runat="server" ID="TbGradoAcademico" />
+                                    <asp:DropDownList runat="server"  ID="ddlGradoAcademico" />
                                 </div>
                             </div>
                             <div class="col-lg-9 col-md-12 col-12">

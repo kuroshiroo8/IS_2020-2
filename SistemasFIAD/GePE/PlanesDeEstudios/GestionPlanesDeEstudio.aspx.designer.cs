@@ -193,13 +193,13 @@ namespace GePE.PlanesDeEstudios {
         protected global::System.Web.UI.WebControls.Label lbGradoAcademico;
         
         /// <summary>
-        /// Control TbGradoAcademico.
+        /// Control ddlGradoAcademico.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::GePE.Controles.wfucAlfabeticoRequerido TbGradoAcademico;
+        protected global::System.Web.UI.WebControls.DropDownList ddlGradoAcademico;
         
         /// <summary>
         /// Control lbCampoOcupacional.

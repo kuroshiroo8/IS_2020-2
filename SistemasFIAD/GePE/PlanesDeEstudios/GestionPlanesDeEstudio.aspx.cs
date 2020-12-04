@@ -68,7 +68,6 @@ namespace GePE.PlanesDeEstudios
             TbClavePlanEstudio.Text = string.Empty;
             TbNombrePlanEstudio.Text = string.Empty;
             TbFechaPlanEstudio.Text = string.Empty;
-            TbGradoAcademico.Text = string.Empty;
             TbCampoOcupacional.Text = string.Empty;
             TbUnidadAcademica.Text = string.Empty;
 
@@ -98,6 +97,7 @@ namespace GePE.PlanesDeEstudios
             //Enabled DropDownList
             ddlProgramaPlanEstudio.Enabled = TrueOrFalse;
             ddlEstatus.Enabled = TrueOrFalse;
+            ddlGradoAcademico.Enabled = TrueOrFalse;
 
             //Enabled CheckBox
             cbActivaPlan.Enabled = TrueOrFalse;
@@ -119,13 +119,13 @@ namespace GePE.PlanesDeEstudios
             TbClavePlanEstudio.Visible = TrueOrFalse;
             TbNombrePlanEstudio.Visible = TrueOrFalse;
             TbFechaPlanEstudio.Visible = TrueOrFalse;
-            TbGradoAcademico.Visible = TrueOrFalse;
             TbCampoOcupacional.Visible = TrueOrFalse;
             TbUnidadAcademica.Visible = TrueOrFalse;
 
             //Visible DropDownList
             ddlProgramaPlanEstudio.Visible = TrueOrFalse;
             ddlEstatus.Visible = TrueOrFalse;
+            ddlGradoAcademico.Visible = TrueOrFalse;
 
             //Visible CheckBox
             cbActivaPlan.Visible = TrueOrFalse;
@@ -143,10 +143,9 @@ namespace GePE.PlanesDeEstudios
                 ProgramaEducativo = ddlProgramaPlanEstudio.SelectedItem.Text,
                 Estatus=ddlEstatus.SelectedItem.Text,
                 EstadoPlanEstudios = cbActivaPlan.Checked,
-                //nivel no se puso porque en la bd esta como int
                 CampoOcupacional=TbCampoOcupacional.Text,
                 FechaCreacion = TbFechaPlanEstudio.Text,
-                IdNivelAcademico = Convert.ToInt32(1),
+                IdNivelAcademico = ddlGradoAcademico.SelectedIndex,
                 IdCarrera= Convert.ToInt32(ddlProgramaPlanEstudio.SelectedValue)
             };
             return PlanEstudio;
@@ -158,9 +157,13 @@ namespace GePE.PlanesDeEstudios
 
             TbClavePlanEstudio.Text = planEstudio.ClavePlanEstudio.Trim();
             TbNombrePlanEstudio.Text = planEstudio.PlanEstudio.Trim();
-
-
-
+            ddlProgramaPlanEstudio.SelectedItem.Text = planEstudio.ProgramaEducativo.Trim();
+            ddlEstatus.SelectedItem.Text = planEstudio.Estatus.Trim();
+            cbActivaPlan.Checked = planEstudio.EstadoPlanEstudios;
+            TbCampoOcupacional.Text = planEstudio.CampoOcupacional.Trim();
+            TbFechaPlanEstudio.Text = planEstudio.FechaCreacion.Trim();
+            ddlProgramaPlanEstudio.SelectedValue = Convert.ToString(planEstudio.IdCarrera);
+            ddlGradoAcademico.SelectedIndex = planEstudio.IdNivelAcademico;
         }
         #endregion
 
@@ -176,8 +179,12 @@ namespace GePE.PlanesDeEstudios
 
             //Aqui se ponen visibles los Label, TextBox y el CheckBox
             VisibleOnOFF(true);
+            ddlProgramaPlanEstudio.Items.Clear();
             DroplistProgramaEducativo();
+            ddlEstatus.Items.Clear();
             DroplistEstatus();
+            ddlGradoAcademico.Items.Clear();
+            DroplistGradoAcademico();
         }
         protected void BtnMnuListado_Click(object sender, EventArgs e)
         {
@@ -271,6 +278,36 @@ namespace GePE.PlanesDeEstudios
             ddlEstatus.Items.Add(i);
             i = new ListItem("EN ESPERA", "4");
             ddlEstatus.Items.Add(i);
+        }
+
+        private void DroplistGradoAcademico()
+        {
+
+            DataTable subjects = new DataTable();
+
+            using (SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=Propuesta;Integrated Security=True"))
+            {
+
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdNivelAcademico, NombreNivelAcademico FROM Propuesta.dbo.NivelAcademico", con);
+                    adapter.Fill(subjects);
+
+                    ddlGradoAcademico.DataSource = subjects;
+                    ddlGradoAcademico.DataTextField = "NombreNivelAcademico";
+                    ddlGradoAcademico.DataValueField = "IdNivelAcademico";
+                    ddlGradoAcademico.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    // Handle the error 
+                }
+
+            }
+
+            // Add the initial item - you can add this even if the options from the 
+            // db were not successfully loaded 
+            ddlGradoAcademico.Items.Insert(0, new ListItem("<Selecciona Nivel Academico>", "0"));
         }
         #endregion
 
