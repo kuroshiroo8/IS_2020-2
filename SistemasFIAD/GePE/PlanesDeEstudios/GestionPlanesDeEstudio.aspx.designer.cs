@@ -94,40 +94,247 @@ namespace GePE.PlanesDeEstudios {
         protected global::Presentacion.Controles.efucNumeroEnteroPositivoReq TbClavePlanEstudio;
         
         /// <summary>
-        /// Control lbNombrePlanEstudio.
+        /// Control lbPlanEstudio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbNombrePlanEstudio;
+        protected global::System.Web.UI.WebControls.Label lbPlanEstudio;
         
         /// <summary>
-        /// Control TbNombrePlanEstudio.
+        /// Control TbPlanEstudio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Presentacion.Controles.efucNumeroEnteroPositivoReq TbNombrePlanEstudio;
+        protected global::Presentacion.Controles.efucNumeroEnteroPositivoReq TbPlanEstudio;
         
         /// <summary>
-        /// Control lbProgramaPlanEstudio.
+        /// Control lbProgramaEducativo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbProgramaPlanEstudio;
+        protected global::System.Web.UI.WebControls.Label lbProgramaEducativo;
         
         /// <summary>
-        /// Control ddlProgramaPlanEstudio.
+        /// Control ddlProgramaEducativo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProgramaPlanEstudio;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProgramaEducativo;
+        
+        /// <summary>
+        /// Control lbFechaCreacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbFechaCreacion;
+        
+        /// <summary>
+        /// Control TbFechaCreacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TbFechaCreacion;
+        
+        /// <summary>
+        /// Control rfvTbFechaCreacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbFechaCreacion;
+        
+        /// <summary>
+        /// Control lbTotalCreditos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbTotalCreditos;
+        
+        /// <summary>
+        /// Control TbTotalCreditos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TbTotalCreditos;
+        
+        /// <summary>
+        /// Control rfvTbTotalCreditos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbTotalCreditos;
+        
+        /// <summary>
+        /// Control lbEstadoPlanEstudios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbEstadoPlanEstudios;
+        
+        /// <summary>
+        /// Control cbEstadoPlanEstudios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbEstadoPlanEstudios;
+        
+        /// <summary>
+        /// Control lbComentarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbComentarios;
+        
+        /// <summary>
+        /// Control TbComentarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TbComentarios;
+        
+        /// <summary>
+        /// Control rfvTbComentarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbComentarios;
+        
+        /// <summary>
+        /// Control lbPerfilDeIngreso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbPerfilDeIngreso;
+        
+        /// <summary>
+        /// Control TbPerfilDeIngreso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TbPerfilDeIngreso;
+        
+        /// <summary>
+        /// Control rfvTbPerfilDeIngreso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbPerfilDeIngreso;
+        
+        /// <summary>
+        /// Control lbPerfilDeEgreso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbPerfilDeEgreso;
+        
+        /// <summary>
+        /// Control TbPerfilDeEgreso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TbPerfilDeEgreso;
+        
+        /// <summary>
+        /// Control rfvTbPerfilDeEgreso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbPerfilDeEgreso;
+        
+        /// <summary>
+        /// Control lbCampoOcupacional.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbCampoOcupacional;
+        
+        /// <summary>
+        /// Control TbCampoOcupacional.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TbCampoOcupacional;
+        
+        /// <summary>
+        /// Control rfvTbCampoOcupacional.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbCampoOcupacional;
+        
+        /// <summary>
+        /// Control lbUnidadAcademica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbUnidadAcademica;
+        
+        /// <summary>
+        /// Control ddlUnidadAcademica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlUnidadAcademica;
+        
+        /// <summary>
+        /// Control rfvddlUnidadAcademica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlUnidadAcademica;
         
         /// <summary>
         /// Control lbEstatus.
@@ -148,94 +355,40 @@ namespace GePE.PlanesDeEstudios {
         protected global::System.Web.UI.WebControls.DropDownList ddlEstatus;
         
         /// <summary>
-        /// Control lbCheckPlan.
+        /// Control rfvddlEstatus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbCheckPlan;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlEstatus;
         
         /// <summary>
-        /// Control cbActivaPlan.
+        /// Control lbIdNivelAcademico.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbActivaPlan;
+        protected global::System.Web.UI.WebControls.Label lbIdNivelAcademico;
         
         /// <summary>
-        /// Control lbFecha.
+        /// Control ddlIdNivelAcademico.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbFecha;
+        protected global::System.Web.UI.WebControls.DropDownList ddlIdNivelAcademico;
         
         /// <summary>
-        /// Control TbFechaPlanEstudio.
+        /// Control rfvddlIdNivelAcademico.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbFechaPlanEstudio;
-        
-        /// <summary>
-        /// Control lbGradoAcademico.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbGradoAcademico;
-        
-        /// <summary>
-        /// Control ddlGradoAcademico.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGradoAcademico;
-        
-        /// <summary>
-        /// Control lbCampoOcupacional.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbCampoOcupacional;
-        
-        /// <summary>
-        /// Control TbCampoOcupacional.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::GePE.Controles.wfucAlfabeticoRequerido TbCampoOcupacional;
-        
-        /// <summary>
-        /// Control lbUnidadAcademica.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbUnidadAcademica;
-        
-        /// <summary>
-        /// Control TbUnidadAcademica.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::GePE.Controles.wfucAlfabeticoRequerido TbUnidadAcademica;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlIdNivelAcademico;
         
         /// <summary>
         /// Control BtnGrabar.
@@ -301,22 +454,22 @@ namespace GePE.PlanesDeEstudios {
         protected global::System.Web.UI.WebControls.LinkButton BtnAceptar;
         
         /// <summary>
-        /// Control PnlGrvPlanesEstudio.
+        /// Control PnlGrvPlanEstudio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PnlGrvPlanesEstudio;
+        protected global::System.Web.UI.WebControls.Panel PnlGrvPlanEstudio;
         
         /// <summary>
-        /// Control GrvPlanesEstudio.
+        /// Control GrvPlanEstudio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GrvPlanesEstudio;
+        protected global::System.Web.UI.WebControls.GridView GrvPlanEstudio;
         
         /// <summary>
         /// Control BtnBorrar.
@@ -328,12 +481,12 @@ namespace GePE.PlanesDeEstudios {
         protected global::System.Web.UI.WebControls.LinkButton BtnBorrar;
         
         /// <summary>
-        /// Control hfIdPlanesEStudio.
+        /// Control hfIdPlanEstudio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfIdPlanesEStudio;
+        protected global::System.Web.UI.WebControls.HiddenField hfIdPlanEstudio;
     }
 }

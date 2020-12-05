@@ -410,6 +410,7 @@ namespace GePE.Materias
 
                     hfIdMateria.Value = LstMateria[0].IdMateria.ToString();
                     ObjetoEntidad_ControlesWebForm(Convert.ToInt32(hfIdMateria.Value));
+
                     PnlCapturaDatos.Visible = true;
                     BtnMnuEditar.Visible = true;
                     BtnMnuBorrar.Visible = true;

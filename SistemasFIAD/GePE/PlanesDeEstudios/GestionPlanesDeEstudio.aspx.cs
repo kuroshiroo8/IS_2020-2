@@ -12,16 +12,17 @@ using Negocios;
 
 namespace GePE.PlanesDeEstudios
 {
-  public partial class GestionPlanesDeEstudio : System.Web.UI.Page
-  {
+    public partial class GestionPlanesDeEstudio : System.Web.UI.Page
+    {
         N_PlanEstudio PE = new N_PlanEstudio();
         N_NivelAcademico NV = new N_NivelAcademico();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
                 InicializaControles();
         }
-        
+
         #region Métodos generales
         protected void InicializaControles()
         {
@@ -32,15 +33,19 @@ namespace GePE.PlanesDeEstudios
         protected void ControlesOFF()
         {
             //Visible Label
+            lbIdNivelAcademico.Visible = false;
             lbClavePlanEstudio.Visible = false;
-            lbNombrePlanEstudio.Visible = false;
-            lbProgramaPlanEstudio.Visible = false;
-            lbEstatus.Visible = false;
-            lbCheckPlan.Visible = false;
-            lbFecha.Visible = false;
-            lbGradoAcademico.Visible = false;
+            lbPlanEstudio.Visible = false;
+            lbProgramaEducativo.Visible = false;
+            lbFechaCreacion.Visible = false;
+            lbTotalCreditos.Visible = false;
+            lbEstadoPlanEstudios.Visible = false;
+            lbComentarios.Visible = false;
+            lbPerfilDeIngreso.Visible = false;
+            lbPerfilDeEgreso.Visible = false;
             lbCampoOcupacional.Visible = false;
             lbUnidadAcademica.Visible = false;
+            lbEstatus.Visible = false;
 
             //Visible LinkButton
             BtnGrabar.Visible = false;
@@ -54,81 +59,104 @@ namespace GePE.PlanesDeEstudios
 
             //Visible Panel
             PnlCapturaDatos.Visible = false;
-            PnlGrvPlanesEstudio.Visible = false;
+            PnlGrvPlanEstudio.Visible = false;
         }
         protected void ControlesClear()
         {
             //Clear Label
             lblNombreAccion.Text = string.Empty;
             lblTituloAccion.Text = string.Empty;
-            
 
             //Clear TextBox
-            TbCriterioBusqueda.Text = string.Empty;
             TbClavePlanEstudio.Text = string.Empty;
-            TbNombrePlanEstudio.Text = string.Empty;
-            TbFechaPlanEstudio.Text = string.Empty;
+            TbPlanEstudio.Text = string.Empty;
+            TbFechaCreacion.Text = string.Empty;
+            TbTotalCreditos.Text = string.Empty;
+            TbComentarios.Text = string.Empty;
+            TbPerfilDeIngreso.Text = string.Empty;
+            TbPerfilDeEgreso.Text = string.Empty;
             TbCampoOcupacional.Text = string.Empty;
-            TbUnidadAcademica.Text = string.Empty;
+
+            //Clear DropDownList
+            ddlIdNivelAcademico.Items.Clear();
+            ddlProgramaEducativo.Items.Clear();
+            ddlUnidadAcademica.Items.Clear();
+            ddlEstatus.Items.Clear();
 
             //Clear CheckBox
-            cbActivaPlan.Checked = false;
+            cbEstadoPlanEstudios.Checked = false;
         }
         protected void ControlesOnOFF(bool TrueOrFalse)
         {
             //Enabled Label
+            lbIdNivelAcademico.Enabled = TrueOrFalse;
             lbClavePlanEstudio.Enabled = TrueOrFalse;
-            lbNombrePlanEstudio.Enabled = TrueOrFalse;
-            lbProgramaPlanEstudio.Enabled = TrueOrFalse;
-            lbEstatus.Enabled = TrueOrFalse;
-            lbCheckPlan.Enabled = TrueOrFalse;
-            lbFecha.Enabled = TrueOrFalse;
-            lbGradoAcademico.Enabled = TrueOrFalse;
+            lbPlanEstudio.Enabled = TrueOrFalse;
+            lbProgramaEducativo.Enabled = TrueOrFalse;
+            lbFechaCreacion.Enabled = TrueOrFalse;
+            lbTotalCreditos.Enabled = TrueOrFalse;
+            lbEstadoPlanEstudios.Enabled = TrueOrFalse;
+            lbComentarios.Enabled = TrueOrFalse;
+            lbPerfilDeIngreso.Enabled = TrueOrFalse;
+            lbPerfilDeEgreso.Enabled = TrueOrFalse;
             lbCampoOcupacional.Enabled = TrueOrFalse;
             lbUnidadAcademica.Enabled = TrueOrFalse;
+            lbEstatus.Enabled = TrueOrFalse;
 
-            //Enabled TextBox
+            //Clear TextBox
             TbClavePlanEstudio.Enabled = TrueOrFalse;
-            TbNombrePlanEstudio.Enabled = TrueOrFalse;
-            TbFechaPlanEstudio.Enabled = TrueOrFalse;
+            TbPlanEstudio.Enabled = TrueOrFalse;
+            TbFechaCreacion.Enabled = TrueOrFalse;
+            TbTotalCreditos.Enabled = TrueOrFalse;
+            TbComentarios.Enabled = TrueOrFalse;
+            TbPerfilDeIngreso.Enabled = TrueOrFalse;
+            TbPerfilDeEgreso.Enabled = TrueOrFalse;
             TbCampoOcupacional.Enabled = TrueOrFalse;
-            TbUnidadAcademica.Enabled = TrueOrFalse;
 
-            //Enabled DropDownList
-            ddlProgramaPlanEstudio.Enabled = TrueOrFalse;
+            //Clear DropDownList
+            ddlIdNivelAcademico.Enabled = TrueOrFalse;
+            ddlProgramaEducativo.Enabled = TrueOrFalse;
+            ddlUnidadAcademica.Enabled = TrueOrFalse;
             ddlEstatus.Enabled = TrueOrFalse;
-            ddlGradoAcademico.Enabled = TrueOrFalse;
 
-            //Enabled CheckBox
-            cbActivaPlan.Enabled = TrueOrFalse;
+            //Clear CheckBox
+            cbEstadoPlanEstudios.Enabled = TrueOrFalse;
         }
         protected void VisibleOnOFF(bool TrueOrFalse)
         {
             //Visible Label
+            lbIdNivelAcademico.Visible = TrueOrFalse;
             lbClavePlanEstudio.Visible = TrueOrFalse;
-            lbNombrePlanEstudio.Visible = TrueOrFalse;
-            lbProgramaPlanEstudio.Visible = TrueOrFalse;
-            lbEstatus.Visible = TrueOrFalse;
-            lbCheckPlan.Visible = TrueOrFalse;
-            lbFecha.Visible = TrueOrFalse;
-            lbGradoAcademico.Visible = TrueOrFalse;
+            lbPlanEstudio.Visible = TrueOrFalse;
+            lbProgramaEducativo.Visible = TrueOrFalse;
+            lbFechaCreacion.Visible = TrueOrFalse;
+            lbTotalCreditos.Visible = TrueOrFalse;
+            lbEstadoPlanEstudios.Visible = TrueOrFalse;
+            lbComentarios.Visible = TrueOrFalse;
+            lbPerfilDeIngreso.Visible = TrueOrFalse;
+            lbPerfilDeEgreso.Visible = TrueOrFalse;
             lbCampoOcupacional.Visible = TrueOrFalse;
             lbUnidadAcademica.Visible = TrueOrFalse;
+            lbEstatus.Visible = TrueOrFalse;
 
             //Visible TextBox
             TbClavePlanEstudio.Visible = TrueOrFalse;
-            TbNombrePlanEstudio.Visible = TrueOrFalse;
-            TbFechaPlanEstudio.Visible = TrueOrFalse;
+            TbPlanEstudio.Visible = TrueOrFalse;
+            TbFechaCreacion.Visible = TrueOrFalse;
+            TbTotalCreditos.Visible = TrueOrFalse;
+            TbComentarios.Visible = TrueOrFalse;
+            TbPerfilDeIngreso.Visible = TrueOrFalse;
+            TbPerfilDeEgreso.Visible = TrueOrFalse;
             TbCampoOcupacional.Visible = TrueOrFalse;
-            TbUnidadAcademica.Visible = TrueOrFalse;
 
             //Visible DropDownList
-            ddlProgramaPlanEstudio.Visible = TrueOrFalse;
+            ddlIdNivelAcademico.Visible = TrueOrFalse;
+            ddlProgramaEducativo.Visible = TrueOrFalse;
+            ddlUnidadAcademica.Visible = TrueOrFalse;
             ddlEstatus.Visible = TrueOrFalse;
-            ddlGradoAcademico.Visible = TrueOrFalse;
 
             //Visible CheckBox
-            cbActivaPlan.Visible = TrueOrFalse;
+            cbEstadoPlanEstudios.Visible = TrueOrFalse;
         }
         #endregion
 
@@ -137,33 +165,41 @@ namespace GePE.PlanesDeEstudios
         {
             E_PlanEstudio PlanEstudio = new E_PlanEstudio()
             {
-                
+                IdNivelAcademico = ddlIdNivelAcademico.SelectedIndex,
+                IdCarrera = Convert.ToInt32(ddlProgramaEducativo.SelectedValue),
                 ClavePlanEstudio = TbClavePlanEstudio.Text,
-                PlanEstudio = TbNombrePlanEstudio.Text,
-                ProgramaEducativo = ddlProgramaPlanEstudio.SelectedItem.Text,
-                Estatus=ddlEstatus.SelectedItem.Text,
-                EstadoPlanEstudios = cbActivaPlan.Checked,
-                CampoOcupacional=TbCampoOcupacional.Text,
-                FechaCreacion = TbFechaPlanEstudio.Text,
-                IdNivelAcademico = ddlGradoAcademico.SelectedIndex,
-                IdCarrera= Convert.ToInt32(ddlProgramaPlanEstudio.SelectedValue)
+                PlanEstudio = TbPlanEstudio.Text,
+                ProgramaEducativo = ddlProgramaEducativo.SelectedItem.Text,
+                FechaCreacion = TbFechaCreacion.Text,
+                TotalCreditos = Convert.ToInt32(TbTotalCreditos.Text),
+                EstadoPlanEstudios = cbEstadoPlanEstudios.Checked,
+                Comentarios = TbComentarios.Text,
+                PerfilDeIngreso = TbPerfilDeIngreso.Text,
+                PerfilDeEgreso = TbPerfilDeEgreso.Text,
+                CampoOcupacional = TbCampoOcupacional.Text,
+                UnidadAcademica = ddlUnidadAcademica.SelectedItem.Text,
+                Estatus = ddlEstatus.SelectedItem.Text
             };
             return PlanEstudio;
-            
+
         }
         protected void ObjetoEntidad_ControlesWebForm(int IdPlanEstudio)
         {
-            E_PlanEstudio  planEstudio = PE.BuscaPlanEstudioPorId(IdPlanEstudio);
+            E_PlanEstudio planEstudio = PE.BuscaPlanEstudioPorId(IdPlanEstudio);
 
+            ddlIdNivelAcademico.SelectedIndex = planEstudio.IdNivelAcademico;
             TbClavePlanEstudio.Text = planEstudio.ClavePlanEstudio.Trim();
-            TbNombrePlanEstudio.Text = planEstudio.PlanEstudio.Trim();
-            ddlProgramaPlanEstudio.SelectedItem.Text = planEstudio.ProgramaEducativo.Trim();
-            ddlEstatus.SelectedItem.Text = planEstudio.Estatus.Trim();
-            cbActivaPlan.Checked = planEstudio.EstadoPlanEstudios;
+            TbPlanEstudio.Text = planEstudio.PlanEstudio.Trim();
+            ddlProgramaEducativo.SelectedItem.Text = planEstudio.ProgramaEducativo;
+            TbFechaCreacion.Text = planEstudio.FechaCreacion.Trim();
+            TbTotalCreditos.Text = Convert.ToString(planEstudio.TotalCreditos);
+            cbEstadoPlanEstudios.Checked = planEstudio.EstadoPlanEstudios;
+            TbComentarios.Text = planEstudio.Comentarios.Trim();
+            TbPerfilDeIngreso.Text = planEstudio.PerfilDeIngreso.Trim();
+            TbPerfilDeEgreso.Text = planEstudio.PerfilDeEgreso.Trim();
             TbCampoOcupacional.Text = planEstudio.CampoOcupacional.Trim();
-            TbFechaPlanEstudio.Text = planEstudio.FechaCreacion.Trim();
-            ddlProgramaPlanEstudio.SelectedValue = Convert.ToString(planEstudio.IdCarrera);
-            ddlGradoAcademico.SelectedIndex = planEstudio.IdNivelAcademico;
+            ddlUnidadAcademica.SelectedItem.Text = planEstudio.UnidadAcademica;
+            ddlEstatus.SelectedItem.Text = planEstudio.Estatus;
         }
         #endregion
 
@@ -179,24 +215,27 @@ namespace GePE.PlanesDeEstudios
 
             //Aqui se ponen visibles los Label, TextBox y el CheckBox
             VisibleOnOFF(true);
-            ddlProgramaPlanEstudio.Items.Clear();
+
+            ddlProgramaEducativo.Items.Clear();
             DroplistProgramaEducativo();
+
             ddlEstatus.Items.Clear();
             DroplistEstatus();
-            ddlGradoAcademico.Items.Clear();
+
+            ddlIdNivelAcademico.Items.Clear();
             DroplistGradoAcademico();
+
+            ddlUnidadAcademica.Items.Clear();
+            DroplistUnidadAcademica();
+
         }
         protected void BtnMnuListado_Click(object sender, EventArgs e)
         {
             InicializaControles();
             N_PlanEstudio PE = new N_PlanEstudio();
-            GrvPlanesEstudio.DataSource = PE.LstPlanEstudio();
-            GrvPlanesEstudio.DataBind();
-            PnlGrvPlanesEstudio.Visible = true;
-        }
-        protected void BtnMnuPDF_Click(object sender, EventArgs e)
-        {
-            lblNombreAccion.Text = "Aquí van las acciones del botón BtnMnuPDF";
+            GrvPlanEstudio.DataSource = PE.LstPlanEstudio();
+            GrvPlanEstudio.DataBind();
+            PnlGrvPlanEstudio.Visible = true;
         }
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
@@ -213,61 +252,73 @@ namespace GePE.PlanesDeEstudios
                     InicializaControles();
                     lblTituloAccion.Text = "Resultado de busqueda";
 
-                    //Aqui se ponen visibles los Label, TextBox y el CheckBox
-                    
+                    VisibleOnOFF(true);
 
-                    hfIdPlanesEStudio.Value = LstPlanEstudio[0].IdCarrera.ToString();
-                    ObjetoEntidad_ControlesWebForm(Convert.ToInt32(hfIdPlanesEStudio.Value));
+                    ddlProgramaEducativo.Items.Clear();
+                    DroplistProgramaEducativo();
+
+                    ddlEstatus.Items.Clear();
+                    DroplistEstatus();
+
+                    ddlIdNivelAcademico.Items.Clear();
+                    DroplistGradoAcademico();
+
+                    ddlUnidadAcademica.Items.Clear();
+                    DroplistUnidadAcademica();
+
+                    //Aqui se hacen no editables los TextBox
+                    ControlesOnOFF(false);
+
+                    hfIdPlanEstudio.Value = LstPlanEstudio[0].IdPlanEstudio.ToString();
+                    ObjetoEntidad_ControlesWebForm(Convert.ToInt32(hfIdPlanEstudio.Value));
 
                     BtnMnuEditar.Visible = true;
                     BtnMnuBorrar.Visible = true;
 
                     PnlCapturaDatos.Visible = true;
-                    PnlGrvPlanesEstudio.Visible = false;
+                    PnlGrvPlanEstudio.Visible = false;
                 }
                 else
                 {
                     InicializaControles();
-                    GrvPlanesEstudio.DataSource = LstPlanEstudio;
-                    GrvPlanesEstudio.DataBind();
-                    PnlGrvPlanesEstudio.Visible = true;
+                    GrvPlanEstudio.DataSource = LstPlanEstudio;
+                    GrvPlanEstudio.DataBind();
+                    PnlGrvPlanEstudio.Visible = true;
                 }
             }
         }
-        //carga los datos de la base de datos y los pone en dropdownlist
         private void DroplistProgramaEducativo()
         {
+            //carga los datos de la base de datos y los pone en dropdownlist
 
             DataTable subjects = new DataTable();
 
             using (SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=Propuesta;Integrated Security=True"))
             {
-
                 try
                 {
                     SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdCarrera, NombreCarrera FROM Propuesta.dbo.Carreras", con);
                     adapter.Fill(subjects);
-
-                    ddlProgramaPlanEstudio.DataSource = subjects;
-                    ddlProgramaPlanEstudio.DataTextField = "NombreCarrera";
-                    ddlProgramaPlanEstudio.DataValueField = "IdCarrera";
-                    ddlProgramaPlanEstudio.DataBind();
+                    ddlProgramaEducativo.DataSource = subjects;
+                    ddlProgramaEducativo.DataTextField = "NombreCarrera";
+                    ddlProgramaEducativo.DataValueField = "IdCarrera";
+                    ddlProgramaEducativo.DataBind();
                 }
                 catch (Exception ex)
                 {
                     // Handle the error 
                 }
-
             }
-
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlProgramaPlanEstudio.Items.Insert(0, new ListItem("<Selecciona Carrera>", "0"));
+            ddlProgramaEducativo.Items.Insert(0, new ListItem("<Selecciona Carrera>", "0"));
         }
-        //carga datos para estatus
         private void DroplistEstatus()
         {
+            //carga datos para estatus
+
             ListItem i;
+
             i = new ListItem("<Selecciona>", "0");
             ddlEstatus.Items.Add(i);
             i = new ListItem("APROVADO", "1");
@@ -278,36 +329,61 @@ namespace GePE.PlanesDeEstudios
             ddlEstatus.Items.Add(i);
             i = new ListItem("EN ESPERA", "4");
             ddlEstatus.Items.Add(i);
+            i = new ListItem("PUBLICADO", "5");
+            ddlEstatus.Items.Add(i);
         }
-
         private void DroplistGradoAcademico()
         {
+            //carga los datos de la base de datos y los pone en dropdownlist
 
             DataTable subjects = new DataTable();
 
             using (SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=Propuesta;Integrated Security=True"))
             {
-
                 try
                 {
                     SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdNivelAcademico, NombreNivelAcademico FROM Propuesta.dbo.NivelAcademico", con);
                     adapter.Fill(subjects);
-
-                    ddlGradoAcademico.DataSource = subjects;
-                    ddlGradoAcademico.DataTextField = "NombreNivelAcademico";
-                    ddlGradoAcademico.DataValueField = "IdNivelAcademico";
-                    ddlGradoAcademico.DataBind();
+                    ddlIdNivelAcademico.DataSource = subjects;
+                    ddlIdNivelAcademico.DataTextField = "NombreNivelAcademico";
+                    ddlIdNivelAcademico.DataValueField = "IdNivelAcademico";
+                    ddlIdNivelAcademico.DataBind();
                 }
                 catch (Exception ex)
                 {
                     // Handle the error 
                 }
-
             }
-
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlGradoAcademico.Items.Insert(0, new ListItem("<Selecciona Nivel Academico>", "0"));
+            ddlIdNivelAcademico.Items.Insert(0, new ListItem("<Selecciona Nivel Academico>", "0"));
+        }
+        private void DroplistUnidadAcademica()
+        {
+
+            //carga los datos de la base de datos y los pone en dropdownlist
+
+            DataTable subjects = new DataTable();
+
+            using (SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=Propuesta;Integrated Security=True"))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdUnidadAcademica, UnidadAcademica FROM Propuesta.dbo.UnidadAcademica", con);
+                    adapter.Fill(subjects);
+                    ddlUnidadAcademica.DataSource = subjects;
+                    ddlUnidadAcademica.DataTextField = "UnidadAcademica";
+                    ddlUnidadAcademica.DataValueField = "IdUnidadAcademica";
+                    ddlUnidadAcademica.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    // Handle the error 
+                }
+            }
+            // Add the initial item - you can add this even if the options from the 
+            // db were not successfully loaded 
+            ddlUnidadAcademica.Items.Insert(0, new ListItem("<Selecciona Unidad Academica>", "0"));
         }
         #endregion
 
@@ -331,10 +407,10 @@ namespace GePE.PlanesDeEstudios
         }
         protected void BtnBorrar_Click(object sender, EventArgs e)
         {
-            string R = PE.BorraPlanEstudio(Convert.ToInt32(hfIdPlanesEStudio.Value));
+            string R = PE.BorraPlanEstudio(Convert.ToInt32(hfIdPlanEstudio.Value));
             lblTituloAccion.Text = R;
 
-            //Aqui se hacen no visible los Label, TextBox y el CheckBox
+            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
             VisibleOnOFF(false);
 
             BtnBorrarModal.Visible = false;
@@ -348,27 +424,37 @@ namespace GePE.PlanesDeEstudios
         }
         protected void BtnModificar_Click(object sender, EventArgs e)
         {
-           
+            E_PlanEstudio Cliente = ControlesWebForm_ObjetoEntidad();
+            Cliente.IdPlanEstudio = Convert.ToInt32(hfIdPlanEstudio.Value);
+            string R = PE.ModificaPlanEstudio(Cliente);
+            lblTituloAccion.Text = R;
+
+            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+            VisibleOnOFF(false);
+
+            BtnModificar.Visible = false;
+            BtnCancelar.Visible = false;
+            BtnAceptar.Visible = true;
+
+            if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
+            {
+                InicializaControles();
+            }
         }
         protected void BtnMnuEditar_Click(object sender, EventArgs e)
         {
             lblTituloAccion.Text = "Modificar plan de estudio";
+
             BtnModificar.Visible = true;
             BtnCancelar.Visible = true;
             BtnMnuBorrar.Visible = false;
             BtnMnuEditar.Visible = false;
+
             ControlesOnOFF(true);
-
-            //TbCR.Enabled = false;
-            //para que aparescan
-            //BtnActualizarCR.Visible = true;
-            //BtnPathPUA.Visible = true;
-            //BtnPathPUAnoOficial.Visible = true;
-
         }
         protected void BtnMnuBorrar_Click(object sender, EventArgs e)
         {
-            lblTituloAccion.Text = "Borrar pland e estudio";
+            lblTituloAccion.Text = "Borrar Plan de estudio";
             BtnBorrar.Visible = true;
             BtnBorrarModal.Visible = true;
             BtnCancelar.Visible = true;
@@ -384,36 +470,78 @@ namespace GePE.PlanesDeEstudios
         #endregion
 
         #region Métodos del GridView
-        protected void GrvPlanesEstudio_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void GrvPlanEstudio_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            if (sender == null)
+            {
+                throw new ArgumentNullException(nameof(sender));
+            }
+
+            if (e == null)
+            {
+                throw new ArgumentNullException(nameof(e));
+            }
+
             ControlesOFF();
+            
+            ddlProgramaEducativo.Items.Clear();
+            DroplistProgramaEducativo();
+
+            ddlEstatus.Items.Clear();
+            DroplistEstatus();
+
+            ddlIdNivelAcademico.Items.Clear();
+            DroplistGradoAcademico();
+
+            ddlUnidadAcademica.Items.Clear();
+            DroplistUnidadAcademica();
+            
             e.Cancel = true; //Deshabilitar las ediciones del registro
-            hfIdPlanesEStudio.Value = GrvPlanesEstudio.DataKeys[e.RowIndex].Value.ToString();
+            hfIdPlanEstudio.Value = GrvPlanEstudio.DataKeys[e.RowIndex].Value.ToString();
             lblTituloAccion.Text = "Borrar Plan de estudio";
 
-            ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdPlanesEStudio.Value));
+            ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdPlanEstudio.Value));
             ControlesOnOFF(false);
 
             //Aqui se hacen no visible los Label, TextBox y el CheckBox
             VisibleOnOFF(true);
-
-            //BtnActualizarCR.Visible = false;
-            //BtnPathPUA.Visible = false;
-            //BtnPathPUAnoOficial.Visible = false;
 
             PnlCapturaDatos.Visible = true;
             BtnBorrar.Visible = true;
             BtnBorrarModal.Visible = true;
             BtnCancelar.Visible = true;
         }
-        protected void GrvPlanesEstudio_RowEditing(object sender, GridViewEditEventArgs e)
+        protected void GrvPlanEstudio_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            if (sender == null)
+            {
+                throw new ArgumentNullException(nameof(sender));
+            }
+
+            if (e == null)
+            {
+                throw new ArgumentNullException(nameof(e));
+            }
+
             InicializaControles();
+            
+            ddlProgramaEducativo.Items.Clear();
+            DroplistProgramaEducativo();
+
+            ddlEstatus.Items.Clear();
+            DroplistEstatus();
+
+            ddlIdNivelAcademico.Items.Clear();
+            DroplistGradoAcademico();
+
+            ddlUnidadAcademica.Items.Clear();
+            DroplistUnidadAcademica();
+            
             e.Cancel = true; //Deshabilitar las ediciones del registro
-            hfIdPlanesEStudio.Value = GrvPlanesEstudio.DataKeys[e.NewEditIndex].Value.ToString();
+            hfIdPlanEstudio.Value = GrvPlanEstudio.DataKeys[e.NewEditIndex].Value.ToString();
             lblTituloAccion.Text = "Modificar Plan de estudio";
 
-            ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdPlanesEStudio.Value));
+            ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdPlanEstudio.Value));
             ControlesOnOFF(true);
 
             PnlCapturaDatos.Visible = true;
@@ -423,10 +551,11 @@ namespace GePE.PlanesDeEstudios
 
             BtnModificar.Visible = true;
             BtnCancelar.Visible = true;
+            
         }
         #endregion
 
-        protected void GrvPlanesEstudio_SelectedIndexChanged(object sender, EventArgs e)
+        protected void GrvPlanEstudio_SelectedIndexChanged(object sender, EventArgs e)
         {
             lblTituloAccion.Text = "AQUI SE ASIGNARA EL PLAN DE ESTUDIOS A LAS MATERIAS";
         }
