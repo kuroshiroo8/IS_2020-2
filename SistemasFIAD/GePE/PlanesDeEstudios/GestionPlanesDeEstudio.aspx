@@ -38,7 +38,6 @@
                         <h5 class="card-title">
                             <asp:Label ID="lblTituloAccion" runat="server" CssClass="text-white"></asp:Label></h5>
                     </div>
-
                     <div class="card-body">
                         <div class="row pl-2 pr-2">
                             <div class="col-lg-3 col-md-12 col-12">
@@ -83,10 +82,6 @@
                                 <div class="form-group">
                                     <asp:Label ID="lbEstadoPlanEstudios" class="text-dark font-weight-bold m-0" runat="server">Seleccione si el plan esta activo</asp:Label>
                                     <asp:CheckBox ID="cbEstadoPlanEstudios" runat="server" CssClass="font-weight-bold" />
-                                    <%--<asp:RequiredFieldValidator ID="rfvcbEstadoPlanEstudios" runat="server" CssClass="text-danger"
-                                        ControlToValidate="cbEstadoPlanEstudios"
-                                        ErrorMessage="*Este campo es requerido."
-                                        Display="Dynamic"></asp:RequiredFieldValidator>--%>
                                 </div>
                             </div>
                             <div class="col-lg-9 col-md-12 col-12">
@@ -174,65 +169,66 @@
             </div>
         </asp:Panel>
 
-        <%--<asp:Panel ID="PnlGrvPlanesEstudio" runat="server">
-            <div class="container-fluid">
-                <asp:GridView ID="GrvPlanesEstudio" runat="server" AutoGenerateColumns="False"
-                    CssClass="table thead-dark table-sm table-bordered table-responsive"
-                    DataKeyNames="IdPlanEstudio"
-                    OnRowDeleting="GrvPlanesEstudio_RowDeleting"
-                    OnRowEditing="GrvPlanesEstudio_RowEditing"
-                    OnSelectedIndexChanged="GrvPlanesEstudio_SelectedIndexChanged">
-                    <Columns>
-                        <asp:BoundField DataField="ClavePlanEstudio" HeaderText="CLAVE" />
-                        <asp:BoundField DataField="PlanEstudio" HeaderText="NOMBRE DEl PLAN DE ESTUDIO" />
-                        <asp:BoundField DataField="Estatus" HeaderText="ESTATUS" />
-                        <asp:BoundField DataField="NombreCarrera" HeaderText="NOMBRE DEL COORDINADOR" />
-                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="GrvBtnEditar" runat="server" CssClass="btn btn-md btn-primary "
-                                    CausesValidation="false" CommandName="Edit"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        
-                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="GrvBtnDetalles" runat="server" CssClass="btn btn-md btn-secondary "
-                                    CausesValidation="false" CommandName=""><i class="fas fa-table"></i> Detalles</asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        
-                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="ACCIONES">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="GrvBtnMaterias" runat="server" CssClass="btn btn-md btn-info "
-                                    CausesValidation="false" CommandName=""><i class="fas fa-book"></i> Materias</asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        
-                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="GrvBtnVerificar" runat="server" CssClass="btn btn-md btn-outline-primary "
-                                    CausesValidation="false" CommandName=""><i class="fas fa-check"></i> Verificar</asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        
-                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="GrvBtnEstado" runat="server" CssClass="btn btn-md btn-light "
-                                    CausesValidation="false" CommandName=""><i class="fas fa-sync-alt"></i> Estado</asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+        <asp:Panel ID="PnlCapturaDatosPlanEstudioMateria" runat="server">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header text-center bg-success">
+                        <h5 class="card-title">
+                            <asp:Label ID="lblTituloAccionPlanEstudioMateria" runat="server" CssClass="text-white"></asp:Label></h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row pl-2 pr-2">
+                            <div class="col-lg-3 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbIdPlanEstudio" class="text-dark font-weight-bold m-0" runat="server">Plan de estudio</asp:Label>
+                                    <asp:DropDownList runat="server" ID="ddlIdPlanEstudio" />
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbIdMateria" class="text-dark font-weight-bold m-0" runat="server">Materia</asp:Label>
+                                    <asp:DropDownList runat="server" ID="ddlIdMateria" />
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbIdTipoMateria" class="text-dark font-weight-bold m-0" runat="server">Tipo de materia</asp:Label>
+                                    <asp:DropDownList runat="server" ID="ddlIdTipoMateria" />
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbIdEtapa" class="text-dark font-weight-bold m-0" runat="server">Etapa</asp:Label>
+                                    <asp:DropDownList runat="server" ID="ddlIdEtapa" />
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbIdAreaConocimiento" class="text-dark font-weight-bold m-0" runat="server">Area de conocimiento</asp:Label>
+                                    <asp:DropDownList runat="server" ID="ddlIdAreaConocimiento" />
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbSemestre" class="text-dark font-weight-bold m-0" runat="server">Semestre</asp:Label>
+                                    <asp:DropDownList runat="server" ID="ddlSemestre" />
+                                </div>
+                            </div>
 
-                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="GrvBtnBorrar" runat="server" CssClass="btn btn-md btn-danger"
-                                    CausesValidation="false" CommandName="Delete"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                    <HeaderStyle CssClass="bg-dark text-white" />
-                </asp:GridView>
+                        </div>
+                        <div class="card-footer text-muted" align="center">
+                            <asp:LinkButton ID="BtnGrabarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-success  pr-3" CausesValidation="true" OnClick="BtnGrabarPlanEstudioMateria_Click"><i class="fas fa-plus-square" ></i> Insertar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnBorrarModalPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-danger pr-3" data-toggle="modal" CausesValidation="false" data-target="#BorrarModalPlanEstudioMateria"><i class="fas fa-trash-alt"></i>Borrar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnModificarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="true" OnClick="BtnModificarPlanEstudioMateria_Click"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnMnuEditarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="true" OnClick="BtnMnuEditarPlanEstudioMateria_Click"><i class="fas fa-edit" OnClick="BtnMnuEditar_Click"></i> Modificar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnMnuBorrarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-danger pr-3" CausesValidation="false" OnClick="BtnMnuBorrarPlanEstudioMateria_Click"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton><%--envia al panel borrar--%>
+                            <asp:LinkButton ID="BtnCancelarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-dark pr-3" CausesValidation="false" OnClick="BtnCancelarPlanEstudioMateria_Click"><i class="fas fa-window-close"></i> Cancelar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnAceptarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="false" OnClick="BtnCancelarPlanEstudioMateria_Click"><i class="fas fa-check"></i> Aceptar</asp:LinkButton>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </asp:Panel>--%>
+        </asp:Panel>
 
         <asp:Panel ID="PnlGrvPlanEstudio" runat="server">
             <div class="container-fluid">
@@ -267,7 +263,40 @@
             </div>
         </asp:Panel>
 
-        <%------------modal-borrar---------------------%>
+        <asp:Panel ID="PnlGrvPlanEstudioMateria" runat="server">
+            <div class="container-fluid">
+                <asp:GridView ID="GrvPlanEstudioMateria" runat="server" AutoGenerateColumns="False"
+                    CssClass="table thead-dark table-sm table-bordered table-responsive"
+                    DataKeyNames="IdPlanEstudio"
+                    OnRowDeleting="GrvPlanEstudio_RowDeleting"
+                    OnRowEditing="GrvPlanEstudio_RowEditing"
+                    OnSelectedIndexChanged="GrvPlanEstudio_SelectedIndexChanged">
+                    <Columns>
+                        <asp:BoundField DataField="ClavePlanEstudio" HeaderText="CLAVE" />
+                        <asp:BoundField DataField="PlanEstudio" HeaderText="NOMBRE DEl PLAN DE ESTUDIO" />
+                        <asp:BoundField DataField="Estatus" HeaderText="ESTATUS" />
+
+                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="GrvBtnEditar" runat="server" CssClass="btn btn-md btn-primary "
+                                    CausesValidation="false" CommandName="Edit"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="ACCIONES">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="GrvBtnBorrar" runat="server" CssClass="btn btn-md btn-danger"
+                                    CausesValidation="false" CommandName="Delete"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                    </Columns>
+                    <HeaderStyle CssClass="bg-dark text-white" />
+                </asp:GridView>
+            </div>
+        </asp:Panel>
+
+        <%--Modal Borrar Plan Estudio--%>
         <div class="modal fade" id="BorrarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -286,6 +315,25 @@
             </div>
         </div>
 
+        <%--Modal Borrar Plan Estudio - Materia--%>
+        <div class="modal fade" id="BorrarModalPlanEstudioMateria" tabindex="-1" role="dialog" aria-labelledby="lbBorrarModalPlanEstudioMateria" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="lbBorrarModalPlanEstudioMateria">¿Esta seguro de borrar este registro?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Si lo esta, presione "Borrar". </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-md btn btn-dark pr-3" type="button" data-dismiss="modal"><i class="fas fa-window-close"></i>Cancelar</button>
+                        <asp:LinkButton ID="BtnBorrarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-danger pr-3" CausesValidation="false" OnClick="BtnBorrarPlanEstudioMateria_Click"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <asp:HiddenField ID="hfIdPlanEstudio" runat="server" />
+    <asp:HiddenField ID="hfIdPlanEstudioMateria" runat="server" />
 </asp:Content>

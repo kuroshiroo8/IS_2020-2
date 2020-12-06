@@ -454,6 +454,195 @@ namespace GePE.PlanesDeEstudios {
         protected global::System.Web.UI.WebControls.LinkButton BtnAceptar;
         
         /// <summary>
+        /// Control PnlCapturaDatosPlanEstudioMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlCapturaDatosPlanEstudioMateria;
+        
+        /// <summary>
+        /// Control lblTituloAccionPlanEstudioMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTituloAccionPlanEstudioMateria;
+        
+        /// <summary>
+        /// Control lbIdPlanEstudio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbIdPlanEstudio;
+        
+        /// <summary>
+        /// Control ddlIdPlanEstudio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlIdPlanEstudio;
+        
+        /// <summary>
+        /// Control lbIdMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbIdMateria;
+        
+        /// <summary>
+        /// Control ddlIdMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlIdMateria;
+        
+        /// <summary>
+        /// Control lbIdTipoMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbIdTipoMateria;
+        
+        /// <summary>
+        /// Control ddlIdTipoMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlIdTipoMateria;
+        
+        /// <summary>
+        /// Control lbIdEtapa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbIdEtapa;
+        
+        /// <summary>
+        /// Control ddlIdEtapa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlIdEtapa;
+        
+        /// <summary>
+        /// Control lbIdAreaConocimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbIdAreaConocimiento;
+        
+        /// <summary>
+        /// Control ddlIdAreaConocimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlIdAreaConocimiento;
+        
+        /// <summary>
+        /// Control lbSemestre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbSemestre;
+        
+        /// <summary>
+        /// Control ddlSemestre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSemestre;
+        
+        /// <summary>
+        /// Control BtnGrabarPlanEstudioMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BtnGrabarPlanEstudioMateria;
+        
+        /// <summary>
+        /// Control BtnBorrarModalPlanEstudioMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BtnBorrarModalPlanEstudioMateria;
+        
+        /// <summary>
+        /// Control BtnModificarPlanEstudioMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BtnModificarPlanEstudioMateria;
+        
+        /// <summary>
+        /// Control BtnMnuEditarPlanEstudioMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BtnMnuEditarPlanEstudioMateria;
+        
+        /// <summary>
+        /// Control BtnMnuBorrarPlanEstudioMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BtnMnuBorrarPlanEstudioMateria;
+        
+        /// <summary>
+        /// Control BtnCancelarPlanEstudioMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BtnCancelarPlanEstudioMateria;
+        
+        /// <summary>
+        /// Control BtnAceptarPlanEstudioMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BtnAceptarPlanEstudioMateria;
+        
+        /// <summary>
         /// Control PnlGrvPlanEstudio.
         /// </summary>
         /// <remarks>
@@ -472,6 +661,24 @@ namespace GePE.PlanesDeEstudios {
         protected global::System.Web.UI.WebControls.GridView GrvPlanEstudio;
         
         /// <summary>
+        /// Control PnlGrvPlanEstudioMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlGrvPlanEstudioMateria;
+        
+        /// <summary>
+        /// Control GrvPlanEstudioMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GrvPlanEstudioMateria;
+        
+        /// <summary>
         /// Control BtnBorrar.
         /// </summary>
         /// <remarks>
@@ -481,6 +688,15 @@ namespace GePE.PlanesDeEstudios {
         protected global::System.Web.UI.WebControls.LinkButton BtnBorrar;
         
         /// <summary>
+        /// Control BtnBorrarPlanEstudioMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BtnBorrarPlanEstudioMateria;
+        
+        /// <summary>
         /// Control hfIdPlanEstudio.
         /// </summary>
         /// <remarks>
@@ -488,5 +704,14 @@ namespace GePE.PlanesDeEstudios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfIdPlanEstudio;
+        
+        /// <summary>
+        /// Control hfIdPlanEstudioMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfIdPlanEstudioMateria;
     }
 }
