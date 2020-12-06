@@ -60,6 +60,28 @@ namespace GePE.PlanesDeEstudios
             //Visible Panel
             PnlCapturaDatos.Visible = false;
             PnlGrvPlanEstudio.Visible = false;
+
+            //Visible Label
+            lbIdPlanEstudio.Visible = false;
+            lbIdMateria.Visible = false;
+            lbIdTipoMateria.Visible = false;
+            lbIdEtapa.Visible = false;
+            lbIdAreaConocimiento.Visible = false;
+            lbSemestre.Visible = false;
+
+            //Visible LinkButton
+            BtnGrabarPlanEstudioMateria.Visible = false;
+            BtnBorrarPlanEstudioMateria.Visible = false;
+            BtnBorrarModalPlanEstudioMateria.Visible = false;
+            BtnModificarPlanEstudioMateria.Visible = false;
+            BtnMnuEditarPlanEstudioMateria.Visible = false;
+            BtnMnuBorrarPlanEstudioMateria.Visible = false;
+            BtnCancelarPlanEstudioMateria.Visible = false;
+            BtnAceptarPlanEstudioMateria.Visible = false;
+
+            //Visible Panel
+            PnlCapturaDatosPlanEstudioMateria.Visible = false;
+            PnlGrvPlanEstudioMateria.Visible = false;
         }
         protected void ControlesClear()
         {
@@ -85,6 +107,18 @@ namespace GePE.PlanesDeEstudios
 
             //Clear CheckBox
             cbEstadoPlanEstudios.Checked = false;
+
+            //Clear Label
+            lblNombreAccion.Text = string.Empty;
+            lblTituloAccionPlanEstudioMateria.Text = string.Empty;
+
+            //Clear DropDownList
+            ddlIdPlanEstudio.Items.Clear();
+            ddlIdMateria.Items.Clear();
+            ddlIdTipoMateria.Items.Clear();
+            ddlIdEtapa.Items.Clear();
+            ddlIdAreaConocimiento.Items.Clear();
+            ddlSemestre.Items.Clear();
         }
         protected void ControlesOnOFF(bool TrueOrFalse)
         {
@@ -163,47 +197,9 @@ namespace GePE.PlanesDeEstudios
         #region Métodos generales Plan Estudio - Materia
         protected void InicializaControlesPlanEstudioMateria()
         {
-            ControlesOFFPlanEstudioMateria();
-            ControlesClearPlanEstudioMateria();
+            ControlesOFF();
+            ControlesClear();
             ControlesOnOFFPlanEstudioMateria(true);
-        }
-        protected void ControlesOFFPlanEstudioMateria()
-        {
-            //Visible Label
-            lbIdPlanEstudio.Visible = false;
-            lbIdMateria.Visible = false;
-            lbIdTipoMateria.Visible = false;
-            lbIdEtapa.Visible = false;
-            lbIdAreaConocimiento.Visible = false;
-            lbSemestre.Visible = false;
-
-            //Visible LinkButton
-            BtnGrabarPlanEstudioMateria.Visible = false;
-            BtnBorrarPlanEstudioMateria.Visible = false;
-            BtnBorrarModalPlanEstudioMateria.Visible = false;
-            BtnModificarPlanEstudioMateria.Visible = false;
-            BtnMnuEditarPlanEstudioMateria.Visible = false;
-            BtnMnuBorrarPlanEstudioMateria.Visible = false;
-            BtnCancelarPlanEstudioMateria.Visible = false;
-            BtnAceptarPlanEstudioMateria.Visible = false;
-
-            //Visible Panel
-            PnlCapturaDatosPlanEstudioMateria.Visible = false;
-            PnlGrvPlanEstudioMateria.Visible = false;
-        }
-        protected void ControlesClearPlanEstudioMateria()
-        {
-            //Clear Label
-            lblNombreAccion.Text = string.Empty;
-            lblTituloAccionPlanEstudioMateria.Text = string.Empty;
-
-            //Clear DropDownList
-            ddlIdPlanEstudio.Items.Clear();
-            ddlIdMateria.Items.Clear();
-            ddlIdTipoMateria.Items.Clear();
-            ddlIdEtapa.Items.Clear();
-            ddlIdAreaConocimiento.Items.Clear();
-            ddlSemestre.Items.Clear();
         }
         protected void ControlesOnOFFPlanEstudioMateria(bool TrueOrFalse)
         {
@@ -412,7 +408,7 @@ namespace GePE.PlanesDeEstudios
 
             //Aqui se ponen visibles los Label, TextBox y el CheckBox
             VisibleOnOFFPlanEstudioMateria(true);
-            
+
             ddlIdPlanEstudio.Items.Clear();
             DroplistPlanEstudio();
 
@@ -582,15 +578,15 @@ namespace GePE.PlanesDeEstudios
         #region Botones IBM (WebForm captura datos del cliente) PlanEstudioMateria
         protected void BtnGrabarPlanEstudioMateria_Click(object sender, EventArgs e)
         {
-            string R = PE.InsertaPlanEstudio(ControlesWebForm_ObjetoEntidad());
-            lblTituloAccion.Text = R;
+            string R = NPEM.InsertaPlanEstudioMateria(ControlesWebForm_ObjetoEntidad2());
+            lblTituloAccionPlanEstudioMateria.Text = R;
 
             //Aqui se ponen no visibles los Label, TextBox y el CheckBox
-            VisibleOnOFF(false);
+            VisibleOnOFFPlanEstudioMateria(false);
 
-            BtnGrabar.Visible = false;
-            BtnCancelar.Visible = false;
-            BtnAceptar.Visible = true;
+            BtnGrabarPlanEstudioMateria.Visible = false;
+            BtnCancelarPlanEstudioMateria.Visible = false;
+            BtnAceptarPlanEstudioMateria.Visible = true;
 
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
@@ -749,7 +745,64 @@ namespace GePE.PlanesDeEstudios
 
         protected void GrvPlanEstudio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lblTituloAccion.Text = "AQUI SE ASIGNARA EL PLAN DE ESTUDIOS A LAS MATERIAS";
+            if (sender == null)
+            {
+                throw new ArgumentNullException(nameof(sender));
+            }
+
+            if (e == null)
+            {
+                throw new ArgumentNullException(nameof(e));
+            }
+
+            InicializaControlesPlanEstudioMateria();
+
+            ddlIdPlanEstudio.Items.Clear();
+            DroplistPlanEstudio();
+            
+            GridViewRow row = GrvPlanEstudio.SelectedRow;
+            ddlIdPlanEstudio.SelectedItem.Text = GrvPlanEstudio.Rows[row.RowIndex].Cells[1].Text;
+
+            ddlIdMateria.Items.Clear();
+            DroplistMateria();
+
+            ddlIdTipoMateria.Items.Clear();
+            DroplistTipoMateria();
+
+            ddlIdEtapa.Items.Clear();
+            DroplistEtapa();
+
+            ddlIdAreaConocimiento.Items.Clear();
+            DroplistAreaConocimiento();
+
+            ddlSemestre.Items.Clear();
+            DroplistSemestre();
+
+            ControlesOnOFFPlanEstudioMateria(true);
+
+            PnlCapturaDatosPlanEstudioMateria.Visible = true;
+
+            //Aqui se ponen visibles los Label, TextBox y el CheckBox
+            VisibleOnOFFPlanEstudioMateria(true);
+
+            ddlIdPlanEstudio.Enabled = false;
+
+            BtnGrabarPlanEstudioMateria.Visible = true;
+            BtnCancelarPlanEstudioMateria.Visible = true;
+
+        }
+
+        protected void GrvPlanEstudio_RowCommand(Object sender, GridViewCommandEventArgs e)
+        {
+            if (sender == null)
+            {
+                throw new ArgumentNullException(nameof(sender));
+            }
+
+            if (e == null)
+            {
+                throw new ArgumentNullException(nameof(e));
+            }
 
         }
 

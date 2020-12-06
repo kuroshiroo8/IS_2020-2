@@ -237,6 +237,7 @@
                     DataKeyNames="IdPlanEstudio"
                     OnRowDeleting="GrvPlanEstudio_RowDeleting"
                     OnRowEditing="GrvPlanEstudio_RowEditing"
+                    OnRowCommand="GrvPlanEstudio_RowCommand"
                     OnSelectedIndexChanged="GrvPlanEstudio_SelectedIndexChanged">
                     <Columns>
                         <asp:BoundField DataField="ClavePlanEstudio" HeaderText="CLAVE" />
@@ -254,6 +255,13 @@
                             <ItemTemplate>
                                 <asp:LinkButton ID="GrvBtnBorrar" runat="server" CssClass="btn btn-md btn-danger"
                                     CausesValidation="false" CommandName="Delete"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="GrvBtnAsignarMateria" runat="server" CssClass="btn btn-md btn-info"
+                                    CausesValidation="false" CommandName="Select"><i class="fas fa-plus-square"></i> Asignar materia</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -335,5 +343,4 @@
         </div>
     </div>
     <asp:HiddenField ID="hfIdPlanEstudio" runat="server" />
-    <asp:HiddenField ID="hfIdPlanEstudioMateria" runat="server" />
 </asp:Content>
