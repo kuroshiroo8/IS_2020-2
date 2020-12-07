@@ -130,6 +130,15 @@ namespace GePE.PlanesDeEstudios {
         protected global::System.Web.UI.WebControls.DropDownList ddlProgramaEducativo;
         
         /// <summary>
+        /// Control rfvddlProgramaEducativo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlProgramaEducativo;
+        
+        /// <summary>
         /// Control lbFechaCreacion.
         /// </summary>
         /// <remarks>
@@ -173,15 +182,6 @@ namespace GePE.PlanesDeEstudios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbTotalCreditos;
-        
-        /// <summary>
-        /// Control rfvTbTotalCreditos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbTotalCreditos;
         
         /// <summary>
         /// Control lbEstadoPlanEstudios.
@@ -508,6 +508,15 @@ namespace GePE.PlanesDeEstudios {
         protected global::System.Web.UI.WebControls.DropDownList ddlIdMateria;
         
         /// <summary>
+        /// Control rfvddlIdMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlIdMateria;
+        
+        /// <summary>
         /// Control lbIdTipoMateria.
         /// </summary>
         /// <remarks>
@@ -524,6 +533,15 @@ namespace GePE.PlanesDeEstudios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlIdTipoMateria;
+        
+        /// <summary>
+        /// Control rfvddlIdTipoMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlIdTipoMateria;
         
         /// <summary>
         /// Control lbIdEtapa.
@@ -544,6 +562,15 @@ namespace GePE.PlanesDeEstudios {
         protected global::System.Web.UI.WebControls.DropDownList ddlIdEtapa;
         
         /// <summary>
+        /// Control rfvddlIdEtapa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlIdEtapa;
+        
+        /// <summary>
         /// Control lbIdAreaConocimiento.
         /// </summary>
         /// <remarks>
@@ -562,6 +589,15 @@ namespace GePE.PlanesDeEstudios {
         protected global::System.Web.UI.WebControls.DropDownList ddlIdAreaConocimiento;
         
         /// <summary>
+        /// Control rfvddlIdAreaConocimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlIdAreaConocimiento;
+        
+        /// <summary>
         /// Control lbSemestre.
         /// </summary>
         /// <remarks>
@@ -578,6 +614,15 @@ namespace GePE.PlanesDeEstudios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSemestre;
+        
+        /// <summary>
+        /// Control rfvddlSemestre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlSemestre;
         
         /// <summary>
         /// Control BtnGrabarPlanEstudioMateria.

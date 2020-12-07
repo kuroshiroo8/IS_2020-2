@@ -575,7 +575,7 @@ namespace GePE.PlanesDeEstudios
         }
         #endregion
 
-        #region Botones IBM (WebForm captura datos del cliente) PlanEstudioMateria
+        #region Botones IBM (WebForm captura datos del cliente) Plan Estudio - Materia
         protected void BtnGrabarPlanEstudioMateria_Click(object sender, EventArgs e)
         {
             string R = NPEM.InsertaPlanEstudioMateria(ControlesWebForm_ObjetoEntidad2());
@@ -694,6 +694,8 @@ namespace GePE.PlanesDeEstudios
             //Aqui se hacen no visible los Label, TextBox y el CheckBox
             VisibleOnOFF(true);
 
+            TbTotalCreditos.Enabled = false;
+
             PnlCapturaDatos.Visible = true;
             BtnBorrar.Visible = true;
             BtnBorrarModal.Visible = true;
@@ -741,25 +743,21 @@ namespace GePE.PlanesDeEstudios
             BtnCancelar.Visible = true;
 
         }
-        #endregion
-
         protected void GrvPlanEstudio_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (sender == null)
             {
                 throw new ArgumentNullException(nameof(sender));
             }
-
             if (e == null)
             {
                 throw new ArgumentNullException(nameof(e));
             }
-
             InicializaControlesPlanEstudioMateria();
 
             ddlIdPlanEstudio.Items.Clear();
             DroplistPlanEstudio();
-            
+
             GridViewRow row = GrvPlanEstudio.SelectedRow;
             ddlIdPlanEstudio.SelectedItem.Text = GrvPlanEstudio.Rows[row.RowIndex].Cells[1].Text;
 
@@ -791,8 +789,92 @@ namespace GePE.PlanesDeEstudios
             BtnCancelarPlanEstudioMateria.Visible = true;
 
         }
-
         protected void GrvPlanEstudio_RowCommand(Object sender, GridViewCommandEventArgs e)
+        {
+            if (sender == null)
+            {
+                throw new ArgumentNullException(nameof(sender));
+            }
+            if (e == null)
+            {
+                throw new ArgumentNullException(nameof(e));
+            }
+            if (e.CommandName == "VerDetalles")
+            {
+                ControlesOFF();
+
+                ddlProgramaEducativo.Items.Clear();
+                DroplistProgramaEducativo();
+
+                ddlEstatus.Items.Clear();
+                DroplistEstatus();
+
+                ddlIdNivelAcademico.Items.Clear();
+                DroplistGradoAcademico();
+
+                ddlUnidadAcademica.Items.Clear();
+                DroplistUnidadAcademica();
+
+                //ObjetoEntidad_ControlesWebForm(Convert.ToInt16(GrvPlanEstudio.DataKeys[Convert.ToInt32(e.CommandArgument)].Value.ToString()));
+
+                lblTituloAccion.Text = "Mas detalles de plan de estudio";
+
+                ControlesOnOFF(false);
+
+                //Aqui se hacen no visible los Label, TextBox y el CheckBox
+                VisibleOnOFF(true);
+
+                TbTotalCreditos.Enabled = false;
+
+                PnlCapturaDatos.Visible = true;
+                BtnAceptar.Visible = true;
+
+            }//Falta hacer que traiga los datos de la base de datos con el id del plan de estudio
+            if (e.CommandName == "ListarMaterias")
+            {
+                //List<E_PlanEstudioMateria> LstPlanEstudioMateria = NPEM.BuscaPlanEstudioMateriaPorId();
+                //N_PlanEstudioMateria NPEM = new N_PlanEstudioMateria();
+                //if (LstPlanEstudioMateria.Count.Equals(0))
+                //{
+                //    InicializaControles();
+                //    lblNombreAccion.Text = "No se encontraron datos con el criterio de busqueda";
+                //}
+                //else
+                //{
+                //InicializaControles();
+                //GrvPlanEstudioMateria.DataSource = LstPlanEstudioMateria();
+                //GrvPlanEstudioMateria.DataSource = NPEM.LstPlanEstudioMateria();
+                //GrvPlanEstudioMateria.DataBind();
+                //PnlGrvPlanEstudioMateria.Visible = true;
+                //}
+            }//Falta crear una lista de las materias que tengan el id de plan de estudio
+        }
+        #endregion
+
+        #region Métodos del GridView Plan Estudio - Materia
+        protected void GrvPlanEstudioMateria_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            if (sender == null)
+            {
+                throw new ArgumentNullException(nameof(sender));
+            }
+            if (e == null)
+            {
+                throw new ArgumentNullException(nameof(e));
+            }
+        }
+        protected void GrvPlanEstudioMateria_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            if (sender == null)
+            {
+                throw new ArgumentNullException(nameof(sender));
+            }
+            if (e == null)
+            {
+                throw new ArgumentNullException(nameof(e));
+            }
+        }
+        protected void GrvPlanEstudioMateria_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (sender == null)
             {
@@ -805,6 +887,20 @@ namespace GePE.PlanesDeEstudios
             }
 
         }
+        protected void GrvPlanEstudioMateria_RowCommand(Object sender, GridViewCommandEventArgs e)
+        {
+            if (sender == null)
+            {
+                throw new ArgumentNullException(nameof(sender));
+            }
+
+            if (e == null)
+            {
+                throw new ArgumentNullException(nameof(e));
+            }
+
+        }
+        #endregion
 
         #region Cargar DropDownList
         //Plan Estudio
@@ -832,7 +928,7 @@ namespace GePE.PlanesDeEstudios
             }
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlProgramaEducativo.Items.Insert(0, new ListItem("<Selecciona Carrera>", "0"));
+            ddlProgramaEducativo.Items.Insert(0, new ListItem("", ""));
         }
         private void DroplistEstatus()
         {
@@ -840,7 +936,7 @@ namespace GePE.PlanesDeEstudios
 
             ListItem i;
 
-            i = new ListItem("<Selecciona>", "0");
+            i = new ListItem("", "");
             ddlEstatus.Items.Add(i);
             i = new ListItem("APROVADO", "1");
             ddlEstatus.Items.Add(i);
@@ -877,7 +973,7 @@ namespace GePE.PlanesDeEstudios
             }
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlIdNivelAcademico.Items.Insert(0, new ListItem("<Selecciona Nivel Academico>", "0"));
+            ddlIdNivelAcademico.Items.Insert(0, new ListItem("", ""));
         }
         private void DroplistUnidadAcademica()
         {
@@ -904,7 +1000,7 @@ namespace GePE.PlanesDeEstudios
             }
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlUnidadAcademica.Items.Insert(0, new ListItem("<Selecciona Unidad Academica>", "0"));
+            ddlUnidadAcademica.Items.Insert(0, new ListItem("", ""));
         }
         //Plan Estudio - Materia
         private void DroplistPlanEstudio()
@@ -932,7 +1028,7 @@ namespace GePE.PlanesDeEstudios
             }
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlIdPlanEstudio.Items.Insert(0, new ListItem("<Selecciona plan estudio>", "0"));
+            ddlIdPlanEstudio.Items.Insert(0, new ListItem("", ""));
         }
         private void DroplistMateria()
         {
@@ -959,7 +1055,7 @@ namespace GePE.PlanesDeEstudios
             }
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlIdMateria.Items.Insert(0, new ListItem("<Selecciona materia>", "0"));
+            ddlIdMateria.Items.Insert(0, new ListItem("", ""));
         }
         private void DroplistTipoMateria()
         {
@@ -986,7 +1082,7 @@ namespace GePE.PlanesDeEstudios
             }
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlIdTipoMateria.Items.Insert(0, new ListItem("<Selecciona tipo de materia>", "0"));
+            ddlIdTipoMateria.Items.Insert(0, new ListItem("", ""));
         }
         private void DroplistEtapa()
         {
@@ -1013,7 +1109,7 @@ namespace GePE.PlanesDeEstudios
             }
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlIdEtapa.Items.Insert(0, new ListItem("<Selecciona etapa>", "0"));
+            ddlIdEtapa.Items.Insert(0, new ListItem("", ""));
         }
         private void DroplistAreaConocimiento()
         {
@@ -1040,29 +1136,29 @@ namespace GePE.PlanesDeEstudios
             }
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlIdAreaConocimiento.Items.Insert(0, new ListItem("<Selecciona area de conocimiento>", "0"));
+            ddlIdAreaConocimiento.Items.Insert(0, new ListItem("", ""));
         }
         private void DroplistSemestre()
         {
             //carga datos para estatus
             ListItem i;
-            i = new ListItem("", "1");
+            i = new ListItem("", "");
             ddlSemestre.Items.Add(i);
-            i = new ListItem("1.º", "2");
+            i = new ListItem("1", "2");
             ddlSemestre.Items.Add(i);
-            i = new ListItem("2.º", "3");
+            i = new ListItem("2", "3");
             ddlSemestre.Items.Add(i);
-            i = new ListItem("3.º", "4");
+            i = new ListItem("3", "4");
             ddlSemestre.Items.Add(i);
-            i = new ListItem("4.º", "5");
+            i = new ListItem("4", "5");
             ddlSemestre.Items.Add(i);
-            i = new ListItem("5.º", "6");
+            i = new ListItem("5", "6");
             ddlSemestre.Items.Add(i);
-            i = new ListItem("6.º", "7");
+            i = new ListItem("6", "7");
             ddlSemestre.Items.Add(i);
-            i = new ListItem("7.º", "8");
+            i = new ListItem("7", "8");
             ddlSemestre.Items.Add(i);
-            i = new ListItem("8.º", "9");
+            i = new ListItem("8", "9");
             ddlSemestre.Items.Add(i);
         }
         #endregion
