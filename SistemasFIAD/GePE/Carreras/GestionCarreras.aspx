@@ -99,6 +99,8 @@
                         <asp:BoundField DataField="NombreCarrera" HeaderText="NOMBRE DE LA CARRERA" />
                         <asp:BoundField DataField="AliasCarrera" HeaderText="NOMBRE CORTO" />
                         <%--<asp:BoundField DataField="NombreCarrera" HeaderText="NOMBRE DEL COORDINADOR" />--%>
+                        <asp:BoundField DataField="EstadoCarrera" HeaderText="ESTADO CARRERA" />
+
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
                             <ItemTemplate>
                                 <asp:LinkButton ID="GrvBtnEditar" runat="server" CssClass="btn btn-md btn-primary "

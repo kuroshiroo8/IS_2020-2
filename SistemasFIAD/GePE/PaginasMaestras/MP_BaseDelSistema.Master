@@ -54,5 +54,9 @@
     <script src="../js/chart-area-demo.js"></script>
     <script src="../js/chart-pie-demo.js"></script>
 
+    <footer style="background-color:white">
+        <p align="center" style="color:darkgreen;">Versión: 07-12-20</p>
+    </footer>
+
 </body>
 </html>

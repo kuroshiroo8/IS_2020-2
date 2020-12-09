@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="wfucAlfanumericoRequerido.ascx.cs" Inherits="GePE.Controles.wfucAlfabeticoRequerido" %>
 
-<link href="~/CSS/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="../CSS/bootstrap.css" rel="stylesheet" type="text/css" />
 
 <asp:TextBox ID="TbAlfanumericoRequerido" runat="server" CssClass="form-control"></asp:TextBox>
 

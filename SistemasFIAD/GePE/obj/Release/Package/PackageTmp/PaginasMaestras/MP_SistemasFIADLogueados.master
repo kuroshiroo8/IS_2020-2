@@ -1,11 +1,11 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/PaginasMaestras/MP_BaseDelSistema.Master" AutoEventWireup="true" CodeBehind="MP_SistemasFIADLogueados.master.cs" Inherits="GePE.PaginasMaestras.SistemasFIAD" %>
+﻿<%@ Master Language="C#" MasterPageFile="../PaginasMaestras/MP_BaseDelSistema.Master" AutoEventWireup="true" CodeBehind="MP_SistemasFIADLogueados.master.cs" Inherits="GePE.PaginasMaestras.SistemasFIAD" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphPrincipal" runat="server">
     <div>
-        <a href="~/Carreras/GestionCarreras.aspx">
+        <a href="../Carreras/GestionCarreras.aspx">
             <div align="center" class="bg-verde-obscuro">
                 <%--<h5 class="text-center text-warning">Universidad Autónoma de Baja California</h5>--%>
-                <img src="~/Imagenes/logo.png" class="img-fluid" alt="Responsive image">
+                <img src="../Imagenes/logo.png" class="img-fluid" alt="Responsive image">
             </div>
         </a>
         <!-- Page Wrapper -->
@@ -13,10 +13,10 @@
             <!-- Sidebar -->
             <ul class="navbar-nav bg-gradient-uabc sidebar sidebar-dark accordion toggled" id="accordionSidebar">
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="~/Carreras/GestionCarreras.aspx">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../Carreras/GestionCarreras.aspx">
                     <div>
                         <%--carga del logo de uabc--%>
-                        <img src="~/Imagenes/oficialprueba.png" class="img-fluid" alt="Responsive image">
+                        <img src="../Imagenes/oficialprueba.png" class="img-fluid" alt="Responsive image">
                     </div>
                 </a>
                 <!-- Divider -->
@@ -27,17 +27,17 @@
                 </div>
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="~/Carreras/GestionCarreras.aspx" aria-expanded="true">
+                    <a class="nav-link collapsed" href="../Carreras/GestionCarreras.aspx" aria-expanded="true">
                         <i class="fas fa-fw fa-cog"></i>
                         <span>Gestión de carreras</span>
                     </a>
 
-                    <a class="nav-link collapsed" href="~/Materias/GestionMaterias.aspx" aria-expanded="true">
+                    <a class="nav-link collapsed" href="../Materias/GestionMaterias.aspx" aria-expanded="true">
                         <i class="fas fa-fw fa-cog"></i>
                         <span>Gestión de materias</span>
                     </a>
 
-                    <a class="nav-link collapsed" href="~/PlanesDeEstudios/GestionPlanesDeEstudio.aspx" aria-expanded="true"">
+                    <a class="nav-link collapsed" href="../PlanesDeEstudios/GestionPlanesDeEstudio.aspx" aria-expanded="true"">
                         <i class="fas fa-fw fa-cog"></i>
                         <span>Gestión planes de estudio</span>
                     </a> 
@@ -131,8 +131,8 @@
                     </div>
                     <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para terminar su sesión actual.</div>
                     <div class="modal-footer">
-                        <a id="BtnCancelarsalir" class="btn btn-md btn btn-dark pr-3" href="~/Carreras/GestionCarreras.aspx"><i class="fas fa-window-close"></i>Cancelar</a>
-                        <a id="LinkButton1" class="btn btn-md btn btn-danger pr-3" href="~/Carreras/GestionCarreras.aspx"><i class="fas fa-sign-out-alt"></i>Cerrar sesión</a>
+                        <a id="BtnCancelarsalir" class="btn btn-md btn btn-dark pr-3" href="../Carreras/GestionCarreras.aspx"><i class="fas fa-window-close"></i>Cancelar</a>
+                        <a id="LinkButton1" class="btn btn-md btn btn-danger pr-3" href="../Carreras/GestionCarreras.aspx"><i class="fas fa-sign-out-alt"></i>Cerrar sesión</a>
                     </div>
                 </div>
             </div>

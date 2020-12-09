@@ -757,10 +757,7 @@ namespace GePE.PlanesDeEstudios
 
             ddlIdPlanEstudio.Items.Clear();
             DroplistPlanEstudio();
-
-            GridViewRow row = GrvPlanEstudio.SelectedRow;
-            ddlIdPlanEstudio.SelectedItem.Text = GrvPlanEstudio.Rows[row.RowIndex].Cells[1].Text;
-
+            
             ddlIdMateria.Items.Clear();
             DroplistMateria();
 
@@ -782,6 +779,9 @@ namespace GePE.PlanesDeEstudios
 
             //Aqui se ponen visibles los Label, TextBox y el CheckBox
             VisibleOnOFFPlanEstudioMateria(true);
+            
+            GridViewRow row = GrvPlanEstudio.SelectedRow;
+            ddlIdPlanEstudio.SelectedItem.Text = GrvPlanEstudio.Rows[row.RowIndex].Cells[1].Text;
 
             ddlIdPlanEstudio.Enabled = false;
 
@@ -815,7 +815,11 @@ namespace GePE.PlanesDeEstudios
                 ddlUnidadAcademica.Items.Clear();
                 DroplistUnidadAcademica();
 
-                //ObjetoEntidad_ControlesWebForm(Convert.ToInt16(GrvPlanEstudio.DataKeys[Convert.ToInt32(e.CommandArgument)].Value.ToString()));
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = GrvPlanEstudio.Rows[index];
+
+                hfIdPlanEstudio.Value = GrvPlanEstudio.DataKeys[row.RowIndex].Value.ToString();
+                ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdPlanEstudio.Value));
 
                 lblTituloAccion.Text = "Mas detalles de plan de estudio";
 
@@ -829,11 +833,17 @@ namespace GePE.PlanesDeEstudios
                 PnlCapturaDatos.Visible = true;
                 BtnAceptar.Visible = true;
 
-            }//Falta hacer que traiga los datos de la base de datos con el id del plan de estudio
+            }
             if (e.CommandName == "ListarMaterias")
             {
-                //List<E_PlanEstudioMateria> LstPlanEstudioMateria = NPEM.BuscaPlanEstudioMateriaPorId();
-                //N_PlanEstudioMateria NPEM = new N_PlanEstudioMateria();
+
+                //int index = Convert.ToInt32(e.CommandArgument);
+                //GridViewRow row = GrvPlanEstudio.Rows[index];
+
+                //hfIdPlanEstudio.Value = GrvPlanEstudio.DataKeys[row.RowIndex].Value.ToString();
+
+                //List<E_PlanEstudioMateria> LstPlanEstudioMateria = NPEM.BuscaPlanEstudioMateriaPorId(Convert.ToInt32(hfIdPlanEstudio.Value));
+
                 //if (LstPlanEstudioMateria.Count.Equals(0))
                 //{
                 //    InicializaControles();
@@ -841,11 +851,10 @@ namespace GePE.PlanesDeEstudios
                 //}
                 //else
                 //{
-                //InicializaControles();
-                //GrvPlanEstudioMateria.DataSource = LstPlanEstudioMateria();
-                //GrvPlanEstudioMateria.DataSource = NPEM.LstPlanEstudioMateria();
-                //GrvPlanEstudioMateria.DataBind();
-                //PnlGrvPlanEstudioMateria.Visible = true;
+                //    InicializaControles();
+                //    GrvPlanEstudioMateria.DataSource = LstPlanEstudioMateria();
+                //    GrvPlanEstudioMateria.DataBind();
+                //    PnlGrvPlanEstudioMateria.Visible = true;
                 //}
             }//Falta crear una lista de las materias que tengan el id de plan de estudio
         }
@@ -911,6 +920,7 @@ namespace GePE.PlanesDeEstudios
             DataTable subjects = new DataTable();
 
             using (SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=Propuesta;Integrated Security=True"))
+            //using (SqlConnection con = new SqlConnection("Data Source=WIN-URE2BDKARPV\\SQLEXPRESS;Initial Catalog=Propuesta;Integrated Security=True"))
             {
                 try
                 {
@@ -956,6 +966,7 @@ namespace GePE.PlanesDeEstudios
             DataTable subjects = new DataTable();
 
             using (SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=Propuesta;Integrated Security=True"))
+            //using (SqlConnection con = new SqlConnection("Data Source=WIN-URE2BDKARPV\\SQLEXPRESS;Initial Catalog=Propuesta;Integrated Security=True"))
             {
                 try
                 {
@@ -983,6 +994,7 @@ namespace GePE.PlanesDeEstudios
             DataTable subjects = new DataTable();
 
             using (SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=Propuesta;Integrated Security=True"))
+            //using (SqlConnection con = new SqlConnection("Data Source=WIN-URE2BDKARPV\\SQLEXPRESS;Initial Catalog=Propuesta;Integrated Security=True"))
             {
                 try
                 {
@@ -1011,6 +1023,7 @@ namespace GePE.PlanesDeEstudios
             DataTable subjects = new DataTable();
 
             using (SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=Propuesta;Integrated Security=True"))
+            //using (SqlConnection con = new SqlConnection("Data Source=WIN-URE2BDKARPV\\SQLEXPRESS;Initial Catalog=Propuesta;Integrated Security=True"))
             {
                 try
                 {
@@ -1038,6 +1051,7 @@ namespace GePE.PlanesDeEstudios
             DataTable subjects = new DataTable();
 
             using (SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=Propuesta;Integrated Security=True"))
+            //using (SqlConnection con = new SqlConnection("Data Source=WIN-URE2BDKARPV\\SQLEXPRESS;Initial Catalog=Propuesta;Integrated Security=True"))
             {
                 try
                 {
@@ -1065,6 +1079,7 @@ namespace GePE.PlanesDeEstudios
             DataTable subjects = new DataTable();
 
             using (SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=Propuesta;Integrated Security=True"))
+            //using (SqlConnection con = new SqlConnection("Data Source=WIN-URE2BDKARPV\\SQLEXPRESS;Initial Catalog=Propuesta;Integrated Security=True"))
             {
                 try
                 {
@@ -1092,6 +1107,7 @@ namespace GePE.PlanesDeEstudios
             DataTable subjects = new DataTable();
 
             using (SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=Propuesta;Integrated Security=True"))
+            //using (SqlConnection con = new SqlConnection("Data Source=WIN-URE2BDKARPV\\SQLEXPRESS;Initial Catalog=Propuesta;Integrated Security=True"))
             {
                 try
                 {
@@ -1119,6 +1135,7 @@ namespace GePE.PlanesDeEstudios
             DataTable subjects = new DataTable();
 
             using (SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=Propuesta;Integrated Security=True"))
+            //using (SqlConnection con = new SqlConnection("Data Source=WIN-URE2BDKARPV\\SQLEXPRESS;Initial Catalog=Propuesta;Integrated Security=True"))
             {
                 try
                 {

@@ -13,16 +13,16 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/19/2020 20:18:10</publishTime>
     </File>
     <File Include="bin/Entidades.dll">
-      <publishTime>12/03/2020 02:50:24</publishTime>
+      <publishTime>07/12/2020 14:32:30</publishTime>
     </File>
     <File Include="bin/Entidades.pdb">
-      <publishTime>12/03/2020 02:50:24</publishTime>
+      <publishTime>07/12/2020 14:32:30</publishTime>
     </File>
     <File Include="bin/GePE.dll">
-      <publishTime>12/03/2020 02:50:28</publishTime>
+      <publishTime>12/07/2020 16:47:54</publishTime>
     </File>
     <File Include="bin/GePE.pdb">
-      <publishTime>12/03/2020 02:50:28</publishTime>
+      <publishTime>12/07/2020 16:47:54</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>11/19/2020 20:18:18</publishTime>
@@ -31,10 +31,10 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/17/2020 18:32:50</publishTime>
     </File>
     <File Include="bin/Negocios.dll">
-      <publishTime>12/03/2020 02:50:25</publishTime>
+      <publishTime>07/12/2020 14:32:37</publishTime>
     </File>
     <File Include="bin/Negocios.pdb">
-      <publishTime>12/03/2020 02:50:25</publishTime>
+      <publishTime>07/12/2020 14:32:37</publishTime>
     </File>
     <File Include="bin/netstandard.dll">
       <publishTime>10/17/2020 18:32:50</publishTime>
@@ -469,31 +469,31 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/17/2020 18:32:50</publishTime>
     </File>
     <File Include="Carreras/GestionCarreras.aspx">
-      <publishTime>12/02/2020 20:41:32</publishTime>
+      <publishTime>03/12/2020 14:02:08</publishTime>
     </File>
     <File Include="Controles/wfucAlfanumericoRequerido.ascx">
-      <publishTime>12/03/2020 02:06:38</publishTime>
+      <publishTime>04/12/2020 21:59:03</publishTime>
     </File>
     <File Include="Controles/wfucNumeroEnteroPositivoRequerido.ascx">
-      <publishTime>12/03/2020 02:06:38</publishTime>
+      <publishTime>04/12/2020 21:59:03</publishTime>
     </File>
     <File Include="Controles/wfucTbAlfabeticoRequerido.ascx">
-      <publishTime>12/03/2020 02:06:38</publishTime>
+      <publishTime>04/12/2020 21:59:03</publishTime>
     </File>
     <File Include="CSS/bootstrap.css">
       <publishTime>11/23/2020 00:51:58</publishTime>
     </File>
     <File Include="CSS/brands.css">
-      <publishTime>10/05/2020 14:50:54</publishTime>
+      <publishTime>05/10/2020 14:50:54</publishTime>
     </File>
     <File Include="CSS/fontawesome.css">
-      <publishTime>10/05/2020 14:50:54</publishTime>
+      <publishTime>05/10/2020 14:50:54</publishTime>
     </File>
     <File Include="CSS/GePE.css">
       <publishTime>11/19/2020 22:28:39</publishTime>
     </File>
     <File Include="CSS/regular.css">
-      <publishTime>10/05/2020 14:50:54</publishTime>
+      <publishTime>05/10/2020 14:50:54</publishTime>
     </File>
     <File Include="CSS/sb-admin-2.css">
       <publishTime>11/23/2020 00:51:58</publishTime>
@@ -502,52 +502,64 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/19/2020 20:18:10</publishTime>
     </File>
     <File Include="CSS/solid.css">
-      <publishTime>10/05/2020 14:50:54</publishTime>
+      <publishTime>05/10/2020 14:50:54</publishTime>
     </File>
     <File Include="DLL/DatosSQL.dll">
       <publishTime>11/19/2020 20:18:10</publishTime>
     </File>
     <File Include="Inicio.aspx">
-      <publishTime>12/03/2020 01:53:14</publishTime>
+      <publishTime>03/12/2020 14:02:08</publishTime>
     </File>
     <File Include="js/bootstrap.js">
       <publishTime>11/20/2020 20:10:56</publishTime>
     </File>
     <File Include="js/brands.js">
-      <publishTime>10/05/2020 14:50:54</publishTime>
+      <publishTime>05/10/2020 14:50:54</publishTime>
+    </File>
+    <File Include="js/chart-area-demo.js">
+      <publishTime>06/11/2020 14:31:04</publishTime>
+    </File>
+    <File Include="js/chart-pie-demo.js">
+      <publishTime>06/11/2020 14:31:04</publishTime>
+    </File>
+    <File Include="js/Chart.js">
+      <publishTime>06/11/2020 14:31:04</publishTime>
     </File>
     <File Include="js/fontawesome.js">
-      <publishTime>10/05/2020 14:50:54</publishTime>
+      <publishTime>05/10/2020 14:50:54</publishTime>
+    </File>
+    <File Include="js/jquery.easing.js">
+      <publishTime>06/11/2020 14:31:04</publishTime>
     </File>
     <File Include="js/jquery.js">
       <publishTime>11/20/2020 20:10:56</publishTime>
     </File>
     <File Include="js/regular.js">
-      <publishTime>10/05/2020 14:50:54</publishTime>
+      <publishTime>05/10/2020 14:50:54</publishTime>
     </File>
     <File Include="js/sb-admin-2.js">
       <publishTime>11/19/2020 20:18:10</publishTime>
     </File>
     <File Include="js/solid.js">
-      <publishTime>10/05/2020 14:50:54</publishTime>
+      <publishTime>05/10/2020 14:50:54</publishTime>
     </File>
     <File Include="Materias/GestionMaterias.aspx">
-      <publishTime>12/03/2020 02:06:37</publishTime>
+      <publishTime>03/12/2020 14:02:08</publishTime>
     </File>
     <File Include="PaginasMaestras/MP_BaseDelSistema.Master">
-      <publishTime>12/03/2020 02:35:04</publishTime>
+      <publishTime>07/12/2020 16:21:56</publishTime>
     </File>
     <File Include="PaginasMaestras/MP_SistemasFIADLogueados.master">
-      <publishTime>12/03/2020 02:10:15</publishTime>
+      <publishTime>03/12/2020 14:02:08</publishTime>
     </File>
     <File Include="PlanesDeEstudios/GestionPlanesDeEstudio.aspx">
-      <publishTime>12/03/2020 01:53:26</publishTime>
+      <publishTime>06/12/2020 20:38:50</publishTime>
     </File>
     <File Include="prueba.aspx">
-      <publishTime>12/03/2020 01:53:14</publishTime>
+      <publishTime>03/12/2020 14:02:08</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/03/2020 02:50:31</publishTime>
+      <publishTime>07/12/2020 14:32:46</publishTime>
     </File>
   </ItemGroup>
 </Project>

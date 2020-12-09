@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="wfucNumeroEnteroPositivoRequerido.ascx.cs" Inherits="Presentacion.Controles.efucNumeroEnteroPositivoReq" %>
 
-<link href="~/CSS/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="../CSS/bootstrap.css" rel="stylesheet" type="text/css" />
 
 <asp:TextBox ID="TbNumeroEnteroPositivoRequerido" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
 
