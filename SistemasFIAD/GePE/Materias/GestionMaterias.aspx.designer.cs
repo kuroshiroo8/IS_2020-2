@@ -256,15 +256,6 @@ namespace GePE.Materias {
         protected global::System.Web.UI.WebControls.Label lbStatusPathPUA;
         
         /// <summary>
-        /// Control RfvPathPUA.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvPathPUA;
-        
-        /// <summary>
         /// Control lbPathPUAnoOficial.
         /// </summary>
         /// <remarks>
@@ -290,15 +281,6 @@ namespace GePE.Materias {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbStatusPathPUAnoOficial;
-        
-        /// <summary>
-        /// Control RfvPathPUAnoOficial.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvPathPUAnoOficial;
         
         /// <summary>
         /// Control BtnGrabar.

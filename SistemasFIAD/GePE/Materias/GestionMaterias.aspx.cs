@@ -36,10 +36,6 @@ namespace GePE.Materias
             BtnCancelar.Visible = false;
             BtnAceptar.Visible = false;
 
-            //BtnActualizarCR.Visible = false;
-            //BtnPathPUA.Visible = false;
-            //BtnPathPUAnoOficial.Visible = false;
-
             lbClaveMateria.Visible = false;
             lbNombreMateria.Visible = false;
             lbHC.Visible = false;
@@ -48,7 +44,6 @@ namespace GePE.Materias
             lbHE.Visible = false;
             lbHPP.Visible = false;
             lbCR.Visible = false;
-            //lbEstadoMateria.Visible = false;
 
             lbPathPUA.Visible = false;
             FuPathPUA.Visible = false;
@@ -63,12 +58,13 @@ namespace GePE.Materias
         }
         protected void ControlesClear()
         {
+            //Clear Labels
             lblNombreAccion.Text = string.Empty;
             lblTituloAccion.Text = string.Empty;
 
+            //Clear Textbox
             TbCriterioBusqueda.Text = string.Empty;
 
-            //Clear TextBox
             TbClaveMateria.Text = string.Empty;
             TbNombreMateria.Text = string.Empty;
             TbHC.Text = string.Empty;
@@ -77,30 +73,23 @@ namespace GePE.Materias
             TbHE.Text = string.Empty;
             TbHPP.Text = string.Empty;
             TbCR.Text = string.Empty;
-            //TbPathPUA.Text = string.Empty;
-            //TbPathPUAnoOficial.Text = string.Empty;
 
-            //lbPathPUA.Text = string.Empty;
+            //Clear Fileupload FuPathPUA
             FuPathPUA.Dispose();
-            //FuPathPUA.PostedFile.InputStream.Dispose();
             lbStatusPathPUA.Text = string.Empty;
 
-            //lbPathPUAnoOficial.Text = string.Empty;
+            //Clear Fileupload FuPathPUAnoOficial
             FuPathPUAnoOficial.Dispose();
-            //FuPathPUAnoOficial.PostedFile.InputStream.Dispose();
             lbStatusPathPUAnoOficial.Text = string.Empty;
 
             lbStatusCR.Text = string.Empty;
-
-            //Clear CheckBox
-            //cbEstadoMateria.Checked = false;
         }
         protected void ControlesOnOFF(bool TrueOrFalse)
         {
+            //Enabled Labels
             lblNombreAccion.Enabled = TrueOrFalse;
             lblTituloAccion.Enabled = TrueOrFalse;
 
-            //Enabled Labels
             lbClaveMateria.Enabled = TrueOrFalse;
             lbNombreMateria.Enabled = TrueOrFalse;
             lbHC.Enabled = TrueOrFalse;
@@ -109,11 +98,8 @@ namespace GePE.Materias
             lbHE.Enabled = TrueOrFalse;
             lbHPP.Enabled = TrueOrFalse;
             lbCR.Enabled = TrueOrFalse;
-            //lbEstadoMateria.Enabled = TrueOrFalse;
-            //lbPathPUA.Enabled = TrueOrFalse;
-            //lbPathPUAnoOficial.Enabled = TrueOrFalse;
 
-            //Enabled TextBox
+            //Enabled Textbox
             TbClaveMateria.Enabled = TrueOrFalse;
             TbNombreMateria.Enabled = TrueOrFalse;
             TbHC.Enabled = TrueOrFalse;
@@ -122,21 +108,18 @@ namespace GePE.Materias
             TbHE.Enabled = TrueOrFalse;
             TbHPP.Enabled = TrueOrFalse;
             TbCR.Enabled = TrueOrFalse;
-            //TbPathPUA.Enabled = TrueOrFalse;
-            //TbPathPUAnoOficial.Enabled = TrueOrFalse;
 
-
+            //Enabled Fileupload PathPUA
             lbPathPUA.Enabled = TrueOrFalse;
             FuPathPUA.Enabled = TrueOrFalse;
             lbStatusPathPUA.Enabled = TrueOrFalse;
 
+            //Enabled Fileupload PathPUAnoOficial
             lbPathPUAnoOficial.Enabled = TrueOrFalse;
             FuPathPUAnoOficial.Enabled = TrueOrFalse;
             lbStatusPathPUAnoOficial.Enabled = TrueOrFalse;
 
             lbStatusCR.Enabled = TrueOrFalse;
-            //Enabled CheckBox
-            //cbEstadoMateria.Enabled = TrueOrFalse;
         }
         protected void VisibleOnOFF(bool TrueOrFalse)
         {
@@ -149,9 +132,6 @@ namespace GePE.Materias
             lbHE.Visible = TrueOrFalse;
             lbHPP.Visible = TrueOrFalse;
             lbCR.Visible = TrueOrFalse;
-            //lbEstadoMateria.Visible = TrueOrFalse;
-            //lbPathPUA.Visible = TrueOrFalse;
-            //lbPathPUAnoOficial.Visible = TrueOrFalse;
 
             //Visible TextBox
             TbClaveMateria.Visible = TrueOrFalse;
@@ -165,21 +145,16 @@ namespace GePE.Materias
 
             //El TextBox de CR se hace no editable
             TbCR.Enabled = false;
-            //BtnActualizarCR.Visible = TrueOrFalse;
 
             //Hacer visible el PathPUA
             lbPathPUA.Visible = TrueOrFalse;
             FuPathPUA.Visible = TrueOrFalse;
-            //FuPathPUA.Enabled = false;
             lbStatusPathPUA.Visible = TrueOrFalse;
-            //BtnPathPUA.Visible = TrueOrFalse;
 
             //Hacer visible el PathPUAnoOficial
             lbPathPUAnoOficial.Visible = TrueOrFalse;
             FuPathPUAnoOficial.Visible = TrueOrFalse;
-            //FuPathPUAnoOficial.Enabled = false;
             lbStatusPathPUAnoOficial.Visible = TrueOrFalse;
-            //BtnPathPUAnoOficial.Visible = TrueOrFalse;
 
             lbStatusCR.Visible = TrueOrFalse;
         }
@@ -234,7 +209,7 @@ namespace GePE.Materias
                         FuPathPUA.SaveAs(Server.MapPath("../FilesSection/" + FuPathPUA.FileName));
                         //FuPathPUA.SaveAs(Server.MapPath("../puaOFICIAL/" + FuPathPUA.FileName));
                         // Notificar al usuario que el archivo fue subido con éxito.
-                        lbStatusPathPUA.Text = "Tu archivo fue subido con éxito.";
+                        lbStatusPathPUA.Text = "~/FilesSection/" + FuPathPUA.FileName;
                         return 0;
                     }
                     else
@@ -253,8 +228,14 @@ namespace GePE.Materias
             }
             else
             {
-                // Notificar al usuario que un archivo no fue subido.
-                lbStatusPathPUA.Text = "No especificaste un archivo para subir.";
+                if (lbStatusPathPUA.Text != "~/FilesSection/PUAnoexistente.pdf")
+                {
+
+                }
+                else
+                {
+                    lbStatusPathPUA.Text = "~/FilesSection/PUAnoexistente.pdf";
+                }
                 return 3;
             }
         }
@@ -286,7 +267,8 @@ namespace GePE.Materias
                         FuPathPUAnoOficial.SaveAs(Server.MapPath("../FilesSection/" + FuPathPUAnoOficial.FileName));
                         //FuPathPUAnoOficial.SaveAs(Server.MapPath("../puaNO/" + FuPathPUAnoOficial.FileName));
                         // Notificar al usuario que el archivo fue subido con éxito.
-                        lbStatusPathPUAnoOficial.Text = "Tu archivo fue subido con éxito.";
+                        lbStatusPathPUAnoOficial.Text = "~/FilesSection/" + FuPathPUAnoOficial.FileName;
+                        //lbStatusPathPUAnoOficial.Text = "Tu archivo fue subido con éxito.";
                         return 0;
                     }
                     else
@@ -305,8 +287,14 @@ namespace GePE.Materias
             }
             else
             {
-                // Notificar al usuario que un archivo no fue subido.
-                lbStatusPathPUAnoOficial.Text = "No especificaste un archivo para subir.";
+                if (lbStatusPathPUAnoOficial.Text != "~/FilesSection/PUAnoexistente.pdf")
+                {
+
+                }
+                else
+                {
+                    lbStatusPathPUAnoOficial.Text = "~/FilesSection/PUAnoexistente.pdf";
+                }
                 return 3;
             }
         }
@@ -331,16 +319,15 @@ namespace GePE.Materias
                     (Convert.ToInt32(TbHE.Text) * 0) +
                     (Convert.ToInt32(TbHPP.Text) * 1),
                 //EstadoMateria = cbEstadoMateria.Checked,
-                PathPUA = "../FilesSection/" + FuPathPUA.FileName,
-                PathPUAnoOficial = "../FilesSection/" + FuPathPUAnoOficial.FileName
-                //PathPUA = "../puaOFICIAL/" + FuPathPUA.FileName,
-                //PathPUAnoOficial = "../puaNO/" + FuPathPUAnoOficial.FileName
+
+                PathPUA = lbStatusPathPUA.Text,
+                PathPUAnoOficial = lbStatusPathPUAnoOficial.Text
             };
             return Materia;
         }
         protected void ObjetoEntidad_ControlesWebForm(int IdMateria)
         {
-
+            //Poner los datos de la base de datos en los objetos
             E_Materias Materia = NM.BuscaMateriasPorId(IdMateria);
 
             TbClaveMateria.Text = Materia.ClaveMateria.Trim();
@@ -352,9 +339,8 @@ namespace GePE.Materias
             TbHPP.Text = Convert.ToString(Materia.HPP);
             TbCR.Text = Convert.ToString(Materia.CR);
             //cbEstadoMateria.Checked = Materia.EstadoMateria;
-
-            //FuPathPUA.FileName = Materia.PathPUA.Trim();
-            //FuPathPUAnoOficial.SaveAs(Materia.PathPUAnoOficial.Trim());
+            lbStatusPathPUA.Text = Materia.PathPUA;
+            lbStatusPathPUAnoOficial.Text = Materia.PathPUAnoOficial;
         }
         #endregion
 
@@ -409,10 +395,6 @@ namespace GePE.Materias
                     FuPathPUA.Enabled = false;
                     FuPathPUAnoOficial.Enabled = false;
                     //cbEstadoMateria.Enabled = false;
-
-                    //BtnActualizarCR.Visible = false;
-                    //BtnPathPUA.Visible = false;
-                    //BtnPathPUAnoOficial.Visible = false;
 
                     hfIdMateria.Value = LstMateria[0].IdMateria.ToString();
                     ObjetoEntidad_ControlesWebForm(Convert.ToInt32(hfIdMateria.Value));
@@ -483,13 +465,9 @@ namespace GePE.Materias
             }
             else if (RespuestaFuPathPUA == 3)
             {
-                lbStatusPathPUA.Text = "No especificaste un archivo para subir.";
-                SumaRespuestaFuPathPUA = 1;
-                lblTituloAccion.Text = "Error: No especificaste un archivo para subir.";
-                FuPathPUA.Dispose();
-                FuPathPUA.PostedFile.InputStream.Dispose();
-                FuPathPUA.Attributes.Clear();
-                return;
+                
+                    lbStatusPathPUA.Text = "~/FilesSection/PUAnoexistente.pdf";
+                
             }
 
             RespuestaFuPathPUAnoOficial = AgregarPathPUAnoOficial();
@@ -519,13 +497,9 @@ namespace GePE.Materias
             }
             else if (RespuestaFuPathPUAnoOficial == 3)
             {
-                lbStatusPathPUAnoOficial.Text = "No especificaste un archivo para subir.";
-                SumaRespuestaFuPathPUAnoOficial = 1;
-                lblTituloAccion.Text = "Error: No especificaste un archivo para subir.";
-                FuPathPUAnoOficial.Dispose();
-                FuPathPUAnoOficial.PostedFile.InputStream.Dispose();
-                FuPathPUAnoOficial.Attributes.Clear();
-                return;
+                
+                    lbStatusPathPUAnoOficial.Text = "~/FilesSection/PUAnoexistente.pdf";
+                
             }
 
             if (SumaRespuestaCR == 0 && SumaRespuestaFuPathPUA == 0 && SumaRespuestaFuPathPUAnoOficial == 0)
@@ -624,13 +598,16 @@ namespace GePE.Materias
             }
             else if (RespuestaFuPathPUA == 3)
             {
-                lbStatusPathPUA.Text = "No especificaste un archivo para subir.";
-                SumaRespuestaFuPathPUA = 1;
-                lblTituloAccion.Text = "Error: No especificaste un archivo para subir.";
-                FuPathPUA.Dispose();
-                FuPathPUA.PostedFile.InputStream.Dispose();
-                FuPathPUA.Attributes.Clear();
-                return;
+                //Si lo que esta en la base de datos es diferente a ~/FilesSection/PUAnoexistente.pdf
+                //no hagas nada, quedate con ese dato.
+                if (lbStatusPathPUA.Text != "~/FilesSection/PUAnoexistente.pdf")
+                {
+
+                }
+                else
+                {
+                    lbStatusPathPUA.Text = "~/FilesSection/PUAnoexistente.pdf";
+                }
             }
 
             RespuestaFuPathPUAnoOficial = AgregarPathPUAnoOficial();
@@ -660,13 +637,16 @@ namespace GePE.Materias
             }
             else if (RespuestaFuPathPUAnoOficial == 3)
             {
-                lbStatusPathPUAnoOficial.Text = "No especificaste un archivo para subir.";
-                SumaRespuestaFuPathPUAnoOficial = 1;
-                lblTituloAccion.Text = "Error: No especificaste un archivo para subir.";
-                FuPathPUAnoOficial.Dispose();
-                FuPathPUAnoOficial.PostedFile.InputStream.Dispose();
-                FuPathPUAnoOficial.Attributes.Clear();
-                return;
+                //Si lo que esta en la base de datos es diferente a ~/FilesSection/PUAnoexistente.pdf
+                //no hagas nada, quedate con ese dato.
+                if (lbStatusPathPUAnoOficial.Text != "~/FilesSection/PUAnoexistente.pdf")
+                {
+
+                }
+                else
+                {
+                    lbStatusPathPUAnoOficial.Text = "~/FilesSection/PUAnoexistente.pdf";
+                }
             }
 
             if (SumaRespuestaCR == 0 && SumaRespuestaFuPathPUA == 0 && SumaRespuestaFuPathPUAnoOficial == 0)
@@ -712,11 +692,6 @@ namespace GePE.Materias
             ControlesOnOFF(true);
 
             TbCR.Enabled = false;
-            //para que aparescan
-            //BtnActualizarCR.Visible = true;
-            //BtnPathPUA.Visible = true;
-            //BtnPathPUAnoOficial.Visible = true;
-
         }
         protected void BtnMnuBorrar_Click(object sender, EventArgs e)
         {
@@ -749,10 +724,6 @@ namespace GePE.Materias
             //Aqui se hacen no visible los Label, TextBox y el CheckBox
             VisibleOnOFF(true);
 
-            //BtnActualizarCR.Visible = false;
-            //BtnPathPUA.Visible = false;
-            //BtnPathPUAnoOficial.Visible = false;
-
             PnlCapturaDatos.Visible = true;
             BtnBorrar.Visible = true;
             BtnBorrarModal.Visible = true;
@@ -782,7 +753,6 @@ namespace GePE.Materias
         {
             lblTituloAccion.Text = "AQUI SE ASIGNARA EL PLAN DE ESTUDIOS A LAS MATERIAS";
         }
-
 
     }
 

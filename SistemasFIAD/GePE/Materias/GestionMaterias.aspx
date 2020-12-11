@@ -87,7 +87,7 @@
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbCR" class="text-dark font-weight-bold m-0" runat="server">Creditos</asp:Label>
-                                    <asp:TextBox ID="TbCR" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="TbCR" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
                                     <br />
                                     <asp:Label runat="server" ID="lbStatusCR" Text="Estado de la carga: " />
                                     <br />
@@ -107,11 +107,6 @@
                                     <br />
                                     <asp:Label runat="server" ID="lbStatusPathPUA" Text="Estado de la carga: " />
                                     <br />
-                                    <asp:RequiredFieldValidator ID="RfvPathPUA" runat="server" CssClass="text-danger"
-                                        ControlToValidate="FuPathPUA"
-                                        ErrorMessage="*Este campo es requerido."
-                                        Display="Dynamic"></asp:RequiredFieldValidator>
-                                    <br />
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -121,11 +116,6 @@
                                     <asp:FileUpload ID="FuPathPUAnoOficial" runat="server" />
                                     <br />
                                     <asp:Label runat="server" ID="lbStatusPathPUAnoOficial" Text="Estado de la carga: " />
-                                    <br />
-                                    <asp:RequiredFieldValidator ID="RfvPathPUAnoOficial" runat="server" CssClass="text-danger"
-                                        ControlToValidate="FuPathPUAnoOficial"
-                                        ErrorMessage="*Este campo es requerido."
-                                        Display="Dynamic"></asp:RequiredFieldValidator>
                                     <br />
                                 </div>
                             </div>
