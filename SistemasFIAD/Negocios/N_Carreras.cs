@@ -95,8 +95,8 @@ namespace Negocios
         {
             return (from Carreras in LstCarreras()
                     where
-Carreras.NombreCarrera.ToUpper().Contains(CriterioBusqueda.ToUpper()) ||
-Carreras.AliasCarrera.Contains(CriterioBusqueda)
+                        Carreras.NombreCarrera.ToUpper().Contains(CriterioBusqueda.ToUpper()) ||
+                        Carreras.AliasCarrera.Contains(CriterioBusqueda)
                     select Carreras).ToList();
         }
     }

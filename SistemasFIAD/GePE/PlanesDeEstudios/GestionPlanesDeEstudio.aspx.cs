@@ -248,7 +248,7 @@ namespace GePE.PlanesDeEstudios
                 IdCarrera = Convert.ToInt32(ddlProgramaEducativo.SelectedValue),
                 ClavePlanEstudio = TbClavePlanEstudio.Text,
                 PlanEstudio = TbPlanEstudio.Text,
-                ProgramaEducativo = ddlProgramaEducativo.SelectedItem.Text,
+                ProgramaEducativo = ddlProgramaEducativo.SelectedItem.Value,
                 FechaCreacion = TbFechaCreacion.Text,
                 TotalCreditos = Convert.ToInt32(TbTotalCreditos.Text),
                 EstadoPlanEstudios = cbEstadoPlanEstudios.Checked,
@@ -256,8 +256,9 @@ namespace GePE.PlanesDeEstudios
                 PerfilDeIngreso = TbPerfilDeIngreso.Text,
                 PerfilDeEgreso = TbPerfilDeEgreso.Text,
                 CampoOcupacional = TbCampoOcupacional.Text,
-                UnidadAcademica = ddlUnidadAcademica.SelectedItem.Text,
-                Estatus = ddlEstatus.SelectedItem.Text
+                UnidadAcademica = ddlUnidadAcademica.SelectedItem.Value,
+                Estatus = ddlEstatus.SelectedItem.Text,
+                IdEstatus = ddlEstatus.SelectedIndex
             };
             return PlanEstudio;
 
@@ -266,10 +267,10 @@ namespace GePE.PlanesDeEstudios
         {
             E_PlanEstudio planEstudio = PE.BuscaPlanEstudioPorId(IdPlanEstudio);
 
-            ddlIdNivelAcademico.SelectedIndex = planEstudio.IdNivelAcademico;
+            ddlIdNivelAcademico.SelectedValue = Convert.ToString(planEstudio.IdNivelAcademico);
             TbClavePlanEstudio.Text = planEstudio.ClavePlanEstudio.Trim();
             TbPlanEstudio.Text = planEstudio.PlanEstudio.Trim();
-            ddlProgramaEducativo.SelectedItem.Text = planEstudio.ProgramaEducativo;
+            ddlProgramaEducativo.SelectedValue = Convert.ToString(planEstudio.ProgramaEducativo);//--------------
             TbFechaCreacion.Text = planEstudio.FechaCreacion.Trim();
             TbTotalCreditos.Text = Convert.ToString(planEstudio.TotalCreditos);
             cbEstadoPlanEstudios.Checked = planEstudio.EstadoPlanEstudios;
@@ -277,8 +278,8 @@ namespace GePE.PlanesDeEstudios
             TbPerfilDeIngreso.Text = planEstudio.PerfilDeIngreso.Trim();
             TbPerfilDeEgreso.Text = planEstudio.PerfilDeEgreso.Trim();
             TbCampoOcupacional.Text = planEstudio.CampoOcupacional.Trim();
-            ddlUnidadAcademica.SelectedItem.Text = planEstudio.UnidadAcademica;
-            ddlEstatus.SelectedItem.Text = planEstudio.Estatus;
+            ddlUnidadAcademica.SelectedValue = Convert.ToString(planEstudio.UnidadAcademica);//------------------
+            ddlEstatus.SelectedValue = Convert.ToString(planEstudio.IdEstatus);//--------------------------
         }
         #endregion
 
@@ -842,7 +843,7 @@ namespace GePE.PlanesDeEstudios
 
                 //hfIdPlanEstudio.Value = GrvPlanEstudio.DataKeys[row.RowIndex].Value.ToString();
 
-                //List<E_PlanEstudioMateria> LstPlanEstudioMateria = NPEM.BuscaPlanEstudioMateriaPorId(Convert.ToInt32(hfIdPlanEstudio.Value));
+                //List<E_PlanEstudioMateria> LstPlanEstudioMateria = NPEM.BuscaPlanEstudioMateria(Convert.ToInt32(hfIdPlanEstudio.Value));
 
                 //if (LstPlanEstudioMateria.Count.Equals(0))
                 //{
@@ -938,7 +939,7 @@ namespace GePE.PlanesDeEstudios
             }
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlProgramaEducativo.Items.Insert(0, new ListItem("", ""));
+            ddlProgramaEducativo.Items.Insert(0, new ListItem("<Seleccione Carrera>", ""));
         }
         private void DroplistEstatus()
         {
@@ -946,9 +947,9 @@ namespace GePE.PlanesDeEstudios
 
             ListItem i;
 
-            i = new ListItem("", "");
+            i = new ListItem("<Seleccione>", "");
             ddlEstatus.Items.Add(i);
-            i = new ListItem("APROVADO", "1");
+            i = new ListItem("APROBADO", "1");
             ddlEstatus.Items.Add(i);
             i = new ListItem("REVISION", "2");
             ddlEstatus.Items.Add(i);
@@ -984,7 +985,7 @@ namespace GePE.PlanesDeEstudios
             }
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlIdNivelAcademico.Items.Insert(0, new ListItem("", ""));
+            ddlIdNivelAcademico.Items.Insert(0, new ListItem("<Seleccione Nivel>", ""));
         }
         private void DroplistUnidadAcademica()
         {
@@ -1012,7 +1013,7 @@ namespace GePE.PlanesDeEstudios
             }
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlUnidadAcademica.Items.Insert(0, new ListItem("", ""));
+            ddlUnidadAcademica.Items.Insert(0, new ListItem("<Seleccione Uidad Academica>", ""));
         }
         //Plan Estudio - Materia
         private void DroplistPlanEstudio()
@@ -1041,7 +1042,7 @@ namespace GePE.PlanesDeEstudios
             }
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlIdPlanEstudio.Items.Insert(0, new ListItem("", ""));
+            ddlIdPlanEstudio.Items.Insert(0, new ListItem("<Seleccine>", ""));
         }
         private void DroplistMateria()
         {
@@ -1069,7 +1070,7 @@ namespace GePE.PlanesDeEstudios
             }
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlIdMateria.Items.Insert(0, new ListItem("", ""));
+            ddlIdMateria.Items.Insert(0, new ListItem("<Seleccione Materia>", ""));
         }
         private void DroplistTipoMateria()
         {
@@ -1097,7 +1098,7 @@ namespace GePE.PlanesDeEstudios
             }
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlIdTipoMateria.Items.Insert(0, new ListItem("", ""));
+            ddlIdTipoMateria.Items.Insert(0, new ListItem("<Selecione Tipo>", ""));
         }
         private void DroplistEtapa()
         {
@@ -1125,7 +1126,7 @@ namespace GePE.PlanesDeEstudios
             }
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlIdEtapa.Items.Insert(0, new ListItem("", ""));
+            ddlIdEtapa.Items.Insert(0, new ListItem("<Seleccione Etapa>", ""));
         }
         private void DroplistAreaConocimiento()
         {
@@ -1153,29 +1154,29 @@ namespace GePE.PlanesDeEstudios
             }
             // Add the initial item - you can add this even if the options from the 
             // db were not successfully loaded 
-            ddlIdAreaConocimiento.Items.Insert(0, new ListItem("", ""));
+            ddlIdAreaConocimiento.Items.Insert(0, new ListItem("<Seleccione Area>", ""));
         }
         private void DroplistSemestre()
         {
             //carga datos para estatus
             ListItem i;
-            i = new ListItem("", "");
+            i = new ListItem("<Seleccione>", "");
             ddlSemestre.Items.Add(i);
-            i = new ListItem("1", "2");
+            i = new ListItem("1.º", "2");
             ddlSemestre.Items.Add(i);
-            i = new ListItem("2", "3");
+            i = new ListItem("2.º", "3");
             ddlSemestre.Items.Add(i);
-            i = new ListItem("3", "4");
+            i = new ListItem("3.º", "4");
             ddlSemestre.Items.Add(i);
-            i = new ListItem("4", "5");
+            i = new ListItem("4.º", "5");
             ddlSemestre.Items.Add(i);
-            i = new ListItem("5", "6");
+            i = new ListItem("5.º", "6");
             ddlSemestre.Items.Add(i);
-            i = new ListItem("6", "7");
+            i = new ListItem("6.º", "7");
             ddlSemestre.Items.Add(i);
-            i = new ListItem("7", "8");
+            i = new ListItem("7.º", "8");
             ddlSemestre.Items.Add(i);
-            i = new ListItem("8", "9");
+            i = new ListItem("8.º", "9");
             ddlSemestre.Items.Add(i);
         }
         #endregion

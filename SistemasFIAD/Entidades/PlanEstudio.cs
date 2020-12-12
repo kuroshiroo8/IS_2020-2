@@ -30,6 +30,7 @@ namespace Entidades
         private string _CampoOcupacional;
         private string _UnidadAcademica;
         private string _Estatus;
+        private int _IdEstatus;
         #endregion
 
         #region Constructor
@@ -51,6 +52,7 @@ namespace Entidades
             _CampoOcupacional = string.Empty;
             _UnidadAcademica = string.Empty;
             _Estatus = string.Empty;
+            _IdEstatus = 0;
         }
         #endregion
 
@@ -71,6 +73,7 @@ namespace Entidades
         public string CampoOcupacional { get => _CampoOcupacional; set => _CampoOcupacional = value; }
         public string UnidadAcademica { get => _UnidadAcademica; set => _UnidadAcademica = value; }
         public string Estatus { get => _Estatus; set => _Estatus = value; }
+        public int IdEstatus { get => _IdEstatus; set => _IdEstatus = value; }
         #endregion
     }
 }

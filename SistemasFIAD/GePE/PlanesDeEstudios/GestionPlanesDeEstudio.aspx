@@ -55,7 +55,7 @@
                             <div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbProgramaEducativo" class="text-dark font-weight-bold m-0" runat="server">Programa Educativo</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlProgramaEducativo" />
+                                    <asp:DropDownList runat="server" ID="ddlProgramaEducativo" ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlProgramaEducativo" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlProgramaEducativo"
                                         ErrorMessage="*Este campo es requerido."
@@ -77,10 +77,10 @@
                                 <div class="form-group">
                                     <asp:Label ID="lbTotalCreditos" class="text-dark font-weight-bold m-0" runat="server">Total Creditos</asp:Label>
                                     <asp:TextBox runat="server" ID="TbTotalCreditos"></asp:TextBox>
-                                    <%--<asp:RequiredFieldValidator ID="rfvTbTotalCreditos" runat="server" CssClass="text-danger"
+                                    <asp:RequiredFieldValidator ID="rfvTbTotalCreditos" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbTotalCreditos"
                                         ErrorMessage="*Este campo es requerido."
-                                        Display="Dynamic"></asp:RequiredFieldValidator>--%>
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
                             <div class="col-lg-9 col-md-12 col-12">
@@ -132,7 +132,7 @@
                             <div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbUnidadAcademica" class="text-dark font-weight-bold m-0" runat="server">Unidad Academica</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlUnidadAcademica" />
+                                    <asp:DropDownList runat="server" ID="ddlUnidadAcademica" ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlUnidadAcademica" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlUnidadAcademica"
                                         ErrorMessage="*Este campo es requerido."
@@ -142,7 +142,7 @@
                             <div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbEstatus" class="text-dark font-weight-bold m-0" runat="server">Estatus</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlEstatus" />
+                                    <asp:DropDownList runat="server" ID="ddlEstatus" ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlEstatus" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlEstatus"
                                         ErrorMessage="*Este campo es requerido."
@@ -153,7 +153,7 @@
                             <div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbIdNivelAcademico" class="text-dark font-weight-bold m-0" runat="server">Nivel Academico</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlIdNivelAcademico" />
+                                    <asp:DropDownList runat="server" ID="ddlIdNivelAcademico" ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlIdNivelAcademico" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlIdNivelAcademico"
                                         ErrorMessage="*Este campo es requerido."
@@ -188,7 +188,7 @@
                             <div class="col-lg-3 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbIdPlanEstudio" class="text-dark font-weight-bold m-0" runat="server">Plan de estudio</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlIdPlanEstudio" />
+                                    <asp:DropDownList runat="server" ID="ddlIdPlanEstudio" ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlIdPlanEstudio" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlIdPlanEstudio"
                                         ErrorMessage="*Este campo es requerido."

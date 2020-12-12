@@ -89,5 +89,12 @@ namespace Negocios
             return (from PlanEstudioMateria in LstPlanEstudioMateria() where PlanEstudioMateria.IdPlanEstudioMateria == pIdPlanEstudioMateria select PlanEstudioMateria).FirstOrDefault();
         }
 
+        //public List<E_PlanEstudio> BuscaPlanEstudioMateria(string CriterioBusqueda)
+        //{
+        //    return (from PlanEstudioMateria in LstPlanEstudioMateria()
+        //            where
+        //            PlanEstudioMateria.IdPlanEstudio.ToUpper().Contains(CriterioBusqueda.ToUpper())
+        //            select PlanEstudioMateria).ToList();
+        //}
     }
 }
