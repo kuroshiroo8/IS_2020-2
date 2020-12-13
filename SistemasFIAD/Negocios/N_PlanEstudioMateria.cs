@@ -49,7 +49,7 @@ namespace Negocios
             string R = NPEM.IBM_Entidad<E_PlanEstudioMateria>("IBM_PlanEstudioMateria", Entidad);
 
             if (R.Contains("Exito"))
-                return "Exito: Los datos de fueron borrados correctamente.";
+                return "Exito: Los datos fueron borrados correctamente.";
             else
                 if (R.Contains("Error"))
                 return "Error: Los datos no se borraron del sistema.";
@@ -75,7 +75,7 @@ namespace Negocios
         // Listado generales de la clase PlanEstudioMateria en formato DataTable y List<E_PlanEstudioMateria>.
         public DataTable DT_LstPlanEstudioMateria()
         {
-            return NPEM.DT_ListadoGeneral("PlanEstudioMateria", "[PonerCampoDeOrdenacion]");
+            return NPEM.DT_ListadoGeneral("PlanEstudioMateria", "[NombrePlanEstudio]");
         }
 
         public List<E_PlanEstudioMateria> LstPlanEstudioMateria()
@@ -88,13 +88,13 @@ namespace Negocios
         {
             return (from PlanEstudioMateria in LstPlanEstudioMateria() where PlanEstudioMateria.IdPlanEstudioMateria == pIdPlanEstudioMateria select PlanEstudioMateria).FirstOrDefault();
         }
-
-        //public List<E_PlanEstudio> BuscaPlanEstudioMateria(string CriterioBusqueda)
-        //{
-        //    return (from PlanEstudioMateria in LstPlanEstudioMateria()
-        //            where
-        //            PlanEstudioMateria.IdPlanEstudio.ToUpper().Contains(CriterioBusqueda.ToUpper())
-        //            select PlanEstudioMateria).ToList();
-        //}
+        
+        public List<E_PlanEstudioMateria> BuscaPlanEstudioMaterias(string CriterioBusqueda)
+        {
+            return (from PlanEstudioMateria in LstPlanEstudioMateria()
+                    where
+                    PlanEstudioMateria.NombrePlanEstudio.ToUpper().Contains(CriterioBusqueda.ToUpper())
+                    select PlanEstudioMateria).ToList();
+        }
     }
 }

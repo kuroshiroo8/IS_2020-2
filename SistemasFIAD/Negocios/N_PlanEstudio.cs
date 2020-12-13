@@ -49,7 +49,7 @@ namespace Negocios
             string R = NPE.IBM_Entidad<E_PlanEstudio>("IBM_PlanEstudio", Entidad);
 
             if (R.Contains("Exito"))
-                return "Exito: Los datos de fueron borrados correctamente.";
+                return "Exito: Los datos fueron borrados correctamente.";
             else
                 if (R.Contains("Error"))
                 return "Error: Los datos no se borraron del sistema.";

@@ -22,6 +22,11 @@ namespace Entidades
         private int _IdEtapa;
         private int _IdAreaConocimiento;
         private int _Semestre;
+        private string _NombrePlanEstudio;
+        private string _NombreMateria;
+        private string _NombreTipoMateria;
+        private string _NombreEtapa;
+        private string _NombreArea;
         #endregion
 
         #region Constructor
@@ -35,6 +40,11 @@ namespace Entidades
             _IdEtapa = 0;
             _IdAreaConocimiento = 0;
             _Semestre = 0;
+            _NombrePlanEstudio = string.Empty;
+            _NombreMateria = string.Empty;
+            _NombreTipoMateria = string.Empty;
+            _NombreEtapa = string.Empty;
+            _NombreArea = string.Empty;
         }
         #endregion
 
@@ -47,6 +57,11 @@ namespace Entidades
         public int IdEtapa { get => _IdEtapa; set => _IdEtapa = value; }
         public int IdAreaConocimiento { get => _IdAreaConocimiento; set => _IdAreaConocimiento = value; }
         public int Semestre { get => _Semestre; set => _Semestre = value; }
+        public string NombrePlanEstudio { get => _NombrePlanEstudio; set => _NombrePlanEstudio = value; }
+        public string NombreMateria { get => _NombreMateria; set => _NombreMateria = value; }
+        public string NombreTipoMateria { get => _NombreTipoMateria; set => _NombreTipoMateria = value; }
+        public string NombreEtapa { get => _NombreEtapa; set => _NombreEtapa = value; }
+        public string NombreArea { get => _NombreArea; set => _NombreArea = value; }
         #endregion
     }
 }

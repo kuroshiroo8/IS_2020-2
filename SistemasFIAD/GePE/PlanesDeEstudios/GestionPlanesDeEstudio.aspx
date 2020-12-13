@@ -175,7 +175,7 @@
                 </div>
             </div>
         </asp:Panel>
-
+        <%--asignar materia a plan de estudio--%>
         <asp:Panel ID="PnlCapturaDatosPlanEstudioMateria" runat="server">
             <div class="container">
                 <div class="card">
@@ -199,7 +199,7 @@
                             <div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbIdMateria" class="text-dark font-weight-bold m-0" runat="server">Materia</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlIdMateria" />
+                                    <asp:DropDownList runat="server" ID="ddlIdMateria"  ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlIdMateria" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlIdMateria"
                                         ErrorMessage="*Este campo es requerido."
@@ -210,7 +210,7 @@
                             <div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbIdTipoMateria" class="text-dark font-weight-bold m-0" runat="server">Tipo de materia</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlIdTipoMateria" />
+                                    <asp:DropDownList runat="server" ID="ddlIdTipoMateria"  ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlIdTipoMateria" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlIdTipoMateria"
                                         ErrorMessage="*Este campo es requerido."
@@ -221,7 +221,7 @@
                             <div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbIdEtapa" class="text-dark font-weight-bold m-0" runat="server">Etapa</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlIdEtapa" />
+                                    <asp:DropDownList runat="server" ID="ddlIdEtapa"  ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlIdEtapa" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlIdEtapa"
                                         ErrorMessage="*Este campo es requerido."
@@ -232,7 +232,7 @@
                             <div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbIdAreaConocimiento" class="text-dark font-weight-bold m-0" runat="server">Area de conocimiento</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlIdAreaConocimiento" />
+                                    <asp:DropDownList runat="server" ID="ddlIdAreaConocimiento"  ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlIdAreaConocimiento" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlIdAreaConocimiento"
                                         ErrorMessage="*Este campo es requerido."
@@ -243,7 +243,7 @@
                             <div class="col-lg-9 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbSemestre" class="text-dark font-weight-bold m-0" runat="server">Semestre</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlSemestre" />
+                                    <asp:DropDownList runat="server" ID="ddlSemestre"  ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlSemestre" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlSemestre"
                                         ErrorMessage="*Este campo es requerido."
@@ -257,7 +257,7 @@
                             <asp:LinkButton ID="BtnGrabarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-success  pr-3" CausesValidation="true" OnClick="BtnGrabarPlanEstudioMateria_Click"><i class="fas fa-plus-square" ></i> Insertar</asp:LinkButton>
                             <asp:LinkButton ID="BtnBorrarModalPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-danger pr-3" data-toggle="modal" CausesValidation="false" data-target="#BorrarModalPlanEstudioMateria"><i class="fas fa-trash-alt"></i>Borrar</asp:LinkButton>
                             <asp:LinkButton ID="BtnModificarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="true" OnClick="BtnModificarPlanEstudioMateria_Click"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
-                            <asp:LinkButton ID="BtnMnuEditarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="true" OnClick="BtnMnuEditarPlanEstudioMateria_Click"><i class="fas fa-edit" OnClick="BtnMnuEditar_Click"></i> Modificar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnMnuEditarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="true" OnClick="BtnMnuEditarPlanEstudioMateria_Click"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
                             <asp:LinkButton ID="BtnMnuBorrarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-danger pr-3" CausesValidation="false" OnClick="BtnMnuBorrarPlanEstudioMateria_Click"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton><%--envia al panel borrar--%>
                             <asp:LinkButton ID="BtnCancelarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-dark pr-3" CausesValidation="false" OnClick="BtnCancelarPlanEstudioMateria_Click"><i class="fas fa-window-close"></i> Cancelar</asp:LinkButton>
                             <asp:LinkButton ID="BtnAceptarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="false" OnClick="BtnCancelarPlanEstudioMateria_Click"><i class="fas fa-check"></i> Aceptar</asp:LinkButton>
@@ -266,7 +266,7 @@
                 </div>
             </div>
         </asp:Panel>
-
+        <%--*******************************--%>
         <asp:Panel ID="PnlGrvPlanEstudio" runat="server">
             <div class="container-fluid">
                 <asp:GridView ID="GrvPlanEstudio" runat="server" AutoGenerateColumns="False"
@@ -331,17 +331,18 @@
                     OnRowEditing="GrvPlanEstudioMateria_RowEditing"
                     OnSelectedIndexChanged="GrvPlanEstudioMateria_SelectedIndexChanged">
                     <Columns>
-                        <asp:BoundField DataField="IdPlanEstudio" HeaderText="PLAN DE ESTUDIO" />
-                        <asp:BoundField DataField="IdMateria" HeaderText="MATERIA" />
-                        <asp:BoundField DataField="IdTipoMateria" HeaderText="TIPO DE MATERIA" />
-                        <asp:BoundField DataField="IdEtapa" HeaderText="ETAPA" />
-                        <asp:BoundField DataField="IdAreaConocimiento" HeaderText="AREA DE CONOCIMIENTO" />
+                        <%--<asp:BoundField DataField="IdPlanEstudio" HeaderText="ID PLAN" />--%>
+                        <asp:BoundField DataField="NombrePlanEstudio" HeaderText="PLAN DE ESTUDIO" />
+                        <asp:BoundField DataField="NombreMateria" HeaderText="MATERIA" />
+                        <asp:BoundField DataField="NombreTipoMateria" HeaderText="TIPO DE MATERIA" />
+                        <asp:BoundField DataField="NombreEtapa" HeaderText="ETAPA" />
+                        <asp:BoundField DataField="NombreArea" HeaderText="AREA DE CONOCIMIENTO" />
                         <asp:BoundField DataField="Semestre" HeaderText="SEMESTRE" />
 
-                        <%--                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
+                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
                             <ItemTemplate>
                                 <asp:LinkButton ID="GrvBtnEditar" runat="server" CssClass="btn btn-md btn-primary "
-                                    CausesValidation="false" CommandName="Edit"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
+                                    CausesValidation="false" CommandName="Edit" OnClick="BtnMnuEditarPlanEstudioMateria_Click"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -350,7 +351,7 @@
                                 <asp:LinkButton ID="GrvBtnBorrar" runat="server" CssClass="btn btn-md btn-danger"
                                     CausesValidation="false" CommandName="Delete"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton>
                             </ItemTemplate>
-                        </asp:TemplateField>--%>
+                        </asp:TemplateField>
                     </Columns>
                     <HeaderStyle CssClass="bg-dark text-white" />
                 </asp:GridView>
