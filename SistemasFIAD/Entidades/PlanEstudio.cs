@@ -31,6 +31,7 @@ namespace Entidades
         private string _UnidadAcademica;
         private string _Estatus;
         private int _IdEstatus;
+        private string _NombreCarrera;
         #endregion
 
         #region Constructor
@@ -53,6 +54,7 @@ namespace Entidades
             _UnidadAcademica = string.Empty;
             _Estatus = string.Empty;
             _IdEstatus = 0;
+            _NombreCarrera = string.Empty;
         }
         #endregion
 
@@ -74,6 +76,7 @@ namespace Entidades
         public string UnidadAcademica { get => _UnidadAcademica; set => _UnidadAcademica = value; }
         public string Estatus { get => _Estatus; set => _Estatus = value; }
         public int IdEstatus { get => _IdEstatus; set => _IdEstatus = value; }
+        public string NombreCarrera { get => _NombreCarrera; set => _NombreCarrera = value; }
         #endregion
     }
 }

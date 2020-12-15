@@ -45,7 +45,17 @@
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbClaveMateria" class="text-dark font-weight-bold m-0" runat="server">Clave de la materia</asp:Label>
-                                    <uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbClaveMateria" />
+                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbClaveMateria" />--%>
+                                    <asp:TextBox runat="server" ID="TbClaveMateria" CssClass="form-control" TextMode="Number"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvTbClaveMateria" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbClaveMateria"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revTbClaveMateria" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbClaveMateria"
+                                        ErrorMessage="*Este campo debe de tener la estructura XXX con numeros de 0 a 9."
+                                        ValidationExpression="^[0-9]{3}$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -57,31 +67,81 @@
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbHC" class="text-dark font-weight-bold m-0" runat="server">Horas Clase</asp:Label>
-                                    <uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbHC" />
+                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbHC" />--%>
+                                    <asp:TextBox runat="server" ID="TbHC" CssClass="form-control" TextMode="Number"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvTbHC" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHC"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revTbHC" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHC"
+                                        ErrorMessage="*Este campo debe de tener la estructura X con numeros de 0 a 9."
+                                        ValidationExpression="^[0-9]{1}$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbHL" class="text-dark font-weight-bold m-0" runat="server">Horas Laboratorio</asp:Label>
-                                    <uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbHL" />
+                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbHL" />--%>
+                                    <asp:TextBox runat="server" ID="TbHL" CssClass="form-control" TextMode="Number"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvTbHL" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHL"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revTbHL" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHL"
+                                        ErrorMessage="*Este campo debe de tener la estructura X con numeros de 0 a 9."
+                                        ValidationExpression="^[0-9]{1}$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbHT" class="text-dark font-weight-bold m-0" runat="server">Horas Taller</asp:Label>
-                                    <uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbHT" />
+                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbHT" />--%>
+                                    <asp:TextBox runat="server" ID="TbHT" CssClass="form-control" TextMode="Number"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvTbHT" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHT"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revTbHT" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHT"
+                                        ErrorMessage="*Este campo debe de tener la estructura X con numeros de 0 a 9."
+                                        ValidationExpression="^[0-9]{1}$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbHE" class="text-dark font-weight-bold m-0" runat="server">Horas Extra Clase</asp:Label>
-                                    <uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbHE" />
+                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbHE" />--%>
+                                    <asp:TextBox runat="server" ID="TbHE" CssClass="form-control" TextMode="Number"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvTbHE" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHE"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revTbHE" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHE"
+                                        ErrorMessage="*Este campo debe de tener la estructura X con numeros de 0 a 9."
+                                        ValidationExpression="^[0-9]{1}$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
-                                    <asp:Label ID="lbHPP" class="text-dark font-weight-bold m-0" runat="server">Horas Practicas Profesionales</asp:Label>
-                                    <uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbHPP" />
+                                    <asp:Label ID="lbHPP" class="text-dark font-weight-bold m-0" runat="server">Horas Practicas DE CAMPO</asp:Label>
+                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbHPP" />--%>
+                                    <asp:TextBox runat="server" ID="TbHPP" CssClass="form-control" TextMode="Number"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvTbHPP" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHPP"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revTbHPP" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbHPP"
+                                        ErrorMessage="*Este campo debe de tener la estructura X con numeros de 0 a 9."
+                                        ValidationExpression="^[0-9]{1}$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -149,7 +209,7 @@
                         <asp:BoundField DataField="HL" HeaderText="HL" />
                         <asp:BoundField DataField="HT" HeaderText="HT" />
                         <asp:BoundField DataField="HE" HeaderText="HE" />
-                        <asp:BoundField DataField="HPP" HeaderText="HPP" />
+                        <asp:BoundField DataField="HPP" HeaderText="HPC" />
                         <asp:BoundField DataField="CR" HeaderText="CR" />
                         <%--<asp:BoundField DataField="EstadoMateria" HeaderText="ESTADO" />--%>
                         <asp:HyperLinkField DataNavigateUrlFields="PathPUA" HeaderText="PathPUA"

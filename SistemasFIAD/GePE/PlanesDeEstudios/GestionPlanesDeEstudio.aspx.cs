@@ -21,6 +21,23 @@ namespace GePE.PlanesDeEstudios
         {
             if (!IsPostBack)
                 InicializaControles();
+
+            if (cbSeriada.Checked)
+            {
+                lbMateriaSeriada.Visible = true;
+                ddlMateriaSeriada.Items.Clear();
+                DroplistMateriaSeriada();
+                ddlMateriaSeriada.Visible = true;
+                ddlMateriaSeriada.Enabled = true;
+            }
+            else
+            {
+                lbMateriaSeriada.Visible = false;
+                ddlMateriaSeriada.Items.Clear();
+                DroplistMateriaSeriada();
+                ddlMateriaSeriada.Visible = false;
+                ddlMateriaSeriada.Enabled = false;
+            }
         }
 
         #region Métodos generales
@@ -45,7 +62,7 @@ namespace GePE.PlanesDeEstudios
             lbPerfilDeEgreso.Visible = false;
             lbCampoOcupacional.Visible = false;
             lbUnidadAcademica.Visible = false;
-            lbEstatus.Visible = false;
+            //lbEstatus.Visible = false;
 
             //Visible LinkButton
             BtnGrabar.Visible = false;
@@ -68,6 +85,7 @@ namespace GePE.PlanesDeEstudios
             lbIdEtapa.Visible = false;
             lbIdAreaConocimiento.Visible = false;
             lbSemestre.Visible = false;
+            lbSeriada.Visible = false;
 
             //Visible LinkButton
             BtnGrabarPlanEstudioMateria.Visible = false;
@@ -119,6 +137,10 @@ namespace GePE.PlanesDeEstudios
             ddlIdEtapa.Items.Clear();
             ddlIdAreaConocimiento.Items.Clear();
             ddlSemestre.Items.Clear();
+            ddlMateriaSeriada.Items.Clear();
+
+            //Clear CheckBox
+            cbSeriada.Checked = false;
         }
         protected void ControlesOnOFF(bool TrueOrFalse)
         {
@@ -135,7 +157,7 @@ namespace GePE.PlanesDeEstudios
             lbPerfilDeEgreso.Enabled = TrueOrFalse;
             lbCampoOcupacional.Enabled = TrueOrFalse;
             lbUnidadAcademica.Enabled = TrueOrFalse;
-            lbEstatus.Enabled = TrueOrFalse;
+            //lbEstatus.Enabled = TrueOrFalse;
 
             //Clear TextBox
             TbClavePlanEstudio.Enabled = TrueOrFalse;
@@ -171,7 +193,7 @@ namespace GePE.PlanesDeEstudios
             lbPerfilDeEgreso.Visible = TrueOrFalse;
             lbCampoOcupacional.Visible = TrueOrFalse;
             lbUnidadAcademica.Visible = TrueOrFalse;
-            lbEstatus.Visible = TrueOrFalse;
+            //lbEstatus.Visible = TrueOrFalse;
 
             //Visible TextBox
             TbClavePlanEstudio.Visible = TrueOrFalse;
@@ -192,6 +214,23 @@ namespace GePE.PlanesDeEstudios
             //Visible CheckBox
             cbEstadoPlanEstudios.Visible = TrueOrFalse;
         }
+        private void CargarDatosListasPlanEstudio()
+        {
+            ddlProgramaEducativo.Items.Clear();
+            DroplistProgramaEducativo();
+
+            ddlEstatus.Items.Clear();
+            DroplistEstatus();
+
+            ddlIdNivelAcademico.Items.Clear();
+            DroplistGradoAcademico();
+
+            ddlUnidadAcademica.Items.Clear();
+            DroplistUnidadAcademica();
+
+            ddlMateriaSeriada.Items.Clear();
+            DroplistMateriaSeriada();
+        }
         #endregion
 
         #region Métodos generales Plan Estudio - Materia
@@ -210,6 +249,7 @@ namespace GePE.PlanesDeEstudios
             lbIdEtapa.Enabled = TrueOrFalse;
             lbIdAreaConocimiento.Enabled = TrueOrFalse;
             lbSemestre.Enabled = TrueOrFalse;
+            lbSeriada.Enabled = TrueOrFalse;
 
             //Clear DropDownList
             ddlIdPlanEstudio.Enabled = TrueOrFalse;
@@ -218,6 +258,9 @@ namespace GePE.PlanesDeEstudios
             ddlIdEtapa.Enabled = TrueOrFalse;
             ddlIdAreaConocimiento.Enabled = TrueOrFalse;
             ddlSemestre.Enabled = TrueOrFalse;
+            ddlMateriaSeriada.Enabled = TrueOrFalse;
+
+            cbSeriada.Enabled = TrueOrFalse;
         }
         protected void VisibleOnOFFPlanEstudioMateria(bool TrueOrFalse)
         {
@@ -228,6 +271,7 @@ namespace GePE.PlanesDeEstudios
             lbIdEtapa.Visible = TrueOrFalse;
             lbIdAreaConocimiento.Visible = TrueOrFalse;
             lbSemestre.Visible = TrueOrFalse;
+            lbSeriada.Visible = TrueOrFalse;
 
             //Visible DropDownList
             ddlIdPlanEstudio.Visible = TrueOrFalse;
@@ -236,6 +280,32 @@ namespace GePE.PlanesDeEstudios
             ddlIdEtapa.Visible = TrueOrFalse;
             ddlIdAreaConocimiento.Visible = TrueOrFalse;
             ddlSemestre.Visible = TrueOrFalse;
+            ddlMateriaSeriada.Visible = TrueOrFalse;
+
+            cbSeriada.Visible = TrueOrFalse;
+        }
+        private void CargarDatosListasPlanEstudioMateria()
+        {
+            ddlIdPlanEstudio.Items.Clear();
+            DroplistPlanEstudio();
+
+            ddlIdMateria.Items.Clear();
+            DroplistMateria();
+
+            ddlIdTipoMateria.Items.Clear();
+            DroplistTipoMateria();
+
+            ddlIdEtapa.Items.Clear();
+            DroplistEtapa();
+
+            ddlIdAreaConocimiento.Items.Clear();
+            DroplistAreaConocimiento();
+
+            ddlSemestre.Items.Clear();
+            DroplistSemestre();
+
+            ddlMateriaSeriada.Items.Clear();
+            DroplistMateriaSeriada();
         }
         #endregion
 
@@ -258,7 +328,8 @@ namespace GePE.PlanesDeEstudios
                 CampoOcupacional = TbCampoOcupacional.Text,
                 UnidadAcademica = ddlUnidadAcademica.SelectedItem.Value,
                 Estatus = ddlEstatus.SelectedItem.Text,
-                IdEstatus = ddlEstatus.SelectedIndex
+                IdEstatus = ddlEstatus.SelectedIndex,
+                NombreCarrera = ddlProgramaEducativo.SelectedItem.Text
             };
             return PlanEstudio;
 
@@ -279,23 +350,13 @@ namespace GePE.PlanesDeEstudios
             TbPerfilDeEgreso.Text = planEstudio.PerfilDeEgreso.Trim();
             TbCampoOcupacional.Text = planEstudio.CampoOcupacional.Trim();
             ddlUnidadAcademica.SelectedValue = Convert.ToString(planEstudio.UnidadAcademica);//------------------
-            ddlEstatus.SelectedValue = Convert.ToString(planEstudio.IdEstatus);//--------------------------
+            ddlEstatus.SelectedValue = Convert.ToString(planEstudio.IdEstatus);
         }
         #endregion
 
         #region Objeto Cliente Plan Estudio - Materia
         protected E_PlanEstudioMateria ControlesWebForm_ObjetoEntidad2()
         {
-            string str = Convert.ToString( ddlIdPlanEstudio.SelectedItem.Value);
-            string str2 = Convert.ToString(ddlIdMateria.SelectedItem.Value);
-            string str3 = Convert.ToString(ddlIdTipoMateria.SelectedItem.Value);
-            string str4 = Convert.ToString(ddlIdEtapa.SelectedItem.Value);
-            string str5 = Convert.ToString(ddlIdAreaConocimiento.SelectedItem.Value);
-            string str6 = Convert.ToString(ddlSemestre.SelectedItem.Value);
-            string str7 = Convert.ToString(ddlIdPlanEstudio.SelectedItem.Text);
-            Response.Write("<script language=javascript>alert('plan estudio" + str + " Materia " + str2 +
-                "TipoMateria "+ str3+ " Etapa" +str4+" Area" +str5+" Semestre"+str6+
-                " Nombre"+str7+ "');</script>");
             E_PlanEstudioMateria PlanEstudioMateria = new E_PlanEstudioMateria()
             {
                 IdPlanEstudio = Convert.ToInt32(ddlIdPlanEstudio.SelectedItem.Value),
@@ -303,36 +364,42 @@ namespace GePE.PlanesDeEstudios
                 IdTipoMateria = Convert.ToInt32(ddlIdTipoMateria.SelectedItem.Value),
                 IdEtapa = Convert.ToInt32(ddlIdEtapa.SelectedItem.Value),
                 IdAreaConocimiento = Convert.ToInt32(ddlIdAreaConocimiento.SelectedItem.Value),
-                Semestre = Convert.ToInt32( ddlSemestre.SelectedIndex),
+                Semestre = Convert.ToInt32(ddlSemestre.SelectedIndex),
                 NombrePlanEstudio = ddlIdPlanEstudio.SelectedItem.Text,
-                NombreMateria=ddlIdMateria.SelectedItem.Text,
-                NombreTipoMateria=ddlIdTipoMateria.SelectedItem.Text,
-                NombreEtapa=ddlIdEtapa.SelectedItem.Text,
-                NombreArea=ddlIdAreaConocimiento.SelectedItem.Text
+                NombreMateria = ddlIdMateria.SelectedItem.Text,
+                NombreTipoMateria = ddlIdTipoMateria.SelectedItem.Text,
+                NombreEtapa = ddlIdEtapa.SelectedItem.Text,
+                NombreArea = ddlIdAreaConocimiento.SelectedItem.Text,
+                IdMateriaSeriada = Convert.ToInt32(ddlMateriaSeriada.SelectedItem.Value),
+                EstadoMateriaSeriada = cbSeriada.Checked
             };
-            return PlanEstudioMateria;
 
+            return PlanEstudioMateria;
         }
         protected void ObjetoEntidad_ControlesWebForm2(int IdPlanEstudioMateria)
         {
             E_PlanEstudioMateria PlanEstudioMateria = NPEM.BuscaPlanEstudioMateriaPorId(IdPlanEstudioMateria);
 
             string nombreplan = Convert.ToString(PlanEstudioMateria.NombrePlanEstudio);
-            ddlIdMateria.SelectedValue = Convert.ToString( PlanEstudioMateria.IdMateria);
+            ddlIdMateria.SelectedValue = Convert.ToString(PlanEstudioMateria.IdMateria);
             ddlIdTipoMateria.SelectedIndex = PlanEstudioMateria.IdTipoMateria;
             ddlIdEtapa.SelectedIndex = PlanEstudioMateria.IdEtapa;
             ddlIdAreaConocimiento.SelectedIndex = PlanEstudioMateria.IdAreaConocimiento;
             ddlSemestre.SelectedIndex = PlanEstudioMateria.Semestre;
+            ddlMateriaSeriada.SelectedValue = Convert.ToString(PlanEstudioMateria.IdMateriaSeriada);
+            cbSeriada.Checked = PlanEstudioMateria.EstadoMateriaSeriada;
+            
             //se creo un indice para recorrer el dropdownlist y comparar el texto
-            int index = 1;
+            int index = 0;//1
             while (ddlIdPlanEstudio.SelectedItem.Text != nombreplan)
             {
-                ddlIdPlanEstudio.SelectedIndex = index += 1;
+                index = index + 1;
+                ddlIdPlanEstudio.SelectedIndex = index;
             }
             ddlIdPlanEstudio.SelectedIndex = index;
         }
         #endregion
-
+        
         #region Botones menu de navegación 
         protected void BtnMnuNuevo_Click(object sender, EventArgs e)
         {
@@ -346,18 +413,11 @@ namespace GePE.PlanesDeEstudios
             //Aqui se ponen visibles los Label, TextBox y el CheckBox
             VisibleOnOFF(true);
 
-            ddlProgramaEducativo.Items.Clear();
-            DroplistProgramaEducativo();
+            //Aqui se cargan los datos de las listas de plan estudio materia
+            CargarDatosListasPlanEstudio();
 
-            ddlEstatus.Items.Clear();
-            DroplistEstatus();
-
-            ddlIdNivelAcademico.Items.Clear();
-            DroplistGradoAcademico();
-
-            ddlUnidadAcademica.Items.Clear();
-            DroplistUnidadAcademica();
-
+            lbEstatus.Visible = false;
+            ddlEstatus.Visible = false;
         }
         protected void BtnMnuListado_Click(object sender, EventArgs e)
         {
@@ -384,17 +444,8 @@ namespace GePE.PlanesDeEstudios
 
                     VisibleOnOFF(true);
 
-                    ddlProgramaEducativo.Items.Clear();
-                    DroplistProgramaEducativo();
-
-                    ddlEstatus.Items.Clear();
-                    DroplistEstatus();
-
-                    ddlIdNivelAcademico.Items.Clear();
-                    DroplistGradoAcademico();
-
-                    ddlUnidadAcademica.Items.Clear();
-                    DroplistUnidadAcademica();
+                    //Aqui se cargan los datos de las listas de plan estudio materia
+                    CargarDatosListasPlanEstudio();
 
                     //Aqui se hacen no editables los TextBox
                     ControlesOnOFF(false);
@@ -432,23 +483,12 @@ namespace GePE.PlanesDeEstudios
             //Aqui se ponen visibles los Label, TextBox y el CheckBox
             VisibleOnOFFPlanEstudioMateria(true);
 
-            ddlIdPlanEstudio.Items.Clear();
-            DroplistPlanEstudio();
+            //Aqui se cargan los datos de las listas de plan estudio materia
+            CargarDatosListasPlanEstudioMateria();
 
-            ddlIdMateria.Items.Clear();
-            DroplistMateria();
+            lbMateriaSeriada.Visible = false;
+            ddlMateriaSeriada.Visible = false;
 
-            ddlIdTipoMateria.Items.Clear();
-            DroplistTipoMateria();
-
-            ddlIdEtapa.Items.Clear();
-            DroplistEtapa();
-
-            ddlIdAreaConocimiento.Items.Clear();
-            DroplistAreaConocimiento();
-
-            ddlSemestre.Items.Clear();
-            DroplistSemestre();
         }
         protected void BtnMnuListadoPlanEstudioMateria_Click(object sender, EventArgs e)
         {
@@ -458,62 +498,6 @@ namespace GePE.PlanesDeEstudios
             GrvPlanEstudioMateria.DataBind();
             PnlGrvPlanEstudioMateria.Visible = true;
         }
-        //protected void BtnBuscarPlanEstudioMateria_Click(object sender, EventArgs e)
-        //{
-        //    if (TbCriterioBusqueda.Text.Trim() != string.Empty)
-        //    {
-        //        List<E_PlanEstudioMateria> LstPlanEstudioMateria = NPEM.BuscaPlanEstudioMateriaPorId(TbCriterioBusqueda.Text.Trim());
-        //        if (LstPlanEstudioMateria.Count.Equals(0))
-        //        {
-        //            InicializaControlesPlanEstudioMateria();
-        //            lblNombreAccion.Text = "No se encontraron datos con el criterio de busqueda";
-        //        }
-        //        else if (LstPlanEstudioMateria.Count.Equals(1))
-        //        {
-        //            InicializaControlesPlanEstudioMateria();
-        //            lblTituloAccionPlanEstudioMateria.Text = "Resultado de busqueda";
-
-        //            VisibleOnOFFPlanEstudioMateria(true);
-
-        //            ddlIdPlanEstudio.Items.Clear();
-        //            DroplistPlanEstudio();
-
-        //            ddlIdMateria.Items.Clear();
-        //            DroplistMateria();
-
-        //            ddlIdTipoMateria.Items.Clear();
-        //            DroplistTipoMateria();
-
-        //            ddlIdEtapa.Items.Clear();
-        //            DroplistEtapa();
-
-        //            ddlIdAreaConocimiento.Items.Clear();
-        //            DroplistAreaConocimiento();
-
-        //            ddlSemestre.Items.Clear();
-        //            DroplistSemestre();
-
-        //            //Aqui se hacen no editables los TextBox
-        //            ControlesOnOFFPlanEstudioMateria(false);
-
-        //            hfIdPlanEstudioMateria.Value = LstPlanEstudioMateria[0].IdPlanEstudioMateria.ToString();
-        //            ObjetoEntidad_ControlesWebForm2(Convert.ToInt32(hfIdPlanEstudioMateria.Value));
-
-        //            BtnMnuEditarPlanEstudioMateria.Visible = true;
-        //            BtnMnuBorrarPlanEstudioMateria.Visible = true;
-
-        //            PnlCapturaDatosPlanEstudioMateria.Visible = true;
-        //            PnlGrvPlanEstudioMateria.Visible = false;
-        //        }
-        //        else
-        //        {
-        //            InicializaControlesPlanEstudioMateria();
-        //            GrvPlanEstudioMateria.DataSource = LstPlanEstudioMateria;
-        //            GrvPlanEstudioMateria.DataBind();
-        //            PnlGrvPlanEstudioMateria.Visible = true;
-        //        }
-        //    }
-        //}
         #endregion
 
         #region Botones IBM (WebForm captura datos del cliente)
@@ -601,8 +585,36 @@ namespace GePE.PlanesDeEstudios
         #region Botones IBM (WebForm captura datos del cliente) Plan Estudio - Materia
         protected void BtnGrabarPlanEstudioMateria_Click(object sender, EventArgs e)
         {
-            string R = NPEM.InsertaPlanEstudioMateria(ControlesWebForm_ObjetoEntidad2());
-            lblTituloAccionPlanEstudioMateria.Text = R;
+            string str1 = Convert.ToString(ddlIdPlanEstudio.SelectedItem.Value);
+            string str2 = Convert.ToString(ddlIdMateria.SelectedItem.Value);
+            string str3 = Convert.ToString(ddlIdTipoMateria.SelectedItem.Value);
+            string str4 = Convert.ToString(ddlIdEtapa.SelectedItem.Value);
+            string str5 = Convert.ToString(ddlIdAreaConocimiento.SelectedItem.Value);
+            string str6 = Convert.ToString(ddlSemestre.SelectedItem.Value);
+            string str7 = Convert.ToString(ddlIdPlanEstudio.SelectedItem.Text);
+            string str8 = Convert.ToString(ddlIdMateria.SelectedItem.Text);
+            string str9 = Convert.ToString(ddlIdTipoMateria.SelectedItem.Text);
+            string str10 = Convert.ToString(ddlIdEtapa.SelectedItem.Text);
+            string str11 = Convert.ToString(ddlIdAreaConocimiento.SelectedItem.Text);
+            string str12 = Convert.ToString(ddlMateriaSeriada.SelectedItem.Value);
+            string str13 = Convert.ToString(cbSeriada.Checked);
+            Response.Write("<script language=javascript>alert('" +
+                "IdPlanEstudio: " + str1 +
+                " IdMateria: " + str2 +
+                " IdTipoMateria: " + str3 +
+                " IdEtapa: " + str4 +
+                " IdAreaConocimiento: " + str5 +
+                " Semestre: " + str6 +
+                " NombrePlanEstudio: " + str7 +
+                " NombreMateria: " + str8 +
+                " NombreTipoMateria: " + str9 +
+                " NombreEtapa: " + str10 +
+                " NombreArea: " + str11 +
+                " IdMateriaSeriada: " + str12 +
+                " EstadoMateriaSeriada: " + str13 +
+                " ');</script>");
+            //string R = NPEM.InsertaPlanEstudioMateria(ControlesWebForm_ObjetoEntidad2());
+            //lblTituloAccionPlanEstudioMateria.Text = R;
 
             //Aqui se ponen no visibles los Label, TextBox y el CheckBox
             VisibleOnOFFPlanEstudioMateria(false);
@@ -611,22 +623,23 @@ namespace GePE.PlanesDeEstudios
             BtnCancelarPlanEstudioMateria.Visible = false;
             BtnAceptarPlanEstudioMateria.Visible = true;
 
-            if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
-            {
-                InicializaControles();
-            }
+            //if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
+            //{
+            //    InicializaControles();
+            //}
         }
         protected void BtnBorrarPlanEstudioMateria_Click(object sender, EventArgs e)
         {
             string R = NPEM.BorraPlanEstudioMateria(Convert.ToInt32(hfIdPlanEstudio.Value));
-            lblTituloAccion.Text = R;
+
+            lblTituloAccionPlanEstudioMateria.Text = R;
 
             //Aqui se ponen no visibles los Label, TextBox y el CheckBox
-            VisibleOnOFF(false);
+            VisibleOnOFFPlanEstudioMateria(false);
 
-            BtnBorrarModal.Visible = false;
-            BtnCancelar.Visible = false;
-            BtnAceptar.Visible = true;
+            BtnBorrarModalPlanEstudioMateria.Visible = false;
+            BtnCancelarPlanEstudioMateria.Visible = false;
+            BtnAceptarPlanEstudioMateria.Visible = true;
 
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
@@ -636,16 +649,16 @@ namespace GePE.PlanesDeEstudios
         protected void BtnModificarPlanEstudioMateria_Click(object sender, EventArgs e)
         {
             E_PlanEstudioMateria Cliente = ControlesWebForm_ObjetoEntidad2();
-            Cliente.IdPlanEstudio = Convert.ToInt32(hfIdPlanEstudio.Value);
+            Cliente.IdPlanEstudioMateria = Convert.ToInt32(hfIdPlanEstudio.Value);
             string R = NPEM.ModificaPlanEstudioMateria(Cliente);
             lblTituloAccionPlanEstudioMateria.Text = R;
-
+            
             //Aqui se ponen no visibles los Label, TextBox y el CheckBox
-            VisibleOnOFF(false);
+            VisibleOnOFFPlanEstudioMateria(false);
 
-            BtnMnuEditarPlanEstudioMateria.Visible = false;
-            BtnCancelar.Visible = false;
-            BtnAceptar.Visible = true;
+            BtnModificarPlanEstudioMateria.Visible = false;
+            BtnCancelarPlanEstudioMateria.Visible = false;
+            BtnAceptarPlanEstudioMateria.Visible = true;
 
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
@@ -654,26 +667,27 @@ namespace GePE.PlanesDeEstudios
         }
         protected void BtnMnuEditarPlanEstudioMateria_Click(object sender, EventArgs e)
         {
-            lblTituloAccionPlanEstudioMateria.Text = "Modificar Materia";
+            lblTituloAccionPlanEstudioMateria.Text = "Modificar materia de plan de estudio";
 
             BtnModificarPlanEstudioMateria.Visible = true;
-            BtnCancelar.Visible = true;
+            BtnCancelarPlanEstudioMateria.Visible = true;
             BtnMnuBorrarPlanEstudioMateria.Visible = false;
             BtnMnuEditarPlanEstudioMateria.Visible = false;
-            ddlIdMateria.Enabled = false;
 
-            ControlesOnOFF(true);
+            ControlesOnOFFPlanEstudioMateria(true);
+            ddlIdPlanEstudio.Enabled = false;
+            ddlIdMateria.Enabled = false;
         }
         protected void BtnMnuBorrarPlanEstudioMateria_Click(object sender, EventArgs e)
         {
-            lblTituloAccion.Text = "Borrar Materia";
-            BtnBorrar.Visible = true;
-            BtnBorrarModal.Visible = true;
-            BtnCancelar.Visible = true;
-            BtnMnuBorrar.Visible = false;
-            BtnMnuEditar.Visible = false;
+            lblTituloAccionPlanEstudioMateria.Text = "Borrar materia de plan de estudio";
+            BtnBorrarPlanEstudioMateria.Visible = true;
+            BtnBorrarModalPlanEstudioMateria.Visible = true;
+            BtnCancelarPlanEstudioMateria.Visible = true;
+            BtnMnuBorrarPlanEstudioMateria.Visible = false;
+            BtnMnuEditarPlanEstudioMateria.Visible = false;
 
-            ControlesOnOFF(false);
+            ControlesOnOFFPlanEstudioMateria(false);
         }
         protected void BtnCancelarPlanEstudioMateria_Click(object sender, EventArgs e)
         {
@@ -688,27 +702,17 @@ namespace GePE.PlanesDeEstudios
             {
                 throw new ArgumentNullException(nameof(sender));
             }
-
             if (e == null)
             {
                 throw new ArgumentNullException(nameof(e));
             }
-
             ControlesOFF();
 
-            ddlProgramaEducativo.Items.Clear();
-            DroplistProgramaEducativo();
-
-            ddlEstatus.Items.Clear();
-            DroplistEstatus();
-
-            ddlIdNivelAcademico.Items.Clear();
-            DroplistGradoAcademico();
-
-            ddlUnidadAcademica.Items.Clear();
-            DroplistUnidadAcademica();
+            //Aqui se cargan los datos de las listas de plan estudio materia
+            CargarDatosListasPlanEstudio();
 
             e.Cancel = true; //Deshabilitar las ediciones del registro
+
             hfIdPlanEstudio.Value = GrvPlanEstudio.DataKeys[e.RowIndex].Value.ToString();
             lblTituloAccion.Text = "Borrar Plan de estudio";
 
@@ -719,6 +723,8 @@ namespace GePE.PlanesDeEstudios
             VisibleOnOFF(true);
 
             TbTotalCreditos.Enabled = false;
+            lbEstatus.Visible = false;
+            ddlEstatus.Visible = false;
 
             PnlCapturaDatos.Visible = true;
             BtnBorrar.Visible = true;
@@ -731,26 +737,15 @@ namespace GePE.PlanesDeEstudios
             {
                 throw new ArgumentNullException(nameof(sender));
             }
-
             if (e == null)
             {
                 throw new ArgumentNullException(nameof(e));
             }
-
             InicializaControles();
 
-            ddlProgramaEducativo.Items.Clear();
-            DroplistProgramaEducativo();
-
-            ddlEstatus.Items.Clear();
-            DroplistEstatus();
-
-            ddlIdNivelAcademico.Items.Clear();
-            DroplistGradoAcademico();
-
-            ddlUnidadAcademica.Items.Clear();
-            DroplistUnidadAcademica();
-
+            //Aqui se cargan los datos de las listas de plan estudio materia
+            CargarDatosListasPlanEstudio();
+            
             e.Cancel = true; //Deshabilitar las ediciones del registro
             hfIdPlanEstudio.Value = GrvPlanEstudio.DataKeys[e.NewEditIndex].Value.ToString();
             lblTituloAccion.Text = "Modificar Plan de estudio";
@@ -762,6 +757,9 @@ namespace GePE.PlanesDeEstudios
 
             //Aqui se ponen visibles los Label, TextBox y el CheckBox
             VisibleOnOFF(true);
+
+            lbEstatus.Visible = false;
+            ddlEstatus.Visible = false;
 
             BtnModificar.Visible = true;
             BtnCancelar.Visible = true;
@@ -778,27 +776,14 @@ namespace GePE.PlanesDeEstudios
                 throw new ArgumentNullException(nameof(e));
             }
             InicializaControlesPlanEstudioMateria();
-            lblTituloAccionPlanEstudioMateria.Text = "Agregar Materia";
-            ddlIdPlanEstudio.Items.Clear();
-            DroplistPlanEstudio();
             
-            ddlIdMateria.Items.Clear();
-            DroplistMateria();
+            lblTituloAccionPlanEstudioMateria.Text = "Agregar Materia";
 
-            ddlIdTipoMateria.Items.Clear();
-            DroplistTipoMateria();
-
-            ddlIdEtapa.Items.Clear();
-            DroplistEtapa();
-
-            ddlIdAreaConocimiento.Items.Clear();
-            DroplistAreaConocimiento();
-
-            ddlSemestre.Items.Clear();
-            DroplistSemestre();
+            //Aqui se cargan los datos de las listas de plan estudio materia
+            CargarDatosListasPlanEstudioMateria();
 
             ControlesOnOFFPlanEstudioMateria(true);
-
+            
             PnlCapturaDatosPlanEstudioMateria.Visible = true;
 
             //Aqui se ponen visibles los Label, TextBox y el CheckBox
@@ -806,14 +791,20 @@ namespace GePE.PlanesDeEstudios
             
             GridViewRow row = GrvPlanEstudio.SelectedRow;
             string valor = Convert.ToString(GrvPlanEstudio.Rows[row.RowIndex].Cells[1].Text);
-            //se creo un indice para recorrer el dropdownlist y comparar el texto
-            int index = 1;
+            
+            int index = 0;
             while (ddlIdPlanEstudio.SelectedItem.Text != valor)
             {
-                ddlIdPlanEstudio.SelectedIndex = index+=1;
+                index = index + 1;
+                ddlIdPlanEstudio.SelectedIndex = index;
             }
             ddlIdPlanEstudio.SelectedIndex = index;
             ddlIdPlanEstudio.Enabled = false;
+
+            //lbMateriaSeriada.Enabled = false;
+            //ddlMateriaSeriada.Enabled = false;
+            //lbMateriaSeriada.Visible = false;
+            //ddlMateriaSeriada.Visible = false;
 
             BtnGrabarPlanEstudioMateria.Visible = true;
             BtnCancelarPlanEstudioMateria.Visible = true;
@@ -833,17 +824,8 @@ namespace GePE.PlanesDeEstudios
             {
                 ControlesOFF();
 
-                ddlProgramaEducativo.Items.Clear();
-                DroplistProgramaEducativo();
-
-                ddlEstatus.Items.Clear();
-                DroplistEstatus();
-
-                ddlIdNivelAcademico.Items.Clear();
-                DroplistGradoAcademico();
-
-                ddlUnidadAcademica.Items.Clear();
-                DroplistUnidadAcademica();
+                //Aqui se cargan los datos de las listas de plan estudio materia
+                CargarDatosListasPlanEstudio();
 
                 int index = Convert.ToInt32(e.CommandArgument);
                 GridViewRow row = GrvPlanEstudio.Rows[index];
@@ -860,6 +842,9 @@ namespace GePE.PlanesDeEstudios
 
                 TbTotalCreditos.Enabled = false;
 
+                lbEstatus.Visible = true;
+                ddlEstatus.Visible = true;
+
                 PnlCapturaDatos.Visible = true;
                 BtnAceptar.Visible = true;
 
@@ -870,7 +855,7 @@ namespace GePE.PlanesDeEstudios
                 int index = Convert.ToInt32(e.CommandArgument);
                 GridViewRow row = GrvPlanEstudio.Rows[index];
                 string str = row.Cells[1].Text;
-                Response.Write("<script language=javascript>alert(' Gridview seleccionado " + str + "');</script>");
+                //Response.Write("<script language=javascript>alert(' Gridview seleccionado " + str + "');</script>");
                 //hfIdPlanEstudio.Value = GrvPlanEstudio.DataKeys[row.RowIndex].Value.ToString();
 
                 List<E_PlanEstudioMateria> LstPlanEstudioMateria = NPEM.BuscaPlanEstudioMaterias(str);
@@ -902,6 +887,31 @@ namespace GePE.PlanesDeEstudios
             {
                 throw new ArgumentNullException(nameof(e));
             }
+
+            ControlesOFF();
+
+            //Aqui se cargan los datos de las listas de plan estudio materia
+            CargarDatosListasPlanEstudioMateria();
+
+            e.Cancel = true; //Deshabilitar las ediciones del registro
+
+            hfIdPlanEstudio.Value = GrvPlanEstudioMateria.DataKeys[e.RowIndex].Value.ToString();
+            lblTituloAccion.Text = "Borrar Materia de plan de estudio";
+
+            ObjetoEntidad_ControlesWebForm2(Convert.ToInt16(hfIdPlanEstudio.Value));
+
+            ControlesOnOFFPlanEstudioMateria(false);
+
+            VisibleOnOFFPlanEstudioMateria(true);
+
+            PnlCapturaDatosPlanEstudioMateria.Visible = true;
+
+            lbMateriaSeriada.Enabled = false;
+            ddlMateriaSeriada.Enabled = false;
+
+            BtnBorrarPlanEstudioMateria.Visible = true;
+            BtnBorrarModalPlanEstudioMateria.Visible = true;
+            BtnCancelarPlanEstudioMateria.Visible = true;
         }
         protected void GrvPlanEstudioMateria_RowEditing(object sender, GridViewEditEventArgs e)
         {
@@ -914,24 +924,16 @@ namespace GePE.PlanesDeEstudios
                 throw new ArgumentNullException(nameof(e));
             }
             InicializaControlesPlanEstudioMateria();
-            
-            ddlIdPlanEstudio.Items.Clear();
-            DroplistPlanEstudio();
 
-            ddlIdMateria.Items.Clear();
-            DroplistMateria();
+            //Aqui se cargan los datos de las listas de plan estudio materia
+            CargarDatosListasPlanEstudioMateria();
 
-            ddlIdTipoMateria.Items.Clear();
-            DroplistTipoMateria();
+            e.Cancel = true; //Deshabilitar las ediciones del registro
 
-            ddlIdEtapa.Items.Clear();
-            DroplistEtapa();
+            hfIdPlanEstudio.Value = GrvPlanEstudioMateria.DataKeys[e.NewEditIndex].Value.ToString();
+            lblTituloAccionPlanEstudioMateria.Text = "Modificar materia de plan de estudio";
 
-            ddlIdAreaConocimiento.Items.Clear();
-            DroplistAreaConocimiento();
-
-            ddlSemestre.Items.Clear();
-            DroplistSemestre();
+            ObjetoEntidad_ControlesWebForm2(Convert.ToInt16(hfIdPlanEstudio.Value));
 
             ControlesOnOFFPlanEstudioMateria(true);
 
@@ -940,15 +942,14 @@ namespace GePE.PlanesDeEstudios
             //Aqui se ponen visibles los Label, TextBox y el CheckBox
             VisibleOnOFFPlanEstudioMateria(true);
             //se creo un indice para recorrer el dropdownlist y comparar el texto
-            hfIdPlanEstudio.Value = GrvPlanEstudioMateria.DataKeys[e.NewEditIndex].Value.ToString();
-            lblTituloAccionPlanEstudioMateria.Text = "Modificar Materia";
-
-            ObjetoEntidad_ControlesWebForm2(Convert.ToInt16(hfIdPlanEstudio.Value));
 
             ddlIdPlanEstudio.Enabled = false;
             ddlIdMateria.Enabled = false;
 
-            BtnGrabarPlanEstudioMateria.Visible = true;
+            lbMateriaSeriada.Enabled = false;
+            ddlMateriaSeriada.Enabled = false;
+
+            BtnModificarPlanEstudioMateria.Visible = true;
             BtnCancelarPlanEstudioMateria.Visible = true;
         }
         protected void GrvPlanEstudioMateria_SelectedIndexChanged(object sender, EventArgs e)
@@ -1139,6 +1140,34 @@ namespace GePE.PlanesDeEstudios
             // db were not successfully loaded 
             ddlIdMateria.Items.Insert(0, new ListItem("<Seleccione Materia>", ""));
         }
+        private void DroplistMateriaSeriada()
+        {
+
+            //carga los datos de la base de datos y los pone en dropdownlist
+
+            DataTable subjects = new DataTable();
+
+            using (SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=Propuesta;Integrated Security=True"))
+            //using (SqlConnection con = new SqlConnection("Data Source=WIN-URE2BDKARPV\\SQLEXPRESS;Initial Catalog=Propuesta;Integrated Security=True"))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdMateria, NombreMateria FROM Propuesta.dbo.Materias", con);
+                    adapter.Fill(subjects);
+                    ddlMateriaSeriada.DataSource = subjects;
+                    ddlMateriaSeriada.DataTextField = "NombreMateria";
+                    ddlMateriaSeriada.DataValueField = "IdMateria";
+                    ddlMateriaSeriada.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    // Handle the error 
+                }
+            }
+            // Add the initial item - you can add this even if the options from the 
+            // db were not successfully loaded 
+            ddlMateriaSeriada.Items.Insert(0, new ListItem("<Seleccione Materia Seriada>", ""));
+        }
         private void DroplistTipoMateria()
         {
 
@@ -1248,5 +1277,6 @@ namespace GePE.PlanesDeEstudios
         }
         #endregion
 
+        
     }
 }

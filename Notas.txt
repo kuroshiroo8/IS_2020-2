@@ -1,0 +1,29 @@
+<*****Listo*****>Estatus no aparece en agregar plan de estudio para ningún usuario 
+<*****Listo*****>Al agregar un plan de estudio este por default será [en espera]
+<*****Listo*****>todos los textbox de horas deben de tener un rango de un digito de el 0 al 9
+<*****Listo*****>cambiar label de HPP por HPC - Horas practicas de campo
+
+Falta la serializacion de las materias
+
+Falta el modulo de mapa curricular
+
+Falta agregarle los usuarios
+
+Administrador-----------------------------------------------------------------------------------------------------------
+Al picarle al Botón [Aprobar] es va cambiar estatus de en espera a aprobado directamente y envía correo (Administrador)
+Botón [Recaptura] solo si esta en revisión va cambiar estatus a recaptura y manda correo
+Ver (Generar) mapa curricular, 
+
+Capturista-----------------------------------------------------------------------------------------------------------
+Mandar a revisión va cambiar estatus en revisión y manda correo
+Mandar a publicar va cambiar estatus y manda correo y aparte hace que los usuarios internos y externos puedan ver el mapa curricular
+quitarle el botón de Mas detalles, 
+quitarle el botón de generar mapa curricular
+
+Validaciones-----------------------------------------------------------------------------------------------------------
+al borrar plan de estudio te deberá borrar todas las materias relacionadas con el y borrar el plan de estudio con todo y carrera
+el plan de estudio si esta en revisión no se puede borrar y no se puede modificar
+el plan de estudio si esta en recaptura no se puede borrar
+el plan de estudio si esta en espera si se puede borrar y modificar
+el plan de estudio si esta en publicado si se puede borrar y si se puede modificar pero solo lo puede hacer el administrador y se manda a recaptura
+el plan de estudio si esta en aprobado si se puede borrar y si se puede modificar pero solo lo puede hacer el administrador y se manda a recaptura

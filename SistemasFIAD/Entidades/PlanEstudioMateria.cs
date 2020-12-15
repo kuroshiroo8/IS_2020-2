@@ -27,6 +27,8 @@ namespace Entidades
         private string _NombreTipoMateria;
         private string _NombreEtapa;
         private string _NombreArea;
+        private int _IdMateriaSeriada;
+        private Boolean _EstadoMateriaSeriada;
         #endregion
 
         #region Constructor
@@ -45,6 +47,8 @@ namespace Entidades
             _NombreTipoMateria = string.Empty;
             _NombreEtapa = string.Empty;
             _NombreArea = string.Empty;
+            _IdMateriaSeriada = 0;
+            _EstadoMateriaSeriada = false;
         }
         #endregion
 
@@ -62,6 +66,8 @@ namespace Entidades
         public string NombreTipoMateria { get => _NombreTipoMateria; set => _NombreTipoMateria = value; }
         public string NombreEtapa { get => _NombreEtapa; set => _NombreEtapa = value; }
         public string NombreArea { get => _NombreArea; set => _NombreArea = value; }
+        public int IdMateriaSeriada { get => _IdMateriaSeriada; set => _IdMateriaSeriada = value; }
+        public Boolean EstadoMateriaSeriada { get => _EstadoMateriaSeriada; set => _EstadoMateriaSeriada = value; }
         #endregion
     }
 }

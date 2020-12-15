@@ -40,125 +40,200 @@
                     </div>
                     <div class="card-body">
                         <div class="row pl-2 pr-2">
-                            <div class="col-lg-3 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbClavePlanEstudio" class="text-dark font-weight-bold m-0" runat="server">Clave De Plan De Estudio</asp:Label>
-                                    <uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbClavePlanEstudio" />
+                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbClavePlanEstudio" />--%>
+                                    <br />
+                                    <asp:TextBox runat="server" ID="TbClavePlanEstudio" CssClass="form-control" TextMode="Number"></asp:TextBox>
+                                    
+                                    <asp:RequiredFieldValidator ID="rfvTbClavePlanEstudio" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbClavePlanEstudio"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    
+                                    <asp:RegularExpressionValidator ID="revTbClavePlanEstudio" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbClavePlanEstudio"
+                                        ErrorMessage="*Este campo debe de tener la estructura XXX con numeros de 0 a 9."
+                                        ValidationExpression="^[0-9]{3}$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
+                                    
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbPlanEstudio" class="text-dark font-weight-bold m-0" runat="server">Plan Estudio</asp:Label>
-                                    <uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbPlanEstudio" />
+                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbPlanEstudio" />--%>
+                                    <%--[a-zA-Z0-9]{2}-[a-zA-Z0-9]{3}--%>
+                                    <br />
+                                    <asp:TextBox runat="server" ID="TbPlanEstudio" CssClass="form-control" ></asp:TextBox>
+                                    
+                                    <asp:RequiredFieldValidator ID="rfvTbPlanEstudio" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbPlanEstudio"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    
+                                    <asp:RegularExpressionValidator ID="revTbPlanEstudio" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbPlanEstudio"
+                                        ErrorMessage="*Este campo debe de tener la estructura 2XXX-X."
+                                        ValidationExpression="^[2-9]{1}[0-9]{3}-[0-9]{1}$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
+                                    
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbProgramaEducativo" class="text-dark font-weight-bold m-0" runat="server">Programa Educativo</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlProgramaEducativo" ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
+                                    <br />
+                                    <asp:DropDownList runat="server" ID="ddlProgramaEducativo" CssClass="form-control">
+                                        <asp:ListItem Value="">No seleccionado</asp:ListItem>
+                                    </asp:DropDownList>
+                                    
                                     <asp:RequiredFieldValidator ID="rfvddlProgramaEducativo" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlProgramaEducativo"
                                         ErrorMessage="*Este campo es requerido."
                                         InitialValue=""
                                         Display="Dynamic"></asp:RequiredFieldValidator>
+                                    
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbFechaCreacion" class="text-dark font-weight-bold m-0" runat="server">Fecha De Creacion</asp:Label>
-                                    <asp:TextBox runat="server" ID="TbFechaCreacion" type="date"></asp:TextBox>
+                                    <br />
+                                    <asp:TextBox runat="server" ID="TbFechaCreacion" type="date" CssClass="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="rfvTbFechaCreacion" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbFechaCreacion"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
+                                    
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbTotalCreditos" class="text-dark font-weight-bold m-0" runat="server">Total Creditos</asp:Label>
-                                    <asp:TextBox runat="server" ID="TbTotalCreditos"></asp:TextBox>
+                                    <br />
+                                    <asp:TextBox runat="server" ID="TbTotalCreditos" CssClass="form-control" TextMode="Number"></asp:TextBox>
+                                    
                                     <asp:RequiredFieldValidator ID="rfvTbTotalCreditos" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbTotalCreditos"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
+                                    
+                                    <asp:RegularExpressionValidator ID="revTbTotalCreditos" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbTotalCreditos"
+                                        ErrorMessage="*Este campo debe de tener la estructura XXX con numeros de 0 a 9."
+                                        ValidationExpression="^[0-9]{3}$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
+                                    
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbEstadoPlanEstudios" class="text-dark font-weight-bold m-0" runat="server">Seleccione si el plan esta activo</asp:Label>
-                                    <asp:CheckBox ID="cbEstadoPlanEstudios" runat="server" CssClass="font-weight-bold" />
+                                    <br />
+                                    <asp:CheckBox ID="cbEstadoPlanEstudios" runat="server" CssClass="font-weight-bold form-control"/>
+                                    
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbComentarios" class="text-dark font-weight-bold m-0" runat="server">Comentarios</asp:Label>
-                                    <asp:TextBox ID="TbComentarios" runat="server" TextMode="MultiLine" MaxLength="400"></asp:TextBox>
+                                    <br />
+                                    <asp:TextBox ID="TbComentarios" runat="server" TextMode="MultiLine" MaxLength="400" CssClass="form-control"></asp:TextBox>
+                                    
                                     <asp:RequiredFieldValidator ID="rfvTbComentarios" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbComentarios"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
+                                    
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbPerfilDeIngreso" class="text-dark font-weight-bold m-0" runat="server">Perfil De Ingreso</asp:Label>
-                                    <asp:TextBox ID="TbPerfilDeIngreso" runat="server" TextMode="MultiLine" MaxLength="400"></asp:TextBox>
+                                    <br />
+                                    <asp:TextBox ID="TbPerfilDeIngreso" runat="server" TextMode="MultiLine" MaxLength="400" CssClass="form-control"></asp:TextBox>
+                                    
                                     <asp:RequiredFieldValidator ID="rfvTbPerfilDeIngreso" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbPerfilDeIngreso"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
+                                    
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbPerfilDeEgreso" class="text-dark font-weight-bold m-0" runat="server">Perfil De Egreso</asp:Label>
-                                    <asp:TextBox ID="TbPerfilDeEgreso" runat="server" TextMode="MultiLine" MaxLength="400"></asp:TextBox>
+                                    <br />
+                                    <asp:TextBox ID="TbPerfilDeEgreso" runat="server" TextMode="MultiLine" MaxLength="400" CssClass="form-control"></asp:TextBox>
+                                    
                                     <asp:RequiredFieldValidator ID="rfvTbPerfilDeEgreso" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbPerfilDeEgreso"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
+                                    
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbCampoOcupacional" class="text-dark font-weight-bold m-0" runat="server">Campo Ocupacional</asp:Label>
-                                    <asp:TextBox ID="TbCampoOcupacional" runat="server" TextMode="MultiLine" MaxLength="400"></asp:TextBox>
+                                    <br />
+                                    <asp:TextBox ID="TbCampoOcupacional" runat="server" TextMode="MultiLine" MaxLength="400" CssClass="form-control"></asp:TextBox>
+                                    
                                     <asp:RequiredFieldValidator ID="rfvTbCampoOcupacional" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbCampoOcupacional"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
+                                    
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbUnidadAcademica" class="text-dark font-weight-bold m-0" runat="server">Unidad Academica</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlUnidadAcademica" ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
+                                    <br />
+                                    <asp:DropDownList runat="server" ID="ddlUnidadAcademica" CssClass="form-control">
+                                        <asp:ListItem Value="">No seleccionado</asp:ListItem>
+                                    </asp:DropDownList>
+                                    
                                     <asp:RequiredFieldValidator ID="rfvddlUnidadAcademica" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlUnidadAcademica"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
+                                    
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
-                                <div class="form-group">
-                                    <asp:Label ID="lbEstatus" class="text-dark font-weight-bold m-0" runat="server">Estatus</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlEstatus" ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="rfvddlEstatus" runat="server" CssClass="text-danger"
-                                        ControlToValidate="ddlEstatus"
-                                        ErrorMessage="*Este campo es requerido."
-                                        InitialValue=""
-                                        Display="Dynamic"></asp:RequiredFieldValidator>
-                                </div>
-                            </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbIdNivelAcademico" class="text-dark font-weight-bold m-0" runat="server">Nivel Academico</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlIdNivelAcademico" ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
+                                    <br />
+                                    <asp:DropDownList runat="server" ID="ddlIdNivelAcademico" CssClass="form-control">
+                                        <asp:ListItem Value="">No seleccionado</asp:ListItem>
+                                    </asp:DropDownList>
+                                    
                                     <asp:RequiredFieldValidator ID="rfvddlIdNivelAcademico" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlIdNivelAcademico"
                                         ErrorMessage="*Este campo es requerido."
                                         InitialValue=""
                                         Display="Dynamic"></asp:RequiredFieldValidator>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbEstatus" class="text-dark font-weight-bold m-0" runat="server">Estatus</asp:Label>
+                                    <br />
+                                    <asp:DropDownList runat="server" ID="ddlEstatus" CssClass="form-control">
+                                        <asp:ListItem Value="">No seleccionado</asp:ListItem>
+                                    </asp:DropDownList>
+                                    
+<%--                                    <asp:RequiredFieldValidator ID="rfvddlEstatus" runat="server" CssClass="text-danger"
+                                        ControlToValidate="ddlEstatus"
+                                        ErrorMessage="*Este campo es requerido."
+                                        InitialValue=""
+                                        Display="Dynamic"></asp:RequiredFieldValidator>--%>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -185,10 +260,13 @@
                     </div>
                     <div class="card-body">
                         <div class="row pl-2 pr-2">
-                            <div class="col-lg-3 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbIdPlanEstudio" class="text-dark font-weight-bold m-0" runat="server">Plan de estudio</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlIdPlanEstudio" ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
+                                    <br />
+                                    <asp:DropDownList runat="server" ID="ddlIdPlanEstudio" CssClass="form-control">
+                                        <asp:ListItem Value="">No seleccionado</asp:ListItem>
+                                    </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlIdPlanEstudio" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlIdPlanEstudio"
                                         ErrorMessage="*Este campo es requerido."
@@ -196,10 +274,13 @@
                                         Display="Dynamic"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbIdMateria" class="text-dark font-weight-bold m-0" runat="server">Materia</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlIdMateria"  ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
+                                    <br />
+                                    <asp:DropDownList runat="server" ID="ddlIdMateria" CssClass="form-control">
+                                        <asp:ListItem Value="">No seleccionado</asp:ListItem>
+                                    </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlIdMateria" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlIdMateria"
                                         ErrorMessage="*Este campo es requerido."
@@ -207,10 +288,13 @@
                                         Display="Dynamic"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbIdTipoMateria" class="text-dark font-weight-bold m-0" runat="server">Tipo de materia</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlIdTipoMateria"  ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
+                                    <br />
+                                    <asp:DropDownList runat="server" ID="ddlIdTipoMateria" CssClass="form-control">
+                                        <asp:ListItem Value="">No seleccionado</asp:ListItem>
+                                    </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlIdTipoMateria" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlIdTipoMateria"
                                         ErrorMessage="*Este campo es requerido."
@@ -218,10 +302,13 @@
                                         Display="Dynamic"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbIdEtapa" class="text-dark font-weight-bold m-0" runat="server">Etapa</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlIdEtapa"  ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
+                                    <br />
+                                    <asp:DropDownList runat="server" ID="ddlIdEtapa" CssClass="form-control">
+                                        <asp:ListItem Value="">No seleccionado</asp:ListItem>
+                                    </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlIdEtapa" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlIdEtapa"
                                         ErrorMessage="*Este campo es requerido."
@@ -229,10 +316,13 @@
                                         Display="Dynamic"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbIdAreaConocimiento" class="text-dark font-weight-bold m-0" runat="server">Area de conocimiento</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlIdAreaConocimiento"  ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
+                                    <br />
+                                    <asp:DropDownList runat="server" ID="ddlIdAreaConocimiento" CssClass="form-control">
+                                        <asp:ListItem Value="">No seleccionado</asp:ListItem>
+                                    </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlIdAreaConocimiento" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlIdAreaConocimiento"
                                         ErrorMessage="*Este campo es requerido."
@@ -240,15 +330,39 @@
                                         Display="Dynamic"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbSemestre" class="text-dark font-weight-bold m-0" runat="server">Semestre</asp:Label>
-                                    <asp:DropDownList runat="server" ID="ddlSemestre"  ><asp:ListItem Value="">No seleccionado</asp:ListItem></asp:DropDownList>
+                                    <br />
+                                    <asp:DropDownList runat="server" ID="ddlSemestre" CssClass="form-control">
+                                        <asp:ListItem Value="">No seleccionado</asp:ListItem>
+                                    </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlSemestre" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlSemestre"
                                         ErrorMessage="*Este campo es requerido."
                                         InitialValue=""
                                         Display="Dynamic"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbSeriada" class="text-dark font-weight-bold m-0" runat="server">Seleccione si la materia esta seriada</asp:Label>
+                                    <br />
+                                    <asp:CheckBox ID="cbSeriada" runat="server" CssClass="font-weight-bold form-control" autopostback=true/>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbMateriaSeriada" class="text-dark font-weight-bold m-0" runat="server">Materia seriada</asp:Label>
+                                    <br />
+                                    <asp:DropDownList runat="server" ID="ddlMateriaSeriada" CssClass="form-control">
+                                        <asp:ListItem Value="">No seleccionado</asp:ListItem>
+                                    </asp:DropDownList>
+                                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="text-danger"
+                                        ControlToValidate="ddlSemestre"
+                                        ErrorMessage="*Este campo es requerido."
+                                        InitialValue=""
+                                        Display="Dynamic"></asp:RequiredFieldValidator>--%>
                                 </div>
                             </div>
 
@@ -279,6 +393,7 @@
                     <Columns>
                         <asp:BoundField DataField="ClavePlanEstudio" HeaderText="CLAVE" />
                         <asp:BoundField DataField="PlanEstudio" HeaderText="NOMBRE DEl PLAN DE ESTUDIO" />
+                        <asp:BoundField DataField="NombreCarrera" HeaderText="CARRERA DEl PLAN DE ESTUDIO" />
                         <asp:BoundField DataField="Estatus" HeaderText="ESTATUS" />
 
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
