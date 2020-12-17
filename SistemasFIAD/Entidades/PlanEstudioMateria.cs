@@ -29,6 +29,7 @@ namespace Entidades
         private string _NombreArea;
         private int _IdMateriaSeriada;
         private Boolean _EstadoMateriaSeriada;
+        private string _ClavePlanEstudio;
         #endregion
 
         #region Constructor
@@ -49,6 +50,7 @@ namespace Entidades
             _NombreArea = string.Empty;
             _IdMateriaSeriada = 0;
             _EstadoMateriaSeriada = false;
+            _ClavePlanEstudio = string.Empty;
         }
         #endregion
 
@@ -68,6 +70,7 @@ namespace Entidades
         public string NombreArea { get => _NombreArea; set => _NombreArea = value; }
         public int IdMateriaSeriada { get => _IdMateriaSeriada; set => _IdMateriaSeriada = value; }
         public Boolean EstadoMateriaSeriada { get => _EstadoMateriaSeriada; set => _EstadoMateriaSeriada = value; }
+        public string ClavePlanEstudio { get => _ClavePlanEstudio; set => _ClavePlanEstudio = value; }
         #endregion
     }
 }

@@ -278,7 +278,8 @@
                                 <div class="form-group">
                                     <asp:Label ID="lbIdMateria" class="text-dark font-weight-bold m-0" runat="server">Materia</asp:Label>
                                     <br />
-                                    <asp:DropDownList runat="server" ID="ddlIdMateria" CssClass="form-control">
+                                    <asp:DropDownList runat="server" ID="ddlIdMateria" CssClass="form-control"  AutoPostBack="True" ViewStateMode="Enabled"  
+                                        EnableViewState="true" OnSelectedIndexChanged="ItemSelected">
                                         <asp:ListItem Value="">No seleccionado</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlIdMateria" runat="server" CssClass="text-danger"
@@ -348,7 +349,7 @@
                                 <div class="form-group">
                                     <asp:Label ID="lbSeriada" class="text-dark font-weight-bold m-0" runat="server">Seleccione si la materia esta seriada</asp:Label>
                                     <br />
-                                    <asp:CheckBox ID="cbSeriada" runat="server" CssClass="font-weight-bold form-control" autopostback=true/>
+                                    <asp:CheckBox ID="cbSeriada" runat="server" CssClass="font-weight-bold form-control" autopostback=true OnCheckedChanged="On_Check"/>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -447,6 +448,7 @@
                     OnSelectedIndexChanged="GrvPlanEstudioMateria_SelectedIndexChanged">
                     <Columns>
                         <%--<asp:BoundField DataField="IdPlanEstudio" HeaderText="ID PLAN" />--%>
+                        <%--<asp:BoundField DataField="ClavePlanEstudio" HeaderText="CLAVE" />--%>
                         <asp:BoundField DataField="NombrePlanEstudio" HeaderText="PLAN DE ESTUDIO" />
                         <asp:BoundField DataField="NombreMateria" HeaderText="MATERIA" />
                         <asp:BoundField DataField="NombreTipoMateria" HeaderText="TIPO DE MATERIA" />

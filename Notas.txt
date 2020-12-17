@@ -2,8 +2,9 @@
 <*****Listo*****>Al agregar un plan de estudio este por default será [en espera]
 <*****Listo*****>todos los textbox de horas deben de tener un rango de un digito de el 0 al 9
 <*****Listo*****>cambiar label de HPP por HPC - Horas practicas de campo
+<*****Listo*****>Falta la serializacion de las materias
 
-Falta la serializacion de las materias
+falta corregir borrar plan de estudio(si tiene materias que borre la relacion)
 
 Falta el modulo de mapa curricular
 
