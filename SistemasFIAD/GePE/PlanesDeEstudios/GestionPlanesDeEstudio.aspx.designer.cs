@@ -787,6 +787,24 @@ namespace GePE.PlanesDeEstudios {
         protected global::System.Web.UI.WebControls.Panel PnlGrvPlanEstudio;
         
         /// <summary>
+        /// Control lbPnlGrvMapaCurricularNombreCarrera.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbPnlGrvMapaCurricularNombreCarrera;
+        
+        /// <summary>
+        /// Control lbPnlGrvMapaCurricularPlanEstudio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbPnlGrvMapaCurricularPlanEstudio;
+        
+        /// <summary>
         /// Control GrvPlanEstudio.
         /// </summary>
         /// <remarks>
@@ -812,6 +830,24 @@ namespace GePE.PlanesDeEstudios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GrvPlanEstudioMateria;
+        
+        /// <summary>
+        /// Control PnlGrvMapaCurricular.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlGrvMapaCurricular;
+        
+        /// <summary>
+        /// Control GrvMapaCurricular.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GrvMapaCurricular;
         
         /// <summary>
         /// Control BtnBorrar.

@@ -46,18 +46,18 @@
                                     <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbClavePlanEstudio" />--%>
                                     <br />
                                     <asp:TextBox runat="server" ID="TbClavePlanEstudio" CssClass="form-control" TextMode="Number"></asp:TextBox>
-                                    
+
                                     <asp:RequiredFieldValidator ID="rfvTbClavePlanEstudio" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbClavePlanEstudio"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
-                                    
+
                                     <asp:RegularExpressionValidator ID="revTbClavePlanEstudio" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbClavePlanEstudio"
                                         ErrorMessage="*Este campo debe de tener la estructura XXX con numeros de 0 a 9."
                                         ValidationExpression="^[0-9]{3}$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -66,19 +66,19 @@
                                     <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbPlanEstudio" />--%>
                                     <%--[a-zA-Z0-9]{2}-[a-zA-Z0-9]{3}--%>
                                     <br />
-                                    <asp:TextBox runat="server" ID="TbPlanEstudio" CssClass="form-control" ></asp:TextBox>
-                                    
+                                    <asp:TextBox runat="server" ID="TbPlanEstudio" CssClass="form-control"></asp:TextBox>
+
                                     <asp:RequiredFieldValidator ID="rfvTbPlanEstudio" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbPlanEstudio"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
-                                    
+
                                     <asp:RegularExpressionValidator ID="revTbPlanEstudio" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbPlanEstudio"
                                         ErrorMessage="*Este campo debe de tener la estructura 2XXX-X."
                                         ValidationExpression="^[2-9]{1}[0-9]{3}-[0-9]{1}$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -88,13 +88,13 @@
                                     <asp:DropDownList runat="server" ID="ddlProgramaEducativo" CssClass="form-control">
                                         <asp:ListItem Value="">No seleccionado</asp:ListItem>
                                     </asp:DropDownList>
-                                    
+
                                     <asp:RequiredFieldValidator ID="rfvddlProgramaEducativo" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlProgramaEducativo"
                                         ErrorMessage="*Este campo es requerido."
                                         InitialValue=""
                                         Display="Dynamic"></asp:RequiredFieldValidator>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -106,7 +106,7 @@
                                         ControlToValidate="TbFechaCreacion"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -114,26 +114,26 @@
                                     <asp:Label ID="lbTotalCreditos" class="text-dark font-weight-bold m-0" runat="server">Total Creditos</asp:Label>
                                     <br />
                                     <asp:TextBox runat="server" ID="TbTotalCreditos" CssClass="form-control" TextMode="Number"></asp:TextBox>
-                                    
+
                                     <asp:RequiredFieldValidator ID="rfvTbTotalCreditos" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbTotalCreditos"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
-                                    
+
                                     <asp:RegularExpressionValidator ID="revTbTotalCreditos" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbTotalCreditos"
                                         ErrorMessage="*Este campo debe de tener la estructura XXX con numeros de 0 a 9."
                                         ValidationExpression="^[0-9]{3}$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbEstadoPlanEstudios" class="text-dark font-weight-bold m-0" runat="server">Seleccione si el plan esta activo</asp:Label>
                                     <br />
-                                    <asp:CheckBox ID="cbEstadoPlanEstudios" runat="server" CssClass="font-weight-bold form-control"/>
-                                    
+                                    <asp:CheckBox ID="cbEstadoPlanEstudios" runat="server" CssClass="font-weight-bold form-control" />
+
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -141,12 +141,12 @@
                                     <asp:Label ID="lbComentarios" class="text-dark font-weight-bold m-0" runat="server">Comentarios</asp:Label>
                                     <br />
                                     <asp:TextBox ID="TbComentarios" runat="server" TextMode="MultiLine" MaxLength="400" CssClass="form-control"></asp:TextBox>
-                                    
+
                                     <asp:RequiredFieldValidator ID="rfvTbComentarios" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbComentarios"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -154,12 +154,12 @@
                                     <asp:Label ID="lbPerfilDeIngreso" class="text-dark font-weight-bold m-0" runat="server">Perfil De Ingreso</asp:Label>
                                     <br />
                                     <asp:TextBox ID="TbPerfilDeIngreso" runat="server" TextMode="MultiLine" MaxLength="400" CssClass="form-control"></asp:TextBox>
-                                    
+
                                     <asp:RequiredFieldValidator ID="rfvTbPerfilDeIngreso" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbPerfilDeIngreso"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -167,12 +167,12 @@
                                     <asp:Label ID="lbPerfilDeEgreso" class="text-dark font-weight-bold m-0" runat="server">Perfil De Egreso</asp:Label>
                                     <br />
                                     <asp:TextBox ID="TbPerfilDeEgreso" runat="server" TextMode="MultiLine" MaxLength="400" CssClass="form-control"></asp:TextBox>
-                                    
+
                                     <asp:RequiredFieldValidator ID="rfvTbPerfilDeEgreso" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbPerfilDeEgreso"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -180,12 +180,12 @@
                                     <asp:Label ID="lbCampoOcupacional" class="text-dark font-weight-bold m-0" runat="server">Campo Ocupacional</asp:Label>
                                     <br />
                                     <asp:TextBox ID="TbCampoOcupacional" runat="server" TextMode="MultiLine" MaxLength="400" CssClass="form-control"></asp:TextBox>
-                                    
+
                                     <asp:RequiredFieldValidator ID="rfvTbCampoOcupacional" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbCampoOcupacional"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -195,15 +195,15 @@
                                     <asp:DropDownList runat="server" ID="ddlUnidadAcademica" CssClass="form-control">
                                         <asp:ListItem Value="">No seleccionado</asp:ListItem>
                                     </asp:DropDownList>
-                                    
+
                                     <asp:RequiredFieldValidator ID="rfvddlUnidadAcademica" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlUnidadAcademica"
                                         ErrorMessage="*Este campo es requerido."
                                         Display="Dynamic"></asp:RequiredFieldValidator>
-                                    
+
                                 </div>
                             </div>
-                            
+
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbIdNivelAcademico" class="text-dark font-weight-bold m-0" runat="server">Nivel Academico</asp:Label>
@@ -211,13 +211,13 @@
                                     <asp:DropDownList runat="server" ID="ddlIdNivelAcademico" CssClass="form-control">
                                         <asp:ListItem Value="">No seleccionado</asp:ListItem>
                                     </asp:DropDownList>
-                                    
+
                                     <asp:RequiredFieldValidator ID="rfvddlIdNivelAcademico" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlIdNivelAcademico"
                                         ErrorMessage="*Este campo es requerido."
                                         InitialValue=""
                                         Display="Dynamic"></asp:RequiredFieldValidator>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -227,13 +227,12 @@
                                     <asp:DropDownList runat="server" ID="ddlEstatus" CssClass="form-control">
                                         <asp:ListItem Value="">No seleccionado</asp:ListItem>
                                     </asp:DropDownList>
-                                    
-<%--                                    <asp:RequiredFieldValidator ID="rfvddlEstatus" runat="server" CssClass="text-danger"
+
+                                    <%--                                    <asp:RequiredFieldValidator ID="rfvddlEstatus" runat="server" CssClass="text-danger"
                                         ControlToValidate="ddlEstatus"
                                         ErrorMessage="*Este campo es requerido."
                                         InitialValue=""
                                         Display="Dynamic"></asp:RequiredFieldValidator>--%>
-                                    
                                 </div>
                             </div>
                         </div>
@@ -278,7 +277,7 @@
                                 <div class="form-group">
                                     <asp:Label ID="lbIdMateria" class="text-dark font-weight-bold m-0" runat="server">Materia</asp:Label>
                                     <br />
-                                    <asp:DropDownList runat="server" ID="ddlIdMateria" CssClass="form-control"  AutoPostBack="True" ViewStateMode="Enabled"  
+                                    <asp:DropDownList runat="server" ID="ddlIdMateria" CssClass="form-control" AutoPostBack="True" ViewStateMode="Enabled"
                                         EnableViewState="true" OnSelectedIndexChanged="ItemSelected">
                                         <asp:ListItem Value="">No seleccionado</asp:ListItem>
                                     </asp:DropDownList>
@@ -349,7 +348,7 @@
                                 <div class="form-group">
                                     <asp:Label ID="lbSeriada" class="text-dark font-weight-bold m-0" runat="server">Seleccione si la materia esta seriada</asp:Label>
                                     <br />
-                                    <asp:CheckBox ID="cbSeriada" runat="server" CssClass="font-weight-bold form-control" autopostback=true OnCheckedChanged="On_Check"/>
+                                    <asp:CheckBox ID="cbSeriada" runat="server" CssClass="font-weight-bold form-control" AutoPostBack="true" OnCheckedChanged="On_Check" />
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-12">
@@ -382,10 +381,17 @@
             </div>
         </asp:Panel>
         <%--*******************************--%>
-        <asp:Panel ID="PnlGrvPlanEstudio" runat="server">
+        <asp:Panel ID="PnlGrvPlanEstudio" runat="server" align="center">
             <div class="container-fluid">
+
+                <h4>
+                    <%--Estos son los encabezado de ver mapa curricular--%>
+                    <asp:Label ID="lbPnlGrvMapaCurricularNombreCarrera" class="text-dark font-weight-bold m-0" runat="server">Nombre De La Carrera</asp:Label>
+                    <asp:Label ID="lbPnlGrvMapaCurricularPlanEstudio" class="text-dark font-weight-bold m-0" runat="server">Plan De Estudio</asp:Label>
+                </h4>
+
                 <asp:GridView ID="GrvPlanEstudio" runat="server" AutoGenerateColumns="False"
-                    CssClass="table thead-dark table-sm table-bordered table-responsive"
+                    CssClass="table thead-dark table-sm table-bordered table-responsive "
                     DataKeyNames="IdPlanEstudio"
                     OnRowDeleting="GrvPlanEstudio_RowDeleting"
                     OnRowEditing="GrvPlanEstudio_RowEditing"
@@ -396,6 +402,13 @@
                         <asp:BoundField DataField="PlanEstudio" HeaderText="NOMBRE DEl PLAN DE ESTUDIO" />
                         <asp:BoundField DataField="NombreCarrera" HeaderText="CARRERA DEl PLAN DE ESTUDIO" />
                         <asp:BoundField DataField="Estatus" HeaderText="ESTATUS" />
+
+                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="GrvBtnMapaCurricular" runat="server" CssClass="btn btn-md btn-info"
+                                    CausesValidation="false" CommandName="MapaCurricular" CommandArgument="<%# Container.DataItemIndex %>"><i class="fas fa-info-circle"></i> Mapa Curricular</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
 
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
                             <ItemTemplate>
@@ -469,6 +482,26 @@
                                     CausesValidation="false" CommandName="Delete"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
+                    </Columns>
+                    <HeaderStyle CssClass="bg-dark text-white" />
+                </asp:GridView>
+            </div>
+        </asp:Panel>
+
+        <asp:Panel ID="PnlGrvMapaCurricular" runat="server">
+            <div class="container-fluid">
+                <asp:GridView ID="GrvMapaCurricular" runat="server" AutoGenerateColumns="False"
+                    CssClass="table thead-dark table-sm table-bordered table-responsive"
+                    DataKeyNames="IdPlanEstudioMateria">
+                    <Columns>
+                        <asp:BoundField DataField="" HeaderText="1" />
+                        <asp:BoundField DataField="" HeaderText="2" />
+                        <asp:BoundField DataField="" HeaderText="3" />
+                        <asp:BoundField DataField="" HeaderText="4" />
+                        <asp:BoundField DataField="" HeaderText="5" />
+                        <asp:BoundField DataField="" HeaderText="6" />
+                        <asp:BoundField DataField="" HeaderText="7" />
+                        <asp:BoundField DataField="" HeaderText="8" />
                     </Columns>
                     <HeaderStyle CssClass="bg-dark text-white" />
                 </asp:GridView>

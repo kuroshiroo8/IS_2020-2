@@ -3,8 +3,9 @@
 <*****Listo*****>todos los textbox de horas deben de tener un rango de un digito de el 0 al 9
 <*****Listo*****>cambiar label de HPP por HPC - Horas practicas de campo
 <*****Listo*****>Falta la serializacion de las materias
-
-falta corregir borrar plan de estudio(si tiene materias que borre la relacion)
+<*****Listo*****>falta corregir borrar plan de estudio(si tiene materias que borre la relacion)
+Al picarle el boton de listar en plan estudio y este no tiene nada mostrar mensaje 
+solucionar problema de id e plan de estudio
 
 Falta el modulo de mapa curricular
 

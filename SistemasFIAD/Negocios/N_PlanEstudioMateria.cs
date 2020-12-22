@@ -75,7 +75,7 @@ namespace Negocios
         // Listado generales de la clase PlanEstudioMateria en formato DataTable y List<E_PlanEstudioMateria>.
         public DataTable DT_LstPlanEstudioMateria()
         {
-            return NPEM.DT_ListadoGeneral("PlanEstudioMateria", "[ClavePlanEstudio]");
+            return NPEM.DT_ListadoGeneral("PlanEstudioMateria", "[NombrePlanEstudio]");
         }
 
         public List<E_PlanEstudioMateria> LstPlanEstudioMateria()
@@ -93,7 +93,7 @@ namespace Negocios
         {
             return (from PlanEstudioMateria in LstPlanEstudioMateria()
                     where
-                    PlanEstudioMateria.ClavePlanEstudio.ToUpper().Contains(CriterioBusqueda.ToUpper())
+                    PlanEstudioMateria.NombrePlanEstudio.ToUpper().Contains(CriterioBusqueda.ToUpper())
                     select PlanEstudioMateria).ToList();
         }
     }

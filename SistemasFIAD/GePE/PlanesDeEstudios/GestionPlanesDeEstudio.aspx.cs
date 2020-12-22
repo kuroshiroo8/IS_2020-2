@@ -32,6 +32,10 @@ namespace GePE.PlanesDeEstudios
         }
         protected void ControlesOFF()
         {
+            lbPnlGrvMapaCurricularNombreCarrera.Visible = false;
+            lbPnlGrvMapaCurricularPlanEstudio.Visible = false;
+            PnlGrvMapaCurricular.Visible = false;
+
             //Visible Label
             lbIdNivelAcademico.Visible = false;
             lbClavePlanEstudio.Visible = false;
@@ -83,9 +87,13 @@ namespace GePE.PlanesDeEstudios
             //Visible Panel
             PnlCapturaDatosPlanEstudioMateria.Visible = false;
             PnlGrvPlanEstudioMateria.Visible = false;
+
         }
         protected void ControlesClear()
         {
+            lbPnlGrvMapaCurricularNombreCarrera.Text = string.Empty;
+            lbPnlGrvMapaCurricularPlanEstudio.Text = string.Empty;
+
             //Clear Label
             lblNombreAccion.Text = string.Empty;
             lblTituloAccion.Text = string.Empty;
@@ -342,6 +350,7 @@ namespace GePE.PlanesDeEstudios
         #region Objeto Cliente Plan Estudio - Materia
         protected E_PlanEstudioMateria ControlesWebForm_ObjetoEntidad2()
         {
+
             if (cbSeriada.Checked)
             {
                 E_PlanEstudioMateria PlanEstudioMateria = new E_PlanEstudioMateria()
@@ -383,13 +392,13 @@ namespace GePE.PlanesDeEstudios
                 };
                 return PlanEstudioMateria;
             }
-            
 
-            
+
+
         }
         protected void ObjetoEntidad_ControlesWebForm2(int IdPlanEstudioMateria)
-        {           
-             E_PlanEstudioMateria PlanEstudioMateria = NPEM.BuscaPlanEstudioMateriaPorId(IdPlanEstudioMateria);
+        {
+            E_PlanEstudioMateria PlanEstudioMateria = NPEM.BuscaPlanEstudioMateriaPorId(IdPlanEstudioMateria);
             if (PlanEstudioMateria.EstadoMateriaSeriada != false)
             {
                 string nombreplan = Convert.ToString(PlanEstudioMateria.NombrePlanEstudio);
@@ -401,6 +410,8 @@ namespace GePE.PlanesDeEstudios
                 ddlMateriaSeriada.SelectedValue = Convert.ToString(PlanEstudioMateria.IdMateriaSeriada);
                 cbSeriada.Checked = PlanEstudioMateria.EstadoMateriaSeriada;
 
+                TbClavePlanEstudio.Text = PlanEstudioMateria.ClavePlanEstudio.Trim();
+
                 //se creo un indice para recorrer el dropdownlist y comparar el texto
                 int index = 0;//1
                 while (ddlIdPlanEstudio.SelectedItem.Text != nombreplan)
@@ -409,7 +420,7 @@ namespace GePE.PlanesDeEstudios
                     ddlIdPlanEstudio.SelectedIndex = index;
                 }
                 ddlIdPlanEstudio.SelectedIndex = index;
-                TbClavePlanEstudio.Text = PlanEstudioMateria.ClavePlanEstudio.Trim();
+
             }
             else
             {
@@ -431,10 +442,10 @@ namespace GePE.PlanesDeEstudios
                 ddlIdPlanEstudio.SelectedIndex = index;
                 TbClavePlanEstudio.Text = PlanEstudioMateria.ClavePlanEstudio.Trim();
             }
-            
+
         }
         #endregion
-        
+
         #region Botones menu de navegación 
         protected void BtnMnuNuevo_Click(object sender, EventArgs e)
         {
@@ -620,6 +631,7 @@ namespace GePE.PlanesDeEstudios
         #region Botones IBM (WebForm captura datos del cliente) Plan Estudio - Materia
         protected void BtnGrabarPlanEstudioMateria_Click(object sender, EventArgs e)
         {
+
             string str1 = Convert.ToString(ddlIdPlanEstudio.SelectedItem.Value);
             string str2 = Convert.ToString(ddlIdMateria.SelectedItem.Value);
             string str3 = Convert.ToString(ddlIdTipoMateria.SelectedItem.Value);
@@ -687,7 +699,7 @@ namespace GePE.PlanesDeEstudios
             Cliente.IdPlanEstudioMateria = Convert.ToInt32(hfIdPlanEstudio.Value);
             string R = NPEM.ModificaPlanEstudioMateria(Cliente);
             lblTituloAccionPlanEstudioMateria.Text = R;
-            
+
             //Aqui se ponen no visibles los Label, TextBox y el CheckBox
             VisibleOnOFFPlanEstudioMateria(false);
 
@@ -780,7 +792,7 @@ namespace GePE.PlanesDeEstudios
 
             //Aqui se cargan los datos de las listas de plan estudio materia
             CargarDatosListasPlanEstudio();
-            
+
             e.Cancel = true; //Deshabilitar las ediciones del registro
             hfIdPlanEstudio.Value = GrvPlanEstudio.DataKeys[e.NewEditIndex].Value.ToString();
             lblTituloAccion.Text = "Modificar Plan de estudio";
@@ -811,36 +823,36 @@ namespace GePE.PlanesDeEstudios
                 throw new ArgumentNullException(nameof(e));
             }
             InicializaControlesPlanEstudioMateria();
-            
+
             lblTituloAccionPlanEstudioMateria.Text = "Agregar Materia";
 
             //Aqui se cargan los datos de las listas de plan estudio materia
             CargarDatosListasPlanEstudioMateria();
             TbClavePlanEstudio.Visible = false;
             ControlesOnOFFPlanEstudioMateria(true);
-            
+
             PnlCapturaDatosPlanEstudioMateria.Visible = true;
-            
+
             //Aqui se ponen visibles los Label, TextBox y el CheckBox
             VisibleOnOFFPlanEstudioMateria(true);
-            
+
             GridViewRow row = GrvPlanEstudio.SelectedRow;
             string valor = Convert.ToString(GrvPlanEstudio.Rows[row.RowIndex].Cells[1].Text);
-            
+
+            string valor2 = Convert.ToString(GrvPlanEstudio.Rows[row.RowIndex].Cells[0].Text);
+            TbClavePlanEstudio.Text = valor.Trim();
+
             int index = 0;
-            while (ddlIdPlanEstudio.SelectedItem.Text != valor)
+            while (ddlIdPlanEstudio.SelectedItem.Text != valor2)
             {
                 index = index + 1;
                 ddlIdPlanEstudio.SelectedIndex = index;
             }
             ddlIdPlanEstudio.SelectedIndex = index;
             ddlIdPlanEstudio.Enabled = false;
-            GridViewRow row2 = GrvPlanEstudio.SelectedRow;
-            string valor2 = Convert.ToString(GrvPlanEstudio.Rows[row.RowIndex].Cells[0].Text);
-            TbClavePlanEstudio.Text = valor2.Trim(); 
 
             //lbMateriaSeriada.Enabled = false;
-            ddlMateriaSeriada.Enabled = true;
+            ddlMateriaSeriada.Enabled = false;
             //lbMateriaSeriada.Visible = false;
             //ddlMateriaSeriada.Visible = false;
 
@@ -857,6 +869,88 @@ namespace GePE.PlanesDeEstudios
             if (e == null)
             {
                 throw new ArgumentNullException(nameof(e));
+            }
+            if (e.CommandName == "MapaCurricular")
+            {
+                //Esto es para saber a que plan de estudio nos referimos
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = GrvPlanEstudio.Rows[index];
+                string str = row.Cells[0].Text;
+
+                //Esto son los encabezados 
+                lbPnlGrvMapaCurricularNombreCarrera.Visible = true;
+                lbPnlGrvMapaCurricularNombreCarrera.Text = "Nombre De La Carrera";
+
+                lbPnlGrvMapaCurricularPlanEstudio.Visible = true;
+                lbPnlGrvMapaCurricularPlanEstudio.Text = "Plan De Estudio";
+
+                //Aqui se crean las columnas
+                GrvPlanEstudio.HeaderRow.Cells[0].Text = "I";
+                GrvPlanEstudio.HeaderRow.Cells[1].Text = "II";
+                GrvPlanEstudio.HeaderRow.Cells[2].Text = "III";
+                GrvPlanEstudio.HeaderRow.Cells[3].Text = "IV";
+                GrvPlanEstudio.HeaderRow.Cells[4].Text = "V";
+                GrvPlanEstudio.HeaderRow.Cells[5].Text = "VI";
+                GrvPlanEstudio.HeaderRow.Cells[6].Text = "VII";
+                GrvPlanEstudio.HeaderRow.Cells[7].Text = "VIII";
+                GrvPlanEstudio.HeaderRow.Cells[8].Visible = false;
+                GrvPlanEstudio.HeaderRow.Cells[9].Visible = false;
+
+                for (int i = 0; i <= 7; i++)
+                {
+                    row.Cells[i].Text = "semestre " + (i + 1);
+                }
+                row.Cells[8].Visible = false;
+                row.Cells[9].Visible = false;
+
+                GrvMapaCurricular.DataBind();
+                PnlGrvMapaCurricular.Visible = true;
+
+                List<E_PlanEstudioMateria> LstPlanEstudioMateria = NPEM.BuscaPlanEstudioMaterias(str);
+                int contador = 1;
+                foreach (var item in LstPlanEstudioMateria)
+                {
+                    if (item != null)
+                    {
+                        Response.Write("<script language=javascript>alert(' " +
+                            "Materias agregadas a plan de estudio: " + contador +
+                            "IdPlanEstudioMateria: " + item.IdPlanEstudioMateria +
+                            "IdPlanEstudio: " + item.IdPlanEstudio +
+                            "IdMateria: " + item.IdMateria +
+                            "IdTipoMateria: " + item.IdTipoMateria +
+                            "IdEtapa: " + item.IdEtapa +
+                            "IdAreaConocimiento: " + item.IdAreaConocimiento +
+                            "Semestre: " + item.Semestre +
+                            "NombrePlanEstudio: " + item.NombrePlanEstudio +
+                            "NombreMateria: " + item.NombreMateria +
+                            "NombreTipoMateria: " + item.NombreTipoMateria +
+                            "NombreEtapa: " + item.NombreEtapa +
+                            "NombreArea: " + item.NombreArea +
+                            "IdMateriaSeriada: " + item.IdMateriaSeriada +
+                            "EstadoMateriaSeriada: " + item.EstadoMateriaSeriada +
+                            "ClavePlanEstudio: " + item.ClavePlanEstudio +
+                            "');</script>");
+                        contador = contador + 1;
+                    }
+                    else
+                    {
+                        Response.Write("<script language=javascript>alert('List element has null value.');</script>");
+                    }
+                }
+
+                //if (LstPlanEstudioMateria.Count.Equals(0))
+                //{
+                //    InicializaControles();
+                //    lblNombreAccion.Text = "No se encontraron datos con el criterio de busqueda";
+                //}
+                //else
+                //{
+                //    InicializaControles();
+                //    GrvPlanEstudioMateria.DataSource = LstPlanEstudioMateria;
+                //    GrvPlanEstudioMateria.DataBind();
+                //    PnlGrvPlanEstudioMateria.Visible = true;
+                //}
+
             }
             if (e.CommandName == "VerDetalles")
             {
@@ -889,7 +983,6 @@ namespace GePE.PlanesDeEstudios
             }
             if (e.CommandName == "ListarMaterias")
             {
-
                 int index = Convert.ToInt32(e.CommandArgument);
                 GridViewRow row = GrvPlanEstudio.Rows[index];
                 string str = row.Cells[0].Text;
@@ -910,7 +1003,7 @@ namespace GePE.PlanesDeEstudios
                     GrvPlanEstudioMateria.DataBind();
                     PnlGrvPlanEstudioMateria.Visible = true;
                 }
-            }//Falta crear una lista de las materias que tengan el id de plan de estudio
+            }
         }
         #endregion
 
@@ -984,8 +1077,18 @@ namespace GePE.PlanesDeEstudios
             ddlIdPlanEstudio.Enabled = false;
             ddlIdMateria.Enabled = false;
 
-            lbMateriaSeriada.Enabled = false;
-            ddlMateriaSeriada.Enabled = false;
+            if (cbSeriada.Checked)
+            {
+                lbMateriaSeriada.Enabled = true;
+                ddlMateriaSeriada.Enabled = true;
+            }
+            else
+            {
+                lbMateriaSeriada.Enabled = false;
+                ddlMateriaSeriada.Enabled = false;
+            }
+
+            DroplistMateriaSeriada();
 
             BtnModificarPlanEstudioMateria.Visible = true;
             BtnCancelarPlanEstudioMateria.Visible = true;
@@ -1134,10 +1237,10 @@ namespace GePE.PlanesDeEstudios
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdPlanEstudio, PlanEstudio FROM Propuesta.dbo.PlanEstudio", con);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdPlanEstudio, ClavePlanEstudio FROM Propuesta.dbo.PlanEstudio", con);
                     adapter.Fill(subjects);
                     ddlIdPlanEstudio.DataSource = subjects;
-                    ddlIdPlanEstudio.DataTextField = "PlanEstudio";
+                    ddlIdPlanEstudio.DataTextField = "ClavePlanEstudio";
                     ddlIdPlanEstudio.DataValueField = "IdPlanEstudio";
                     ddlIdPlanEstudio.DataBind();
                 }
@@ -1326,7 +1429,7 @@ namespace GePE.PlanesDeEstudios
             DroplistMateriaSeriada();
         }
         protected void On_Check(Object sender, EventArgs e)
-        {           
+        {
             if (cbSeriada.Checked)
             {
                 ddlMateriaSeriada.Enabled = true;
