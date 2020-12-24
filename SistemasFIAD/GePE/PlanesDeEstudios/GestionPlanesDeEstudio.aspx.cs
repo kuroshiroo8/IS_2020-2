@@ -338,6 +338,7 @@ namespace GePE.PlanesDeEstudios
                 Estatus = ddlEstatus.SelectedItem.Text,
                 IdEstatus = ddlEstatus.SelectedIndex,
                 NombreCarrera = ddlProgramaEducativo.SelectedItem.Text
+
             };
             return PlanEstudio;
 
@@ -383,7 +384,8 @@ namespace GePE.PlanesDeEstudios
                     NombreArea = ddlIdAreaConocimiento.SelectedItem.Text,
                     IdMateriaSeriada = Convert.ToInt32(ddlMateriaSeriada.SelectedItem.Value),
                     EstadoMateriaSeriada = cbSeriada.Checked,
-                    ClavePlanEstudio = TbClavePlanEstudio.Text
+                    ClavePlanEstudio = TbClavePlanEstudio.Text,
+                    NombreMateriaSeriada = ddlMateriaSeriada.SelectedItem.Text
                 };
                 return PlanEstudioMateria;
             }
@@ -663,34 +665,34 @@ namespace GePE.PlanesDeEstudios
         protected void BtnGrabarPlanEstudioMateria_Click(object sender, EventArgs e)
         {
 
-            string str1 = Convert.ToString(ddlIdPlanEstudio.SelectedItem.Value);
-            string str2 = Convert.ToString(ddlIdMateria.SelectedItem.Value);
-            string str3 = Convert.ToString(ddlIdTipoMateria.SelectedItem.Value);
-            string str4 = Convert.ToString(ddlIdEtapa.SelectedItem.Value);
-            string str5 = Convert.ToString(ddlIdAreaConocimiento.SelectedItem.Value);
-            string str6 = Convert.ToString(ddlSemestre.SelectedItem.Value);
-            string str7 = Convert.ToString(ddlIdPlanEstudio.SelectedItem.Text);
-            string str8 = Convert.ToString(ddlIdMateria.SelectedItem.Text);
-            string str9 = Convert.ToString(ddlIdTipoMateria.SelectedItem.Text);
-            string str10 = Convert.ToString(ddlIdEtapa.SelectedItem.Text);
-            string str11 = Convert.ToString(ddlIdAreaConocimiento.SelectedItem.Text);
-            string str12 = Convert.ToString(ddlMateriaSeriada.SelectedItem.Value);
-            string str13 = Convert.ToString(cbSeriada.Checked);
-            Response.Write("<script language=javascript>alert('" +
-                "IdPlanEstudio: " + str1 +
-                " IdMateria: " + str2 +
-                " IdTipoMateria: " + str3 +
-                " IdEtapa: " + str4 +
-                " IdAreaConocimiento: " + str5 +
-                " Semestre: " + str6 +
-                " NombrePlanEstudio: " + str7 +
-                " NombreMateria: " + str8 +
-                " NombreTipoMateria: " + str9 +
-                " NombreEtapa: " + str10 +
-                " NombreArea: " + str11 +
-                " IdMateriaSeriada: " + str12 +
-                " EstadoMateriaSeriada: " + str13 +
-                " ');</script>");
+            //string str1 = Convert.ToString(ddlIdPlanEstudio.SelectedItem.Value);
+            //string str2 = Convert.ToString(ddlIdMateria.SelectedItem.Value);
+            //string str3 = Convert.ToString(ddlIdTipoMateria.SelectedItem.Value);
+            //string str4 = Convert.ToString(ddlIdEtapa.SelectedItem.Value);
+            //string str5 = Convert.ToString(ddlIdAreaConocimiento.SelectedItem.Value);
+            //string str6 = Convert.ToString(ddlSemestre.SelectedItem.Value);
+            //string str7 = Convert.ToString(ddlIdPlanEstudio.SelectedItem.Text);
+            //string str8 = Convert.ToString(ddlIdMateria.SelectedItem.Text);
+            //string str9 = Convert.ToString(ddlIdTipoMateria.SelectedItem.Text);
+            //string str10 = Convert.ToString(ddlIdEtapa.SelectedItem.Text);
+            //string str11 = Convert.ToString(ddlIdAreaConocimiento.SelectedItem.Text);
+            //string str12 = Convert.ToString(ddlMateriaSeriada.SelectedItem.Value);
+            //string str13 = Convert.ToString(cbSeriada.Checked);
+            //Response.Write("<script language=javascript>alert('" +
+            //    "IdPlanEstudio: " + str1 +
+            //    " IdMateria: " + str2 +
+            //    " IdTipoMateria: " + str3 +
+            //    " IdEtapa: " + str4 +
+            //    " IdAreaConocimiento: " + str5 +
+            //    " Semestre: " + str6 +
+            //    " NombrePlanEstudio: " + str7 +
+            //    " NombreMateria: " + str8 +
+            //    " NombreTipoMateria: " + str9 +
+            //    " NombreEtapa: " + str10 +
+            //    " NombreArea: " + str11 +
+            //    " IdMateriaSeriada: " + str12 +
+            //    " EstadoMateriaSeriada: " + str13 +
+            //    " ');</script>");
             string R = NPEM.InsertaPlanEstudioMateria(ControlesWebForm_ObjetoEntidad2());
             lblTituloAccionPlanEstudioMateria.Text = R;
 
@@ -939,80 +941,13 @@ namespace GePE.PlanesDeEstudios
                 NewRow[6] = "Etapa Terminal";
                 NewRow[7] = "";
 
-                DataRow NewRow1 = dt.NewRow();
-
-                NewRow1[0] = "";
-                NewRow1[1] = "";
-                NewRow1[2] = "";
-                NewRow1[3] = "";
-                NewRow1[4] = "";
-                NewRow1[5] = "";
-                NewRow1[6] = "";
-                NewRow1[7] = "";
-
-                DataRow NewRow2 = dt.NewRow();
-
-                NewRow2[0] = "";
-                NewRow2[1] = "";
-                NewRow2[2] = "";
-                NewRow2[3] = "";
-                NewRow2[4] = "";
-                NewRow2[5] = "";
-                NewRow2[6] = "";
-                NewRow2[7] = "";
-
-                DataRow NewRow3 = dt.NewRow();
-
-                NewRow3[0] = "";
-                NewRow3[1] = "";
-                NewRow3[2] = "";
-                NewRow3[3] = "";
-                NewRow3[4] = "";
-                NewRow3[5] = "";
-                NewRow3[6] = "";
-                NewRow3[7] = "";
-
-                DataRow NewRow4 = dt.NewRow();
-
-                NewRow4[0] = "";
-                NewRow4[1] = "";
-                NewRow4[2] = "";
-                NewRow4[3] = "";
-                NewRow4[4] = "";
-                NewRow4[5] = "";
-                NewRow4[6] = "";
-                NewRow4[7] = "";
-
-                DataRow NewRow5 = dt.NewRow();
-
-                NewRow5[0] = "";
-                NewRow5[1] = "";
-                NewRow5[2] = "";
-                NewRow5[3] = "";
-                NewRow5[4] = "";
-                NewRow5[5] = "";
-                NewRow5[6] = "";
-                NewRow5[7] = "";
-
-                DataRow NewRow6 = dt.NewRow();
-
-                NewRow6[0] = "";
-                NewRow6[1] = "";
-                NewRow6[2] = "";
-                NewRow6[3] = "";
-                NewRow6[4] = "";
-                NewRow6[5] = "";
-                NewRow6[6] = "";
-                NewRow6[7] = "";
-
                 dt.Rows.Add(NewRow);
-                dt.Rows.Add(NewRow1);
-                dt.Rows.Add(NewRow2);
-                dt.Rows.Add(NewRow3);
-                dt.Rows.Add(NewRow4);
-                dt.Rows.Add(NewRow5);
-                dt.Rows.Add(NewRow6);
 
+                for (int i = 0; i <= 12; i++)
+                {
+                    RowGrv(dt);
+                }
+                
                 GrvMapaCurricular.DataSource = dt;
                 GrvMapaCurricular.DataBind();
 
@@ -1067,23 +1002,23 @@ namespace GePE.PlanesDeEstudios
                         GrvMapaCurricular.Rows[index].Cells[6].Text = "";
                         GrvMapaCurricular.Rows[index].Cells[7].Text = "";
 
-                        Response.Write("<script language=javascript>alert(' " +
-                            " - IdPlanEstudioMateria: " + item.IdPlanEstudioMateria +
-                            " - IdPlanEstudio: " + item.IdPlanEstudio +
-                            " - IdMateria: " + item.IdMateria +
-                            " - IdTipoMateria: " + item.IdTipoMateria +
-                            " - IdEtapa: " + item.IdEtapa +
-                            " - IdAreaConocimiento: " + item.IdAreaConocimiento +
-                            " - Semestre: " + item.Semestre +
-                            " - NombrePlanEstudio: " + item.NombrePlanEstudio +
-                            " - NombreMateria: " + item.NombreMateria +
-                            " - NombreTipoMateria: " + item.NombreTipoMateria +
-                            " - NombreEtapa: " + item.NombreEtapa +
-                            " - NombreArea: " + item.NombreArea +
-                            " - IdMateriaSeriada: " + item.IdMateriaSeriada +
-                            " - EstadoMateriaSeriada: " + item.EstadoMateriaSeriada +
-                            " - ClavePlanEstudio: " + item.ClavePlanEstudio +
-                            "');</script>");
+                        //Response.Write("<script language=javascript>alert(' " +
+                        //    " - IdPlanEstudioMateria: " + item.IdPlanEstudioMateria +
+                        //    " - IdPlanEstudio: " + item.IdPlanEstudio +
+                        //    " - IdMateria: " + item.IdMateria +
+                        //    " - IdTipoMateria: " + item.IdTipoMateria +
+                        //    " - IdEtapa: " + item.IdEtapa +
+                        //    " - IdAreaConocimiento: " + item.IdAreaConocimiento +
+                        //    " - Semestre: " + item.Semestre +
+                        //    " - NombrePlanEstudio: " + item.NombrePlanEstudio +
+                        //    " - NombreMateria: " + item.NombreMateria +
+                        //    " - NombreTipoMateria: " + item.NombreTipoMateria +
+                        //    " - NombreEtapa: " + item.NombreEtapa +
+                        //    " - NombreArea: " + item.NombreArea +
+                        //    " - IdMateriaSeriada: " + item.IdMateriaSeriada +
+                        //    " - EstadoMateriaSeriada: " + item.EstadoMateriaSeriada +
+                        //    " - ClavePlanEstudio: " + item.ClavePlanEstudio +
+                        //    "');</script>");
 
                         if (item.Semestre == 1)
                         {
@@ -1123,6 +1058,13 @@ namespace GePE.PlanesDeEstudios
                                         " <b>HPC: </b><i>" + itemM.HPP + "</i>" +
                                         " <b>CR: </b><i>" + itemM.CR + "</i>";
 
+                                    if(item.EstadoMateriaSeriada == true)
+                                    {
+                                        GrvMapaCurricular.Rows[MS1].Cells[0].Text = GrvMapaCurricular.Rows[MS1].Cells[0].Text + 
+                                            "<br/>*Seriada con "+item.NombreMateriaSeriada;
+                                    }
+                                    else { }
+
                                     //Aqui se calculan los creditos
                                     CreditosGrv(item.NombreEtapa, itemM.CR);
                                 }
@@ -1156,6 +1098,13 @@ namespace GePE.PlanesDeEstudios
                                         " <b>HT: </b><i>" + itemM.HT + "</i>" +
                                         " <b>HPC: </b><i>" + itemM.HPP + "</i>" +
                                         " <b>CR: </b><i>" + itemM.CR + "</i>";
+
+                                    if (item.EstadoMateriaSeriada == true)
+                                    {
+                                        GrvMapaCurricular.Rows[MS2].Cells[1].Text = GrvMapaCurricular.Rows[MS2].Cells[1].Text +
+                                            "<br/>*Seriada con " + item.NombreMateriaSeriada;
+                                    }
+                                    else { }
 
                                     //Aqui se calculan los creditos
                                     CreditosGrv(item.NombreEtapa, itemM.CR);
@@ -1191,6 +1140,13 @@ namespace GePE.PlanesDeEstudios
                                         " <b>HPC: </b><i>" + itemM.HPP + "</i>" +
                                         " <b>CR: </b><i>" + itemM.CR + "</i>";
 
+                                    if (item.EstadoMateriaSeriada == true)
+                                    {
+                                        GrvMapaCurricular.Rows[MS3].Cells[2].Text = GrvMapaCurricular.Rows[MS3].Cells[2].Text +
+                                            "<br/>*Seriada con " + item.NombreMateriaSeriada;
+                                    }
+                                    else { }
+
                                     //Aqui se calculan los creditos
                                     CreditosGrv(item.NombreEtapa, itemM.CR);
                                 }
@@ -1223,6 +1179,13 @@ namespace GePE.PlanesDeEstudios
                                         " <b>HT: </b><i>" + itemM.HT + "</i>" +
                                         " <b>HPC: </b><i>" + itemM.HPP + "</i>" +
                                         " <b>CR: </b><i>" + itemM.CR + "</i>";
+
+                                    if (item.EstadoMateriaSeriada == true)
+                                    {
+                                        GrvMapaCurricular.Rows[MS4].Cells[3].Text = GrvMapaCurricular.Rows[MS4].Cells[3].Text +
+                                            "<br/>*Seriada con " + item.NombreMateriaSeriada;
+                                    }
+                                    else { }
 
                                     //Aqui se calculan los creditos
                                     CreditosGrv(item.NombreEtapa, itemM.CR);
@@ -1258,6 +1221,13 @@ namespace GePE.PlanesDeEstudios
                                         " <b>HPC: </b><i>" + itemM.HPP + "</i>" +
                                         " <b>CR: </b><i>" + itemM.CR + "</i>";
 
+                                    if (item.EstadoMateriaSeriada == true)
+                                    {
+                                        GrvMapaCurricular.Rows[MS5].Cells[4].Text = GrvMapaCurricular.Rows[MS5].Cells[4].Text +
+                                            "<br/>*Seriada con " + item.NombreMateriaSeriada;
+                                    }
+                                    else { }
+
                                     //Aqui se calculan los creditos
                                     CreditosGrv(item.NombreEtapa, itemM.CR);
 
@@ -1291,6 +1261,13 @@ namespace GePE.PlanesDeEstudios
                                         " <b>HT: </b><i>" + itemM.HT + "</i>" +
                                         " <b>HPC: </b><i>" + itemM.HPP + "</i>" +
                                         " <b>CR: </b><i>" + itemM.CR + "</i>";
+
+                                    if (item.EstadoMateriaSeriada == true)
+                                    {
+                                        GrvMapaCurricular.Rows[MS6].Cells[5].Text = GrvMapaCurricular.Rows[MS6].Cells[5].Text +
+                                            "<br/>*Seriada con " + item.NombreMateriaSeriada;
+                                    }
+                                    else { }
 
                                     //Aqui se calculan los creditos
                                     CreditosGrv(item.NombreEtapa, itemM.CR);
@@ -1326,6 +1303,13 @@ namespace GePE.PlanesDeEstudios
                                         " <b>HPC: </b><i>" + itemM.HPP + "</i>" +
                                         " <b>CR: </b><i>" + itemM.CR + "</i>";
 
+                                    if (item.EstadoMateriaSeriada == true)
+                                    {
+                                        GrvMapaCurricular.Rows[MS7].Cells[6].Text = GrvMapaCurricular.Rows[MS7].Cells[6].Text +
+                                            "<br/>*Seriada con " + item.NombreMateriaSeriada;
+                                    }
+                                    else { }
+
                                     //Aqui se calculan los creditos
                                     CreditosGrv(item.NombreEtapa, itemM.CR);
 
@@ -1359,6 +1343,13 @@ namespace GePE.PlanesDeEstudios
                                         " <b>HT: </b><i>" + itemM.HT + "</i>" +
                                         " <b>HPC: </b><i>" + itemM.HPP + "</i>" +
                                         " <b>CR: </b><i>" + itemM.CR + "</i>";
+
+                                    if (item.EstadoMateriaSeriada == true)
+                                    {
+                                        GrvMapaCurricular.Rows[MS8].Cells[7].Text = GrvMapaCurricular.Rows[MS8].Cells[7].Text +
+                                            "<br/>*Seriada con " + item.NombreMateriaSeriada;
+                                    }
+                                    else { }
 
                                     //Aqui se calculan los creditos
                                     CreditosGrv(item.NombreEtapa, itemM.CR);
@@ -1479,14 +1470,14 @@ namespace GePE.PlanesDeEstudios
                             }
                             else
                             {
-                                Response.Write("<script language=javascript>alert('El elemento de la lista PlanEstudio tiene valor nulo.');</script>");
+                                //Response.Write("<script language=javascript>alert('El elemento de la lista PlanEstudio tiene valor nulo.');</script>");
                             }
                         }
 
                     }
                     else
                     {
-                        Response.Write("<script language=javascript>alert('El elemento de la lista PlanEstudioMateria tiene valor nulo.');</script>");
+                        //Response.Write("<script language=javascript>alert('El elemento de la lista PlanEstudioMateria tiene valor nulo.');</script>");
                     }
 
                 }
@@ -2101,6 +2092,21 @@ namespace GePE.PlanesDeEstudios
                 ETOP = ETOP + CR;
             }
             else { }
+        }
+        protected void RowGrv(DataTable dt)
+        {
+            DataRow NewRow = dt.NewRow();
+
+            NewRow[0] = "";
+            NewRow[1] = "";
+            NewRow[2] = "";
+            NewRow[3] = "";
+            NewRow[4] = "";
+            NewRow[5] = "";
+            NewRow[6] = "";
+            NewRow[7] = "";
+
+            dt.Rows.Add(NewRow);
         }
         #endregion
 
