@@ -14,9 +14,24 @@ namespace GePE.PlanesDeEstudios
 {
     public partial class GestionPlanesDeEstudio : System.Web.UI.Page
     {
+
+        N_Materias NM = new N_Materias();
         N_PlanEstudio PE = new N_PlanEstudio();
         N_PlanEstudioMateria NPEM = new N_PlanEstudioMateria();
         public int entra = 1;
+
+        int EBOB = 0;
+        int EDOB = 0;
+        int ETOB = 0;
+
+        int EBOP = 0;
+        int EDOP = 0;
+        int ETOP = 0;
+
+        int EBTOT = 0;
+        int EDTOT = 0;
+        int ETTOT = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -893,79 +908,562 @@ namespace GePE.PlanesDeEstudios
                 GridViewRow row = GrvPlanEstudio.Rows[index];
                 string str = row.Cells[0].Text;
 
-                //Esto son los encabezados 
-                lbPnlGrvMapaCurricularNombreCarrera.Visible = true;
-                lbPnlGrvMapaCurricularNombreCarrera.Text = "Nombre De La Carrera";
-
-                lbPnlGrvMapaCurricularPlanEstudio.Visible = true;
-                lbPnlGrvMapaCurricularPlanEstudio.Text = "Plan De Estudio";
-
-                //Aqui se crean las columnas
-                GrvPlanEstudio.HeaderRow.Cells[0].Text = "I";
-                GrvPlanEstudio.HeaderRow.Cells[1].Text = "II";
-                GrvPlanEstudio.HeaderRow.Cells[2].Text = "III";
-                GrvPlanEstudio.HeaderRow.Cells[3].Text = "IV";
-                GrvPlanEstudio.HeaderRow.Cells[4].Text = "V";
-                GrvPlanEstudio.HeaderRow.Cells[5].Text = "VI";
-                GrvPlanEstudio.HeaderRow.Cells[6].Text = "VII";
-                GrvPlanEstudio.HeaderRow.Cells[7].Text = "VIII";
-                GrvPlanEstudio.HeaderRow.Cells[8].Visible = false;
-                GrvPlanEstudio.HeaderRow.Cells[9].Visible = false;
-
-                for (int i = 0; i <= 7; i++)
-                {
-                    row.Cells[i].Text = "semestre " + (i + 1);
-                }
-                row.Cells[8].Visible = false;
-                row.Cells[9].Visible = false;
-
-                GrvMapaCurricular.DataBind();
-                PnlGrvMapaCurricular.Visible = true;
-
                 List<E_PlanEstudioMateria> LstPlanEstudioMateria = NPEM.BuscaPlanEstudioMaterias(str);
-                int contador = 1;
+
+                DataTable dt = new DataTable();
+
+                if (dt.Columns.Count == 0)
+                {
+                    dt.Columns.Add("I", typeof(string));
+                    dt.Columns.Add("II", typeof(string));
+                    dt.Columns.Add("III", typeof(string));
+                    dt.Columns.Add("IV", typeof(string));
+                    dt.Columns.Add("V", typeof(string));
+                    dt.Columns.Add("VI", typeof(string));
+                    dt.Columns.Add("VII", typeof(string));
+                    dt.Columns.Add("VIII", typeof(string));
+                }
+
+                DataRow NewRow = dt.NewRow();
+
+                NewRow[0] = "";
+                NewRow[1] = "Etapa Basica";
+                NewRow[2] = "";
+                NewRow[3] = "";
+                NewRow[4] = "Etapa Disiplinaria";
+                NewRow[5] = "";
+                NewRow[6] = "Etapa Terminal";
+                NewRow[7] = "";
+
+                DataRow NewRow1 = dt.NewRow();
+
+                NewRow1[0] = "";
+                NewRow1[1] = "";
+                NewRow1[2] = "";
+                NewRow1[3] = "";
+                NewRow1[4] = "";
+                NewRow1[5] = "";
+                NewRow1[6] = "";
+                NewRow1[7] = "";
+
+                DataRow NewRow2 = dt.NewRow();
+
+                NewRow2[0] = "";
+                NewRow2[1] = "";
+                NewRow2[2] = "";
+                NewRow2[3] = "";
+                NewRow2[4] = "";
+                NewRow2[5] = "";
+                NewRow2[6] = "";
+                NewRow2[7] = "";
+
+                DataRow NewRow3 = dt.NewRow();
+
+                NewRow3[0] = "";
+                NewRow3[1] = "";
+                NewRow3[2] = "";
+                NewRow3[3] = "";
+                NewRow3[4] = "";
+                NewRow3[5] = "";
+                NewRow3[6] = "";
+                NewRow3[7] = "";
+
+                DataRow NewRow4 = dt.NewRow();
+
+                NewRow4[0] = "";
+                NewRow4[1] = "";
+                NewRow4[2] = "";
+                NewRow4[3] = "";
+                NewRow4[4] = "";
+                NewRow4[5] = "";
+                NewRow4[6] = "";
+                NewRow4[7] = "";
+
+                dt.Rows.Add(NewRow);
+                dt.Rows.Add(NewRow1);
+                dt.Rows.Add(NewRow2);
+                dt.Rows.Add(NewRow3);
+                dt.Rows.Add(NewRow4);
+
+                GrvMapaCurricular.DataSource = dt;
+                GrvMapaCurricular.DataBind();
+
+                int MS1 = 1;
+                int MS2 = 1;
+                int MS3 = 1;
+                int MS4 = 1;
+                int MS5 = 1;
+                int MS6 = 1;
+                int MS7 = 1;
+                int MS8 = 1;
+
+                //Obligatorias
+                EBOB = 0;
+                EDOB = 0;
+                ETOB = 0;
+
+                //Optativas
+                EBOP = 0;
+                EDOP = 0;
+                ETOP = 0;
+
+                //Totales
+                EBTOT = 0;
+                EDTOT = 0;
+                ETTOT = 0;
+
+                EncabezadoEtapaGrv(index, 0, "#641E16");
+                EncabezadoEtapaGrv(index, 1, "#641E16");
+                EncabezadoEtapaGrv(index, 2, "#641E16");
+
+                EncabezadoEtapaGrv(index, 3, "#7D6608");
+                EncabezadoEtapaGrv(index, 4, "#7D6608");
+                EncabezadoEtapaGrv(index, 5, "#7D6608");
+
+                EncabezadoEtapaGrv(index, 6, "#4A235A");
+                EncabezadoEtapaGrv(index, 7, "#4A235A");
+
+                index = index + 1;
+
                 foreach (var item in LstPlanEstudioMateria)
                 {
                     if (item != null)
                     {
+                        GrvMapaCurricular.Rows[index].Cells[0].Text = "";
+                        GrvMapaCurricular.Rows[index].Cells[1].Text = "";
+                        GrvMapaCurricular.Rows[index].Cells[2].Text = "";
+                        GrvMapaCurricular.Rows[index].Cells[3].Text = "";
+                        GrvMapaCurricular.Rows[index].Cells[4].Text = "";
+                        GrvMapaCurricular.Rows[index].Cells[5].Text = "";
+                        GrvMapaCurricular.Rows[index].Cells[6].Text = "";
+                        GrvMapaCurricular.Rows[index].Cells[7].Text = "";
+
                         Response.Write("<script language=javascript>alert(' " +
-                            "Materias agregadas a plan de estudio: " + contador +
-                            "IdPlanEstudioMateria: " + item.IdPlanEstudioMateria +
-                            "IdPlanEstudio: " + item.IdPlanEstudio +
-                            "IdMateria: " + item.IdMateria +
-                            "IdTipoMateria: " + item.IdTipoMateria +
-                            "IdEtapa: " + item.IdEtapa +
-                            "IdAreaConocimiento: " + item.IdAreaConocimiento +
-                            "Semestre: " + item.Semestre +
-                            "NombrePlanEstudio: " + item.NombrePlanEstudio +
-                            "NombreMateria: " + item.NombreMateria +
-                            "NombreTipoMateria: " + item.NombreTipoMateria +
-                            "NombreEtapa: " + item.NombreEtapa +
-                            "NombreArea: " + item.NombreArea +
-                            "IdMateriaSeriada: " + item.IdMateriaSeriada +
-                            "EstadoMateriaSeriada: " + item.EstadoMateriaSeriada +
-                            "ClavePlanEstudio: " + item.ClavePlanEstudio +
+                            " - IdPlanEstudioMateria: " + item.IdPlanEstudioMateria +
+                            " - IdPlanEstudio: " + item.IdPlanEstudio +
+                            " - IdMateria: " + item.IdMateria +
+                            " - IdTipoMateria: " + item.IdTipoMateria +
+                            " - IdEtapa: " + item.IdEtapa +
+                            " - IdAreaConocimiento: " + item.IdAreaConocimiento +
+                            " - Semestre: " + item.Semestre +
+                            " - NombrePlanEstudio: " + item.NombrePlanEstudio +
+                            " - NombreMateria: " + item.NombreMateria +
+                            " - NombreTipoMateria: " + item.NombreTipoMateria +
+                            " - NombreEtapa: " + item.NombreEtapa +
+                            " - NombreArea: " + item.NombreArea +
+                            " - IdMateriaSeriada: " + item.IdMateriaSeriada +
+                            " - EstadoMateriaSeriada: " + item.EstadoMateriaSeriada +
+                            " - ClavePlanEstudio: " + item.ClavePlanEstudio +
                             "');</script>");
-                        contador = contador + 1;
+
+                        if (item.Semestre == 1)
+                        {
+                            List<E_Materias> LstMaterias = NM.BuscaMateria(item.NombreMateria);
+                            foreach (var itemM in LstMaterias)
+                            {
+                                if (itemM != null)
+                                {
+                                    //Response.Write("<script language=javascript>alert(' " +
+                                    //    "IdMateria: " + itemM.IdMateria +
+                                    //    "<br/>ClaveMateria: " + itemM.ClaveMateria +
+                                    //    "<br/>NombreMateria: " + itemM.NombreMateria +
+                                    //    "<br/>HC: " + itemM.HC +
+                                    //    "<br/>HL: " + itemM.HL +
+                                    //    "<br/>HT: " + itemM.HT +
+                                    //    "<br/>HE: " + itemM.HE +
+                                    //    "<br/>HPP: " + itemM.HPP +
+                                    //    "<br/>CR: " + itemM.CR +
+                                    //    "<br/>EstadoMateria: " + itemM.EstadoMateria +
+                                    //    "<br/>PathPUA: " + itemM.PathPUA +
+                                    //    "<br/>PathPUAnoOficial: " + itemM.PathPUAnoOficial +
+                                    //    "');</script>");
+
+                                    //Aqui se crea el hipervinculo de la PUA
+                                    string cadena = itemM.PathPUA;
+                                    cadena = cadena.Replace("~/", "");
+
+                                    //Aqui se cargan los style
+                                    EstilosGrv(MS1, 0, item.NombreArea);
+
+                                    //Aqui se cargan los datos al Grv
+                                    GrvMapaCurricular.Rows[MS1].Cells[0].Text =
+                                        "<a href = https://localhost:44393/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
+                                        "<b>HC: </b><i>" + itemM.HC + "</i>" +
+                                        " <b>HL: </b><i>" + itemM.HL + "</i>" +
+                                        " <b>HT: </b><i>" + itemM.HT + "</i>" +
+                                        " <b>HPC: </b><i>" + itemM.HPP + "</i>" +
+                                        " <b>CR: </b><i>" + itemM.CR + "</i>";
+
+                                    //Aqui se calculan los creditos
+                                    CreditosGrv(item.NombreEtapa, itemM.CR);
+                                }
+                                else
+                                {
+                                    //Response.Write("<script language=javascript>alert('El elemento de la lista de materias tiene valor nulo.');</script>");
+                                }
+                            }
+
+                            MS1 = MS1 + 1;
+                        }
+                        else if (item.Semestre == 2)
+                        {
+                            List<E_Materias> LstMaterias = NM.BuscaMateria(item.NombreMateria);
+                            foreach (var itemM in LstMaterias)
+                            {
+                                if (itemM != null)
+                                {
+                                    //Aqui se crea el hipervinculo de la PUA
+                                    string cadena = itemM.PathPUA;
+                                    cadena = cadena.Replace("~/", "");
+
+                                    //Aqui se cargan los style
+                                    EstilosGrv(MS2, 1, item.NombreArea);
+
+                                    //Aqui se cargan los datos al Grv
+                                    GrvMapaCurricular.Rows[MS2].Cells[1].Text =
+                                        "<a href = https://localhost:44393/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
+                                        "<b>HC: </b><i>" + itemM.HC + "</i>" +
+                                        " <b>HL: </b><i>" + itemM.HL + "</i>" +
+                                        " <b>HT: </b><i>" + itemM.HT + "</i>" +
+                                        " <b>HPC: </b><i>" + itemM.HPP + "</i>" +
+                                        " <b>CR: </b><i>" + itemM.CR + "</i>";
+
+                                    //Aqui se calculan los creditos
+                                    CreditosGrv(item.NombreEtapa, itemM.CR);
+
+                                }
+                                else
+                                {
+                                    //Response.Write("<script language=javascript>alert('El elemento de la lista de materias tiene valor nulo.');</script>");
+                                }
+                            }
+                            MS2 = MS2 + 1;
+                        }
+                        else if (item.Semestre == 3)
+                        {
+                            List<E_Materias> LstMaterias = NM.BuscaMateria(item.NombreMateria);
+                            foreach (var itemM in LstMaterias)
+                            {
+                                if (itemM != null)
+                                {
+                                    //Aqui se crea el hipervinculo de la PUA
+                                    string cadena = itemM.PathPUA;
+                                    cadena = cadena.Replace("~/", "");
+
+                                    //Aqui se cargan los style
+                                    EstilosGrv(MS3, 2, item.NombreArea);
+
+                                    //Aqui se cargan los datos al Grv
+                                    GrvMapaCurricular.Rows[MS3].Cells[2].Text =
+                                        "<a href = https://localhost:44393/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
+                                        "<b>HC: </b><i>" + itemM.HC + "</i>" +
+                                        " <b>HL: </b><i>" + itemM.HL + "</i>" +
+                                        " <b>HT: </b><i>" + itemM.HT + "</i>" +
+                                        " <b>HPC: </b><i>" + itemM.HPP + "</i>" +
+                                        " <b>CR: </b><i>" + itemM.CR + "</i>";
+
+                                    //Aqui se calculan los creditos
+                                    CreditosGrv(item.NombreEtapa, itemM.CR);
+                                }
+                                else
+                                {
+                                    //Response.Write("<script language=javascript>alert('El elemento de la lista de materias tiene valor nulo.');</script>");
+                                }
+                            }
+                            MS3 = MS3 + 1;
+                        }
+                        else if (item.Semestre == 4)
+                        {
+                            List<E_Materias> LstMaterias = NM.BuscaMateria(item.NombreMateria);
+                            foreach (var itemM in LstMaterias)
+                            {
+                                if (itemM != null)
+                                {
+                                    //Aqui se crea el hipervinculo de la PUA
+                                    string cadena = itemM.PathPUA;
+                                    cadena = cadena.Replace("~/", "");
+
+                                    //Aqui se cargan los style
+                                    EstilosGrv(MS4, 3, item.NombreArea);
+
+                                    //Aqui se cargan los datos al Grv
+                                    GrvMapaCurricular.Rows[MS4].Cells[3].Text =
+                                        "<a href = https://localhost:44393/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
+                                        "<b>HC: </b><i>" + itemM.HC + "</i>" +
+                                        " <b>HL: </b><i>" + itemM.HL + "</i>" +
+                                        " <b>HT: </b><i>" + itemM.HT + "</i>" +
+                                        " <b>HPC: </b><i>" + itemM.HPP + "</i>" +
+                                        " <b>CR: </b><i>" + itemM.CR + "</i>";
+
+                                    //Aqui se calculan los creditos
+                                    CreditosGrv(item.NombreEtapa, itemM.CR);
+
+                                }
+                                else
+                                {
+                                    //Response.Write("<script language=javascript>alert('El elemento de la lista de materias tiene valor nulo.');</script>");
+                                }
+                            }
+                            MS4 = MS4 + 1;
+                        }
+                        else if (item.Semestre == 5)
+                        {
+                            List<E_Materias> LstMaterias = NM.BuscaMateria(item.NombreMateria);
+                            foreach (var itemM in LstMaterias)
+                            {
+                                if (itemM != null)
+                                {
+                                    //Aqui se crea el hipervinculo de la PUA
+                                    string cadena = itemM.PathPUA;
+                                    cadena = cadena.Replace("~/", "");
+
+                                    //Aqui se cargan los style
+                                    EstilosGrv(MS5, 4, item.NombreArea);
+
+                                    //Aqui se cargan los datos al Grv
+                                    GrvMapaCurricular.Rows[MS5].Cells[4].Text =
+                                        "<a href = https://localhost:44393/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
+                                        "<b>HC: </b><i>" + itemM.HC + "</i>" +
+                                        " <b>HL: </b><i>" + itemM.HL + "</i>" +
+                                        " <b>HT: </b><i>" + itemM.HT + "</i>" +
+                                        " <b>HPC: </b><i>" + itemM.HPP + "</i>" +
+                                        " <b>CR: </b><i>" + itemM.CR + "</i>";
+
+                                    //Aqui se calculan los creditos
+                                    CreditosGrv(item.NombreEtapa, itemM.CR);
+
+                                }
+                                else
+                                {
+                                    //Response.Write("<script language=javascript>alert('El elemento de la lista de materias tiene valor nulo.');</script>");
+                                }
+                            }
+                            MS5 = MS5 + 1;
+                        }
+                        else if (item.Semestre == 6)
+                        {
+                            List<E_Materias> LstMaterias = NM.BuscaMateria(item.NombreMateria);
+                            foreach (var itemM in LstMaterias)
+                            {
+                                if (itemM != null)
+                                {
+                                    //Aqui se crea el hipervinculo de la PUA
+                                    string cadena = itemM.PathPUA;
+                                    cadena = cadena.Replace("~/", "");
+
+                                    //Aqui se cargan los style
+                                    EstilosGrv(MS6, 5, item.NombreArea);
+
+                                    //Aqui se cargan los datos al Grv
+                                    GrvMapaCurricular.Rows[MS6].Cells[5].Text =
+                                        "<a href = https://localhost:44393/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
+                                        "<b>HC: </b><i>" + itemM.HC + "</i>" +
+                                        " <b>HL: </b><i>" + itemM.HL + "</i>" +
+                                        " <b>HT: </b><i>" + itemM.HT + "</i>" +
+                                        " <b>HPC: </b><i>" + itemM.HPP + "</i>" +
+                                        " <b>CR: </b><i>" + itemM.CR + "</i>";
+
+                                    //Aqui se calculan los creditos
+                                    CreditosGrv(item.NombreEtapa, itemM.CR);
+
+                                }
+                                else
+                                {
+                                    //Response.Write("<script language=javascript>alert('El elemento de la lista de materias tiene valor nulo.');</script>");
+                                }
+                            }
+                            MS6 = MS6 + 1;
+                        }
+                        else if (item.Semestre == 7)
+                        {
+                            List<E_Materias> LstMaterias = NM.BuscaMateria(item.NombreMateria);
+                            foreach (var itemM in LstMaterias)
+                            {
+                                if (itemM != null)
+                                {
+                                    //Aqui se crea el hipervinculo de la PUA
+                                    string cadena = itemM.PathPUA;
+                                    cadena = cadena.Replace("~/", "");
+
+                                    //Aqui se cargan los style
+                                    EstilosGrv(MS7, 6, item.NombreArea);
+
+                                    //Aqui se cargan los datos al Grv
+                                    GrvMapaCurricular.Rows[MS7].Cells[6].Text =
+                                        "<a href = https://localhost:44393/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
+                                        "<b>HC: </b><i>" + itemM.HC + "</i>" +
+                                        " <b>HL: </b><i>" + itemM.HL + "</i>" +
+                                        " <b>HT: </b><i>" + itemM.HT + "</i>" +
+                                        " <b>HPC: </b><i>" + itemM.HPP + "</i>" +
+                                        " <b>CR: </b><i>" + itemM.CR + "</i>";
+
+                                    //Aqui se calculan los creditos
+                                    CreditosGrv(item.NombreEtapa, itemM.CR);
+
+                                }
+                                else
+                                {
+                                    //Response.Write("<script language=javascript>alert('El elemento de la lista de materias tiene valor nulo.');</script>");
+                                }
+                            }
+                            MS7 = MS7 + 1;
+                        }
+                        else if (item.Semestre == 8)
+                        {
+                            List<E_Materias> LstMaterias = NM.BuscaMateria(item.NombreMateria);
+                            foreach (var itemM in LstMaterias)
+                            {
+                                if (itemM != null)
+                                {
+                                    //Aqui se crea el hipervinculo de la PUA
+                                    string cadena = itemM.PathPUA;
+                                    cadena = cadena.Replace("~/", "");
+
+                                    //Aqui se cargan los style
+                                    EstilosGrv(MS8, 7, item.NombreArea);
+
+                                    //Aqui se cargan los datos al Grv
+                                    GrvMapaCurricular.Rows[MS8].Cells[7].Text =
+                                        "<a href = https://localhost:44393/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
+                                        "<b>HC: </b><i>" + itemM.HC + "</i>" +
+                                        " <b>HL: </b><i>" + itemM.HL + "</i>" +
+                                        " <b>HT: </b><i>" + itemM.HT + "</i>" +
+                                        " <b>HPC: </b><i>" + itemM.HPP + "</i>" +
+                                        " <b>CR: </b><i>" + itemM.CR + "</i>";
+
+                                    //Aqui se calculan los creditos
+                                    CreditosGrv(item.NombreEtapa, itemM.CR);
+
+                                }
+                                else
+                                {
+                                    //Response.Write("<script language=javascript>alert('El elemento de la lista de materias tiene valor nulo.');</script>");
+                                }
+                            }
+                            MS8 = MS8 + 1;
+                        }
+                        else
+                        {
+                        }
+
+                        index = index + 1;
+
+                        //Esto son los encabezados 
+                        lbPnlGrvMapaCurricularNombreCarrera.Visible = true;
+                        lbPnlGrvMapaCurricularPlanEstudio.Visible = true;
+
+                        //Etapa Basica
+                        lbEBOB.Visible = true;
+                        lbEBOP.Visible = true;
+                        lbEBTOT.Visible = true;
+
+                        //Etapa Disiplinaria
+                        lbEDOB.Visible = true;
+                        lbEDOP.Visible = true;
+                        lbEDTOT.Visible = true;
+
+                        //Etepa Terminal
+                        lbETOB.Visible = true;
+                        lbETOP.Visible = true;
+                        lbETTOT.Visible = true;
+
+                        //SubTotal Creditos
+                        lbOBTOT.Visible = true;
+                        lbOPTOT.Visible = true;
+                        lbTOT.Visible = true;
+
+                        //Total Creditos
+                        lbTotalOB.Visible = true;
+                        lbTotalOP.Visible = true;
+                        lbTotalTOT.Visible = true;
+
+                        List<E_PlanEstudio> LstPlanEstudio = PE.BuscaPlanEstudio(item.ClavePlanEstudio);
+
+                        foreach (var itemP in LstPlanEstudio)
+                        {
+                            if (itemP != null)
+                            {
+
+                                //Response.Write("<script language=javascript>alert(' " +
+                                //    " - IdPlanEstudio: " + itemP.IdPlanEstudio +
+                                //    " - IdNivelAcademico: " + itemP.IdNivelAcademico +
+                                //    " - IdCarrera: " + itemP.IdCarrera +
+                                //    " - ClavePlanEstudio: " + itemP.ClavePlanEstudio +
+                                //    " - PlanEstudio: " + itemP.PlanEstudio +
+                                //    " - ProgramaEducativo: " + itemP.ProgramaEducativo +
+                                //    " - FechaCreacion: " + itemP.FechaCreacion +
+                                //    " - TotalCreditos: " + itemP.TotalCreditos +
+                                //    " - EstadoPlanEstudios: " + itemP.EstadoPlanEstudios +
+                                //    " - Comentarios: " + itemP.Comentarios +
+                                //    " - PerfilDeIngreso: " + itemP.PerfilDeIngreso +
+                                //    " - PerfilDeEgreso: " + itemP.PerfilDeEgreso +
+                                //    " - CampoOcupacional: " + itemP.CampoOcupacional +
+                                //    " - UnidadAcademica: " + itemP.UnidadAcademica +
+                                //    " - Estatus: " + itemP.Estatus +
+                                //    " - IdEstatus: " + itemP.IdEstatus +
+                                //    " - NombreCarrera: " + itemP.NombreCarrera +
+                                //    "');</script>");
+
+                                if (itemP.ClavePlanEstudio == str)
+                                {
+                                    lbPnlGrvMapaCurricularNombreCarrera.Text = "Nombre de la carrera (\"" + itemP.NombreCarrera + "\")";
+                                    lbPnlGrvMapaCurricularPlanEstudio.Text = "Plan de estudio (\"" + itemP.PlanEstudio + "\")";
+
+                                    EBTOT = EBOB + EBOP;
+                                    EDTOT = EDOB + EDOP;
+                                    ETTOT = ETOB + ETOP;
+
+                                    int TotalOB = 0;
+                                    int TotalOP = 0;
+                                    int Total = 0;
+
+                                    TotalOB = EBOB + EDOB + ETOB;
+                                    TotalOP = EBOP + EDOP + ETOP;
+                                    Total = EBTOT + EDTOT + ETTOT;
+
+                                    //Etapa Basica
+                                    lbEBOB.Text = Convert.ToString(EBOB);
+                                    lbEBOP.Text = Convert.ToString(EBOP);
+                                    lbEBTOT.Text = Convert.ToString(EBTOT);
+
+                                    //Etapa Disiplinaria
+                                    lbEDOB.Text = Convert.ToString(EDOB);
+                                    lbEDOP.Text = Convert.ToString(EDOP);
+                                    lbEDTOT.Text = Convert.ToString(EDTOT);
+
+                                    //Etepa Terminal
+                                    lbETOB.Text = Convert.ToString(ETOB);
+                                    lbETOP.Text = Convert.ToString(ETOP);
+                                    lbETTOT.Text = Convert.ToString(ETTOT);
+
+                                    //SubTotal Creditos
+                                    lbOBTOT.Text = Convert.ToString(TotalOB);
+                                    lbOPTOT.Text = Convert.ToString(TotalOP);
+                                    lbTOT.Text = Convert.ToString(Total);
+
+                                    //Total Creditos
+                                    lbTotalOB.Text = Convert.ToString(TotalOB + 10);
+                                    lbTotalOP.Text = Convert.ToString(TotalOP);
+                                    lbTotalTOT.Text = Convert.ToString(Total + 10);
+
+                                }
+                            }
+                            else
+                            {
+                                Response.Write("<script language=javascript>alert('El elemento de la lista PlanEstudio tiene valor nulo.');</script>");
+                            }
+                        }
+
                     }
                     else
                     {
-                        Response.Write("<script language=javascript>alert('List element has null value.');</script>");
+                        Response.Write("<script language=javascript>alert('El elemento de la lista PlanEstudioMateria tiene valor nulo.');</script>");
                     }
+
                 }
 
-                //if (LstPlanEstudioMateria.Count.Equals(0))
-                //{
-                //    InicializaControles();
-                //    lblNombreAccion.Text = "No se encontraron datos con el criterio de busqueda";
-                //}
-                //else
-                //{
-                //    InicializaControles();
-                //    GrvPlanEstudioMateria.DataSource = LstPlanEstudioMateria;
-                //    GrvPlanEstudioMateria.DataBind();
-                //    PnlGrvPlanEstudioMateria.Visible = true;
-                //}
+                PnlGrvPlanEstudio.Visible = false;
+                PnlGrvMapaCurricular.Visible = true;
 
             }
             if (e.CommandName == "VerDetalles")
@@ -1498,6 +1996,82 @@ namespace GePE.PlanesDeEstudios
         {
             lbIdEtapa.Text = "Etapa";
             DroplistEtapa();
+        }
+        //Esto es para el Grv de mapa curricular
+        protected void EstilosGrv(int MS, int Cell, string NombreArea)
+        {
+            GrvMapaCurricular.Rows[MS].Cells[Cell].Attributes.CssStyle["text-align"] = "center";
+            GrvMapaCurricular.Rows[MS].Cells[Cell].Attributes.CssStyle["font-size"] = "12px";
+            GrvMapaCurricular.Rows[MS].Cells[Cell].Attributes.CssStyle["color"] = "#000000";
+
+            if (NombreArea == "CIENCIAS BÁSICAS                                  ")
+            {
+                GrvMapaCurricular.Rows[MS].Cells[Cell].Attributes.CssStyle["background-color"] = "#D98880";
+            }
+            else if (NombreArea == "CIENCIAS SOCIALES Y HUMANIDADES                   ")
+            {
+                GrvMapaCurricular.Rows[MS].Cells[Cell].Attributes.CssStyle["background-color"] = "#C39BD3";
+            }
+            else if (NombreArea == "CIENCIAS DE LA INGENIERÍA                         ")
+            {
+                GrvMapaCurricular.Rows[MS].Cells[Cell].Attributes.CssStyle["background-color"] = "#7FB3D5";
+            }
+            else if (NombreArea == "INGENIERÍA APLICADA                               ")
+            {
+                GrvMapaCurricular.Rows[MS].Cells[Cell].Attributes.CssStyle["background-color"] = "#7DCEA0";
+            }
+            else if (NombreArea == "CIENCIAS ECONÓMICAS - ADMINISTRATIVAS             ")
+            {
+                GrvMapaCurricular.Rows[MS].Cells[Cell].Attributes.CssStyle["background-color"] = "#F7DC6F";
+            }
+            else if (NombreArea == "DISEÑO EN INGENIERÍA                              ")
+            {
+                GrvMapaCurricular.Rows[MS].Cells[Cell].Attributes.CssStyle["background-color"] = "#F0B27A";
+            }
+            else if (NombreArea == "CURSOS COMPLEMENTARIOS                            ")
+            {
+                GrvMapaCurricular.Rows[MS].Cells[Cell].Attributes.CssStyle["background-color"] = "#B2BABB";
+            }
+            else { }
+
+        }
+        protected void EncabezadoEtapaGrv(int MS, int Cell, string color)
+        {
+            GrvMapaCurricular.Rows[MS].Cells[Cell].Attributes.CssStyle["text-align"] = "center";
+            GrvMapaCurricular.Rows[MS].Cells[Cell].Attributes.CssStyle["font-size"] = "12px";
+            GrvMapaCurricular.Rows[MS].Cells[Cell].Attributes.CssStyle["color"] = "#FFFFFF";
+            GrvMapaCurricular.Rows[MS].Cells[Cell].Attributes.CssStyle["font-weight"] = "bold";
+            GrvMapaCurricular.Rows[MS].Cells[Cell].Attributes.CssStyle["vertical-align"] = "middle";
+            GrvMapaCurricular.Rows[MS].Cells[Cell].Attributes.CssStyle["background-color"] = color;
+            GrvMapaCurricular.Rows[MS].Cells[Cell].Attributes.CssStyle["border-style"] = "none";
+        }
+        protected void CreditosGrv(string NombreEtapa, int CR)
+        {
+            if (NombreEtapa == "BÁSICA OBLIGATORIA")
+            {
+                EBOB = EBOB + CR;
+            }
+            else if (NombreEtapa == "OPTATIVA BÁSICA")
+            {
+                EBOP = EBOP + CR;
+            }
+            else if (NombreEtapa == "DISCIPLINARIA OBLIGATORIA")
+            {
+                EDOB = EDOB + CR;
+            }
+            else if (NombreEtapa == "OPTATIVA DISCIPLINARIA")
+            {
+                EDOP = EDOP + CR;
+            }
+            else if (NombreEtapa == "TERMINAL OBLIGATORIA")
+            {
+                ETOB = ETOB + CR;
+            }
+            else if (NombreEtapa == "OPTATIVA TERMINAL")
+            {
+                ETOP = ETOP + CR;
+            }
+            else { }
         }
         #endregion
 

@@ -387,12 +387,6 @@
         <asp:Panel ID="PnlGrvPlanEstudio" runat="server" align="center">
             <div class="container-fluid">
 
-                <h4>
-                    <%--Estos son los encabezado de ver mapa curricular--%>
-                    <asp:Label ID="lbPnlGrvMapaCurricularNombreCarrera" class="text-dark font-weight-bold m-0" runat="server">Nombre De La Carrera</asp:Label>
-                    <asp:Label ID="lbPnlGrvMapaCurricularPlanEstudio" class="text-dark font-weight-bold m-0" runat="server">Plan De Estudio</asp:Label>
-                </h4>
-
                 <asp:GridView ID="GrvPlanEstudio" runat="server" AutoGenerateColumns="False"
                     CssClass="table thead-dark table-sm table-bordered table-responsive "
                     DataKeyNames="IdPlanEstudio"
@@ -493,21 +487,132 @@
 
         <asp:Panel ID="PnlGrvMapaCurricular" runat="server">
             <div class="container-fluid">
+
+                <h5>
+                    <%--Estos son los encabezado de ver mapa curricular--%>
+                    <asp:Label ID="lbPnlGrvMapaCurricularNombreCarrera" class="text-dark font-weight-bold m-0" runat="server">Nombre De La Carrera</asp:Label>
+                    <asp:Label ID="lbPnlGrvMapaCurricularPlanEstudio" class="text-dark font-weight-bold m-0" runat="server">Plan De Estudio</asp:Label>
+                </h5>
+
                 <asp:GridView ID="GrvMapaCurricular" runat="server" AutoGenerateColumns="False"
-                    CssClass="table thead-dark table-sm table-bordered table-responsive"
-                    DataKeyNames="IdPlanEstudioMateria">
+                    CssClass="table thead-dark table-sm table-bordered table-responsive" >
                     <Columns>
-                        <asp:BoundField DataField="" HeaderText="1" />
-                        <asp:BoundField DataField="" HeaderText="2" />
-                        <asp:BoundField DataField="" HeaderText="3" />
-                        <asp:BoundField DataField="" HeaderText="4" />
-                        <asp:BoundField DataField="" HeaderText="5" />
-                        <asp:BoundField DataField="" HeaderText="6" />
-                        <asp:BoundField DataField="" HeaderText="7" />
-                        <asp:BoundField DataField="" HeaderText="8" />
+                        <asp:BoundField DataField="I" HeaderText="I" />
+                        <asp:BoundField DataField="II" HeaderText="II" />
+                        <asp:BoundField DataField="III" HeaderText="III" />
+                        <asp:BoundField DataField="IV" HeaderText="IV" />
+                        <asp:BoundField DataField="V" HeaderText="V" />
+                        <asp:BoundField DataField="VI" HeaderText="VI" />
+                        <asp:BoundField DataField="VII" HeaderText="VII" />
+                        <asp:BoundField DataField="VIII" HeaderText="VIII" />
                     </Columns>
                     <HeaderStyle CssClass="bg-dark text-white" />
                 </asp:GridView>
+
+                <table class="table thead-dark table-sm table-bordered table-responsive">
+                    <tr>
+                        <td style="border-style: none; width:10%"></td>
+                        <td style="border-style: none;"><b>Áreas del Conocimiento</b></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:#D98880; "></td>
+                        <td style="border-style: none;">CIENCIAS BÁSICAS</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:#C39BD3; "></td>
+                        <td style="border-style: none;">CIENCIAS SOCIALES Y HUMANIDADES</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:#7FB3D5"></td>
+                        <td style="border-style: none;">CIENCIAS DE LA INGENIERÍA</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:#7DCEA0"></td>
+                        <td style="border-style: none;">INGENIERÍA APLICADA</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:#F7DC6F"></td>
+                        <td style="border-style: none;">CIENCIAS ECONÓMICAS - ADMINISTRATIVAS</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:#F0B27A"></td>
+                        <td style="border-style: none;">DISEÑO EN INGENIERÍA</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:#B2BABB"></td>
+                        <td style="border-style: none;">CURSOS COMPLEMENTARIOS</td>
+                    </tr>
+
+                </table>
+
+                <table class="table thead-dark table-sm table-bordered table-responsive">
+                    <tr>
+                        <td style="border-style: none;"></td>
+                        <td style="border-style: none;"><b>Créditos por Etapas de Formación</b></td>
+                        <td><b>OB</b></td>
+                        <td><b>OP</b></td>
+                        <td><b>TOT</b></td>
+                    </tr>
+                    <tr>
+                        <td><b>EB</b></td>
+                        <td><b>Etapa Básica</b></td>
+                        <td>
+                            <asp:Label ID="lbEBOB" runat="server">0</asp:Label></td>
+                        <td>
+                            <asp:Label ID="lbEBOP" runat="server">0</asp:Label></td>
+                        <td>
+                            <asp:Label ID="lbEBTOT" runat="server">0</asp:Label></td>
+                    </tr>
+                    <tr>
+                        <td><b>ED</b></td>
+                        <td><b>Etapa Disciplinaria</b></td>
+                        <td>
+                            <asp:Label ID="lbEDOB" runat="server">0</asp:Label></td>
+                        <td>
+                            <asp:Label ID="lbEDOP" runat="server">0</asp:Label></td>
+                        <td>
+                            <asp:Label ID="lbEDTOT" runat="server">0</asp:Label></td>
+                    </tr>
+                    <tr>
+                        <td><b>ET</b></td>
+                        <td><b>Etapa Terminal</b></td>
+                        <td>
+                            <asp:Label ID="lbETOB" runat="server">0</asp:Label></td>
+                        <td>
+                            <asp:Label ID="lbETOP" runat="server">0</asp:Label></td>
+                        <td>
+                            <asp:Label ID="lbETTOT" runat="server">0</asp:Label></td>
+                    </tr>
+                    <tr>
+                        <td style="border-style: none;"></td>
+                        <td style="border-style: none;"></td>
+                        <td style="border-style: none;"><b><i><u>
+                            <asp:Label ID="lbOBTOT" runat="server">0</asp:Label></u></i></b></td>
+                        <td style="border-style: none;"><b><i><u>
+                            <asp:Label ID="lbOPTOT" runat="server">0</asp:Label></u></i></b></td>
+                        <td style="border-style: none;"><b><i><u>
+                            <asp:Label ID="lbTOT" runat="server">0</asp:Label></u></i></b></td>
+                    </tr>
+                    <tr>
+                        <td style="border-style: none;"></td>
+                        <td><b>Practicas Profesionales</b></td>
+                        <td>10</td>
+                        <td>0</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td style="border-style: none;"></td>
+                        <td style="border-style: none;"><b>Créditos Totales Programa</b></td>
+                        <td style="border-style: none;"><b><i><u>
+                            <asp:Label ID="lbTotalOB" runat="server">0</asp:Label></u></i></b></td>
+                        <td style="border-style: none;"><b><i><u>
+                            <asp:Label ID="lbTotalOP" runat="server">0</asp:Label></u></i></b></td>
+                        <td style="border-style: none;"><b><i><u>
+                            <asp:Label ID="lbTotalTOT" runat="server">0</asp:Label></u></i></b></td>
+                    </tr>
+
+                </table>
+
             </div>
         </asp:Panel>
 
