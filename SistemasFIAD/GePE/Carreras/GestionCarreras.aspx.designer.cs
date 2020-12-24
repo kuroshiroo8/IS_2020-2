@@ -91,7 +91,25 @@ namespace GePE.Carreras {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Presentacion.Controles.efucNumeroEnteroPositivoReq TbClaveCarrera;
+        protected global::System.Web.UI.WebControls.TextBox TbClaveCarrera;
+        
+        /// <summary>
+        /// Control rfvTbClaveCarrera.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbClaveCarrera;
+        
+        /// <summary>
+        /// Control revTbClaveCarrera.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revTbClaveCarrera;
         
         /// <summary>
         /// Control lbNombreCarrera.

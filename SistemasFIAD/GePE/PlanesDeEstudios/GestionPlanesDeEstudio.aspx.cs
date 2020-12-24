@@ -351,7 +351,7 @@ namespace GePE.PlanesDeEstudios
         protected E_PlanEstudioMateria ControlesWebForm_ObjetoEntidad2()
         {
 
-            if (cbSeriada.Checked)
+            if (cbSeriada.Checked && ddlMateriaSeriada.SelectedIndex !=0)
             {
                 E_PlanEstudioMateria PlanEstudioMateria = new E_PlanEstudioMateria()
                 {
@@ -360,7 +360,7 @@ namespace GePE.PlanesDeEstudios
                     IdTipoMateria = Convert.ToInt32(ddlIdTipoMateria.SelectedItem.Value),
                     IdEtapa = Convert.ToInt32(ddlIdEtapa.SelectedItem.Value),
                     IdAreaConocimiento = Convert.ToInt32(ddlIdAreaConocimiento.SelectedItem.Value),
-                    Semestre = Convert.ToInt32(ddlSemestre.SelectedIndex),
+                    Semestre = Convert.ToInt32(ddlSemestre.SelectedItem.Value),
                     NombrePlanEstudio = ddlIdPlanEstudio.SelectedItem.Text,
                     NombreMateria = ddlIdMateria.SelectedItem.Text,
                     NombreTipoMateria = ddlIdTipoMateria.SelectedItem.Text,
@@ -381,13 +381,13 @@ namespace GePE.PlanesDeEstudios
                     IdTipoMateria = Convert.ToInt32(ddlIdTipoMateria.SelectedItem.Value),
                     IdEtapa = Convert.ToInt32(ddlIdEtapa.SelectedItem.Value),
                     IdAreaConocimiento = Convert.ToInt32(ddlIdAreaConocimiento.SelectedItem.Value),
-                    Semestre = Convert.ToInt32(ddlSemestre.SelectedIndex),
+                    Semestre = Convert.ToInt32(ddlSemestre.SelectedItem.Value),
                     NombrePlanEstudio = ddlIdPlanEstudio.SelectedItem.Text,
                     NombreMateria = ddlIdMateria.SelectedItem.Text,
                     NombreTipoMateria = ddlIdTipoMateria.SelectedItem.Text,
                     NombreEtapa = ddlIdEtapa.SelectedItem.Text,
                     NombreArea = ddlIdAreaConocimiento.SelectedItem.Text,
-                    EstadoMateriaSeriada = cbSeriada.Checked,
+                    EstadoMateriaSeriada = false,
                     ClavePlanEstudio = TbClavePlanEstudio.Text
                 };
                 return PlanEstudioMateria;
@@ -407,7 +407,6 @@ namespace GePE.PlanesDeEstudios
                 ddlIdEtapa.SelectedIndex = PlanEstudioMateria.IdEtapa;
                 ddlIdAreaConocimiento.SelectedIndex = PlanEstudioMateria.IdAreaConocimiento;
                 ddlSemestre.SelectedIndex = PlanEstudioMateria.Semestre;
-                ddlMateriaSeriada.SelectedValue = Convert.ToString(PlanEstudioMateria.IdMateriaSeriada);
                 cbSeriada.Checked = PlanEstudioMateria.EstadoMateriaSeriada;
 
                 TbClavePlanEstudio.Text = PlanEstudioMateria.ClavePlanEstudio.Trim();
@@ -420,7 +419,9 @@ namespace GePE.PlanesDeEstudios
                     ddlIdPlanEstudio.SelectedIndex = index;
                 }
                 ddlIdPlanEstudio.SelectedIndex = index;
-
+                DroplistMateriaSeriada();
+                ddlMateriaSeriada.SelectedValue = Convert.ToString(PlanEstudioMateria.IdMateriaSeriada);
+                
             }
             else
             {
@@ -470,8 +471,19 @@ namespace GePE.PlanesDeEstudios
             InicializaControles();
             N_PlanEstudio PE = new N_PlanEstudio();
             GrvPlanEstudio.DataSource = PE.LstPlanEstudio();
-            GrvPlanEstudio.DataBind();
-            PnlGrvPlanEstudio.Visible = true;
+            //GrvPlanEstudio.DataBind();
+            //PnlGrvPlanEstudio.Visible = true;
+
+            if (PE.LstPlanEstudio().Count.Equals(0))
+            {
+                InicializaControles();
+                lblNombreAccion.Text = "No se encontraron planes para listar";
+            }
+            else
+            {
+                GrvPlanEstudio.DataBind();
+                PnlGrvPlanEstudio.Visible = true;
+            }
         }
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
@@ -762,7 +774,7 @@ namespace GePE.PlanesDeEstudios
 
             hfIdPlanEstudio.Value = GrvPlanEstudio.DataKeys[e.RowIndex].Value.ToString();
             lblTituloAccion.Text = "Borrar Plan de estudio";
-
+            DroplistMateriaSeriada();
             ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdPlanEstudio.Value));
             ControlesOnOFF(false);
 
@@ -804,6 +816,8 @@ namespace GePE.PlanesDeEstudios
 
             //Aqui se ponen visibles los Label, TextBox y el CheckBox
             VisibleOnOFF(true);
+
+            TbClavePlanEstudio.Enabled = false;
 
             lbEstatus.Visible = false;
             ddlEstatus.Visible = false;
@@ -850,7 +864,9 @@ namespace GePE.PlanesDeEstudios
             }
             ddlIdPlanEstudio.SelectedIndex = index;
             ddlIdPlanEstudio.Enabled = false;
-
+            lbIdEtapa.Text = "Seleccione tipo materia primero para ver Etapas";
+            lbSemestre.Text = "Seleccione Etapa para ver Semestres";
+            cbSeriada.Enabled = false;
             //lbMateriaSeriada.Enabled = false;
             ddlMateriaSeriada.Enabled = false;
             //lbMateriaSeriada.Visible = false;
@@ -1088,7 +1104,7 @@ namespace GePE.PlanesDeEstudios
                 ddlMateriaSeriada.Enabled = false;
             }
 
-            DroplistMateriaSeriada();
+            
 
             BtnModificarPlanEstudioMateria.Visible = true;
             BtnCancelarPlanEstudioMateria.Visible = true;
@@ -1292,7 +1308,7 @@ namespace GePE.PlanesDeEstudios
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdMateria, NombreMateria FROM Propuesta.dbo.Materias", con);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdMateria, NombreMateria FROM Propuesta.dbo.PlanEstudioMateria WHERE NombrePlanEstudio='"+ddlIdPlanEstudio.SelectedItem.Text+ "' AND Semestre > '" + ddlSemestre.SelectedItem.Value + "'", con);
                     adapter.Fill(subjects);
                     ddlMateriaSeriada.DataSource = subjects;
                     ddlMateriaSeriada.DataTextField = "NombreMateria";
@@ -1355,7 +1371,7 @@ namespace GePE.PlanesDeEstudios
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdEtapa, NombreEtapa FROM Propuesta.dbo.Etapas", con);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdEtapa, NombreEtapa FROM Propuesta.dbo.Etapas WHERE NombreEtapa = 'BASICA "+ddlIdTipoMateria.SelectedItem.Text+ "' OR NombreEtapa = 'DISCIPLINARIA " + ddlIdTipoMateria.SelectedItem.Text + "' OR NombreEtapa = 'TERMINAL " + ddlIdTipoMateria.SelectedItem.Text + "' ", con);
                     adapter.Fill(subjects);
                     ddlIdEtapa.DataSource = subjects;
                     ddlIdEtapa.DataTextField = "NombreEtapa";
@@ -1401,43 +1417,87 @@ namespace GePE.PlanesDeEstudios
         }
         private void DroplistSemestre()
         {
+            ddlSemestre.Items.Clear();
             //carga datos para estatus
             ListItem i;
             i = new ListItem("<Seleccione>", "");
-            ddlSemestre.Items.Add(i);
-            i = new ListItem("1.º", "2");
-            ddlSemestre.Items.Add(i);
-            i = new ListItem("2.º", "3");
-            ddlSemestre.Items.Add(i);
-            i = new ListItem("3.º", "4");
-            ddlSemestre.Items.Add(i);
-            i = new ListItem("4.º", "5");
-            ddlSemestre.Items.Add(i);
-            i = new ListItem("5.º", "6");
-            ddlSemestre.Items.Add(i);
-            i = new ListItem("6.º", "7");
-            ddlSemestre.Items.Add(i);
-            i = new ListItem("7.º", "8");
-            ddlSemestre.Items.Add(i);
-            i = new ListItem("8.º", "9");
-            ddlSemestre.Items.Add(i);
+            if (ddlIdEtapa.SelectedItem.Text == "BASICA OBLIGATORIA"||
+               ddlIdEtapa.SelectedItem.Text == "BASICA OPTATIVA")
+            {
+               
+                ddlSemestre.Items.Add(i);
+                i = new ListItem("1.º", "1");
+                ddlSemestre.Items.Add(i);
+                i = new ListItem("2.º", "2");
+                ddlSemestre.Items.Add(i);
+                i = new ListItem("3.º", "3");
+                ddlSemestre.Items.Add(i);
+            }
+            if (ddlIdEtapa.SelectedItem.Text== "DISCIPLINARIA OBLIGATORIA"||
+               ddlIdEtapa.SelectedItem.Text == "DISCIPLINARIA OPTATIVA")
+            {
+        
+                ddlSemestre.Items.Add(i);
+                i = new ListItem("4.º", "4");
+                ddlSemestre.Items.Add(i);
+                i = new ListItem("5.º", "5");
+                ddlSemestre.Items.Add(i);
+                i = new ListItem("6.º", "6");
+                ddlSemestre.Items.Add(i);
+            }
+            if (ddlIdEtapa.SelectedItem.Text == "TERMINAL OBLIGATORIA"||
+                ddlIdEtapa.SelectedItem.Text == "TERMINAL OPTATIVA")
+            {
+               
+                ddlSemestre.Items.Add(i);
+                i = new ListItem("7.º", "7");
+                ddlSemestre.Items.Add(i);
+                i = new ListItem("8.º", "8");
+                ddlSemestre.Items.Add(i);
+            }
         }
         //se ejecutara cuando un elemento en el dropdownlist de materias cambie
         //eliminando la materia seleccionada de las que se pueden seriar
-        protected void ItemSelected(Object sender, EventArgs e)
+        protected void ItemSelected(Object sender, EventArgs e)//para el ddlIdMateria
         {
+            if (ddlIdMateria.SelectedIndex == 0)
+            {
+                cbSeriada.Enabled = false;
+                cbSeriada.Checked = false;
+                ddlMateriaSeriada.Enabled = false;
+                DroplistMateriaSeriada();
+            }
+            else
+            {
+                cbSeriada.Enabled = true;
+            }
             DroplistMateriaSeriada();
         }
         protected void On_Check(Object sender, EventArgs e)
         {
-            if (cbSeriada.Checked)
+            if (cbSeriada.Checked && ddlSemestre.SelectedIndex > 0)
             {
                 ddlMateriaSeriada.Enabled = true;
+                DroplistMateriaSeriada();
+                cbSeriada.Text=string.Empty;
             }
             else
             {
                 ddlMateriaSeriada.Enabled = false;
+                cbSeriada.Checked = false;
+                DroplistMateriaSeriada();
+                cbSeriada.Text = " Asegure que un semestre este seleccionado";
             }
+        }
+        protected void Index_Changed(object sender, EventArgs e)//cuando se seleccione etapa
+        {
+            lbSemestre.Text = "Semestre";
+            DroplistSemestre();
+        }
+        protected void TipoChange(object sender, EventArgs e)
+        {
+            lbIdEtapa.Text = "Etapa";
+            DroplistEtapa();
         }
         #endregion
 

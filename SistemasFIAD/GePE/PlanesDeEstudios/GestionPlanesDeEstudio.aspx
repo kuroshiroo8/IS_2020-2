@@ -292,7 +292,8 @@
                                 <div class="form-group">
                                     <asp:Label ID="lbIdTipoMateria" class="text-dark font-weight-bold m-0" runat="server">Tipo de materia</asp:Label>
                                     <br />
-                                    <asp:DropDownList runat="server" ID="ddlIdTipoMateria" CssClass="form-control">
+                                    <asp:DropDownList runat="server" ID="ddlIdTipoMateria" CssClass="form-control" AutoPostBack="True" ViewStateMode="Enabled"
+                                        EnableViewState="true" OnSelectedIndexChanged="TipoChange">
                                         <asp:ListItem Value="">No seleccionado</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlIdTipoMateria" runat="server" CssClass="text-danger"
@@ -306,7 +307,8 @@
                                 <div class="form-group">
                                     <asp:Label ID="lbIdEtapa" class="text-dark font-weight-bold m-0" runat="server">Etapa</asp:Label>
                                     <br />
-                                    <asp:DropDownList runat="server" ID="ddlIdEtapa" CssClass="form-control">
+                                    <asp:DropDownList runat="server" ID="ddlIdEtapa" CssClass="form-control" AutoPostBack="True" ViewStateMode="Enabled"
+                                        EnableViewState="true" OnSelectedIndexChanged="Index_Changed">
                                         <asp:ListItem Value="">No seleccionado</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlIdEtapa" runat="server" CssClass="text-danger"
@@ -334,7 +336,8 @@
                                 <div class="form-group">
                                     <asp:Label ID="lbSemestre" class="text-dark font-weight-bold m-0" runat="server">Semestre</asp:Label>
                                     <br />
-                                    <asp:DropDownList runat="server" ID="ddlSemestre" CssClass="form-control">
+                                    <asp:DropDownList runat="server" ID="ddlSemestre" CssClass="form-control" AutoPostBack="True" ViewStateMode="Enabled"
+                                        EnableViewState="true" OnSelectedIndexChanged="ItemSelected">
                                         <asp:ListItem Value="">No seleccionado</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvddlSemestre" runat="server" CssClass="text-danger"

@@ -33,7 +33,7 @@ namespace Negocios
                 return "Exito: Los datos fueron insertados correctamente.";
             else
                 if (R.Contains("Error"))
-                return "Error: Los datos no se insertaron en el sistema.";
+                return "Error: Los datos no se insertaron en el sistema. (Clave de plan repetido)";
             else
                 return R;
         }
@@ -67,7 +67,7 @@ namespace Negocios
                 return "Exito: Los datos fueron modificado correctamente.";
             else
                 if (R.Contains("Error"))
-                return "Error: Los datos no se modificaron en el sistema.";
+                return "Error: Los datos no se modificaron en el sistema. (Clave de plan repetido)";
             else
                 return R;
         }
