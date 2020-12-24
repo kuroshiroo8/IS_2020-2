@@ -53,7 +53,7 @@ namespace Negocios
             if (R.Contains("Exito"))
                 return "Exito: Los datos fueron borrados correctamente.";
             else if (R.Contains("Error"))
-                return "Error: Los datos no se borraron del sistema.";
+                return "Error: Los datos no se borraron del sistema. (Esta asignada a un plan de estudio)";
 
             return R;
         }

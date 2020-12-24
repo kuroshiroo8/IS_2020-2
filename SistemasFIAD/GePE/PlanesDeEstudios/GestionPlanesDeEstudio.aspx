@@ -75,8 +75,8 @@
 
                                     <asp:RegularExpressionValidator ID="revTbPlanEstudio" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbPlanEstudio"
-                                        ErrorMessage="*Este campo debe de tener la estructura 2XXX-X."
-                                        ValidationExpression="^[2-9]{1}[0-9]{3}-[0-9]{1}$"
+                                        ErrorMessage="*Este campo debe de tener la estructura 2XXX-X con digito 1 o 2 despues del guion."
+                                        ValidationExpression="^[2-9]{1}[0-9]{3}-[1-2]{1}$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
 
                                 </div>
@@ -402,8 +402,8 @@
 
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
                             <ItemTemplate>
-                                <asp:LinkButton ID="GrvBtnMapaCurricular" runat="server" CssClass="btn btn-md btn-info"
-                                    CausesValidation="false" CommandName="MapaCurricular" CommandArgument="<%# Container.DataItemIndex %>"><i class="fas fa-info-circle"></i> Mapa Curricular</asp:LinkButton>
+                                <asp:LinkButton ID="GrvBtnMapaCurricular" runat="server" CssClass="btn btn-md btn-outline-dark"
+                                    CausesValidation="false" CommandName="MapaCurricular" CommandArgument="<%# Container.DataItemIndex %>"><i class="far fa-calendar-alt"></i> Mapa Curricular</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -437,7 +437,7 @@
 
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
                             <ItemTemplate>
-                                <asp:LinkButton ID="GrvBtnListarMaterias" runat="server" CssClass="btn btn-md btn-light"
+                                <asp:LinkButton ID="GrvBtnListarMaterias" runat="server" CssClass="btn btn-md btn-outline-warning"
                                     CausesValidation="false" CommandName="ListarMaterias" CommandArgument="<%# Container.DataItemIndex %>"><i class="fas fa-list"></i> Listar materia</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>

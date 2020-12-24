@@ -419,9 +419,11 @@ namespace GePE.PlanesDeEstudios
                 string nombreplan = Convert.ToString(PlanEstudioMateria.NombrePlanEstudio);
                 ddlIdMateria.SelectedValue = Convert.ToString(PlanEstudioMateria.IdMateria);
                 ddlIdTipoMateria.SelectedIndex = PlanEstudioMateria.IdTipoMateria;
-                ddlIdEtapa.SelectedIndex = PlanEstudioMateria.IdEtapa;
+                DroplistEtapa();
+                ddlIdEtapa.SelectedValue = Convert.ToString( PlanEstudioMateria.IdEtapa);
                 ddlIdAreaConocimiento.SelectedIndex = PlanEstudioMateria.IdAreaConocimiento;
-                ddlSemestre.SelectedIndex = PlanEstudioMateria.Semestre;
+                DroplistSemestre();
+                ddlSemestre.SelectedValue = Convert.ToString( PlanEstudioMateria.Semestre);
                 cbSeriada.Checked = PlanEstudioMateria.EstadoMateriaSeriada;
 
                 TbClavePlanEstudio.Text = PlanEstudioMateria.ClavePlanEstudio.Trim();
@@ -443,9 +445,11 @@ namespace GePE.PlanesDeEstudios
                 string nombreplan = Convert.ToString(PlanEstudioMateria.NombrePlanEstudio);
                 ddlIdMateria.SelectedValue = Convert.ToString(PlanEstudioMateria.IdMateria);
                 ddlIdTipoMateria.SelectedIndex = PlanEstudioMateria.IdTipoMateria;
-                ddlIdEtapa.SelectedIndex = PlanEstudioMateria.IdEtapa;
+                DroplistEtapa();
+                ddlIdEtapa.SelectedValue = Convert.ToString( PlanEstudioMateria.IdEtapa);
                 ddlIdAreaConocimiento.SelectedIndex = PlanEstudioMateria.IdAreaConocimiento;
-                ddlSemestre.SelectedIndex = PlanEstudioMateria.Semestre;
+                DroplistSemestre();
+                ddlSemestre.SelectedValue = Convert.ToString( PlanEstudioMateria.Semestre);
                 cbSeriada.Checked = PlanEstudioMateria.EstadoMateriaSeriada;
 
                 //se creo un indice para recorrer el dropdownlist y comparar el texto
@@ -979,11 +983,35 @@ namespace GePE.PlanesDeEstudios
                 NewRow4[6] = "";
                 NewRow4[7] = "";
 
+                DataRow NewRow5 = dt.NewRow();
+
+                NewRow5[0] = "";
+                NewRow5[1] = "";
+                NewRow5[2] = "";
+                NewRow5[3] = "";
+                NewRow5[4] = "";
+                NewRow5[5] = "";
+                NewRow5[6] = "";
+                NewRow5[7] = "";
+
+                DataRow NewRow6 = dt.NewRow();
+
+                NewRow6[0] = "";
+                NewRow6[1] = "";
+                NewRow6[2] = "";
+                NewRow6[3] = "";
+                NewRow6[4] = "";
+                NewRow6[5] = "";
+                NewRow6[6] = "";
+                NewRow6[7] = "";
+
                 dt.Rows.Add(NewRow);
                 dt.Rows.Add(NewRow1);
                 dt.Rows.Add(NewRow2);
                 dt.Rows.Add(NewRow3);
                 dt.Rows.Add(NewRow4);
+                dt.Rows.Add(NewRow5);
+                dt.Rows.Add(NewRow6);
 
                 GrvMapaCurricular.DataSource = dt;
                 GrvMapaCurricular.DataBind();
@@ -1012,6 +1040,7 @@ namespace GePE.PlanesDeEstudios
                 EDTOT = 0;
                 ETTOT = 0;
 
+                index = 0;
                 EncabezadoEtapaGrv(index, 0, "#641E16");
                 EncabezadoEtapaGrv(index, 1, "#641E16");
                 EncabezadoEtapaGrv(index, 2, "#641E16");
@@ -1919,8 +1948,8 @@ namespace GePE.PlanesDeEstudios
             //carga datos para estatus
             ListItem i;
             i = new ListItem("<Seleccione>", "");
-            if (ddlIdEtapa.SelectedItem.Text == "BASICA OBLIGATORIA"||
-               ddlIdEtapa.SelectedItem.Text == "BASICA OPTATIVA")
+            if (ddlIdEtapa.SelectedItem.Value == "1"||
+               ddlIdEtapa.SelectedItem.Value == "2")
             {
                
                 ddlSemestre.Items.Add(i);
@@ -1931,8 +1960,8 @@ namespace GePE.PlanesDeEstudios
                 i = new ListItem("3.º", "3");
                 ddlSemestre.Items.Add(i);
             }
-            if (ddlIdEtapa.SelectedItem.Text== "DISCIPLINARIA OBLIGATORIA"||
-               ddlIdEtapa.SelectedItem.Text == "DISCIPLINARIA OPTATIVA")
+            if (ddlIdEtapa.SelectedItem.Value== "3"||
+               ddlIdEtapa.SelectedItem.Value == "4")
             {
         
                 ddlSemestre.Items.Add(i);
@@ -1943,8 +1972,8 @@ namespace GePE.PlanesDeEstudios
                 i = new ListItem("6.º", "6");
                 ddlSemestre.Items.Add(i);
             }
-            if (ddlIdEtapa.SelectedItem.Text == "TERMINAL OBLIGATORIA"||
-                ddlIdEtapa.SelectedItem.Text == "TERMINAL OPTATIVA")
+            if (ddlIdEtapa.SelectedItem.Value == "5"||
+                ddlIdEtapa.SelectedItem.Value == "6")
             {
                
                 ddlSemestre.Items.Add(i);
@@ -2047,11 +2076,11 @@ namespace GePE.PlanesDeEstudios
         }
         protected void CreditosGrv(string NombreEtapa, int CR)
         {
-            if (NombreEtapa == "BÁSICA OBLIGATORIA")
+            if (NombreEtapa == "BASICA OBLIGATORIA")
             {
                 EBOB = EBOB + CR;
             }
-            else if (NombreEtapa == "OPTATIVA BÁSICA")
+            else if (NombreEtapa == "BASICA OPTATIVA")
             {
                 EBOP = EBOP + CR;
             }
@@ -2059,7 +2088,7 @@ namespace GePE.PlanesDeEstudios
             {
                 EDOB = EDOB + CR;
             }
-            else if (NombreEtapa == "OPTATIVA DISCIPLINARIA")
+            else if (NombreEtapa == "DISCIPLINARIA OPTATIVA")
             {
                 EDOP = EDOP + CR;
             }
@@ -2067,7 +2096,7 @@ namespace GePE.PlanesDeEstudios
             {
                 ETOB = ETOB + CR;
             }
-            else if (NombreEtapa == "OPTATIVA TERMINAL")
+            else if (NombreEtapa == "TERMINAL OPTATIVA")
             {
                 ETOP = ETOP + CR;
             }

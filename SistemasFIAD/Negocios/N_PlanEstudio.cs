@@ -64,7 +64,7 @@ namespace Negocios
             string R = NPE.IBM_Entidad<E_PlanEstudio>("IBM_PlanEstudio", pEntidad);
 
             if (R.Contains("Exito"))
-                return "Exito: Los datos fueron modificado correctamente.";
+                return "Exito: Los datos fueron modificados correctamente.";
             else
                 if (R.Contains("Error"))
                 return "Error: Los datos no se modificaron en el sistema. (Clave de plan repetido)";

@@ -64,7 +64,7 @@ namespace Negocios
             string R = NPEM.IBM_Entidad<E_PlanEstudioMateria>("IBM_PlanEstudioMateria", pEntidad);
 
             if (R.Contains("Exito"))
-                return "Exito: Los datos fueron modificado correctamente.";
+                return "Exito: Los datos fueron modificados correctamente.";
             else
                 if (R.Contains("Error"))
                 return "Error: Los datos no se modificaron en el sistema.";

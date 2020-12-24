@@ -49,10 +49,10 @@ namespace Negocios
             string R = NM.IBM_Entidad<E_Materias>("IBM_Materias", Entidad);
 
             if (R.Contains("Exito"))
-                return "Exito: Los datos de fueron borrados correctamente.";
+                return "Exito: Los datos fueron borrados correctamente.";
             else
                 if (R.Contains("Error"))
-                return "Error: Los datos no se borraron del sistema.";
+                return "Error: Los datos no se borraron del sistema. (Esta asignada a un plan de estudio)";
             else
                 return R;
         }
@@ -64,7 +64,7 @@ namespace Negocios
             string R = NM.IBM_Entidad<E_Materias>("IBM_Materias", pEntidad);
 
             if (R.Contains("Exito"))
-                return "Exito: Los datos fueron modificado correctamente.";
+                return "Exito: Los datos fueron modificados correctamente.";
             else
                 if (R.Contains("Error"))
                 return "Error: Los datos no se modificaron en el sistema. (Clave existente o Nombre de Materia Existente)";
