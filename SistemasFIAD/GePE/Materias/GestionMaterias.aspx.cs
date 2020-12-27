@@ -210,6 +210,7 @@ namespace GePE.Materias
                         //FuPathPUA.SaveAs(Server.MapPath("../puaOFICIAL/" + FuPathPUA.FileName));
                         // Notificar al usuario que el archivo fue subido con éxito.
                         lbStatusPathPUA.Text = "~/FilesSection/" + FuPathPUA.FileName;
+                        //lbStatusPathPUA.Text = "../puaOFICIAL/" + FuPathPUA.FileName;
                         return 0;
                     }
                     else
@@ -229,12 +230,14 @@ namespace GePE.Materias
             else
             {
                 if (lbStatusPathPUA.Text != "~/FilesSection/PUAnoexistente.pdf")
+                    //if (lbStatusPathPUA.Text != "../puaOFICIAL/PUAnoexistente.pdf")
                 {
 
                 }
                 else
                 {
                     lbStatusPathPUA.Text = "~/FilesSection/PUAnoexistente.pdf";
+                    //lbStatusPathPUA.Text = "../puaOFICIAL/PUAnoexistente.pdf";
                 }
                 return 3;
             }
@@ -268,6 +271,7 @@ namespace GePE.Materias
                         //FuPathPUAnoOficial.SaveAs(Server.MapPath("../puaNO/" + FuPathPUAnoOficial.FileName));
                         // Notificar al usuario que el archivo fue subido con éxito.
                         lbStatusPathPUAnoOficial.Text = "~/FilesSection/" + FuPathPUAnoOficial.FileName;
+                        //lbStatusPathPUAnoOficial.Text = "../puaNO/" + FuPathPUAnoOficial.FileName;
                         //lbStatusPathPUAnoOficial.Text = "Tu archivo fue subido con éxito.";
                         return 0;
                     }
@@ -288,12 +292,14 @@ namespace GePE.Materias
             else
             {
                 if (lbStatusPathPUAnoOficial.Text != "~/FilesSection/PUAnoexistente.pdf")
+                    //if (lbStatusPathPUAnoOficial.Text != "../puaNO/PUAnoexistente.pdf")
                 {
 
                 }
                 else
                 {
                     lbStatusPathPUAnoOficial.Text = "~/FilesSection/PUAnoexistente.pdf";
+                    //lbStatusPathPUAnoOficial.Text = "../puaNO/PUAnoexistente.pdf";
                 }
                 return 3;
             }
@@ -362,8 +368,20 @@ namespace GePE.Materias
             InicializaControles();
             N_Materias NM = new N_Materias();
             GrvMateria.DataSource = NM.LstMaterias();
-            GrvMateria.DataBind();
-            PnlGrvMateria.Visible = true;
+            //GrvMateria.DataBind();
+            //PnlGrvMateria.Visible = true;
+
+            if (NM.LstMaterias().Count.Equals(0))
+            {
+                InicializaControles();
+                lblNombreAccion.Text = "No se encontraron materias para listar";
+            }
+            else
+            {
+                GrvMateria.DataBind();
+                PnlGrvMateria.Visible = true;
+            }
+
         }
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
@@ -465,9 +483,10 @@ namespace GePE.Materias
             }
             else if (RespuestaFuPathPUA == 3)
             {
-                
-                    lbStatusPathPUA.Text = "~/FilesSection/PUAnoexistente.pdf";
-                
+
+                lbStatusPathPUA.Text = "~/FilesSection/PUAnoexistente.pdf";
+                //lbStatusPathPUA.Text = "../puaOFICIAL/PUAnoexistente.pdf";
+
             }
 
             RespuestaFuPathPUAnoOficial = AgregarPathPUAnoOficial();
@@ -497,9 +516,9 @@ namespace GePE.Materias
             }
             else if (RespuestaFuPathPUAnoOficial == 3)
             {
-                
-                    lbStatusPathPUAnoOficial.Text = "~/FilesSection/PUAnoexistente.pdf";
-                
+
+                lbStatusPathPUAnoOficial.Text = "~/FilesSection/PUAnoexistente.pdf";
+                //lbStatusPathPUAnoOficial.Text = "../puaNO/PUAnoexistente.pdf";
             }
 
             if (SumaRespuestaCR == 0 && SumaRespuestaFuPathPUA == 0 && SumaRespuestaFuPathPUAnoOficial == 0)
@@ -601,12 +620,14 @@ namespace GePE.Materias
                 //Si lo que esta en la base de datos es diferente a ~/FilesSection/PUAnoexistente.pdf
                 //no hagas nada, quedate con ese dato.
                 if (lbStatusPathPUA.Text != "~/FilesSection/PUAnoexistente.pdf")
+                    //if (lbStatusPathPUA.Text != "../puaOFICIAL/PUAnoexistente.pdf")
                 {
 
                 }
                 else
                 {
                     lbStatusPathPUA.Text = "~/FilesSection/PUAnoexistente.pdf";
+                    //lbStatusPathPUA.Text = "../puaOFICIAL/PUAnoexistente.pdf";
                 }
             }
 
@@ -640,12 +661,14 @@ namespace GePE.Materias
                 //Si lo que esta en la base de datos es diferente a ~/FilesSection/PUAnoexistente.pdf
                 //no hagas nada, quedate con ese dato.
                 if (lbStatusPathPUAnoOficial.Text != "~/FilesSection/PUAnoexistente.pdf")
+                    //if (lbStatusPathPUAnoOficial.Text != "../puaNO/PUAnoexistente.pdf")
                 {
 
                 }
                 else
                 {
                     lbStatusPathPUAnoOficial.Text = "~/FilesSection/PUAnoexistente.pdf";
+                    //lbStatusPathPUAnoOficial.Text = "../puaNO/PUAnoexistente.pdf";
                 }
             }
 

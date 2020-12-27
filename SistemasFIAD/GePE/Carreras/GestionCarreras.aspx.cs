@@ -133,8 +133,19 @@ namespace GePE.Carreras
             InicializaControles();
             N_Carreras NC = new N_Carreras();
             GrvCarreras.DataSource = NC.LstCarreras();
-            GrvCarreras.DataBind();
-            PnlGrvCarreras.Visible = true;
+            //GrvCarreras.DataBind();
+            //PnlGrvCarreras.Visible = true;
+
+            if (NC.LstCarreras().Count.Equals(0))
+            {
+                InicializaControles();
+                lblNombreAccion.Text = "No se encontraron carreras para listar";
+            }
+            else
+            {
+                GrvCarreras.DataBind();
+                PnlGrvCarreras.Visible = true;
+            }
         }
         protected void BtnMnuPDF_Click(object sender, EventArgs e)
         {

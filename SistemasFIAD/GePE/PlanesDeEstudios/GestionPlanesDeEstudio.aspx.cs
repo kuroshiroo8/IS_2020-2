@@ -367,7 +367,7 @@ namespace GePE.PlanesDeEstudios
         protected E_PlanEstudioMateria ControlesWebForm_ObjetoEntidad2()
         {
 
-            if (cbSeriada.Checked && ddlMateriaSeriada.SelectedIndex !=0)
+            if (cbSeriada.Checked && ddlMateriaSeriada.SelectedIndex != 0)
             {
                 E_PlanEstudioMateria PlanEstudioMateria = new E_PlanEstudioMateria()
                 {
@@ -422,10 +422,10 @@ namespace GePE.PlanesDeEstudios
                 ddlIdMateria.SelectedValue = Convert.ToString(PlanEstudioMateria.IdMateria);
                 ddlIdTipoMateria.SelectedIndex = PlanEstudioMateria.IdTipoMateria;
                 DroplistEtapa();
-                ddlIdEtapa.SelectedValue = Convert.ToString( PlanEstudioMateria.IdEtapa);
+                ddlIdEtapa.SelectedValue = Convert.ToString(PlanEstudioMateria.IdEtapa);
                 ddlIdAreaConocimiento.SelectedIndex = PlanEstudioMateria.IdAreaConocimiento;
                 DroplistSemestre();
-                ddlSemestre.SelectedValue = Convert.ToString( PlanEstudioMateria.Semestre);
+                ddlSemestre.SelectedValue = Convert.ToString(PlanEstudioMateria.Semestre);
                 cbSeriada.Checked = PlanEstudioMateria.EstadoMateriaSeriada;
 
                 TbClavePlanEstudio.Text = PlanEstudioMateria.ClavePlanEstudio.Trim();
@@ -440,7 +440,7 @@ namespace GePE.PlanesDeEstudios
                 ddlIdPlanEstudio.SelectedIndex = index;
                 DroplistMateriaSeriada();
                 ddlMateriaSeriada.SelectedValue = Convert.ToString(PlanEstudioMateria.IdMateriaSeriada);
-                
+
             }
             else
             {
@@ -448,10 +448,10 @@ namespace GePE.PlanesDeEstudios
                 ddlIdMateria.SelectedValue = Convert.ToString(PlanEstudioMateria.IdMateria);
                 ddlIdTipoMateria.SelectedIndex = PlanEstudioMateria.IdTipoMateria;
                 DroplistEtapa();
-                ddlIdEtapa.SelectedValue = Convert.ToString( PlanEstudioMateria.IdEtapa);
+                ddlIdEtapa.SelectedValue = Convert.ToString(PlanEstudioMateria.IdEtapa);
                 ddlIdAreaConocimiento.SelectedIndex = PlanEstudioMateria.IdAreaConocimiento;
                 DroplistSemestre();
-                ddlSemestre.SelectedValue = Convert.ToString( PlanEstudioMateria.Semestre);
+                ddlSemestre.SelectedValue = Convert.ToString(PlanEstudioMateria.Semestre);
                 cbSeriada.Checked = PlanEstudioMateria.EstadoMateriaSeriada;
 
                 //se creo un indice para recorrer el dropdownlist y comparar el texto
@@ -947,7 +947,7 @@ namespace GePE.PlanesDeEstudios
                 {
                     RowGrv(dt);
                 }
-                
+
                 GrvMapaCurricular.DataSource = dt;
                 GrvMapaCurricular.DataBind();
 
@@ -1044,24 +1044,24 @@ namespace GePE.PlanesDeEstudios
 
                                     //Aqui se crea el hipervinculo de la PUA
                                     string cadena = itemM.PathPUA;
-                                    cadena = cadena.Replace("~/", "");
-
+                                    //cadena = cadena.Replace("~/", "");
+                                    cadena = cadena.Replace("../", "");
                                     //Aqui se cargan los style
                                     EstilosGrv(MS1, 0, item.NombreArea);
 
                                     //Aqui se cargan los datos al Grv
                                     GrvMapaCurricular.Rows[MS1].Cells[0].Text =
-                                        "<a href = https://localhost:44393/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
+                                        "<a href = http://vivi.ens.uabc.mx/GePE/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
                                         "<b>HC: </b><i>" + itemM.HC + "</i>" +
                                         " <b>HL: </b><i>" + itemM.HL + "</i>" +
                                         " <b>HT: </b><i>" + itemM.HT + "</i>" +
                                         " <b>HPC: </b><i>" + itemM.HPP + "</i>" +
                                         " <b>CR: </b><i>" + itemM.CR + "</i>";
 
-                                    if(item.EstadoMateriaSeriada == true)
+                                    if (item.EstadoMateriaSeriada == true)
                                     {
-                                        GrvMapaCurricular.Rows[MS1].Cells[0].Text = GrvMapaCurricular.Rows[MS1].Cells[0].Text + 
-                                            "<br/>*Seriada con "+item.NombreMateriaSeriada;
+                                        GrvMapaCurricular.Rows[MS1].Cells[0].Text = GrvMapaCurricular.Rows[MS1].Cells[0].Text +
+                                            "<br/>*Seriada con " + item.NombreMateriaSeriada;
                                     }
                                     else { }
 
@@ -1085,14 +1085,14 @@ namespace GePE.PlanesDeEstudios
                                 {
                                     //Aqui se crea el hipervinculo de la PUA
                                     string cadena = itemM.PathPUA;
-                                    cadena = cadena.Replace("~/", "");
-
+                                    //cadena = cadena.Replace("~/", "");
+                                    cadena = cadena.Replace("../", "");
                                     //Aqui se cargan los style
                                     EstilosGrv(MS2, 1, item.NombreArea);
 
                                     //Aqui se cargan los datos al Grv
                                     GrvMapaCurricular.Rows[MS2].Cells[1].Text =
-                                        "<a href = https://localhost:44393/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
+                                        "<a href = http://vivi.ens.uabc.mx/GePE/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
                                         "<b>HC: </b><i>" + itemM.HC + "</i>" +
                                         " <b>HL: </b><i>" + itemM.HL + "</i>" +
                                         " <b>HT: </b><i>" + itemM.HT + "</i>" +
@@ -1126,14 +1126,14 @@ namespace GePE.PlanesDeEstudios
                                 {
                                     //Aqui se crea el hipervinculo de la PUA
                                     string cadena = itemM.PathPUA;
-                                    cadena = cadena.Replace("~/", "");
-
+                                    //cadena = cadena.Replace("~/", "");
+                                    cadena = cadena.Replace("../", "");
                                     //Aqui se cargan los style
                                     EstilosGrv(MS3, 2, item.NombreArea);
 
                                     //Aqui se cargan los datos al Grv
                                     GrvMapaCurricular.Rows[MS3].Cells[2].Text =
-                                        "<a href = https://localhost:44393/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
+                                        "<a href = http://vivi.ens.uabc.mx/GePE/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
                                         "<b>HC: </b><i>" + itemM.HC + "</i>" +
                                         " <b>HL: </b><i>" + itemM.HL + "</i>" +
                                         " <b>HT: </b><i>" + itemM.HT + "</i>" +
@@ -1166,14 +1166,14 @@ namespace GePE.PlanesDeEstudios
                                 {
                                     //Aqui se crea el hipervinculo de la PUA
                                     string cadena = itemM.PathPUA;
-                                    cadena = cadena.Replace("~/", "");
-
+                                    //cadena = cadena.Replace("~/", "");
+                                    cadena = cadena.Replace("../", "");
                                     //Aqui se cargan los style
                                     EstilosGrv(MS4, 3, item.NombreArea);
 
                                     //Aqui se cargan los datos al Grv
                                     GrvMapaCurricular.Rows[MS4].Cells[3].Text =
-                                        "<a href = https://localhost:44393/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
+                                        "<a href = http://vivi.ens.uabc.mx/GePE/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
                                         "<b>HC: </b><i>" + itemM.HC + "</i>" +
                                         " <b>HL: </b><i>" + itemM.HL + "</i>" +
                                         " <b>HT: </b><i>" + itemM.HT + "</i>" +
@@ -1207,14 +1207,14 @@ namespace GePE.PlanesDeEstudios
                                 {
                                     //Aqui se crea el hipervinculo de la PUA
                                     string cadena = itemM.PathPUA;
-                                    cadena = cadena.Replace("~/", "");
-
+                                    //cadena = cadena.Replace("~/", "");
+                                    cadena = cadena.Replace("../", "");
                                     //Aqui se cargan los style
                                     EstilosGrv(MS5, 4, item.NombreArea);
 
                                     //Aqui se cargan los datos al Grv
                                     GrvMapaCurricular.Rows[MS5].Cells[4].Text =
-                                        "<a href = https://localhost:44393/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
+                                        "<a href = http://vivi.ens.uabc.mx/GePE/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
                                         "<b>HC: </b><i>" + itemM.HC + "</i>" +
                                         " <b>HL: </b><i>" + itemM.HL + "</i>" +
                                         " <b>HT: </b><i>" + itemM.HT + "</i>" +
@@ -1248,14 +1248,14 @@ namespace GePE.PlanesDeEstudios
                                 {
                                     //Aqui se crea el hipervinculo de la PUA
                                     string cadena = itemM.PathPUA;
-                                    cadena = cadena.Replace("~/", "");
-
+                                    //cadena = cadena.Replace("~/", "");
+                                    cadena = cadena.Replace("../", "");
                                     //Aqui se cargan los style
                                     EstilosGrv(MS6, 5, item.NombreArea);
 
                                     //Aqui se cargan los datos al Grv
                                     GrvMapaCurricular.Rows[MS6].Cells[5].Text =
-                                        "<a href = https://localhost:44393/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
+                                        "<a href = http://vivi.ens.uabc.mx/GePE/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
                                         "<b>HC: </b><i>" + itemM.HC + "</i>" +
                                         " <b>HL: </b><i>" + itemM.HL + "</i>" +
                                         " <b>HT: </b><i>" + itemM.HT + "</i>" +
@@ -1289,14 +1289,14 @@ namespace GePE.PlanesDeEstudios
                                 {
                                     //Aqui se crea el hipervinculo de la PUA
                                     string cadena = itemM.PathPUA;
-                                    cadena = cadena.Replace("~/", "");
-
+                                    //cadena = cadena.Replace("~/", "");
+                                    cadena = cadena.Replace("../", "");
                                     //Aqui se cargan los style
                                     EstilosGrv(MS7, 6, item.NombreArea);
 
                                     //Aqui se cargan los datos al Grv
                                     GrvMapaCurricular.Rows[MS7].Cells[6].Text =
-                                        "<a href = https://localhost:44393/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
+                                        "<a href = http://vivi.ens.uabc.mx/GePE/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
                                         "<b>HC: </b><i>" + itemM.HC + "</i>" +
                                         " <b>HL: </b><i>" + itemM.HL + "</i>" +
                                         " <b>HT: </b><i>" + itemM.HT + "</i>" +
@@ -1330,14 +1330,14 @@ namespace GePE.PlanesDeEstudios
                                 {
                                     //Aqui se crea el hipervinculo de la PUA
                                     string cadena = itemM.PathPUA;
-                                    cadena = cadena.Replace("~/", "");
-
+                                    //cadena = cadena.Replace("~/", "");
+                                    cadena = cadena.Replace("../", "");
                                     //Aqui se cargan los style
                                     EstilosGrv(MS8, 7, item.NombreArea);
 
                                     //Aqui se cargan los datos al Grv
                                     GrvMapaCurricular.Rows[MS8].Cells[7].Text =
-                                        "<a href = https://localhost:44393/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
+                                        "<a href = http://vivi.ens.uabc.mx/GePE/" + cadena + " target=\"_blank\" > " + item.NombreMateria + "</a><br/>" +
                                         "<b>HC: </b><i>" + itemM.HC + "</i>" +
                                         " <b>HL: </b><i>" + itemM.HL + "</i>" +
                                         " <b>HT: </b><i>" + itemM.HT + "</i>" +
@@ -1622,7 +1622,7 @@ namespace GePE.PlanesDeEstudios
                 ddlMateriaSeriada.Enabled = false;
             }
 
-            
+
 
             BtnModificarPlanEstudioMateria.Visible = true;
             BtnCancelarPlanEstudioMateria.Visible = true;
@@ -1826,7 +1826,7 @@ namespace GePE.PlanesDeEstudios
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdMateria, NombreMateria FROM Propuesta.dbo.PlanEstudioMateria WHERE NombrePlanEstudio='"+ddlIdPlanEstudio.SelectedItem.Text+ "' AND Semestre > '" + ddlSemestre.SelectedItem.Value + "'", con);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdMateria, NombreMateria FROM Propuesta.dbo.PlanEstudioMateria WHERE NombrePlanEstudio='" + ddlIdPlanEstudio.SelectedItem.Text + "' AND Semestre > '" + ddlSemestre.SelectedItem.Value + "'", con);
                     adapter.Fill(subjects);
                     ddlMateriaSeriada.DataSource = subjects;
                     ddlMateriaSeriada.DataTextField = "NombreMateria";
@@ -1889,7 +1889,7 @@ namespace GePE.PlanesDeEstudios
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdEtapa, NombreEtapa FROM Propuesta.dbo.Etapas WHERE NombreEtapa = 'BASICA "+ddlIdTipoMateria.SelectedItem.Text+ "' OR NombreEtapa = 'DISCIPLINARIA " + ddlIdTipoMateria.SelectedItem.Text + "' OR NombreEtapa = 'TERMINAL " + ddlIdTipoMateria.SelectedItem.Text + "' ", con);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdEtapa, NombreEtapa FROM Propuesta.dbo.Etapas WHERE NombreEtapa = 'BASICA " + ddlIdTipoMateria.SelectedItem.Text + "' OR NombreEtapa = 'DISCIPLINARIA " + ddlIdTipoMateria.SelectedItem.Text + "' OR NombreEtapa = 'TERMINAL " + ddlIdTipoMateria.SelectedItem.Text + "' ", con);
                     adapter.Fill(subjects);
                     ddlIdEtapa.DataSource = subjects;
                     ddlIdEtapa.DataTextField = "NombreEtapa";
@@ -1939,10 +1939,10 @@ namespace GePE.PlanesDeEstudios
             //carga datos para estatus
             ListItem i;
             i = new ListItem("<Seleccione>", "");
-            if (ddlIdEtapa.SelectedItem.Value == "1"||
+            if (ddlIdEtapa.SelectedItem.Value == "1" ||
                ddlIdEtapa.SelectedItem.Value == "2")
             {
-               
+
                 ddlSemestre.Items.Add(i);
                 i = new ListItem("1.º", "1");
                 ddlSemestre.Items.Add(i);
@@ -1951,10 +1951,10 @@ namespace GePE.PlanesDeEstudios
                 i = new ListItem("3.º", "3");
                 ddlSemestre.Items.Add(i);
             }
-            if (ddlIdEtapa.SelectedItem.Value== "3"||
+            if (ddlIdEtapa.SelectedItem.Value == "3" ||
                ddlIdEtapa.SelectedItem.Value == "4")
             {
-        
+
                 ddlSemestre.Items.Add(i);
                 i = new ListItem("4.º", "4");
                 ddlSemestre.Items.Add(i);
@@ -1963,10 +1963,10 @@ namespace GePE.PlanesDeEstudios
                 i = new ListItem("6.º", "6");
                 ddlSemestre.Items.Add(i);
             }
-            if (ddlIdEtapa.SelectedItem.Value == "5"||
+            if (ddlIdEtapa.SelectedItem.Value == "5" ||
                 ddlIdEtapa.SelectedItem.Value == "6")
             {
-               
+
                 ddlSemestre.Items.Add(i);
                 i = new ListItem("7.º", "7");
                 ddlSemestre.Items.Add(i);
@@ -1997,7 +1997,7 @@ namespace GePE.PlanesDeEstudios
             {
                 ddlMateriaSeriada.Enabled = true;
                 DroplistMateriaSeriada();
-                cbSeriada.Text=string.Empty;
+                cbSeriada.Text = string.Empty;
             }
             else
             {

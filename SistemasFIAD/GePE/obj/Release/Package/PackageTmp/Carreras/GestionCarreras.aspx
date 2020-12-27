@@ -44,7 +44,17 @@
                             <div class="col-lg-3 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbClaveCarrera" class="text-dark font-weight-bold m-0" runat="server">Clave de la carrera</asp:Label>
-                                    <uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbClaveCarrera" />
+                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbClaveCarrera" />--%>
+                                    <asp:TextBox runat="server" ID="TbClaveCarrera" CssClass="form-control" TextMode="Number"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvTbClaveCarrera" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbClaveCarrera"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revTbClaveCarrera" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbClaveCarrera"
+                                        ErrorMessage="*Este campo debe de tener la estructura XXX con numeros de 0 a 9."
+                                        ValidationExpression="^[0-9]{3}$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="col-lg-9 col-md-12 col-12">
@@ -99,6 +109,8 @@
                         <asp:BoundField DataField="NombreCarrera" HeaderText="NOMBRE DE LA CARRERA" />
                         <asp:BoundField DataField="AliasCarrera" HeaderText="NOMBRE CORTO" />
                         <%--<asp:BoundField DataField="NombreCarrera" HeaderText="NOMBRE DEL COORDINADOR" />--%>
+                        <%--<asp:BoundField DataField="EstadoCarrera" HeaderText="ESTADO CARRERA" />--%>
+
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
                             <ItemTemplate>
                                 <asp:LinkButton ID="GrvBtnEditar" runat="server" CssClass="btn btn-md btn-primary "
