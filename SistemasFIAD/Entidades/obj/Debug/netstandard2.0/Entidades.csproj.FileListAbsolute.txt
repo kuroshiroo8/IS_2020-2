@@ -28,7 +28,6 @@ C:\Users\daly_\Downloads\IS-2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2
 C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Entidades\bin\Debug\netstandard2.0\Entidades.deps.json
 C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Entidades\bin\Debug\netstandard2.0\Entidades.dll
 C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Entidades\bin\Debug\netstandard2.0\Entidades.pdb
-C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.csprojAssemblyReference.cache
 C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.AssemblyInfoInputs.cache
 C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.AssemblyInfo.cs

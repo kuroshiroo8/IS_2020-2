@@ -94,6 +94,7 @@
     <Content Include="js\regular.js" />
     <Content Include="js\sb-admin-2.js" />
     <Content Include="js\solid.js" />
+    <Content Include="Login\Login.aspx" />
     <Content Include="Materias\GestionMaterias.aspx" />
     <Content Include="PlanesDeEstudios\GestionPlanesDeEstudio.aspx" />
     <Content Include="prueba.aspx" />
@@ -136,6 +137,13 @@
     </Compile>
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Materias\GestionMaterias.aspx.cs">
       <DependentUpon>GestionMaterias.aspx</DependentUpon>

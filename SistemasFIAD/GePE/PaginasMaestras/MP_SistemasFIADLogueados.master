@@ -83,6 +83,10 @@
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Cerrar Sesión
                                     </a>
+                                    <a class="dropdown-item" href="../Login/Login.aspx">
+                                        <i class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Iniciar Sesión
+                                    </a>
                                 </div>
                             </li>
                         </ul>

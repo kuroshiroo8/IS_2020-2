@@ -28,3 +28,4 @@ el plan de estudio si esta en recaptura no se puede borrar
 el plan de estudio si esta en espera si se puede borrar y modificar
 el plan de estudio si esta en publicado si se puede borrar y si se puede modificar pero solo lo puede hacer el administrador y se manda a recaptura
 el plan de estudio si esta en aprobado si se puede borrar y si se puede modificar pero solo lo puede hacer el administrador y se manda a recaptura
+
