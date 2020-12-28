@@ -12,40 +12,66 @@
                             <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
+
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Bienvenido!</h1>
                                     </div>
+
+                                    <div align="center">
+                                        <h4>
+                                            <asp:Label ID="lblNombreAccion" runat="server" class="text-ceter text-primary" CssClass="text-danger"></asp:Label></h4>
+                                    </div>
+
                                     <form class="user">
                                         <div class="form-group">
-                                            <asp:TextBox id="exampleInputEmail" runat="server" type="email" CssClass="form-control" aria-describedby="emailHelp" placeholder="Correo"/>
+
+                                            <asp:Label ID="lbEmail" class="text-dark font-weight-bold m-0" runat="server">Correo:</asp:Label>
+                                            <br />
+                                            <asp:TextBox ID="TbEmail" runat="server" type="email" CssClass="form-control" aria-describedby="emailHelp" placeholder="Correo" />
+
+                                            <asp:RequiredFieldValidator ID="rfvTbEmail" runat="server" CssClass="text-danger"
+                                                ControlToValidate="TbEmail"
+                                                ErrorMessage="*Este campo es requerido."
+                                                Display="Dynamic"></asp:RequiredFieldValidator>
+
+                                            <asp:RegularExpressionValidator ID="revTbEmail" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbEmail"
+                                        ErrorMessage="*Este campo debe de tener una estructura parecida a ejemplo@uabc.edu.mx"
+                                        ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
+
                                         </div>
                                         <div class="form-group">
-                                            <asp:TextBox ID="exampleInputPassword" runat="server" type="password" CssClass="form-control" placeholder="Contraseña"/>
+
+                                            <asp:Label ID="lbPass" class="text-dark font-weight-bold m-0" runat="server">Contraseña:</asp:Label>
+                                            <br />
+                                            <asp:TextBox ID="TbPass" runat="server" type="password" CssClass="form-control" placeholder="Contraseña" />
+
+                                            <asp:RequiredFieldValidator ID="rfvTbPass" runat="server" CssClass="text-danger"
+                                                ControlToValidate="TbPass"
+                                                ErrorMessage="*Este campo es requerido."
+                                                Display="Dynamic"></asp:RequiredFieldValidator>
+
                                         </div>
                                         <div class="form-group">
-                                                <asp:CheckBox ID="cbRecordar" runat="server" CssClass="form-control" text=" Recordar cotraseña"/>
+
+                                            <asp:Label ID="lbLogin" class="text-dark font-weight-bold m-0" runat="server">Tipo usuario:</asp:Label>
+                                            <br />
+                                            <asp:DropDownList runat="server" ID="ddlLogin" CssClass="form-control">
+                                                <asp:ListItem Value="">No seleccionado</asp:ListItem>
+                                            </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ID="rfvddlLogin" runat="server" CssClass="text-danger"
+                                                ControlToValidate="ddlLogin"
+                                                ErrorMessage="*Este campo es requerido."
+                                                InitialValue=""
+                                                Display="Dynamic"></asp:RequiredFieldValidator>
+
                                         </div>
                                         <div align="center">
-                                        <asp:LinkButton ID="btnSesion" runat="server" CssClass="btn btn-md btn btn-success pr-3" CausesValidation="true"><i class="fas fa-sign-in-alt"></i>  Iniciar Sesión</asp:LinkButton>
-                                            </div>
+                                            <asp:LinkButton ID="BtnLogin" runat="server" CssClass="btn btn-md btn btn-success pr-3" CausesValidation="true" OnClick="BtnLogin_Click"><i class="fas fa-sign-in-alt"></i>  Iniciar Sesión</asp:LinkButton>
+                                        </div>
                                     </form>
-                                    <br />
-                                    <div class="form-group">
-                                                <asp:CheckBox ID="cbAlumno" runat="server" CssClass="form-control" text="Alumno" />
-                                            </div>
-                                    <div class="form-group">
-                                                <asp:CheckBox ID="cbAdministrador" runat="server" CssClass="form-control" text="Administrador"/>
-                                            </div>
-                                    <div class="form-group">
-                                                <asp:CheckBox ID="cbCapturista" runat="server" CssClass="form-control" TextAlign="right" Text="Capturista" /> <%--AutoPostBack="true" OnCheckedChanged="Check_selected"/>--%>
-                                            </div>
-                                    <hr>
-                                    <div class="text-center">
-                                        <!--a class="small" href="forgot-password.html">Forgot Password?</a-->
-                                    </div>
-                                    <div class="text-center">
-                                        <!--a class="small" href="register.html">Create an Account!</a-->
-                                    </div>
                                 </div>
                             </div>
                         </div>

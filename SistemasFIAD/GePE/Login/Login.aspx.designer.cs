@@ -13,66 +13,111 @@ namespace GePE.Login {
     public partial class Login {
         
         /// <summary>
-        /// Control exampleInputEmail.
+        /// Control lblNombreAccion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox exampleInputEmail;
+        protected global::System.Web.UI.WebControls.Label lblNombreAccion;
         
         /// <summary>
-        /// Control exampleInputPassword.
+        /// Control lbEmail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox exampleInputPassword;
+        protected global::System.Web.UI.WebControls.Label lbEmail;
         
         /// <summary>
-        /// Control cbRecordar.
+        /// Control TbEmail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbRecordar;
+        protected global::System.Web.UI.WebControls.TextBox TbEmail;
         
         /// <summary>
-        /// Control btnSesion.
+        /// Control rfvTbEmail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnSesion;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbEmail;
         
         /// <summary>
-        /// Control cbAlumno.
+        /// Control revTbEmail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbAlumno;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revTbEmail;
         
         /// <summary>
-        /// Control cbAdministrador.
+        /// Control lbPass.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbAdministrador;
+        protected global::System.Web.UI.WebControls.Label lbPass;
         
         /// <summary>
-        /// Control cbCapturista.
+        /// Control TbPass.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbCapturista;
+        protected global::System.Web.UI.WebControls.TextBox TbPass;
+        
+        /// <summary>
+        /// Control rfvTbPass.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbPass;
+        
+        /// <summary>
+        /// Control lbLogin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbLogin;
+        
+        /// <summary>
+        /// Control ddlLogin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlLogin;
+        
+        /// <summary>
+        /// Control rfvddlLogin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlLogin;
+        
+        /// <summary>
+        /// Control BtnLogin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BtnLogin;
     }
 }
