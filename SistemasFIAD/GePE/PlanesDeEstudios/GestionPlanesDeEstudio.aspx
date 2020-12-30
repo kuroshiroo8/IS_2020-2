@@ -648,7 +648,8 @@
                     <div class="modal-body">Si lo esta, presione "Borrar". </div>
                     <div class="modal-footer">
                         <button class="btn btn-md btn btn-dark pr-3" type="button" data-dismiss="modal"><i class="fas fa-window-close"></i>Cancelar</button>
-                        <asp:LinkButton ID="BtnBorrarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-danger pr-3" CausesValidation="false" OnClick="BtnBorrarPlanEstudioMateria_Click"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton>
+                        <asp:LinkButton ID="BtnBorrarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-danger pr-3" 
+                            CausesValidation="false" OnClick="BtnBorrarPlanEstudioMateria_Click"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton>
                     </div>
                 </div>
             </div>

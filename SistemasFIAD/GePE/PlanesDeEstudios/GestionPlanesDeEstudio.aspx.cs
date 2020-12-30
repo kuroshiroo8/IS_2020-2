@@ -36,6 +36,12 @@ namespace GePE.PlanesDeEstudios
         {
             if (!IsPostBack)
                 InicializaControles();
+
+            //if (Session["mensaje1"] != null)
+            //{
+            //    string mensaje = Convert.ToString(Session["mensaje1"]);
+            //    Response.Write("<script language=javascript>alert('"+mensaje+"');</script>");
+            //}
         }
 
         #region Métodos generales

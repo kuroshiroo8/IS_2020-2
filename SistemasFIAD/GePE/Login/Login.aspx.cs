@@ -105,6 +105,14 @@ namespace GePE.Login
                                     //lblNombreAccion.Text = "*Correo y contraseña correctos";
                                     //lblNombreAccion.Visible = true;
                                     
+                                    Session["NombreUsuario"] = item.NombreUsuario;
+                                    Session["TipoUsuario"] = item.TipoUsuario;
+                                    Session["CorreoUsuario"] = item.CorreoUsuario;
+
+                                    string _URL = Convert.ToString(Session["URL"]);
+
+                                    Response.Redirect(_URL);
+
                                 }
                                 else
                                 {

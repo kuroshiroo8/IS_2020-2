@@ -1,6 +1,7 @@
 ﻿<%@ Master Language="C#" MasterPageFile="../PaginasMaestras/MP_BaseDelSistema.Master" AutoEventWireup="true" CodeBehind="MP_SistemasFIADLogueados.master.cs" Inherits="GePE.PaginasMaestras.SistemasFIAD" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphPrincipal" runat="server">
+
     <div>
         <a href="../Carreras/GestionCarreras.aspx">
             <div align="center" class="bg-verde-obscuro">
@@ -16,31 +17,40 @@
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../Carreras/GestionCarreras.aspx">
                     <div>
                         <%--carga del logo de uabc--%>
-                        <img src="../Imagenes/oficialprueba.png" class="img-fluid" alt="Responsive image">
+                        <asp:Image ID="imgLogoUABC" runat="server" ImageUrl="../Imagenes/oficialprueba.png" AlternateText="kyocode" class="img-fluid"/>
+                        <%--<img src="../Imagenes/oficialprueba.png" class="img-fluid" alt="Responsive image">--%>
                     </div>
                 </a>
                 <!-- Divider -->
                 <hr class="sidebar-divider">
                 <!-- Heading -->
                 <div class="sidebar-heading">
-                    Sistema-GEPE
+                    <asp:Label ID="lbSistema" runat="server">Sistema-GEPE</asp:Label>
                 </div>
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="../Carreras/GestionCarreras.aspx" aria-expanded="true">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Gestión de carreras</span>
+
+                        <asp:Label ID="lbGestionCarreras" runat="server"><i class="fas fa-fw fa-cog"></i>Gestión de carreras</asp:Label>
+                        <%--<span>Gestión de carreras</span>--%>
                     </a>
 
                     <a class="nav-link collapsed" href="../Materias/GestionMaterias.aspx" aria-expanded="true">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Gestión de materias</span>
+
+                        <asp:Label ID="lbGestionMaterias" runat="server"><i class="fas fa-fw fa-cog"></i>Gestión de materias</asp:Label>
+                        <%--<span>Gestión de materias</span>--%>
                     </a>
 
-                    <a class="nav-link collapsed" href="../PlanesDeEstudios/GestionPlanesDeEstudio.aspx" aria-expanded="true"">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Gestión planes de estudio</span>
-                    </a> 
+                    <a class="nav-link collapsed" href="../PlanesDeEstudios/GestionPlanesDeEstudio.aspx" aria-expanded="true">
+
+                        <asp:Label ID="lbGestionPlanesEstudio" runat="server"><i class="fas fa-fw fa-cog"></i>Gestión planes de estudio</asp:Label>
+                        <%--<span>Gestión planes de estudio</span>--%>
+                    </a>
+                    <a class="nav-link collapsed" href="#" aria-expanded="true">
+
+                        <asp:Label ID="lbGestionUsuarios" runat="server"><i class="fas fa-fw fa-cog"></i>Gestión de usuarios</asp:Label>
+                        <%--<span>Gestión de usuarios</span>--%>
+                    </a>
                 </li>
 
                 <!-- Divider -->
@@ -73,19 +83,29 @@
                             <!-- Nav Item - User Information -->
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                                    <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                                    <asp:Label ID="lbNombreUsuario" runat="server" class="text-ceter text-primary"
+                                        CssClass="mr-2 d-none d-lg-inline text-gray-600 small">
+                                        <i class="fas fa-sign-in-alt"></i>Iniciar sesión</asp:Label>
+                                    <%--<span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>--%>
+                                    <%--<img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">--%>
                                 </a>
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Cerrar Sesión
+                                        <%--<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>--%>
+                                        <asp:Label ID="lbCerrarSesion" runat="server" class="text-ceter text-primary"
+                                            CssClass="mr-2 d-none d-lg-inline text-gray-600 small">
+                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Cerrar Sesión</asp:Label>
                                     </a>
-                                    <a class="dropdown-item" href="../Login/Login.aspx">
-                                        <i class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Iniciar Sesión
+                                    <a class="dropdown-item">
+                                        <%--<i class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i>--%>
+                                        <%--<asp:Label ID="lbIniciarSesion" runat="server" class="text-ceter text-primary"
+                                            CssClass="mr-2 d-none d-lg-inline text-gray-600 small">
+                                            <i class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i>Iniciar Sesión</asp:Label>--%>
+                                        <asp:LinkButton ID="BtnIniciarSesion" runat="server" class="text-ceter text-primary"
+                                        CssClass="mr-2 d-none d-lg-inline text-gray-600 small" CausesValidation="false" OnClick="BtnIniciarSesion_Click">
+                                            <i class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i>Iniciar sesión</asp:LinkButton>
                                     </a>
                                 </div>
                             </li>
@@ -95,13 +115,12 @@
 
                     <!-- AQUI SE DEBE PONER EL CODIGO DE LAS PAGINAS QUE HERAN ESTA PAGINA -->
                     <div class="container-fluid">
-                        <form id="form1" runat="server">
-                            <div>
-                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                                </asp:ContentPlaceHolder>
-                            </div>
-                        </form>
-
+                        <%--<form id="form1" runat="server">--%>
+                        <div>
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                        <%--</form>--%>
                     </div>
                     <!-- /.container-fluid -->
                 </div>
@@ -135,11 +154,18 @@
                     </div>
                     <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para terminar su sesión actual.</div>
                     <div class="modal-footer">
-                        <a id="BtnCancelarsalir" class="btn btn-md btn btn-dark pr-3" href="../Carreras/GestionCarreras.aspx"><i class="fas fa-window-close"></i>Cancelar</a>
-                        <a id="LinkButton1" class="btn btn-md btn btn-danger pr-3" href="../Carreras/GestionCarreras.aspx"><i class="fas fa-sign-out-alt"></i>Cerrar sesión</a>
+                        <%--<a id="BtnCancelarsalir" class="btn btn-md btn btn-dark pr-3" href="../Carreras/GestionCarreras.aspx"><i class="fas fa-window-close"></i>Cancelar</a>--%>
+                        <%--<a id="BtnCerrarSesión" class="btn btn-md btn btn-danger pr-3" href="../Carreras/GestionCarreras.aspx"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión</a>--%>
+
+                        <asp:LinkButton ID="BtnCancelarCerrarSesion" runat="server" CssClass="btn btn-md btn btn-dark pr-3"
+                            CausesValidation="false" OnClick="BtnCancelarCerrarSesion_Click"><i class="fas fa-window-close"></i>Cancelar</asp:LinkButton>
+
+                        <asp:LinkButton ID="BtnCerrarSesion" runat="server" CssClass="btn btn-md btn btn-danger pr-3"
+                            CausesValidation="false" OnClick="BtnCerrarSesion_Click"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión</asp:LinkButton>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </asp:Content>
