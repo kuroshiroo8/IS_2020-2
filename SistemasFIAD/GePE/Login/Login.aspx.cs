@@ -99,19 +99,18 @@ namespace GePE.Login
                     {
                         if (item != null)
                         {
-                            if (TbPass.Text.Trim() != string.Empty) {
-                                if((TbPass.Text.Trim() == item.PassUsuario) && (ddlLogin.SelectedItem.Text == item.TipoUsuario))
+                            if (TbPass.Text.Trim() != string.Empty)
+                            {
+                                if ((TbPass.Text.Trim() == item.PassUsuario) && (ddlLogin.SelectedItem.Text == item.TipoUsuario))
                                 {
                                     //lblNombreAccion.Text = "*Correo y contraseña correctos";
                                     //lblNombreAccion.Visible = true;
-                                    
+
                                     Session["NombreUsuario"] = item.NombreUsuario;
                                     Session["TipoUsuario"] = item.TipoUsuario;
                                     Session["CorreoUsuario"] = item.CorreoUsuario;
 
-                                    string _URL = Convert.ToString(Session["URL"]);
-
-                                    Response.Redirect(_URL);
+                                    Response.Redirect("../Carreras/GestionCarreras.aspx");
 
                                 }
                                 else
@@ -119,9 +118,9 @@ namespace GePE.Login
                                     lblNombreAccion.Text = "*Contraseña o tipo de usuario incorrecto";
                                     lblNombreAccion.Visible = true;
                                 }
-                            } 
+                            }
                         }
-                        
+
                     }
                 }
                 else

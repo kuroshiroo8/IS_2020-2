@@ -30,11 +30,11 @@
 <body id="page-top" class="bg-verde-obscuro">
 
     <%-- AQUI INICIA EL CONTENEDOR PRINCIPAL DE LOS SISTEMAS FIAD --%>
-    <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="cphPrincipal" runat="server"></asp:ContentPlaceHolder>
-        </div>
-    </form>
+    <%--<form id="form1" runat="server">--%>
+    <div runat="server">
+        <asp:ContentPlaceHolder ID="cphPrincipal" runat="server"></asp:ContentPlaceHolder>
+    </div>
+    <%--</form>--%>
     <!-- Bootstrap core JavaScript-->
     <script src="../js/jquery.js"></script>
     <script src="../js/bootstrap.js"></script>
@@ -57,7 +57,7 @@
     <script src="../js/chart-pie-demo.js"></script>
 
     <footer style="background-color: white">
-        <p align="center" style="color: darkgreen;">Versión: 27-12-2020</p>
+        <p align="center" style="color: darkgreen;">Versión: 30-12-2020</p>
     </footer>
 
 </body>

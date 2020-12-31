@@ -11,87 +11,74 @@ namespace GePE.PaginasMaestras
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string cadena = HttpContext.Current.Request.Url.AbsoluteUri;
-            string[] Separado = cadena.Split('/');
-            string Final = Separado[Separado.Length - 1];
-
-            if (Final == "Login.aspx")
+            if (!IsPostBack)
             {
-                lbNombreUsuario.Visible = false;
-            }
-            else
-            {
-                lbNombreUsuario.Visible = true;
-            }
+                
+                string cadena = HttpContext.Current.Request.Url.AbsoluteUri;
+                string[] Separado = cadena.Split('/');
+                string Final = Separado[Separado.Length - 1];
 
-            if (Convert.ToString(Session["NombreUsuario"]) != "")
-            {
-                string NombreUsuario = Convert.ToString(Session["NombreUsuario"]);
-                string TipoUsuario = Convert.ToString(Session["TipoUsuario"]);
-                string CorreoUsuario = Convert.ToString(Session["CorreoUsuario"]);
-
-                //Response.Write("<script language=javascript>alert('" + mensaje + "');</script>");
-
-                lbNombreUsuario.Text = "Nombre: " + NombreUsuario;
-                lbCerrarSesion.Visible = true;
-                //lbIniciarSesion.Visible = false;
-                BtnIniciarSesion.Visible = false;
-
-                if (TipoUsuario== "ADMINISTRADOR")
+                if (Final == "Login.aspx")
                 {
-                    lbGestionUsuarios.Visible = true;
+                    BtnUserDropDown.Visible = false;
                 }
                 else
                 {
-                    lbGestionUsuarios.Visible = false;
+                    BtnUserDropDown.Visible = true;
+                }
+
+                if (Convert.ToString(Session["NombreUsuario"]) != "")
+                {
+                    string NombreUsuario = Convert.ToString(Session["NombreUsuario"]);
+                    string TipoUsuario = Convert.ToString(Session["TipoUsuario"]);
+                    string CorreoUsuario = Convert.ToString(Session["CorreoUsuario"]);
+                    
+                    //Response.Write("<script language=javascript>alert('" + mensaje + "');</script>");
+
+                    BtnUserDropDown.Text = NombreUsuario;
+                    BtnCerrarSesion.Visible = true;
+
+                    BtnIniciarSesion.Visible = false;
+
+                    if (TipoUsuario == "ADMINISTRADOR")
+                    {
+                        BtnGestionUsuarios.Visible = true;
+                    }
+                    else
+                    {
+                        BtnGestionUsuarios.Visible = false;
+                    }
+                }
+                else
+                {
+                    BtnUserDropDown.Text = "Iniciar sesión";
+
+                    BtnCerrarSesion.Visible = false;
+                    BtnIniciarSesion.Visible = true;
+
+                    BtnGestionUsuarios.Visible = false;
+
+                    lbNombreUsuario.Visible = false;
+                    lbTipoUsuario.Visible = false;
+                    lbCorreoUsuario.Visible = false;
+
+                    lbNombreUsuario.Text = "";
+                    lbTipoUsuario.Text = "";
+                    lbCorreoUsuario.Text = "";
+
+                    Session["NombreUsuario"] = "";
+                    Session["TipoUsuario"] = "";
+                    Session["CorreoUsuario"] = "";
+
                 }
             }
-            else
-            {
-                lbNombreUsuario.Text = "Iniciar sesión";
 
-                lbCerrarSesion.Visible = false;
-                BtnIniciarSesion.Visible = true;
-                //lbIniciarSesion.Visible = true;
-                lbGestionUsuarios.Visible = false;
-            }
-        }
-
-        protected void BtnCancelarCerrarSesion_Click(object sender, EventArgs e)
-        {
-            Page.Response.Redirect(Page.Request.Url.ToString(), true);
-        }
-
-        protected void BtnCerrarSesion_Click(object sender, EventArgs e)
-        {
-            string cadena = HttpContext.Current.Request.Url.AbsoluteUri;
-            string[] Separado = cadena.Split('/');
-            string Final = Separado[Separado.Length - 1];
-
-            Session["NombreUsuario"] = string.Empty;
-            Session["TipoUsuario"] = string.Empty;
-            Session["CorreoUsuario"] = string.Empty;
-
-            lbNombreUsuario.Text = "Iniciar sesión";
-            lbCerrarSesion.Visible = false;
-            BtnIniciarSesion.Visible = true;
-
-            lbGestionUsuarios.Visible = false;
-
-            Response.Redirect(Final);
+            //BtnGestionCarreras.Visible = false;
+            //BtnGestionMaterias.Visible = false;
+            //BtnGestionPlanesEstudio.Visible = false;
+            //BtnGestionUsuarios.Visible = false;
 
         }
-
-        protected void BtnIniciarSesion_Click(object sender, EventArgs e)
-        {
-            string cadena = HttpContext.Current.Request.Url.AbsoluteUri;
-            string[] Separado = cadena.Split('/');
-            string Final = Separado[Separado.Length - 1];
-
-            Session["URL"] = cadena;
-
-            Response.Redirect("../Login/Login.aspx");
-
-        }
+        
     }
 }
