@@ -49,7 +49,7 @@ namespace Negocios
             string R = NU.IBM_Entidad<E_Usuarios>("IBM_Usuarios", Entidad);
 
             if (R.Contains("Exito"))
-                return "Exito: Los datos de fueron borrados correctamente.";
+                return "Exito: Los datos fueron borrados correctamente.";
             else
                 if (R.Contains("Error"))
                 return "Error: Los datos no se borraron del sistema.";
@@ -64,7 +64,7 @@ namespace Negocios
             string R = NU.IBM_Entidad<E_Usuarios>("IBM_Usuarios", pEntidad);
 
             if (R.Contains("Exito"))
-                return "Exito: Los datos fueron modificado correctamente.";
+                return "Exito: Los datos fueron modificados correctamente.";
             else
                 if (R.Contains("Error"))
                 return "Error: Los datos no se modificaron en el sistema.";

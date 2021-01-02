@@ -101,6 +101,7 @@
     <Content Include="prueba.aspx" />
     <Content Include="CSS\fontawesome.css" />
     <Content Include="js\jquery.js" />
+    <Content Include="Usuarios\GestionUsuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -188,6 +189,13 @@
     </Compile>
     <Compile Include="prueba.aspx.designer.cs">
       <DependentUpon>prueba.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\GestionUsuarios.aspx.cs">
+      <DependentUpon>GestionUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuarios\GestionUsuarios.aspx.designer.cs">
+      <DependentUpon>GestionUsuarios.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

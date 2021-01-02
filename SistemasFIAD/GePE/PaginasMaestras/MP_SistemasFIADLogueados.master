@@ -111,7 +111,7 @@
                         class="nav-link collapsed"
                         Font-Size="9pt"
                         aria-expanded="true"
-                        href="#"
+                        href="../Usuarios/GestionUsuarios.aspx"
                         Text="Gestión de usuarios"
                         runat="server"><i class="fas fa-fw fa-cog"></i> Gestión de usuarios</asp:HyperLink>
 

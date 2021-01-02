@@ -55,3 +55,4 @@ C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Entidades\b
 C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.csproj.CopyComplete
 C:\Users\carlos\Documents\IS\IS_2020-2\SistemasFIAD\Entidades\bin\Debug\netstandard2.0\DatosSQL.dll
 C:\Users\carlos\Documents\IS\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.csproj.CopyComplete
+C:\Users\daly_\OneDrive\Documentos\escuela\IS\IS_2020-2\SistemasFIAD\Entidades\obj\Debug\netstandard2.0\Entidades.csprojAssemblyReference.cache
