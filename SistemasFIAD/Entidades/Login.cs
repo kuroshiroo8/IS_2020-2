@@ -21,6 +21,8 @@ namespace Entidades
         private string _PassUsuario;
         private string _TipoUsuario;
         private int _ClaveUsuario;
+        private string _ApellidoPaterno;
+        private string _ApellidoMaterno;
         #endregion
 
         #region Constructor
@@ -33,6 +35,8 @@ namespace Entidades
             _PassUsuario = string.Empty;
             _TipoUsuario = string.Empty;
             _ClaveUsuario = 0;
+            _ApellidoPaterno = string.Empty;
+            _ApellidoMaterno = string.Empty;
         }
         #endregion
 
@@ -44,6 +48,8 @@ namespace Entidades
         public string PassUsuario { get => _PassUsuario; set => _PassUsuario = value; }
         public string TipoUsuario { get => _TipoUsuario; set => _TipoUsuario = value; }
         public int ClaveUsuario { get => _ClaveUsuario; set => _ClaveUsuario = value; }
+        public string ApellidoPaterno { get => _ApellidoPaterno; set => _ApellidoPaterno = value; }
+        public string ApellidoMaterno { get => _ApellidoMaterno; set => _ApellidoMaterno = value; }
         #endregion
     }
 }

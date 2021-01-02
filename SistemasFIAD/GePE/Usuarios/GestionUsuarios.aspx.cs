@@ -34,6 +34,7 @@ namespace GePE.usuarios
             lbContraseña.Visible = false;
             lbTipoUsuario.Visible = false;
             lbCalveUsuario.Visible = false;
+            lbApellidoPaterno.Visible = false;
 
             //Visible LinkButton
             BtnGrabar.Visible = false;
@@ -60,7 +61,9 @@ namespace GePE.usuarios
             TbCorreoUsuario.Text = string.Empty;
             TbNombreUsuario.Text = string.Empty;
             TbContraseñaUsuario.Text = string.Empty;
-            TbClaveUsuario.Text = string.Empty;
+            TbnumClaveUsuario.Text = string.Empty;
+            TbApellidoPaterno.Text = string.Empty;
+            TbApellidoMaterno.Text = string.Empty;
 
             //limpiar drop
             ddlTipoUsuario.Items.Clear();
@@ -73,12 +76,16 @@ namespace GePE.usuarios
             lbContraseña.Enabled = TrueOrFalse;
             lbTipoUsuario.Enabled = TrueOrFalse;
             lbCalveUsuario.Enabled = TrueOrFalse;
+            lbApellidoPaterno.Enabled = TrueOrFalse;
+            lbApellidoMaterno.Enabled = TrueOrFalse;
 
             //Enabled TextBox
             TbCorreoUsuario.Enabled = TrueOrFalse;
             TbNombreUsuario.Enabled = TrueOrFalse;
             TbContraseñaUsuario.Enabled = TrueOrFalse;
-            TbClaveUsuario.Enabled = TrueOrFalse;
+            TbnumClaveUsuario.Enabled = TrueOrFalse;
+            TbApellidoPaterno.Enabled = TrueOrFalse;
+            TbApellidoMaterno.Enabled = TrueOrFalse;
 
             ddlTipoUsuario.Enabled = TrueOrFalse;
 
@@ -91,12 +98,16 @@ namespace GePE.usuarios
             lbContraseña.Visible = TrueOrFalse;
             lbTipoUsuario.Visible = TrueOrFalse;
             lbCalveUsuario.Visible = TrueOrFalse;
+            lbApellidoPaterno.Visible = TrueOrFalse;
+            lbApellidoMaterno.Visible = TrueOrFalse;
 
             //Visible TextBox
             TbCorreoUsuario.Visible = TrueOrFalse;
             TbNombreUsuario.Visible = TrueOrFalse;
             TbContraseñaUsuario.Visible = TrueOrFalse;
-            TbClaveUsuario.Visible = TrueOrFalse;
+            TbnumClaveUsuario.Visible = TrueOrFalse;
+            TbApellidoPaterno.Visible = TrueOrFalse;
+            TbApellidoMaterno.Visible = TrueOrFalse;
 
             ddlTipoUsuario.Visible = TrueOrFalse;
         }
@@ -111,7 +122,9 @@ namespace GePE.usuarios
                 CorreoUsuario = TbCorreoUsuario.Text,
                 PassUsuario = TbContraseñaUsuario.Text,
                 TipoUsuario = ddlTipoUsuario.SelectedItem.Text,
-                ClaveUsuario = Convert.ToInt32 (TbClaveUsuario.Text)
+                ClaveUsuario = Convert.ToInt32 (TbnumClaveUsuario.Text),
+                ApellidoPaterno = TbApellidoPaterno.Text,
+                ApellidoMaterno = TbApellidoMaterno.Text
             };
             return Usuarios;
         }
@@ -130,7 +143,9 @@ namespace GePE.usuarios
                 ddlTipoUsuario.SelectedIndex = index;
             }
             ddlTipoUsuario.SelectedIndex = index;
-            TbClaveUsuario.Text = Convert.ToString( Usuarios.ClaveUsuario);
+            TbnumClaveUsuario.Text = Convert.ToString( Usuarios.ClaveUsuario);
+            TbApellidoPaterno.Text = Usuarios.ApellidoPaterno.Trim();
+            TbApellidoMaterno.Text = Usuarios.ApellidoMaterno.Trim();
         }
         #endregion
 
@@ -268,6 +283,7 @@ namespace GePE.usuarios
         protected void BtnMnuEditar_Click(object sender, EventArgs e)
         {
             lblTituloAccion.Text = "Modificar Usuario";
+            TbnumClaveUsuario.Enabled = false;
             BtnModificar.Visible = true;
             BtnCancelar.Visible = true;
             BtnMnuBorrar.Visible = false;
@@ -321,6 +337,7 @@ namespace GePE.usuarios
             CargaTipoUsuario();
             ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdUsuario.Value));
             ControlesOnOFF(true);
+            TbnumClaveUsuario.Enabled = false;
 
             PnlCapturaDatos.Visible = true;
 

@@ -44,24 +44,27 @@
                             <div class="col-lg-4 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbCalveUsuario" runat="server" class="text-dark font-weight-bold m-0">Clave del usuario</asp:Label>
-                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbCalveUsuario" />--%>
-                                    <asp:TextBox runat="server" ID="TbClaveUsuario" CssClass="form-control" TextMode="Number"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfvTbClaveUsuario" runat="server" CssClass="text-danger"
-                                        ControlToValidate="TbClaveUsuario"
-                                        ErrorMessage="*Este campo es requerido."
-                                        Display="Dynamic"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="revTbClaveUSuario" runat="server" CssClass="text-danger"
-                                        ControlToValidate="TbClaveUsuario"
-                                        ErrorMessage="*Este campo debe de tener la estructura XXX con numeros de 0 a 9."
-                                        ValidationExpression="^[0-9]{3}$"
-                                        Display="Dynamic"></asp:RegularExpressionValidator>
+                                    <uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbnumClaveUsuario"/>
+                                    
                                 </div>
 
                             </div>
-                            <div class="col-lg-6 col-md-12 col-12">
+                            <div class="col-lg-4 col-md-12 col-12">
                                 <div class="form-group">
-                                    <asp:Label ID="lbNombreUsuario" class="text-dark font-weight-bold m-0" runat="server">Nombres del usuario (Nombre Apellido-paterno apellido-materno)</asp:Label>
+                                    <asp:Label ID="lbNombreUsuario" class="text-dark font-weight-bold m-0" runat="server">Nombre del usuario</asp:Label>
                                     <uc1:wfucalfanumericorequerido runat="server" id="TbNombreUsuario" CssClass="form-control" placeholder="Nombre Apellido-paterno apellido-materno" tyle="text-align:center"/>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbApellidoPaterno" class="text-dark font-weight-bold m-0" runat="server">Apellido paterno</asp:Label>
+                                    <uc1:wfucalfanumericorequerido runat="server" id="TbApellidoPaterno" CssClass="form-control" placeholder="Nombre Apellido-paterno apellido-materno" tyle="text-align:center"/>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbApellidoMaterno" class="text-dark font-weight-bold m-0" runat="server">Apellido materno</asp:Label>
+                                    <uc1:wfucalfanumericorequerido runat="server" id="TbApellidoMaterno" CssClass="form-control" placeholder="Nombre Apellido-paterno apellido-materno" tyle="text-align:center"/>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-12 col-12">
@@ -90,7 +93,7 @@
                                     <uc1:wfucalfanumericorequerido runat="server" ID="TbContraseñaUsuario" placeholder="Contraseña"/>
                                 </div>
                             </div>
-                            <div class="col-lg-2 col-md-12 col-12">
+                            <div class="col-lg-3 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbTipoUsuario" class="text-dark font-weight-bold m-0" runat="server">Tipo usuario</asp:Label>
                                     <br />

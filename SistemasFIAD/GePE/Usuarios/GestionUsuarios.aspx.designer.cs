@@ -85,31 +85,13 @@ namespace GePE.usuarios {
         protected global::System.Web.UI.WebControls.Label lbCalveUsuario;
         
         /// <summary>
-        /// Control TbClaveUsuario.
+        /// Control TbnumClaveUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbClaveUsuario;
-        
-        /// <summary>
-        /// Control rfvTbClaveUsuario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbClaveUsuario;
-        
-        /// <summary>
-        /// Control revTbClaveUSuario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revTbClaveUSuario;
+        protected global::Presentacion.Controles.efucNumeroEnteroPositivoReq TbnumClaveUsuario;
         
         /// <summary>
         /// Control lbNombreUsuario.
@@ -128,6 +110,42 @@ namespace GePE.usuarios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::GePE.Controles.wfucAlfabeticoRequerido TbNombreUsuario;
+        
+        /// <summary>
+        /// Control lbApellidoPaterno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbApellidoPaterno;
+        
+        /// <summary>
+        /// Control TbApellidoPaterno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::GePE.Controles.wfucAlfabeticoRequerido TbApellidoPaterno;
+        
+        /// <summary>
+        /// Control lbApellidoMaterno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbApellidoMaterno;
+        
+        /// <summary>
+        /// Control TbApellidoMaterno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::GePE.Controles.wfucAlfabeticoRequerido TbApellidoMaterno;
         
         /// <summary>
         /// Control lbCorreoUsuario.
