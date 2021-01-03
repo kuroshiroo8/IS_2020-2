@@ -13,9 +13,14 @@ namespace GePE.Logout
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["IdUsuario"] = "";
             Session["NombreUsuario"] = "";
-            Session["TipoUsuario"] = "";
             Session["CorreoUsuario"] = "";
+            Session["PassUsuario"] = "";
+            Session["TipoUsuario"] = "";
+            Session["ClaveUsuario"] = "";
+            Session["ApellidoPaterno"] = "";
+            Session["ApellidoMaterno"] = "";
 
             Response.Redirect("../Carreras/GestionCarreras.aspx");
         }

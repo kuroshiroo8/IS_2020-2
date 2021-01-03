@@ -33,7 +33,7 @@ namespace Negocios
                 return "Exito: Los datos fueron insertados correctamente.";
             else
                 if (R.Contains("Error"))
-                return "Error: Los datos no se insertaron en el sistema.";
+                return "Error: Los datos no se insertaron en el sistema. La clave o correo ya existen.";
             else
                 return R;
         }
@@ -67,7 +67,7 @@ namespace Negocios
                 return "Exito: Los datos fueron modificados correctamente.";
             else
                 if (R.Contains("Error"))
-                return "Error: Los datos no se modificaron en el sistema.";
+                return "Error: Los datos no se modificaron en el sistema. La clave o correo ya existen.";
             else
                 return R;
         }

@@ -44,27 +44,77 @@
                             <div class="col-lg-4 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbCalveUsuario" runat="server" class="text-dark font-weight-bold m-0">Clave del usuario</asp:Label>
-                                    <uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbnumClaveUsuario"/>
-                                    
+                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbnumClaveUsuario" />--%>
+                                    <asp:TextBox runat="server" ID="TbnumClaveUsuario1" CssClass="form-control" TextMode="Number"></asp:TextBox>
+
+                                    <asp:RequiredFieldValidator ID="rfvTbnumClaveUsuario1" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbnumClaveUsuario1"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+
+                                    <asp:RegularExpressionValidator ID="revTbnumClaveUsuario1" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbnumClaveUsuario1"
+                                        ErrorMessage="*Este campo debe de tener la estructura XXX con numeros de 0 a 9."
+                                        ValidationExpression="^[0-9]{3}$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
 
                             </div>
                             <div class="col-lg-4 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbNombreUsuario" class="text-dark font-weight-bold m-0" runat="server">Nombre del usuario</asp:Label>
-                                    <uc1:wfucalfanumericorequerido runat="server" id="TbNombreUsuario" CssClass="form-control" placeholder="Nombre Apellido-paterno apellido-materno" tyle="text-align:center"/>
+
+                                    <asp:TextBox runat="server" ID="TbNombreUsuario" CssClass="form-control" placeholder="Nombre(s)" tyle="text-align:center"></asp:TextBox>
+
+                                    <asp:RequiredFieldValidator ID="rfvTbNombreUsuario" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbNombreUsuario"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+
+                                    <asp:RegularExpressionValidator ID="revTbNombreUsuario" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbNombreUsuario"
+                                        ErrorMessage="*Sólo letras."
+                                        ValidationExpression="^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
+
+                                    <%--<uc1:wfucTbAlfabeticoRequerido runat="server" ID="TbNombreUsuario1" CssClass="form-control" placeholder="Nombre Apellido-paterno apellido-materno" tyle="text-align:center" />--%>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbApellidoPaterno" class="text-dark font-weight-bold m-0" runat="server">Apellido paterno</asp:Label>
-                                    <uc1:wfucalfanumericorequerido runat="server" id="TbApellidoPaterno" CssClass="form-control" placeholder="Nombre Apellido-paterno apellido-materno" tyle="text-align:center"/>
+                                    <%--<uc1:wfucTbAlfabeticoRequerido runat="server" ID="TbApellidoPaterno1" CssClass="form-control" placeholder="Nombre Apellido-paterno apellido-materno" tyle="text-align:center" />--%>
+                                <asp:TextBox runat="server" ID="TbApellidoPaterno" CssClass="form-control" placeholder="Apellido Paterno" tyle="text-align:center"></asp:TextBox>
+
+                                    <asp:RequiredFieldValidator ID="rfvTbApellidoPaterno" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbApellidoPaterno"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+
+                                    <asp:RegularExpressionValidator ID="revTbApellidoPaterno" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbApellidoPaterno"
+                                        ErrorMessage="*Sólo letras."
+                                        ValidationExpression="^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
+
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbApellidoMaterno" class="text-dark font-weight-bold m-0" runat="server">Apellido materno</asp:Label>
-                                    <uc1:wfucalfanumericorequerido runat="server" id="TbApellidoMaterno" CssClass="form-control" placeholder="Nombre Apellido-paterno apellido-materno" tyle="text-align:center"/>
+                                    <%--<uc1:wfucTbAlfabeticoRequerido runat="server" ID="TbApellidoMaterno1" CssClass="form-control" placeholder="Nombre Apellido-paterno apellido-materno" tyle="text-align:center" />--%>
+                                <asp:TextBox runat="server" ID="TbApellidoMaterno" CssClass="form-control" placeholder="Apellido Materno" tyle="text-align:center"></asp:TextBox>
+
+                                    <asp:RequiredFieldValidator ID="rfvTbApellidoMaterno" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbApellidoMaterno"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+
+                                    <asp:RegularExpressionValidator ID="revTbApellidoMaterno" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbApellidoMaterno"
+                                        ErrorMessage="*Sólo letras."
+                                        ValidationExpression="^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-12 col-12">
@@ -73,12 +123,12 @@
                                     <%--<uc1:wfucalfanumericorequerido runat="server" id="TbCorreoUsuairo" />--%>
                                     <asp:TextBox ID="TbCorreoUsuario" runat="server" type="email" CssClass="form-control" aria-describedby="emailHelp" placeholder="Correo@uabc.edu.mx" />
 
-                                            <asp:RequiredFieldValidator ID="rfvTbCorreoUSuario" runat="server" CssClass="text-danger"
-                                                ControlToValidate="TbCorreoUsuario"
-                                                ErrorMessage="*Este campo es requerido."
-                                                Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvTbCorreoUSuario" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbCorreoUsuario"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
 
-                                            <asp:RegularExpressionValidator ID="revTbCorreoUsuario" runat="server" CssClass="text-danger"
+                                    <asp:RegularExpressionValidator ID="revTbCorreoUsuario" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbCorreoUsuario"
                                         ErrorMessage="*Este campo debe de tener una estructura parecida a ejemplo@uabc.edu.mx"
                                         ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"
@@ -86,11 +136,23 @@
                                 </div>
                             </div>
                             <br />
-                             <div class="col-lg-4 col-md-12 col-12">
+                            <div class="col-lg-4 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbContraseña" Class="text-dark font-weight-bold m-0" runat="server">Contraseña</asp:Label>
                                     <br />
-                                    <uc1:wfucalfanumericorequerido runat="server" ID="TbContraseñaUsuario" placeholder="Contraseña"/>
+                                    <asp:TextBox ID="TbContraseñaUsuario1" runat="server" type="password" CssClass="form-control" placeholder="Contraseña" />
+
+                                    <asp:RequiredFieldValidator ID="rfvTbContraseñaUsuario1" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbContraseñaUsuario1"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+
+                                    <asp:RegularExpressionValidator ID="revTbContraseñaUsuario1" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbContraseñaUsuario1"
+                                        ErrorMessage="*Sólo alfanumericos."
+                                        ValidationExpression="^[a-zA-Z0-Z9ñÑáéíóúÁÉÍÓÚ -.,]+$"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
+
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-12 col-12">
@@ -128,7 +190,8 @@
                     CssClass="table thead-dark table-sm table-bordered table-responsive"
                     DataKeyNames="IdUsuario"
                     OnRowDeleting="GrvUsuarios_RowDeleting"
-                    OnRowEditing="GrvUsuarios_RowEditing">
+                    OnRowEditing="GrvUsuarios_RowEditing"
+                    OnSelectedIndexChanged="GrvUsuarios_SelectedIndexChanged">
                     <Columns>
                         <asp:BoundField DataField="ClaveUsuario" HeaderText="CLAVE" />
                         <asp:BoundField DataField="NombreUsuario" HeaderText="NOMBRE DEL USUARIO" />
@@ -148,6 +211,14 @@
                                     CausesValidation="false" CommandName="Delete"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
+
+                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="GrvBtnNotificar" runat="server" CssClass="btn btn-md btn-warning"
+                                    CausesValidation="false" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>"><i class="fas fa-envelope-open-text"></i> Notificar</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
                     </Columns>
                     <HeaderStyle CssClass="bg-dark text-white" />
                 </asp:GridView>

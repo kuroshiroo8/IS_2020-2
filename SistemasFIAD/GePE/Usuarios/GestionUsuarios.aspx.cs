@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using System.Net;
+using System.Net.Mail;
+
 using Entidades;
 using Negocios;
 
@@ -60,8 +63,8 @@ namespace GePE.usuarios
             TbCriterioBusqueda.Text = string.Empty;
             TbCorreoUsuario.Text = string.Empty;
             TbNombreUsuario.Text = string.Empty;
-            TbContraseñaUsuario.Text = string.Empty;
-            TbnumClaveUsuario.Text = string.Empty;
+            TbContraseñaUsuario1.Text = string.Empty;
+            TbnumClaveUsuario1.Text = string.Empty;
             TbApellidoPaterno.Text = string.Empty;
             TbApellidoMaterno.Text = string.Empty;
 
@@ -82,8 +85,8 @@ namespace GePE.usuarios
             //Enabled TextBox
             TbCorreoUsuario.Enabled = TrueOrFalse;
             TbNombreUsuario.Enabled = TrueOrFalse;
-            TbContraseñaUsuario.Enabled = TrueOrFalse;
-            TbnumClaveUsuario.Enabled = TrueOrFalse;
+            TbContraseñaUsuario1.Enabled = TrueOrFalse;
+            TbnumClaveUsuario1.Enabled = TrueOrFalse;
             TbApellidoPaterno.Enabled = TrueOrFalse;
             TbApellidoMaterno.Enabled = TrueOrFalse;
 
@@ -104,8 +107,8 @@ namespace GePE.usuarios
             //Visible TextBox
             TbCorreoUsuario.Visible = TrueOrFalse;
             TbNombreUsuario.Visible = TrueOrFalse;
-            TbContraseñaUsuario.Visible = TrueOrFalse;
-            TbnumClaveUsuario.Visible = TrueOrFalse;
+            TbContraseñaUsuario1.Visible = TrueOrFalse;
+            TbnumClaveUsuario1.Visible = TrueOrFalse;
             TbApellidoPaterno.Visible = TrueOrFalse;
             TbApellidoMaterno.Visible = TrueOrFalse;
 
@@ -116,13 +119,13 @@ namespace GePE.usuarios
         #region Objeto Cliente
         protected E_Usuarios ControlesWebForm_ObjetoEntidad()
         {
-             E_Usuarios Usuarios = new E_Usuarios()
+            E_Usuarios Usuarios = new E_Usuarios()
             {
                 NombreUsuario = TbNombreUsuario.Text,
                 CorreoUsuario = TbCorreoUsuario.Text,
-                PassUsuario = TbContraseñaUsuario.Text,
+                PassUsuario = TbContraseñaUsuario1.Text,
                 TipoUsuario = ddlTipoUsuario.SelectedItem.Text,
-                ClaveUsuario = Convert.ToInt32 (TbnumClaveUsuario.Text),
+                ClaveUsuario = TbnumClaveUsuario1.Text,
                 ApellidoPaterno = TbApellidoPaterno.Text,
                 ApellidoMaterno = TbApellidoMaterno.Text
             };
@@ -134,7 +137,7 @@ namespace GePE.usuarios
 
             TbNombreUsuario.Text = Usuarios.NombreUsuario.Trim();
             TbCorreoUsuario.Text = Usuarios.CorreoUsuario.Trim();
-            TbContraseñaUsuario.Text = Usuarios.PassUsuario.Trim();
+            TbContraseñaUsuario1.Text = Usuarios.PassUsuario.Trim();
             CargaTipoUsuario();
             int index = 0;
             while (ddlTipoUsuario.SelectedItem.Text != Usuarios.TipoUsuario.Trim())
@@ -143,7 +146,7 @@ namespace GePE.usuarios
                 ddlTipoUsuario.SelectedIndex = index;
             }
             ddlTipoUsuario.SelectedIndex = index;
-            TbnumClaveUsuario.Text = Convert.ToString( Usuarios.ClaveUsuario);
+            TbnumClaveUsuario1.Text = Convert.ToString(Usuarios.ClaveUsuario);
             TbApellidoPaterno.Text = Usuarios.ApellidoPaterno.Trim();
             TbApellidoMaterno.Text = Usuarios.ApellidoMaterno.Trim();
         }
@@ -182,7 +185,6 @@ namespace GePE.usuarios
                 PnlGrvUsuarios.Visible = true;
             }
         }
-        
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
             if (TbCriterioBusqueda.Text.Trim() != string.Empty)
@@ -208,6 +210,8 @@ namespace GePE.usuarios
 
                     hfIdUsuario.Value = LstUsuario[0].IdUsuario.ToString();
                     ObjetoEntidad_ControlesWebForm(Convert.ToInt32(hfIdUsuario.Value));
+
+                    ControlesOnOFF(false);
 
                     BtnMnuEditar.Visible = true;
                     BtnMnuBorrar.Visible = true;
@@ -239,8 +243,27 @@ namespace GePE.usuarios
             BtnCancelar.Visible = false;
             BtnAceptar.Visible = true;
 
+            //string fromname = Convert.ToString(Session["NombreUsuario"]) + " " + Convert.ToString(Session["ApellidoPaterno"]) + " " + Convert.ToString(Session["ApellidoMaterno"]);
+            //string toname = TbNombreUsuario.Text + " " + TbApellidoPaterno.Text + " " + TbApellidoMaterno.Text;
+
+            //Response.Write("<script language=javascript>alert('" +
+            //    "From Correo: " + Convert.ToString(Session["CorreoUsuario"]) +
+            //    "From Nombre: " + fromname +
+            //    " From Pass: " + Convert.ToString(Session["PassUsuario"]) +
+            //    " To Correo: " + TbCorreoUsuario.Text +
+            //    " To Nombre: " + toname +
+            //    " To Clave: " + TbnumClaveUsuario1.Text +
+            //    " To Pass: " + TbContraseñaUsuario1.Text +
+            //    " To Tipo: " + ddlTipoUsuario.SelectedItem.Text +
+            //    "');</script>");
+
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
+                string fromname = Convert.ToString(Session["NombreUsuario"]) + " " + Convert.ToString(Session["ApellidoPaterno"]) + " " + Convert.ToString(Session["ApellidoMaterno"]);
+                string toname = TbNombreUsuario.Text + " " + TbApellidoPaterno.Text + " " + TbApellidoMaterno.Text;
+                
+                NotificarUsuario(Convert.ToString(Session["CorreoUsuario"]), fromname, Convert.ToString(Session["PassUsuario"]), TbCorreoUsuario.Text, toname, TbnumClaveUsuario1.Text, TbCorreoUsuario.Text, TbContraseñaUsuario1.Text, ddlTipoUsuario.SelectedItem.Text);
+
                 InicializaControles();
             }
         }
@@ -248,6 +271,20 @@ namespace GePE.usuarios
         {
             string R = NU.BorraUsuario(Convert.ToInt32(hfIdUsuario.Value));
             lblTituloAccion.Text = R;
+
+            if (Convert.ToInt32(hfIdUsuario.Value) == Convert.ToInt32(Session["IdUsuario"]))
+            {
+                Session["IdUsuario"] = "";
+                Session["NombreUsuario"] = "";
+                Session["CorreoUsuario"] = "";
+                Session["PassUsuario"] = "";
+                Session["TipoUsuario"] = "";
+                Session["ClaveUsuario"] = "";
+                Session["ApellidoPaterno"] = "";
+                Session["ApellidoMaterno"] = "";
+
+                Response.Redirect("../Carreras/GestionCarreras.aspx");
+            }
 
             //Aqui se ponen no visibles los Label, TextBox y el CheckBox
             VisibleOnOFF(false);
@@ -275,15 +312,37 @@ namespace GePE.usuarios
             BtnCancelar.Visible = false;
             BtnAceptar.Visible = true;
 
+            //string fromname = Convert.ToString(Session["NombreUsuario"]) + " " + Convert.ToString(Session["ApellidoPaterno"]) + " " + Convert.ToString(Session["ApellidoMaterno"]);
+            //string toname = TbNombreUsuario.Text + " " + TbApellidoPaterno.Text + " " + TbApellidoMaterno.Text;
+
+            //Response.Write("<script language=javascript>alert('" +
+            //    "From Correo: " + Convert.ToString(Session["CorreoUsuario"]) +
+            //    "From Nombre: " + fromname +
+            //    " From Pass: " + Convert.ToString(Session["PassUsuario"]) +
+            //    " To Correo: " + TbCorreoUsuario.Text +
+            //    " To Nombre: " + toname +
+            //    " To Clave: " + TbnumClaveUsuario1.Text +
+            //    " To Pass: " + TbContraseñaUsuario1.Text +
+            //    " To Tipo: " + ddlTipoUsuario.SelectedItem.Text +
+            //    "');</script>");
+
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
+                string fromname = Convert.ToString(Session["NombreUsuario"]) + " " + Convert.ToString(Session["ApellidoPaterno"]) + " " + Convert.ToString(Session["ApellidoMaterno"]);
+                string toname = TbNombreUsuario.Text + " " + TbApellidoPaterno.Text + " " + TbApellidoMaterno.Text;
+                
+                NotificarUsuario(Convert.ToString(Session["CorreoUsuario"]), fromname, Convert.ToString(Session["PassUsuario"]), TbCorreoUsuario.Text, toname, TbnumClaveUsuario1.Text, TbCorreoUsuario.Text, TbContraseñaUsuario1.Text, ddlTipoUsuario.SelectedItem.Text);
+                
                 InicializaControles();
             }
         }
         protected void BtnMnuEditar_Click(object sender, EventArgs e)
         {
             lblTituloAccion.Text = "Modificar Usuario";
-            TbnumClaveUsuario.Enabled = false;
+
+            TbCorreoUsuario.Enabled = false;
+            //TbnumClaveUsuario1.Enabled = false;
+
             BtnModificar.Visible = true;
             BtnCancelar.Visible = true;
             BtnMnuBorrar.Visible = false;
@@ -337,7 +396,9 @@ namespace GePE.usuarios
             CargaTipoUsuario();
             ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdUsuario.Value));
             ControlesOnOFF(true);
-            TbnumClaveUsuario.Enabled = false;
+
+            TbCorreoUsuario.Enabled = false;
+            //TbnumClaveUsuario1.Enabled = false;
 
             PnlCapturaDatos.Visible = true;
 
@@ -347,7 +408,49 @@ namespace GePE.usuarios
             BtnModificar.Visible = true;
             BtnCancelar.Visible = true;
         }
+        protected void GrvUsuarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (sender == null)
+            {
+                throw new ArgumentNullException(nameof(sender));
+            }
+            if (e == null)
+            {
+                throw new ArgumentNullException(nameof(e));
+            }
 
+            GridViewRow row = GrvUsuarios.SelectedRow;
+            string valor = Convert.ToString(GrvUsuarios.Rows[row.RowIndex].Cells[2].Text);
+            
+            List<E_Usuarios> LstUsuarios = NU.BuscaUsuario(valor);
+
+            foreach (var item in LstUsuarios)
+            {
+                if (item != null)
+                {
+                    string fromname = Convert.ToString(Session["NombreUsuario"]) + " " + Convert.ToString(Session["ApellidoPaterno"]) + " " + Convert.ToString(Session["ApellidoMaterno"]);
+                    string toname = item.NombreUsuario + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno;
+                    
+                    //Response.Write("<script language=javascript>alert('" +
+                    //    "From Correo: " + Convert.ToString(Session["CorreoUsuario"]) +
+                    //    "From Nombre: " + fromname +
+                    //    " From Pass: " + Convert.ToString(Session["PassUsuario"]) +
+                    //    " To Correo: " + item.CorreoUsuario +
+                    //    " To Nombre: " + toname +
+                    //    " To Clave: " + item.ClaveUsuario +
+                    //    " To Pass: " + item.PassUsuario +
+                    //    " To Tipo: " + item.TipoUsuario +
+                    //    "');</script>");
+                    
+                    NotificarUsuario(Convert.ToString(Session["CorreoUsuario"]), fromname, Convert.ToString(Session["PassUsuario"]), item.CorreoUsuario, toname, item.ClaveUsuario, item.CorreoUsuario, item.PassUsuario, item.TipoUsuario);
+
+                }
+                else
+                {
+
+                }
+            }
+            }
         #endregion
 
         private void CargaTipoUsuario()
@@ -363,5 +466,46 @@ namespace GePE.usuarios
             i = new ListItem("ADMINISTRADOR", "3");
             ddlTipoUsuario.Items.Add(i);
         }
+
+        private void NotificarUsuario(string fromaddress, string fromname, string frompass, string toaddress, string toname, string clave, string correo, string pass, string tipo)
+        {
+            var fromAddress = new MailAddress(fromaddress, fromname);
+            var toAddress = new MailAddress(toaddress, toname);
+            string fromPassword = frompass;
+            const string subject = "Datos de cuenta";
+            string str = "Nombre: " + toname
+                + " Clave: " + clave
+                + " Correo: " + correo
+                + " Contraseña: " + pass
+                + " Tipo de usuario: " + tipo;
+            string body1 = str;
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body1
+            })
+            {
+                try
+                {
+                    smtp.Send(message);
+                }
+                catch (Exception ex)
+                {
+                    //el mensaje no se envio
+                }
+            }
+        }
+
+
     }
 }

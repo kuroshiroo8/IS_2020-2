@@ -105,10 +105,15 @@ namespace GePE.Login
                                 {
                                     //lblNombreAccion.Text = "*Correo y contraseña correctos";
                                     //lblNombreAccion.Visible = true;
-
+                                    
+                                    Session["IdUsuario"] = item.IdUsuario;
                                     Session["NombreUsuario"] = item.NombreUsuario;
-                                    Session["TipoUsuario"] = item.TipoUsuario;
                                     Session["CorreoUsuario"] = item.CorreoUsuario;
+                                    Session["PassUsuario"] = item.PassUsuario;
+                                    Session["TipoUsuario"] = item.TipoUsuario;
+                                    Session["ClaveUsuario"] = item.ClaveUsuario;
+                                    Session["ApellidoPaterno"] = item.ApellidoPaterno;
+                                    Session["ApellidoMaterno"] = item.ApellidoMaterno;
 
                                     Response.Redirect("../Carreras/GestionCarreras.aspx");
 

@@ -85,13 +85,31 @@ namespace GePE.usuarios {
         protected global::System.Web.UI.WebControls.Label lbCalveUsuario;
         
         /// <summary>
-        /// Control TbnumClaveUsuario.
+        /// Control TbnumClaveUsuario1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Presentacion.Controles.efucNumeroEnteroPositivoReq TbnumClaveUsuario;
+        protected global::System.Web.UI.WebControls.TextBox TbnumClaveUsuario1;
+        
+        /// <summary>
+        /// Control rfvTbnumClaveUsuario1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbnumClaveUsuario1;
+        
+        /// <summary>
+        /// Control revTbnumClaveUsuario1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revTbnumClaveUsuario1;
         
         /// <summary>
         /// Control lbNombreUsuario.
@@ -109,7 +127,25 @@ namespace GePE.usuarios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::GePE.Controles.wfucAlfabeticoRequerido TbNombreUsuario;
+        protected global::System.Web.UI.WebControls.TextBox TbNombreUsuario;
+        
+        /// <summary>
+        /// Control rfvTbNombreUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbNombreUsuario;
+        
+        /// <summary>
+        /// Control revTbNombreUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revTbNombreUsuario;
         
         /// <summary>
         /// Control lbApellidoPaterno.
@@ -127,7 +163,25 @@ namespace GePE.usuarios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::GePE.Controles.wfucAlfabeticoRequerido TbApellidoPaterno;
+        protected global::System.Web.UI.WebControls.TextBox TbApellidoPaterno;
+        
+        /// <summary>
+        /// Control rfvTbApellidoPaterno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbApellidoPaterno;
+        
+        /// <summary>
+        /// Control revTbApellidoPaterno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revTbApellidoPaterno;
         
         /// <summary>
         /// Control lbApellidoMaterno.
@@ -145,7 +199,25 @@ namespace GePE.usuarios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::GePE.Controles.wfucAlfabeticoRequerido TbApellidoMaterno;
+        protected global::System.Web.UI.WebControls.TextBox TbApellidoMaterno;
+        
+        /// <summary>
+        /// Control rfvTbApellidoMaterno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbApellidoMaterno;
+        
+        /// <summary>
+        /// Control revTbApellidoMaterno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revTbApellidoMaterno;
         
         /// <summary>
         /// Control lbCorreoUsuario.
@@ -193,13 +265,31 @@ namespace GePE.usuarios {
         protected global::System.Web.UI.WebControls.Label lbContraseña;
         
         /// <summary>
-        /// Control TbContraseñaUsuario.
+        /// Control TbContraseñaUsuario1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::GePE.Controles.wfucAlfabeticoRequerido TbContraseñaUsuario;
+        protected global::System.Web.UI.WebControls.TextBox TbContraseñaUsuario1;
+        
+        /// <summary>
+        /// Control rfvTbContraseñaUsuario1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTbContraseñaUsuario1;
+        
+        /// <summary>
+        /// Control revTbContraseñaUsuario1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revTbContraseñaUsuario1;
         
         /// <summary>
         /// Control lbTipoUsuario.

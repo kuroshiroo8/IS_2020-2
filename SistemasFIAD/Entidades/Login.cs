@@ -20,7 +20,7 @@ namespace Entidades
         private string _CorreoUsuario;
         private string _PassUsuario;
         private string _TipoUsuario;
-        private int _ClaveUsuario;
+        private string _ClaveUsuario;
         private string _ApellidoPaterno;
         private string _ApellidoMaterno;
         #endregion
@@ -34,7 +34,7 @@ namespace Entidades
             _CorreoUsuario = string.Empty;
             _PassUsuario = string.Empty;
             _TipoUsuario = string.Empty;
-            _ClaveUsuario = 0;
+            _ClaveUsuario = string.Empty;
             _ApellidoPaterno = string.Empty;
             _ApellidoMaterno = string.Empty;
         }
@@ -47,7 +47,7 @@ namespace Entidades
         public string CorreoUsuario { get => _CorreoUsuario; set => _CorreoUsuario = value; }
         public string PassUsuario { get => _PassUsuario; set => _PassUsuario = value; }
         public string TipoUsuario { get => _TipoUsuario; set => _TipoUsuario = value; }
-        public int ClaveUsuario { get => _ClaveUsuario; set => _ClaveUsuario = value; }
+        public string ClaveUsuario { get => _ClaveUsuario; set => _ClaveUsuario = value; }
         public string ApellidoPaterno { get => _ApellidoPaterno; set => _ApellidoPaterno = value; }
         public string ApellidoMaterno { get => _ApellidoMaterno; set => _ApellidoMaterno = value; }
         #endregion
