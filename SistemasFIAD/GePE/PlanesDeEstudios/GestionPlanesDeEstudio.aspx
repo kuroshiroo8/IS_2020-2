@@ -22,6 +22,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <asp:LinkButton ID="BtnBuscar" runat="server" CssClass="btn btn-sm btn btn-success " CausesValidation="false" OnClick="BtnBuscar_Click"><i class="fas fa-search"></i> Buscar</asp:LinkButton>
+                        <asp:LinkButton ID="BtnBuscarEstatus" runat="server" CssClass="btn btn-sm btn btn-success " CausesValidation="false" OnClick="BtnBuscarEstatus_Click"><i class="fas fa-search"></i> Buscar</asp:LinkButton>
                     </div>
                 </div>
             </div>

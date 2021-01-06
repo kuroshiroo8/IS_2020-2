@@ -93,7 +93,8 @@ namespace Negocios
         {
             return (from PlanEstudio in LstPlanEstudio()
                     where
-                    PlanEstudio.PlanEstudio.ToUpper().Contains(CriterioBusqueda.ToUpper())
+                        PlanEstudio.PlanEstudio.ToUpper().Contains(CriterioBusqueda.ToUpper()) ||
+                        PlanEstudio.NombreCarrera.ToUpper().Contains(CriterioBusqueda.ToUpper())
                     select PlanEstudio).ToList();
         }
 
@@ -109,6 +110,15 @@ namespace Negocios
             return (from PlanEstudio in LstPlanEstudio()
                     where
                     PlanEstudio.Estatus.ToUpper().Contains(CriterioBusqueda.ToUpper())
+                    select PlanEstudio).ToList();
+        }
+        public List<E_PlanEstudio> BuscaPlanEstudioConCriterioEstatus(string CriterioBusqueda,string Estatus)
+        {
+            return (from PlanEstudio in LstPlanEstudio()
+                    where
+                        PlanEstudio.PlanEstudio.ToUpper().Contains(CriterioBusqueda.ToUpper()) ||
+                        PlanEstudio.NombreCarrera.ToUpper().Contains(CriterioBusqueda.ToUpper()) &&
+                        PlanEstudio.Estatus.ToUpper().Contains(Estatus.ToUpper())
                     select PlanEstudio).ToList();
         }
     }

@@ -106,5 +106,13 @@ namespace Negocios
                         Carreras.Estatus.ToUpper().Contains(CriterioBusqueda.ToUpper())
                     select Carreras).ToList();
         }
+        public List<E_Carreras> BuscaCarreraConCriterioEstatus(string CriterioBusqueda, string Estatus)
+        {
+            return (from Carreras in LstCarreras()
+                    where
+                        Carreras.NombreCarrera.ToUpper().Contains(CriterioBusqueda.ToUpper()) &&
+                        Carreras.Estatus.ToUpper().Contains(Estatus.ToUpper())
+                    select Carreras).ToList();
+        }
     }
 }

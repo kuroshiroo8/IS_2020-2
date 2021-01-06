@@ -23,10 +23,12 @@ namespace GePE.Carreras
             if (Convert.ToString(Session["TipoUsuario"]) == "ADMINISTRADOR")
             {
                 BtnMnuListadoEstatus.Visible = false;
+                BtnBuscarEstatus.Visible = false;
             }
             else if (Convert.ToString(Session["TipoUsuario"]) == "CAPTURISTA")
             {
                 BtnMnuListadoEstatus.Visible = false;
+                BtnBuscarEstatus.Visible = false;
             }
             else if (Convert.ToString(Session["TipoUsuario"]) == "INTERNO")
             {
@@ -34,8 +36,11 @@ namespace GePE.Carreras
                 GrvCarreras.Columns[4].Visible = false;
 
                 BtnMnuNuevo.Visible = false;
-                BtnMnuListadoEstatus.Visible = true;
                 BtnMnuListado.Visible = false;
+                BtnMnuListadoEstatus.Visible = true;
+
+                BtnBuscar.Visible = false;
+                BtnBuscarEstatus.Visible = true;
 
                 BtnMnuEditar.Visible = false;
                 BtnMnuBorrar.Visible = false;
@@ -44,13 +49,16 @@ namespace GePE.Carreras
             {
                 GrvCarreras.Columns[3].Visible = false;
                 GrvCarreras.Columns[4].Visible = false;
-                BtnMnuListadoEstatus.Visible = true;
-                BtnMnuListado.Visible = false;
+
                 BtnMnuNuevo.Visible = false;
+                BtnMnuListado.Visible = false;
+                BtnMnuListadoEstatus.Visible = true;
+
+                BtnBuscar.Visible = false;
+                BtnBuscarEstatus.Visible = true;
 
                 BtnMnuEditar.Visible = false;
                 BtnMnuBorrar.Visible = false;
-
             }
 
         }
@@ -207,6 +215,58 @@ namespace GePE.Carreras
             if (TbCriterioBusqueda.Text.Trim() != string.Empty)
             {
                 List<E_Carreras> LstCarrera = NC.BuscaCarrera(TbCriterioBusqueda.Text.Trim());
+                if (LstCarrera.Count.Equals(0))
+                {
+                    InicializaControles();
+                    lblNombreAccion.Text = "No se encontraron datos con el criterio de busqueda";
+                }
+                else if (LstCarrera.Count.Equals(1))
+                {
+                    InicializaControles();
+                    lblTituloAccion.Text = "Resultado de busqueda";
+
+                    //Aqui se ponen visibles los Label, TextBox y el CheckBox
+                    VisibleOnOFF(true);
+
+                    //Aqui se hacen no editables los TextBox
+                    TbClaveCarrera.Enabled = false;
+                    TbNombreCarrera.Enabled = false;
+                    TbAliasCarrera.Enabled = false;
+
+                    //Aqui se hacen no editables el CheckBox
+                    cbActivaCarrera.Enabled = false;
+
+                    hfIdCarrera.Value = LstCarrera[0].IdCarrera.ToString();
+                    ObjetoEntidad_ControlesWebForm(Convert.ToInt32(hfIdCarrera.Value));
+
+                    if (Convert.ToString(Session["TipoUsuario"]) == "")
+                    {
+                        BtnMnuEditar.Visible = false;
+                        BtnMnuBorrar.Visible = false;
+                    }
+                    else
+                    {
+                        BtnMnuEditar.Visible = true;
+                        BtnMnuBorrar.Visible = true;
+                    }
+
+                    PnlCapturaDatos.Visible = true;
+                    PnlGrvCarreras.Visible = false;
+                }
+                else
+                {
+                    InicializaControles();
+                    GrvCarreras.DataSource = LstCarrera;
+                    GrvCarreras.DataBind();
+                    PnlGrvCarreras.Visible = true;
+                }
+            }
+        }
+        protected void BtnBuscarEstatus_Click(object sender, EventArgs e)
+        {
+            if (TbCriterioBusqueda.Text.Trim() != string.Empty)
+            {
+                List<E_Carreras> LstCarrera = NC.BuscaCarreraConCriterioEstatus(TbCriterioBusqueda.Text.Trim(),"EN PUBLICADO");
                 if (LstCarrera.Count.Equals(0))
                 {
                     InicializaControles();

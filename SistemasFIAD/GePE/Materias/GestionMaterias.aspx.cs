@@ -27,10 +27,12 @@ namespace GePE.Materias
             if (Convert.ToString(Session["TipoUsuario"]) == "ADMINISTRADOR")
             {
                 BtnMnuListadoPublicado.Visible = false;
+                BtnBuscarEstatus.Visible = false;
             }
             else if (Convert.ToString(Session["TipoUsuario"]) == "CAPTURISTA")
             {
                 BtnMnuListadoPublicado.Visible = false;
+                BtnBuscarEstatus.Visible = false;
             }
             else if (Convert.ToString(Session["TipoUsuario"]) == "INTERNO")
             {
@@ -41,6 +43,10 @@ namespace GePE.Materias
                 BtnMnuNuevo.Visible = false;
                 BtnMnuListado.Visible = false;
                 BtnMnuListadoPublicado.Visible = true;
+
+                BtnBuscar.Visible = false;
+                BtnBuscarEstatus.Visible = true;
+
                 BtnMnuEditar.Visible = false;
                 BtnMnuBorrar.Visible = false;
             }
@@ -53,6 +59,10 @@ namespace GePE.Materias
                 BtnMnuNuevo.Visible = false;
                 BtnMnuListado.Visible = false;
                 BtnMnuListadoPublicado.Visible = true;
+
+                BtnBuscar.Visible = false;
+                BtnBuscarEstatus.Visible = true;
+
                 BtnMnuEditar.Visible = false;
                 BtnMnuBorrar.Visible = false;
             }
@@ -485,6 +495,63 @@ namespace GePE.Materias
                         BtnMnuBorrar.Visible = true;
                     }
                     
+                    PnlGrvMateria.Visible = false;
+                }
+                else
+                {
+                    InicializaControles();
+                    GrvMateria.DataSource = LstMateria;
+                    GrvMateria.DataBind();
+                    PnlGrvMateria.Visible = true;
+                }
+            }
+        }
+        protected void BtnBuscarEstatus_Click(object sender, EventArgs e)
+        {
+            if (TbCriterioBusqueda.Text.Trim() != string.Empty)
+            {
+                List<E_Materias> LstMateria = NM.BuscaMateriaConCriterioEstatus(TbCriterioBusqueda.Text.Trim(),"EN PUBLICADO");
+                if (LstMateria.Count.Equals(0))
+                {
+                    InicializaControles();
+                    lblNombreAccion.Text = "No se encontraron datos con el criterio de busqueda";
+                }
+                else if (LstMateria.Count.Equals(1))
+                {
+                    InicializaControles();
+                    lblTituloAccion.Text = "Resultado de busqueda";
+
+                    //Aqui se hacen visible los Label, TextBox y el CheckBox
+                    VisibleOnOFF(true);
+
+                    //Aqui se hacen no editables los Label, TextBox y el CheckBox
+                    TbClaveMateria.Enabled = false;
+                    TbNombreMateria.Enabled = false;
+                    TbHC.Enabled = false;
+                    TbHL.Enabled = false;
+                    TbHT.Enabled = false;
+                    TbHE.Enabled = false;
+                    TbHPP.Enabled = false;
+                    TbCR.Enabled = false;
+                    FuPathPUA.Enabled = false;
+                    FuPathPUAnoOficial.Enabled = false;
+
+                    hfIdMateria.Value = LstMateria[0].IdMateria.ToString();
+                    ObjetoEntidad_ControlesWebForm(Convert.ToInt32(hfIdMateria.Value));
+
+                    PnlCapturaDatos.Visible = true;
+
+                    if (Convert.ToString(Session["TipoUsuario"]) == "")
+                    {
+                        BtnMnuEditar.Visible = false;
+                        BtnMnuBorrar.Visible = false;
+                    }
+                    else
+                    {
+                        BtnMnuEditar.Visible = true;
+                        BtnMnuBorrar.Visible = true;
+                    }
+
                     PnlGrvMateria.Visible = false;
                 }
                 else

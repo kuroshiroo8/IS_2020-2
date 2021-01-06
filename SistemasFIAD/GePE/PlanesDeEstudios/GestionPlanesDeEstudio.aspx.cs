@@ -55,7 +55,9 @@ namespace GePE.PlanesDeEstudios
                 GrvPlanEstudio.Columns[12].Visible = false;
                 //Se quita la columna Publicar
                 GrvPlanEstudio.Columns[13].Visible = false;
+
                 BtnMnuListadoEstatus.Visible = false;
+                BtnBuscarEstatus.Visible = false;
 
             }
             else if (Convert.ToString(Session["TipoUsuario"]) == "CAPTURISTA")
@@ -68,7 +70,9 @@ namespace GePE.PlanesDeEstudios
                 GrvPlanEstudio.Columns[10].Visible = false;
                 //Se quita la columna Recaptura
                 GrvPlanEstudio.Columns[11].Visible = false;
+
                 BtnMnuListadoEstatus.Visible = false;
+                BtnBuscarEstatus.Visible = false;
             }
             else if (Convert.ToString(Session["TipoUsuario"]) == "INTERNO")
             {
@@ -82,9 +86,13 @@ namespace GePE.PlanesDeEstudios
                 GrvPlanEstudio.Columns[11].Visible = false;
                 GrvPlanEstudio.Columns[12].Visible = false;
                 GrvPlanEstudio.Columns[13].Visible = false;
+
+                BtnMnuNuevo.Visible = false;
                 BtnMnuListado.Visible = false;
                 BtnMnuListadoEstatus.Visible = true;
-                BtnMnuNuevo.Visible = false;
+                
+                BtnBuscar.Visible = false;
+                BtnBuscarEstatus.Visible = true;
 
                 BtnMnuEditar.Visible = false;
                 BtnMnuBorrar.Visible = false;
@@ -101,10 +109,13 @@ namespace GePE.PlanesDeEstudios
                 GrvPlanEstudio.Columns[11].Visible = false;
                 GrvPlanEstudio.Columns[12].Visible = false;
                 GrvPlanEstudio.Columns[13].Visible = false;
+
+                BtnMnuNuevo.Visible = false;
                 BtnMnuListado.Visible = false;
                 BtnMnuListadoEstatus.Visible = true;
 
-                BtnMnuNuevo.Visible = false;
+                BtnBuscar.Visible = false;
+                BtnBuscarEstatus.Visible = true;
 
                 BtnMnuEditar.Visible = false;
                 BtnMnuBorrar.Visible = false;
@@ -769,6 +780,55 @@ namespace GePE.PlanesDeEstudios
             if (TbCriterioBusqueda.Text.Trim() != string.Empty)
             {
                 List<E_PlanEstudio> LstPlanEstudio = PE.BuscaPlanEstudio(TbCriterioBusqueda.Text.Trim());
+                if (LstPlanEstudio.Count.Equals(0))
+                {
+                    InicializaControles();
+                    lblNombreAccion.Text = "No se encontraron datos con el criterio de busqueda";
+                }
+                else if (LstPlanEstudio.Count.Equals(1))
+                {
+                    InicializaControles();
+                    lblTituloAccion.Text = "Resultado de busqueda";
+
+                    VisibleOnOFF(true);
+
+                    //Aqui se cargan los datos de las listas de plan estudio materia
+                    CargarDatosListasPlanEstudio();
+
+                    //Aqui se hacen no editables los TextBox
+                    ControlesOnOFF(false);
+
+                    hfIdPlanEstudio.Value = LstPlanEstudio[0].IdPlanEstudio.ToString();
+                    ObjetoEntidad_ControlesWebForm(Convert.ToInt32(hfIdPlanEstudio.Value));
+
+                    if (Convert.ToString(Session["TipoUsuario"]) == "")
+                    {
+                        BtnMnuEditar.Visible = false;
+                        BtnMnuBorrar.Visible = false;
+                    }
+                    else
+                    {
+                        BtnMnuEditar.Visible = true;
+                        BtnMnuBorrar.Visible = true;
+                    }
+
+                    PnlCapturaDatos.Visible = true;
+                    PnlGrvPlanEstudio.Visible = false;
+                }
+                else
+                {
+                    InicializaControles();
+                    GrvPlanEstudio.DataSource = LstPlanEstudio;
+                    GrvPlanEstudio.DataBind();
+                    PnlGrvPlanEstudio.Visible = true;
+                }
+            }
+        }
+        protected void BtnBuscarEstatus_Click(object sender, EventArgs e)
+        {
+            if (TbCriterioBusqueda.Text.Trim() != string.Empty)
+            {
+                List<E_PlanEstudio> LstPlanEstudio = PE.BuscaPlanEstudioConCriterioEstatus(TbCriterioBusqueda.Text.Trim(),"EN PUBLICADO");
                 if (LstPlanEstudio.Count.Equals(0))
                 {
                     InicializaControles();
