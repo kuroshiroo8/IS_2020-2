@@ -13,6 +13,7 @@
 
                 <asp:LinkButton ID="BtnMnuNuevo" runat="server" CssClass="btn btn-sm btn-secondary  pr-3" CausesValidation="false" OnClick="BtnMnuNuevo_Click"><i class="fas fa-plus-square"></i> Nueva carrera</asp:LinkButton>
                 <asp:LinkButton ID="BtnMnuListado" runat="server" CssClass="btn btn-sm btn-secondary pr-3" CausesValidation="false" OnClick="BtnMnuListado_Click"><i class="fas fa-list"></i> Listado</asp:LinkButton>
+                <asp:LinkButton ID="BtnMnuListadoEstatus" runat="server" CssClass="btn btn-sm btn-secondary pr-3" CausesValidation="false" OnClick="BtnMnuListadoEstatus_Click"><i class="fas fa-list"></i> Listado</asp:LinkButton>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="row">
@@ -44,7 +45,6 @@
                             <div class="col-lg-3 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbClaveCarrera" class="text-dark font-weight-bold m-0" runat="server">Clave de la carrera</asp:Label>
-                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbClaveCarrera" />--%>
                                     <asp:TextBox runat="server" ID="TbClaveCarrera" CssClass="form-control" TextMode="Number"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="rfvTbClaveCarrera" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbClaveCarrera"
@@ -102,14 +102,11 @@
                     CssClass="table thead-dark table-sm table-bordered table-responsive"
                     DataKeyNames="IdCarrera"
                     OnRowDeleting="GrvCarreras_RowDeleting"
-                    OnRowEditing="GrvCarreras_RowEditing"
-                    OnSelectedIndexChanged="GrvCarreras_SelectedIndexChanged">
+                    OnRowEditing="GrvCarreras_RowEditing">
                     <Columns>
                         <asp:BoundField DataField="ClaveCarrera" HeaderText="CLAVE" />
                         <asp:BoundField DataField="NombreCarrera" HeaderText="NOMBRE DE LA CARRERA" />
                         <asp:BoundField DataField="AliasCarrera" HeaderText="NOMBRE CORTO" />
-                        <%--<asp:BoundField DataField="NombreCarrera" HeaderText="NOMBRE DEL COORDINADOR" />--%>
-                        <%--<asp:BoundField DataField="EstadoCarrera" HeaderText="ESTADO CARRERA" />--%>
 
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
                             <ItemTemplate>

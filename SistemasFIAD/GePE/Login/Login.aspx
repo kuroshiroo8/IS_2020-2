@@ -35,10 +35,10 @@
                                                 Display="Dynamic"></asp:RequiredFieldValidator>
 
                                             <asp:RegularExpressionValidator ID="revTbEmail" runat="server" CssClass="text-danger"
-                                        ControlToValidate="TbEmail"
-                                        ErrorMessage="*Este campo debe de tener una estructura parecida a ejemplo@uabc.edu.mx"
-                                        ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"
-                                        Display="Dynamic"></asp:RegularExpressionValidator>
+                                                ControlToValidate="TbEmail"
+                                                ErrorMessage="*Este campo debe de tener una estructura parecida a ejemplo@uabc.edu.mx"
+                                                ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"
+                                                Display="Dynamic"></asp:RegularExpressionValidator>
 
                                         </div>
                                         <div class="form-group">
@@ -70,6 +70,7 @@
                                         </div>
                                         <div align="center">
                                             <asp:LinkButton ID="BtnLogin" runat="server" CssClass="btn btn-md btn btn-success pr-3" CausesValidation="true" OnClick="BtnLogin_Click"><i class="fas fa-sign-in-alt"></i>  Iniciar Sesión</asp:LinkButton>
+                                            <hr />
                                             <asp:LinkButton ID="BtnSinLogin" runat="server" CssClass="btn btn-md btn btn-warning pr-3" CausesValidation="false" OnClick="BtnSinLogin_Click"><i class="fas fa-sign-in-alt"></i>  Entrar sin iniciar sesión</asp:LinkButton>
                                         </div>
                                     </form>

@@ -171,8 +171,6 @@ namespace GePE.usuarios
             InicializaControles();
             N_Usuarios NU = new N_Usuarios();
             GrvUsuarios.DataSource = NU.LstUsuario();
-            //GrvCarreras.DataBind();
-            //PnlGrvCarreras.Visible = true;
 
             if (NU.LstUsuario().Count.Equals(0))
             {
@@ -243,25 +241,11 @@ namespace GePE.usuarios
             BtnCancelar.Visible = false;
             BtnAceptar.Visible = true;
 
-            //string fromname = Convert.ToString(Session["NombreUsuario"]) + " " + Convert.ToString(Session["ApellidoPaterno"]) + " " + Convert.ToString(Session["ApellidoMaterno"]);
-            //string toname = TbNombreUsuario.Text + " " + TbApellidoPaterno.Text + " " + TbApellidoMaterno.Text;
-
-            //Response.Write("<script language=javascript>alert('" +
-            //    "From Correo: " + Convert.ToString(Session["CorreoUsuario"]) +
-            //    "From Nombre: " + fromname +
-            //    " From Pass: " + Convert.ToString(Session["PassUsuario"]) +
-            //    " To Correo: " + TbCorreoUsuario.Text +
-            //    " To Nombre: " + toname +
-            //    " To Clave: " + TbnumClaveUsuario1.Text +
-            //    " To Pass: " + TbContraseñaUsuario1.Text +
-            //    " To Tipo: " + ddlTipoUsuario.SelectedItem.Text +
-            //    "');</script>");
-
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
                 string fromname = Convert.ToString(Session["NombreUsuario"]) + " " + Convert.ToString(Session["ApellidoPaterno"]) + " " + Convert.ToString(Session["ApellidoMaterno"]);
                 string toname = TbNombreUsuario.Text + " " + TbApellidoPaterno.Text + " " + TbApellidoMaterno.Text;
-                
+
                 NotificarUsuario(Convert.ToString(Session["CorreoUsuario"]), fromname, Convert.ToString(Session["PassUsuario"]), TbCorreoUsuario.Text, toname, TbnumClaveUsuario1.Text, TbCorreoUsuario.Text, TbContraseñaUsuario1.Text, ddlTipoUsuario.SelectedItem.Text);
 
                 InicializaControles();
@@ -312,27 +296,13 @@ namespace GePE.usuarios
             BtnCancelar.Visible = false;
             BtnAceptar.Visible = true;
 
-            //string fromname = Convert.ToString(Session["NombreUsuario"]) + " " + Convert.ToString(Session["ApellidoPaterno"]) + " " + Convert.ToString(Session["ApellidoMaterno"]);
-            //string toname = TbNombreUsuario.Text + " " + TbApellidoPaterno.Text + " " + TbApellidoMaterno.Text;
-
-            //Response.Write("<script language=javascript>alert('" +
-            //    "From Correo: " + Convert.ToString(Session["CorreoUsuario"]) +
-            //    "From Nombre: " + fromname +
-            //    " From Pass: " + Convert.ToString(Session["PassUsuario"]) +
-            //    " To Correo: " + TbCorreoUsuario.Text +
-            //    " To Nombre: " + toname +
-            //    " To Clave: " + TbnumClaveUsuario1.Text +
-            //    " To Pass: " + TbContraseñaUsuario1.Text +
-            //    " To Tipo: " + ddlTipoUsuario.SelectedItem.Text +
-            //    "');</script>");
-
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
                 string fromname = Convert.ToString(Session["NombreUsuario"]) + " " + Convert.ToString(Session["ApellidoPaterno"]) + " " + Convert.ToString(Session["ApellidoMaterno"]);
                 string toname = TbNombreUsuario.Text + " " + TbApellidoPaterno.Text + " " + TbApellidoMaterno.Text;
-                
+
                 NotificarUsuario(Convert.ToString(Session["CorreoUsuario"]), fromname, Convert.ToString(Session["PassUsuario"]), TbCorreoUsuario.Text, toname, TbnumClaveUsuario1.Text, TbCorreoUsuario.Text, TbContraseñaUsuario1.Text, ddlTipoUsuario.SelectedItem.Text);
-                
+
                 InicializaControles();
             }
         }
@@ -398,7 +368,7 @@ namespace GePE.usuarios
             ControlesOnOFF(true);
 
             TbCorreoUsuario.Enabled = false;
-            //TbnumClaveUsuario1.Enabled = false;
+            TbnumClaveUsuario1.Enabled = false;
 
             PnlCapturaDatos.Visible = true;
 
@@ -421,7 +391,7 @@ namespace GePE.usuarios
 
             GridViewRow row = GrvUsuarios.SelectedRow;
             string valor = Convert.ToString(GrvUsuarios.Rows[row.RowIndex].Cells[2].Text);
-            
+
             List<E_Usuarios> LstUsuarios = NU.BuscaUsuario(valor);
 
             foreach (var item in LstUsuarios)
@@ -430,18 +400,7 @@ namespace GePE.usuarios
                 {
                     string fromname = Convert.ToString(Session["NombreUsuario"]) + " " + Convert.ToString(Session["ApellidoPaterno"]) + " " + Convert.ToString(Session["ApellidoMaterno"]);
                     string toname = item.NombreUsuario + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno;
-                    
-                    //Response.Write("<script language=javascript>alert('" +
-                    //    "From Correo: " + Convert.ToString(Session["CorreoUsuario"]) +
-                    //    "From Nombre: " + fromname +
-                    //    " From Pass: " + Convert.ToString(Session["PassUsuario"]) +
-                    //    " To Correo: " + item.CorreoUsuario +
-                    //    " To Nombre: " + toname +
-                    //    " To Clave: " + item.ClaveUsuario +
-                    //    " To Pass: " + item.PassUsuario +
-                    //    " To Tipo: " + item.TipoUsuario +
-                    //    "');</script>");
-                    
+
                     NotificarUsuario(Convert.ToString(Session["CorreoUsuario"]), fromname, Convert.ToString(Session["PassUsuario"]), item.CorreoUsuario, toname, item.ClaveUsuario, item.CorreoUsuario, item.PassUsuario, item.TipoUsuario);
 
                 }
@@ -450,7 +409,7 @@ namespace GePE.usuarios
 
                 }
             }
-            }
+        }
         #endregion
 
         private void CargaTipoUsuario()

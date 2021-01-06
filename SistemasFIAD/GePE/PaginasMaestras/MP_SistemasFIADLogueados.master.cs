@@ -32,8 +32,6 @@ namespace GePE.PaginasMaestras
                     string NombreUsuario = Convert.ToString(Session["NombreUsuario"]);
                     string TipoUsuario = Convert.ToString(Session["TipoUsuario"]);
                     string CorreoUsuario = Convert.ToString(Session["CorreoUsuario"]);
-                    
-                    //Response.Write("<script language=javascript>alert('" + mensaje + "');</script>");
 
                     BtnUserDropDown.Text = NombreUsuario;
                     BtnCerrarSesion.Visible = true;
@@ -72,11 +70,6 @@ namespace GePE.PaginasMaestras
 
                 }
             }
-
-            //BtnGestionCarreras.Visible = false;
-            //BtnGestionMaterias.Visible = false;
-            //BtnGestionPlanesEstudio.Visible = false;
-            //BtnGestionUsuarios.Visible = false;
 
         }
         

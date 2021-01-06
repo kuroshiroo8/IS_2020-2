@@ -44,7 +44,6 @@
                             <div class="col-lg-4 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbCalveUsuario" runat="server" class="text-dark font-weight-bold m-0">Clave del usuario</asp:Label>
-                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbnumClaveUsuario" />--%>
                                     <asp:TextBox runat="server" ID="TbnumClaveUsuario1" CssClass="form-control" TextMode="Number"></asp:TextBox>
 
                                     <asp:RequiredFieldValidator ID="rfvTbnumClaveUsuario1" runat="server" CssClass="text-danger"
@@ -76,15 +75,12 @@
                                         ErrorMessage="*Sólo letras."
                                         ValidationExpression="^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$"
                                         Display="Dynamic"></asp:RegularExpressionValidator>
-
-                                    <%--<uc1:wfucTbAlfabeticoRequerido runat="server" ID="TbNombreUsuario1" CssClass="form-control" placeholder="Nombre Apellido-paterno apellido-materno" tyle="text-align:center" />--%>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbApellidoPaterno" class="text-dark font-weight-bold m-0" runat="server">Apellido paterno</asp:Label>
-                                    <%--<uc1:wfucTbAlfabeticoRequerido runat="server" ID="TbApellidoPaterno1" CssClass="form-control" placeholder="Nombre Apellido-paterno apellido-materno" tyle="text-align:center" />--%>
-                                <asp:TextBox runat="server" ID="TbApellidoPaterno" CssClass="form-control" placeholder="Apellido Paterno" tyle="text-align:center"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="TbApellidoPaterno" CssClass="form-control" placeholder="Apellido Paterno" tyle="text-align:center"></asp:TextBox>
 
                                     <asp:RequiredFieldValidator ID="rfvTbApellidoPaterno" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbApellidoPaterno"
@@ -102,8 +98,7 @@
                             <div class="col-lg-4 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbApellidoMaterno" class="text-dark font-weight-bold m-0" runat="server">Apellido materno</asp:Label>
-                                    <%--<uc1:wfucTbAlfabeticoRequerido runat="server" ID="TbApellidoMaterno1" CssClass="form-control" placeholder="Nombre Apellido-paterno apellido-materno" tyle="text-align:center" />--%>
-                                <asp:TextBox runat="server" ID="TbApellidoMaterno" CssClass="form-control" placeholder="Apellido Materno" tyle="text-align:center"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="TbApellidoMaterno" CssClass="form-control" placeholder="Apellido Materno" tyle="text-align:center"></asp:TextBox>
 
                                     <asp:RequiredFieldValidator ID="rfvTbApellidoMaterno" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbApellidoMaterno"
@@ -120,7 +115,6 @@
                             <div class="col-lg-4 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbCorreoUsuario" class="text-dark font-weight-bold m-0" runat="server">Correo del usuario</asp:Label>
-                                    <%--<uc1:wfucalfanumericorequerido runat="server" id="TbCorreoUsuairo" />--%>
                                     <asp:TextBox ID="TbCorreoUsuario" runat="server" type="email" CssClass="form-control" aria-describedby="emailHelp" placeholder="Correo@uabc.edu.mx" />
 
                                     <asp:RequiredFieldValidator ID="rfvTbCorreoUSuario" runat="server" CssClass="text-danger"

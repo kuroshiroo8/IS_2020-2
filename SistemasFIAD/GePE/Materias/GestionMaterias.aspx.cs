@@ -22,19 +22,27 @@ namespace GePE.Materias
             {
                 InicializaControles();
             }
-                
+
 
             if (Convert.ToString(Session["TipoUsuario"]) == "ADMINISTRADOR")
             {
-
+                BtnMnuListadoPublicado.Visible = false;
             }
             else if (Convert.ToString(Session["TipoUsuario"]) == "CAPTURISTA")
             {
-
+                BtnMnuListadoPublicado.Visible = false;
             }
             else if (Convert.ToString(Session["TipoUsuario"]) == "INTERNO")
             {
+                GrvMateria.Columns[8].Visible = false;
+                GrvMateria.Columns[10].Visible = false;
+                GrvMateria.Columns[11].Visible = false;
 
+                BtnMnuNuevo.Visible = false;
+                BtnMnuListado.Visible = false;
+                BtnMnuListadoPublicado.Visible = true;
+                BtnMnuEditar.Visible = false;
+                BtnMnuBorrar.Visible = false;
             }
             else if (Convert.ToString(Session["TipoUsuario"]) == "")
             {
@@ -43,7 +51,8 @@ namespace GePE.Materias
                 GrvMateria.Columns[11].Visible = false;
 
                 BtnMnuNuevo.Visible = false;
-
+                BtnMnuListado.Visible = false;
+                BtnMnuListadoPublicado.Visible = true;
                 BtnMnuEditar.Visible = false;
                 BtnMnuBorrar.Visible = false;
             }
@@ -356,7 +365,6 @@ namespace GePE.Materias
                     (Convert.ToInt32(TbHT.Text) * 1) +
                     (Convert.ToInt32(TbHE.Text) * 0) +
                     (Convert.ToInt32(TbHPP.Text) * 1),
-                //EstadoMateria = cbEstadoMateria.Checked,
 
                 PathPUA = lbStatusPathPUA.Text,
                 PathPUAnoOficial = lbStatusPathPUAnoOficial.Text,
@@ -377,7 +385,6 @@ namespace GePE.Materias
             TbHE.Text = Convert.ToString(Materia.HE);
             TbHPP.Text = Convert.ToString(Materia.HPP);
             TbCR.Text = Convert.ToString(Materia.CR);
-            //cbEstadoMateria.Checked = Materia.EstadoMateria;
             lbStatusPathPUA.Text = Materia.PathPUA;
             lbStatusPathPUAnoOficial.Text = Materia.PathPUAnoOficial;
             MateriaEstatus = Materia.Estatus;
@@ -402,8 +409,6 @@ namespace GePE.Materias
             InicializaControles();
             N_Materias NM = new N_Materias();
             GrvMateria.DataSource = NM.LstMaterias();
-            //GrvMateria.DataBind();
-            //PnlGrvMateria.Visible = true;
 
             if (NM.LstMaterias().Count.Equals(0))
             {
@@ -417,6 +422,23 @@ namespace GePE.Materias
             }
 
         }
+        protected void BtnMnuListadoPublicado_Click(object sender, EventArgs e)
+        {
+            List<E_Materias> LstMateria = NM.BuscaMateriaEstatus("EN PUBLICADO");
+            if (LstMateria.Count.Equals(0))
+            {
+                InicializaControles();
+                lblNombreAccion.Text = "No se encontraron materias para mostrar";
+            }
+            else
+            {
+                InicializaControles();
+                GrvMateria.DataSource = LstMateria;
+                GrvMateria.DataBind();
+                PnlGrvMateria.Visible = true;
+            }
+        }
+    
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
             if (TbCriterioBusqueda.Text.Trim() != string.Empty)
@@ -446,7 +468,6 @@ namespace GePE.Materias
                     TbCR.Enabled = false;
                     FuPathPUA.Enabled = false;
                     FuPathPUAnoOficial.Enabled = false;
-                    //cbEstadoMateria.Enabled = false;
 
                     hfIdMateria.Value = LstMateria[0].IdMateria.ToString();
                     ObjetoEntidad_ControlesWebForm(Convert.ToInt32(hfIdMateria.Value));
@@ -798,7 +819,7 @@ namespace GePE.Materias
                 if (item != null)
                 {
                     //si se puede modificar
-                    lblTituloAccion.Text = "Materia asociada a plan de estudio con nombre \"" + item.NombrePlanEstudio + "\" y clave \"" + item.ClavePlanEstudio + "\", no se puede borrar.";
+                    lblTituloAccion.Text = "Materia asociada a plan de estudio con clave \"" + item.NombrePlanEstudio + "\" y nombre \"" + item.ClavePlanEstudio + "\", no se puede borrar.";
 
                     PnlCapturaDatos.Visible = true;
 
@@ -913,7 +934,7 @@ namespace GePE.Materias
                 if (item != null)
                 {
                     //si se puede modificar
-                    lblTituloAccion.Text = "Materia asociada a plan de estudio con nombre \"" + item.NombrePlanEstudio + "\" y clave \"" + item.ClavePlanEstudio + "\", no se puede modificar.";
+                    lblTituloAccion.Text = "Materia asociada a plan de estudio con clave \"" + item.NombrePlanEstudio + "\" y nombre \"" + item.ClavePlanEstudio + "\", no se puede modificar.";
 
                     PnlCapturaDatos.Visible = true;
 
@@ -1010,12 +1031,6 @@ namespace GePE.Materias
             BtnCancelar.Visible = true;
         }
         #endregion
-
-        protected void GrvMaterias_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            lblTituloAccion.Text = "AQUI SE ASIGNARA EL PLAN DE ESTUDIOS A LAS MATERIAS";
-        }
-
     }
 
 }

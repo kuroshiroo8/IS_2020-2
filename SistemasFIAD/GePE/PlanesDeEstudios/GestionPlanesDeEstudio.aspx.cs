@@ -55,6 +55,7 @@ namespace GePE.PlanesDeEstudios
                 GrvPlanEstudio.Columns[12].Visible = false;
                 //Se quita la columna Publicar
                 GrvPlanEstudio.Columns[13].Visible = false;
+                BtnMnuListadoEstatus.Visible = false;
 
             }
             else if (Convert.ToString(Session["TipoUsuario"]) == "CAPTURISTA")
@@ -67,15 +68,11 @@ namespace GePE.PlanesDeEstudios
                 GrvPlanEstudio.Columns[10].Visible = false;
                 //Se quita la columna Recaptura
                 GrvPlanEstudio.Columns[11].Visible = false;
+                BtnMnuListadoEstatus.Visible = false;
             }
             else if (Convert.ToString(Session["TipoUsuario"]) == "INTERNO")
             {
-
-            }
-            else if (Convert.ToString(Session["TipoUsuario"]) == "")
-            {
                 GrvPlanEstudio.Columns[3].Visible = false;
-                GrvPlanEstudio.Columns[4].Visible = false;
                 GrvPlanEstudio.Columns[5].Visible = false;
                 GrvPlanEstudio.Columns[6].Visible = false;
                 GrvPlanEstudio.Columns[7].Visible = false;
@@ -85,6 +82,27 @@ namespace GePE.PlanesDeEstudios
                 GrvPlanEstudio.Columns[11].Visible = false;
                 GrvPlanEstudio.Columns[12].Visible = false;
                 GrvPlanEstudio.Columns[13].Visible = false;
+                BtnMnuListado.Visible = false;
+                BtnMnuListadoEstatus.Visible = true;
+                BtnMnuNuevo.Visible = false;
+
+                BtnMnuEditar.Visible = false;
+                BtnMnuBorrar.Visible = false;
+            }
+            else if (Convert.ToString(Session["TipoUsuario"]) == "")
+            {
+                GrvPlanEstudio.Columns[3].Visible = false;
+                GrvPlanEstudio.Columns[5].Visible = false;
+                GrvPlanEstudio.Columns[6].Visible = false;
+                GrvPlanEstudio.Columns[7].Visible = false;
+                GrvPlanEstudio.Columns[8].Visible = false;
+                GrvPlanEstudio.Columns[9].Visible = false;
+                GrvPlanEstudio.Columns[10].Visible = false;
+                GrvPlanEstudio.Columns[11].Visible = false;
+                GrvPlanEstudio.Columns[12].Visible = false;
+                GrvPlanEstudio.Columns[13].Visible = false;
+                BtnMnuListado.Visible = false;
+                BtnMnuListadoEstatus.Visible = true;
 
                 BtnMnuNuevo.Visible = false;
 
@@ -120,7 +138,6 @@ namespace GePE.PlanesDeEstudios
             lbPerfilDeEgreso.Visible = false;
             lbCampoOcupacional.Visible = false;
             lbUnidadAcademica.Visible = false;
-            //lbEstatus.Visible = false;
 
             //Visible LinkButton
             BtnGrabar.Visible = false;
@@ -232,7 +249,6 @@ namespace GePE.PlanesDeEstudios
             lbPerfilDeEgreso.Enabled = TrueOrFalse;
             lbCampoOcupacional.Enabled = TrueOrFalse;
             lbUnidadAcademica.Enabled = TrueOrFalse;
-            //lbEstatus.Enabled = TrueOrFalse;
 
             //Clear TextBox
             TbClavePlanEstudio.Enabled = TrueOrFalse;
@@ -268,7 +284,6 @@ namespace GePE.PlanesDeEstudios
             lbPerfilDeEgreso.Visible = TrueOrFalse;
             lbCampoOcupacional.Visible = TrueOrFalse;
             lbUnidadAcademica.Visible = TrueOrFalse;
-            //lbEstatus.Visible = TrueOrFalse;
 
             //Visible TextBox
             TbClavePlanEstudio.Visible = TrueOrFalse;
@@ -451,7 +466,7 @@ namespace GePE.PlanesDeEstudios
             ddlIdNivelAcademico.SelectedValue = Convert.ToString(planEstudio.IdNivelAcademico);
             TbClavePlanEstudio.Text = planEstudio.ClavePlanEstudio.Trim();
             TbPlanEstudio.Text = planEstudio.PlanEstudio.Trim();
-            ddlProgramaEducativo.SelectedValue = Convert.ToString(planEstudio.ProgramaEducativo);//--------------
+            ddlProgramaEducativo.SelectedValue = Convert.ToString(planEstudio.ProgramaEducativo);
             TbFechaCreacion.Text = planEstudio.FechaCreacion.Trim();
             TbTotalCreditos.Text = Convert.ToString(planEstudio.TotalCreditos);
             cbEstadoPlanEstudios.Checked = planEstudio.EstadoPlanEstudios;
@@ -459,7 +474,7 @@ namespace GePE.PlanesDeEstudios
             TbPerfilDeIngreso.Text = planEstudio.PerfilDeIngreso.Trim();
             TbPerfilDeEgreso.Text = planEstudio.PerfilDeEgreso.Trim();
             TbCampoOcupacional.Text = planEstudio.CampoOcupacional.Trim();
-            ddlUnidadAcademica.SelectedValue = Convert.ToString(planEstudio.UnidadAcademica);//------------------
+            ddlUnidadAcademica.SelectedValue = Convert.ToString(planEstudio.UnidadAcademica);
             ddlEstatus.SelectedValue = Convert.ToString(planEstudio.IdEstatus);
             PlanesDeEstudioEstatus = planEstudio.Estatus;
             PlanesDeEstudioIdEstatus = planEstudio.IdEstatus;
@@ -658,7 +673,7 @@ namespace GePE.PlanesDeEstudios
                 TbClavePlanEstudio.Text = PlanEstudioMateria.ClavePlanEstudio.Trim();
 
                 //se creo un indice para recorrer el dropdownlist y comparar el texto
-                int index = 0;//1
+                int index = 0;
                 while (ddlIdPlanEstudio.SelectedItem.Text != nombreplan)
                 {
                     index = index + 1;
@@ -682,7 +697,7 @@ namespace GePE.PlanesDeEstudios
                 cbSeriada.Checked = PlanEstudioMateria.EstadoMateriaSeriada;
 
                 //se creo un indice para recorrer el dropdownlist y comparar el texto
-                int index = 0;//1
+                int index = 0;
                 while (ddlIdPlanEstudio.SelectedItem.Text != nombreplan)
                 {
                     index = index + 1;
@@ -720,8 +735,6 @@ namespace GePE.PlanesDeEstudios
             InicializaControles();
             N_PlanEstudio PE = new N_PlanEstudio();
             GrvPlanEstudio.DataSource = PE.LstPlanEstudio();
-            //GrvPlanEstudio.DataBind();
-            //PnlGrvPlanEstudio.Visible = true;
 
             if (PE.LstPlanEstudio().Count.Equals(0))
             {
@@ -730,6 +743,23 @@ namespace GePE.PlanesDeEstudios
             }
             else
             {
+                GrvPlanEstudio.DataBind();
+                PnlGrvPlanEstudio.Visible = true;
+            }
+        }
+        protected void BtnMnuListadoEstatus_Click(object sender, EventArgs e)
+        {
+
+            List<E_PlanEstudio> LstPlanEstudio = PE.BuscaPlanEstudioPorEstatus("EN PUBLICADO");
+            if (LstPlanEstudio.Count.Equals(0))
+            {
+                InicializaControles();
+                lblNombreAccion.Text = "No se encontraron planes para listar";
+            }
+            else
+            {
+                InicializaControles();
+                GrvPlanEstudio.DataSource = LstPlanEstudio;
                 GrvPlanEstudio.DataBind();
                 PnlGrvPlanEstudio.Visible = true;
             }
@@ -906,36 +936,6 @@ namespace GePE.PlanesDeEstudios
         #region Botones IBM (WebForm captura datos del cliente) Plan Estudio - Materia
         protected void BtnGrabarPlanEstudioMateria_Click(object sender, EventArgs e)
         {
-
-            //string str1 = Convert.ToString(ddlIdPlanEstudio.SelectedItem.Value);
-            //string str2 = Convert.ToString(ddlIdMateria.SelectedItem.Value);
-            //string str3 = Convert.ToString(ddlIdTipoMateria.SelectedItem.Value);
-            //string str4 = Convert.ToString(ddlIdEtapa.SelectedItem.Value);
-            //string str5 = Convert.ToString(ddlIdAreaConocimiento.SelectedItem.Value);
-            //string str6 = Convert.ToString(ddlSemestre.SelectedItem.Value);
-            //string str7 = Convert.ToString(ddlIdPlanEstudio.SelectedItem.Text);
-            //string str8 = Convert.ToString(ddlIdMateria.SelectedItem.Text);
-            //string str9 = Convert.ToString(ddlIdTipoMateria.SelectedItem.Text);
-            //string str10 = Convert.ToString(ddlIdEtapa.SelectedItem.Text);
-            //string str11 = Convert.ToString(ddlIdAreaConocimiento.SelectedItem.Text);
-            //string str12 = Convert.ToString(ddlMateriaSeriada.SelectedItem.Value);
-            //string str13 = Convert.ToString(cbSeriada.Checked);
-            //Response.Write("<script language=javascript>alert('" +
-            //    "IdPlanEstudio: " + str1 +
-            //    " IdMateria: " + str2 +
-            //    " IdTipoMateria: " + str3 +
-            //    " IdEtapa: " + str4 +
-            //    " IdAreaConocimiento: " + str5 +
-            //    " Semestre: " + str6 +
-            //    " NombrePlanEstudio: " + str7 +
-            //    " NombreMateria: " + str8 +
-            //    " NombreTipoMateria: " + str9 +
-            //    " NombreEtapa: " + str10 +
-            //    " NombreArea: " + str11 +
-            //    " IdMateriaSeriada: " + str12 +
-            //    " EstadoMateriaSeriada: " + str13 +
-            //    " ');</script>");
-
             PlanEstudioMateriaEstatus = "EN ESPERA";
 
             string R = NPEM.InsertaPlanEstudioMateria(ControlesWebForm_ObjetoEntidad2());
@@ -1057,9 +1057,9 @@ namespace GePE.PlanesDeEstudios
 
             PlanesDeEstudioEstatus = "";
             PlanesDeEstudioIdEstatus = 0;
-            
+
             VisibleOnOFFDatosCorreo(false);
-            
+
             BtnEnviarPnlCapturaDatosCorreo.Visible = false;
             BtnCancelarPnlCapturaDatosCorreo.Visible = false;
             BtnAceptarPnlCapturaDatosCorreo.Visible = true;
@@ -1352,10 +1352,7 @@ namespace GePE.PlanesDeEstudios
             lbIdEtapa.Text = "Seleccione tipo materia primero para ver Etapas";
             lbSemestre.Text = "Seleccione Etapa para ver Semestres";
             cbSeriada.Enabled = false;
-            //lbMateriaSeriada.Enabled = false;
             ddlMateriaSeriada.Enabled = false;
-            //lbMateriaSeriada.Visible = false;
-            //ddlMateriaSeriada.Visible = false;
 
             BtnGrabarPlanEstudioMateria.Visible = true;
             BtnCancelarPlanEstudioMateria.Visible = true;
@@ -1618,24 +1615,6 @@ namespace GePE.PlanesDeEstudios
                         GrvMapaCurricular.Rows[index].Cells[6].Text = "";
                         GrvMapaCurricular.Rows[index].Cells[7].Text = "";
 
-                        //Response.Write("<script language=javascript>alert(' " +
-                        //    " - IdPlanEstudioMateria: " + item.IdPlanEstudioMateria +
-                        //    " - IdPlanEstudio: " + item.IdPlanEstudio +
-                        //    " - IdMateria: " + item.IdMateria +
-                        //    " - IdTipoMateria: " + item.IdTipoMateria +
-                        //    " - IdEtapa: " + item.IdEtapa +
-                        //    " - IdAreaConocimiento: " + item.IdAreaConocimiento +
-                        //    " - Semestre: " + item.Semestre +
-                        //    " - NombrePlanEstudio: " + item.NombrePlanEstudio +
-                        //    " - NombreMateria: " + item.NombreMateria +
-                        //    " - NombreTipoMateria: " + item.NombreTipoMateria +
-                        //    " - NombreEtapa: " + item.NombreEtapa +
-                        //    " - NombreArea: " + item.NombreArea +
-                        //    " - IdMateriaSeriada: " + item.IdMateriaSeriada +
-                        //    " - EstadoMateriaSeriada: " + item.EstadoMateriaSeriada +
-                        //    " - ClavePlanEstudio: " + item.ClavePlanEstudio +
-                        //    "');</script>");
-
                         if (item.Semestre == 1)
                         {
                             List<E_Materias> LstMaterias = NM.BuscaMateria(item.NombreMateria);
@@ -1643,21 +1622,6 @@ namespace GePE.PlanesDeEstudios
                             {
                                 if (itemM != null)
                                 {
-                                    //Response.Write("<script language=javascript>alert(' " +
-                                    //    "IdMateria: " + itemM.IdMateria +
-                                    //    "<br/>ClaveMateria: " + itemM.ClaveMateria +
-                                    //    "<br/>NombreMateria: " + itemM.NombreMateria +
-                                    //    "<br/>HC: " + itemM.HC +
-                                    //    "<br/>HL: " + itemM.HL +
-                                    //    "<br/>HT: " + itemM.HT +
-                                    //    "<br/>HE: " + itemM.HE +
-                                    //    "<br/>HPP: " + itemM.HPP +
-                                    //    "<br/>CR: " + itemM.CR +
-                                    //    "<br/>EstadoMateria: " + itemM.EstadoMateria +
-                                    //    "<br/>PathPUA: " + itemM.PathPUA +
-                                    //    "<br/>PathPUAnoOficial: " + itemM.PathPUAnoOficial +
-                                    //    "');</script>");
-
                                     //Aqui se crea el hipervinculo de la PUA
                                     string cadena = itemM.PathPUA;
                                     //cadena = cadena.Replace("~/", "");
@@ -1686,7 +1650,7 @@ namespace GePE.PlanesDeEstudios
                                 }
                                 else
                                 {
-                                    //Response.Write("<script language=javascript>alert('El elemento de la lista de materias tiene valor nulo.');</script>");
+
                                 }
                             }
 
@@ -1728,7 +1692,7 @@ namespace GePE.PlanesDeEstudios
                                 }
                                 else
                                 {
-                                    //Response.Write("<script language=javascript>alert('El elemento de la lista de materias tiene valor nulo.');</script>");
+
                                 }
                             }
                             MS2 = MS2 + 1;
@@ -1768,7 +1732,7 @@ namespace GePE.PlanesDeEstudios
                                 }
                                 else
                                 {
-                                    //Response.Write("<script language=javascript>alert('El elemento de la lista de materias tiene valor nulo.');</script>");
+
                                 }
                             }
                             MS3 = MS3 + 1;
@@ -1809,7 +1773,7 @@ namespace GePE.PlanesDeEstudios
                                 }
                                 else
                                 {
-                                    //Response.Write("<script language=javascript>alert('El elemento de la lista de materias tiene valor nulo.');</script>");
+
                                 }
                             }
                             MS4 = MS4 + 1;
@@ -1850,7 +1814,7 @@ namespace GePE.PlanesDeEstudios
                                 }
                                 else
                                 {
-                                    //Response.Write("<script language=javascript>alert('El elemento de la lista de materias tiene valor nulo.');</script>");
+
                                 }
                             }
                             MS5 = MS5 + 1;
@@ -1891,7 +1855,7 @@ namespace GePE.PlanesDeEstudios
                                 }
                                 else
                                 {
-                                    //Response.Write("<script language=javascript>alert('El elemento de la lista de materias tiene valor nulo.');</script>");
+
                                 }
                             }
                             MS6 = MS6 + 1;
@@ -1932,7 +1896,7 @@ namespace GePE.PlanesDeEstudios
                                 }
                                 else
                                 {
-                                    //Response.Write("<script language=javascript>alert('El elemento de la lista de materias tiene valor nulo.');</script>");
+
                                 }
                             }
                             MS7 = MS7 + 1;
@@ -1973,7 +1937,7 @@ namespace GePE.PlanesDeEstudios
                                 }
                                 else
                                 {
-                                    //Response.Write("<script language=javascript>alert('El elemento de la lista de materias tiene valor nulo.');</script>");
+
                                 }
                             }
                             MS8 = MS8 + 1;
@@ -2022,27 +1986,6 @@ namespace GePE.PlanesDeEstudios
                         {
                             if (itemP != null)
                             {
-
-                                //Response.Write("<script language=javascript>alert(' " +
-                                //    " - IdPlanEstudio: " + itemP.IdPlanEstudio +
-                                //    " - IdNivelAcademico: " + itemP.IdNivelAcademico +
-                                //    " - IdCarrera: " + itemP.IdCarrera +
-                                //    " - ClavePlanEstudio: " + itemP.ClavePlanEstudio +
-                                //    " - PlanEstudio: " + itemP.PlanEstudio +
-                                //    " - ProgramaEducativo: " + itemP.ProgramaEducativo +
-                                //    " - FechaCreacion: " + itemP.FechaCreacion +
-                                //    " - TotalCreditos: " + itemP.TotalCreditos +
-                                //    " - EstadoPlanEstudios: " + itemP.EstadoPlanEstudios +
-                                //    " - Comentarios: " + itemP.Comentarios +
-                                //    " - PerfilDeIngreso: " + itemP.PerfilDeIngreso +
-                                //    " - PerfilDeEgreso: " + itemP.PerfilDeEgreso +
-                                //    " - CampoOcupacional: " + itemP.CampoOcupacional +
-                                //    " - UnidadAcademica: " + itemP.UnidadAcademica +
-                                //    " - Estatus: " + itemP.Estatus +
-                                //    " - IdEstatus: " + itemP.IdEstatus +
-                                //    " - NombreCarrera: " + itemP.NombreCarrera +
-                                //    "');</script>");
-
                                 if (itemP.ClavePlanEstudio == str)
                                 {
                                     lbPnlGrvMapaCurricularNombreCarrera.Text = "Nombre de la carrera (\"" + itemP.NombreCarrera + "\")";
@@ -2089,14 +2032,14 @@ namespace GePE.PlanesDeEstudios
                             }
                             else
                             {
-                                //Response.Write("<script language=javascript>alert('El elemento de la lista PlanEstudio tiene valor nulo.');</script>");
+
                             }
                         }
 
                     }
                     else
                     {
-                        //Response.Write("<script language=javascript>alert('El elemento de la lista PlanEstudioMateria tiene valor nulo.');</script>");
+
                     }
 
                 }
@@ -2139,8 +2082,6 @@ namespace GePE.PlanesDeEstudios
                 int index = Convert.ToInt32(e.CommandArgument);
                 GridViewRow row = GrvPlanEstudio.Rows[index];
                 string str = row.Cells[0].Text;
-                //Response.Write("<script language=javascript>alert(' Gridview seleccionado " + str + "');</script>");
-                //hfIdPlanEstudio.Value = GrvPlanEstudio.DataKeys[row.RowIndex].Value.ToString();
 
                 List<E_PlanEstudioMateria> LstPlanEstudioMateria = NPEM.BuscaPlanEstudioMaterias(str);
 
@@ -2751,18 +2692,37 @@ namespace GePE.PlanesDeEstudios
             using (SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=Propuesta;Integrated Security=True"))
             //using (SqlConnection con = new SqlConnection("Data Source=WIN-URE2BDKARPV\\SQLEXPRESS;Initial Catalog=Propuesta;Integrated Security=True"))
             {
-                try
+                if (Convert.ToString(Session["TipoUsuario"]) == "ADMINISTRADOR")
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdUsuario, CorreoUsuario FROM Propuesta.dbo.Usuarios", con);
-                    adapter.Fill(subjects);
-                    ddlDestinatario.DataSource = subjects;
-                    ddlDestinatario.DataTextField = "CorreoUsuario";
-                    ddlDestinatario.DataValueField = "IdUsuario";
-                    ddlDestinatario.DataBind();
+                    try
+                    {
+                        SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdUsuario, CorreoUsuario FROM Propuesta.dbo.Usuarios WHERE TipoUsuario='CAPTURISTA'", con);
+                        adapter.Fill(subjects);
+                        ddlDestinatario.DataSource = subjects;
+                        ddlDestinatario.DataTextField = "CorreoUsuario";
+                        ddlDestinatario.DataValueField = "IdUsuario";
+                        ddlDestinatario.DataBind();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle the error 
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    // Handle the error 
+                    try
+                    {
+                        SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdUsuario, CorreoUsuario FROM Propuesta.dbo.Usuarios WHERE TipoUsuario='ADMINISTRADOR'", con);
+                        adapter.Fill(subjects);
+                        ddlDestinatario.DataSource = subjects;
+                        ddlDestinatario.DataTextField = "CorreoUsuario";
+                        ddlDestinatario.DataValueField = "IdUsuario";
+                        ddlDestinatario.DataBind();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle the error 
+                    }
                 }
             }
             // Add the initial item - you can add this even if the options from the 

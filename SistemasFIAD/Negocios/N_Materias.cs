@@ -96,5 +96,12 @@ namespace Negocios
 Materias.NombreMateria.ToUpper().Contains(CriterioBusqueda.ToUpper())
                     select Materias).ToList();
         }
+        public List<E_Materias> BuscaMateriaEstatus(string CriterioBusqueda)
+        {
+            return (from Materias in LstMaterias()
+                    where
+                        Materias.Estatus.ToUpper().Contains(CriterioBusqueda.ToUpper())
+                    select Materias).ToList();
+        }
     }
 }

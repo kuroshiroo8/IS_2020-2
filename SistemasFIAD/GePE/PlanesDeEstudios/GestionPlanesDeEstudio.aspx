@@ -13,6 +13,7 @@
 
                 <asp:LinkButton ID="BtnMnuNuevo" runat="server" CssClass="btn btn-sm btn-secondary  pr-3" CausesValidation="false" OnClick="BtnMnuNuevo_Click"><i class="fas fa-plus-square"></i> Nuevo plan de estudio</asp:LinkButton>
                 <asp:LinkButton ID="BtnMnuListado" runat="server" CssClass="btn btn-sm btn-secondary pr-3" CausesValidation="false" OnClick="BtnMnuListado_Click"><i class="fas fa-list"></i> Listado</asp:LinkButton>
+                <asp:LinkButton ID="BtnMnuListadoEstatus" runat="server" CssClass="btn btn-sm btn-secondary pr-3" CausesValidation="false" OnClick="BtnMnuListadoEstatus_Click"><i class="fas fa-list"></i> Listado</asp:LinkButton>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="row">
@@ -43,7 +44,6 @@
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbClavePlanEstudio" class="text-dark font-weight-bold m-0" runat="server">Clave De Plan De Estudio</asp:Label>
-                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbClavePlanEstudio" />--%>
                                     <br />
                                     <asp:TextBox runat="server" ID="TbClavePlanEstudio" CssClass="form-control" TextMode="Number"></asp:TextBox>
 
@@ -63,8 +63,6 @@
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbPlanEstudio" class="text-dark font-weight-bold m-0" runat="server">Plan Estudio</asp:Label>
-                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbPlanEstudio" />--%>
-                                    <%--[a-zA-Z0-9]{2}-[a-zA-Z0-9]{3}--%>
                                     <br />
                                     <asp:TextBox runat="server" ID="TbPlanEstudio" CssClass="form-control"></asp:TextBox>
 
@@ -227,12 +225,6 @@
                                     <asp:DropDownList runat="server" ID="ddlEstatus" CssClass="form-control">
                                         <asp:ListItem Value="">No seleccionado</asp:ListItem>
                                     </asp:DropDownList>
-
-                                    <%--                                    <asp:RequiredFieldValidator ID="rfvddlEstatus" runat="server" CssClass="text-danger"
-                                        ControlToValidate="ddlEstatus"
-                                        ErrorMessage="*Este campo es requerido."
-                                        InitialValue=""
-                                        Display="Dynamic"></asp:RequiredFieldValidator>--%>
                                 </div>
                             </div>
                         </div>
@@ -361,11 +353,6 @@
                                     <asp:DropDownList runat="server" ID="ddlMateriaSeriada" CssClass="form-control">
                                         <asp:ListItem Value="">No seleccionado</asp:ListItem>
                                     </asp:DropDownList>
-                                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="text-danger"
-                                        ControlToValidate="ddlSemestre"
-                                        ErrorMessage="*Este campo es requerido."
-                                        InitialValue=""
-                                        Display="Dynamic"></asp:RequiredFieldValidator>--%>
                                 </div>
                             </div>
 
@@ -558,8 +545,6 @@
                     OnRowEditing="GrvPlanEstudioMateria_RowEditing"
                     OnSelectedIndexChanged="GrvPlanEstudioMateria_SelectedIndexChanged">
                     <Columns>
-                        <%--<asp:BoundField DataField="IdPlanEstudio" HeaderText="ID PLAN" />--%>
-                        <%--<asp:BoundField DataField="ClavePlanEstudio" HeaderText="CLAVE" />--%>
                         <asp:BoundField DataField="NombrePlanEstudio" HeaderText="PLAN DE ESTUDIO" />
                         <asp:BoundField DataField="NombreMateria" HeaderText="MATERIA" />
                         <asp:BoundField DataField="NombreTipoMateria" HeaderText="TIPO DE MATERIA" />

@@ -15,27 +15,37 @@ namespace GePE.Carreras
         N_Carreras NC = new N_Carreras();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
+            if (!IsPostBack)
+            {
                 InicializaControles();
             }
 
             if (Convert.ToString(Session["TipoUsuario"]) == "ADMINISTRADOR")
             {
-
+                BtnMnuListadoEstatus.Visible = false;
             }
             else if (Convert.ToString(Session["TipoUsuario"]) == "CAPTURISTA")
             {
-
+                BtnMnuListadoEstatus.Visible = false;
             }
             else if (Convert.ToString(Session["TipoUsuario"]) == "INTERNO")
             {
+                GrvCarreras.Columns[3].Visible = false;
+                GrvCarreras.Columns[4].Visible = false;
 
+                BtnMnuNuevo.Visible = false;
+                BtnMnuListadoEstatus.Visible = true;
+                BtnMnuListado.Visible = false;
+
+                BtnMnuEditar.Visible = false;
+                BtnMnuBorrar.Visible = false;
             }
             else if (Convert.ToString(Session["TipoUsuario"]) == "")
             {
                 GrvCarreras.Columns[3].Visible = false;
                 GrvCarreras.Columns[4].Visible = false;
-
+                BtnMnuListadoEstatus.Visible = true;
+                BtnMnuListado.Visible = false;
                 BtnMnuNuevo.Visible = false;
 
                 BtnMnuEditar.Visible = false;
@@ -163,8 +173,6 @@ namespace GePE.Carreras
             InicializaControles();
             N_Carreras NC = new N_Carreras();
             GrvCarreras.DataSource = NC.LstCarreras();
-            //GrvCarreras.DataBind();
-            //PnlGrvCarreras.Visible = true;
 
             if (NC.LstCarreras().Count.Equals(0))
             {
@@ -177,9 +185,22 @@ namespace GePE.Carreras
                 PnlGrvCarreras.Visible = true;
             }
         }
-        protected void BtnMnuPDF_Click(object sender, EventArgs e)
+        protected void BtnMnuListadoEstatus_Click(object sender, EventArgs e)
         {
-            lblNombreAccion.Text = "Aquí van las acciones del botón BtnMnuPDF";
+            List<E_Carreras> LstCarrera = NC.BuscaCarreraEstatus("EN PUBLICADO");
+            if (LstCarrera.Count.Equals(0))
+            {
+                InicializaControles();
+                lblNombreAccion.Text = "No se encontraron carreras para listar";
+            }
+            else
+            {
+                InicializaControles();
+                GrvCarreras.DataSource = LstCarrera;
+                GrvCarreras.DataBind();
+                PnlGrvCarreras.Visible = true;
+            }
+
         }
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
@@ -235,11 +256,6 @@ namespace GePE.Carreras
         }
         #endregion
 
-        protected void BtnMnuAsignaPlanDeEstudio_Click(object sender, EventArgs e)
-        {
-            lblNombreAccion.Text = "Aquí van las acciones del botón BtnMnuAsignaPlanDeEstudio";
-        }
-
         #region Botones IBM (WebForm captura datos del cliente)
         protected void BtnGrabar_Click(object sender, EventArgs e)
         {
@@ -294,7 +310,7 @@ namespace GePE.Carreras
             BtnModificar.Visible = false;
             BtnCancelar.Visible = false;
             BtnAceptar.Visible = true;
-            
+
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
                 InicializaControles();
@@ -345,11 +361,8 @@ namespace GePE.Carreras
             {
                 if (item != null)
                 {
-                    //Response.Write("<script language=javascript>alert(' Si encontro carreras');</script>");
                     if (item.ClaveCarrera == GrvCarreras.Rows[e.RowIndex].Cells[0].Text)
                     {
-                        //Response.Write("<script language=javascript>alert(' Si encontro una carrera con la misma clave');</script>");
-
                         if (item.Estatus == "EN REVISION")
                         {
                             //no se puede borrar
@@ -519,10 +532,5 @@ namespace GePE.Carreras
             BtnCancelar.Visible = true;
         }
         #endregion
-
-        protected void GrvCarreras_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            lblTituloAccion.Text = "AQUI SE ASIGNARA EL PLAN DE ESTUDIOS A LAS CARRERAS";
-        }
     }
 }

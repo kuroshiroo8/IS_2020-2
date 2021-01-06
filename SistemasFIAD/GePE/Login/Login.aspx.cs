@@ -31,7 +31,6 @@ namespace GePE.Login
         protected void ControlesOFF()
         {
             lblNombreAccion.Visible = false;
-            //lblTituloAccion.Visible = false;
 
             lbEmail.Visible = false;
             lbLogin.Visible = false;
@@ -45,7 +44,6 @@ namespace GePE.Login
         protected void ControlesClear()
         {
             lblNombreAccion.Text = string.Empty;
-            //lblTituloAccion.Text = string.Empty;
 
             TbEmail.Text = string.Empty;
             TbPass.Text = string.Empty;
@@ -92,9 +90,6 @@ namespace GePE.Login
                 List<E_Usuarios> LstUsuario = NU.BuscaUsuario(str);
                 if (LstUsuario.Count.Equals(1))
                 {
-                    //lblNombreAccion.Text = "*Correo existente";
-                    //lblNombreAccion.Visible = true;
-
                     foreach (var item in LstUsuario)
                     {
                         if (item != null)
@@ -103,9 +98,6 @@ namespace GePE.Login
                             {
                                 if ((TbPass.Text.Trim() == item.PassUsuario) && (ddlLogin.SelectedItem.Text == item.TipoUsuario))
                                 {
-                                    //lblNombreAccion.Text = "*Correo y contraseña correctos";
-                                    //lblNombreAccion.Visible = true;
-
                                     Session["IdUsuario"] = item.IdUsuario;
                                     Session["NombreUsuario"] = item.NombreUsuario;
                                     Session["CorreoUsuario"] = item.CorreoUsuario;

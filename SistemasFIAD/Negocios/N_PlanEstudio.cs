@@ -101,7 +101,14 @@ namespace Negocios
         {
             return (from PlanEstudio in LstPlanEstudio()
                     where
-                    PlanEstudio.ClavePlanEstudio.ToUpper().Contains(CriterioBusqueda.ToUpper())
+                    PlanEstudio.ClavePlanEstudio.ToUpper().Contains(CriterioBusqueda.ToUpper()) 
+                    select PlanEstudio).ToList();
+        }
+        public List<E_PlanEstudio> BuscaPlanEstudioPorEstatus(string CriterioBusqueda)
+        {
+            return (from PlanEstudio in LstPlanEstudio()
+                    where
+                    PlanEstudio.Estatus.ToUpper().Contains(CriterioBusqueda.ToUpper())
                     select PlanEstudio).ToList();
         }
     }

@@ -13,6 +13,7 @@
 
                 <asp:LinkButton ID="BtnMnuNuevo" runat="server" CssClass="btn btn-sm btn-secondary  pr-3" CausesValidation="false" OnClick="BtnMnuNuevo_Click"><i class="fas fa-plus-square"></i> Nueva materia</asp:LinkButton>
                 <asp:LinkButton ID="BtnMnuListado" runat="server" CssClass="btn btn-sm btn-secondary pr-3" CausesValidation="false" OnClick="BtnMnuListado_Click"><i class="fas fa-list"></i> Listado</asp:LinkButton>
+                <asp:LinkButton ID="BtnMnuListadoPublicado" runat="server" CssClass="btn btn-sm btn-secondary pr-3" CausesValidation="false" OnClick="BtnMnuListadoPublicado_Click"><i class="fas fa-list"></i> Listado</asp:LinkButton>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="row">
@@ -45,7 +46,6 @@
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbClaveMateria" class="text-dark font-weight-bold m-0" runat="server">Clave de la materia</asp:Label>
-                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbClaveMateria" />--%>
                                     <asp:TextBox runat="server" ID="TbClaveMateria" CssClass="form-control" TextMode="Number"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="rfvTbClaveMateria" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbClaveMateria"
@@ -67,7 +67,6 @@
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbHC" class="text-dark font-weight-bold m-0" runat="server">Horas Clase</asp:Label>
-                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbHC" />--%>
                                     <asp:TextBox runat="server" ID="TbHC" CssClass="form-control" TextMode="Number"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="rfvTbHC" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbHC"
@@ -83,7 +82,6 @@
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbHL" class="text-dark font-weight-bold m-0" runat="server">Horas Laboratorio</asp:Label>
-                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbHL" />--%>
                                     <asp:TextBox runat="server" ID="TbHL" CssClass="form-control" TextMode="Number"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="rfvTbHL" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbHL"
@@ -99,7 +97,6 @@
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbHT" class="text-dark font-weight-bold m-0" runat="server">Horas Taller</asp:Label>
-                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbHT" />--%>
                                     <asp:TextBox runat="server" ID="TbHT" CssClass="form-control" TextMode="Number"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="rfvTbHT" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbHT"
@@ -115,7 +112,6 @@
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbHE" class="text-dark font-weight-bold m-0" runat="server">Horas Extra Clase</asp:Label>
-                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbHE" />--%>
                                     <asp:TextBox runat="server" ID="TbHE" CssClass="form-control" TextMode="Number"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="rfvTbHE" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbHE"
@@ -131,7 +127,6 @@
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbHPP" class="text-dark font-weight-bold m-0" runat="server">Horas Practicas DE CAMPO</asp:Label>
-                                    <%--<uc1:wfucNumeroEnteroPositivoRequerido runat="server" ID="TbHPP" />--%>
                                     <asp:TextBox runat="server" ID="TbHPP" CssClass="form-control" TextMode="Number"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="rfvTbHPP" runat="server" CssClass="text-danger"
                                         ControlToValidate="TbHPP"
@@ -153,12 +148,6 @@
                                     <br />
                                 </div>
                             </div>
-                            <%--<div class="col-lg-9 col-md-12 col-12">
-                                <div class="form-group">
-                                    <asp:Label ID="lbEstadoMateria" class="text-dark font-weight-bold m-0" runat="server">Seleccione si la materia está activa</asp:Label>
-                                    <asp:CheckBox ID="cbEstadoMateria" runat="server" CssClass="font-weight-bold" Text="Materia activa " TextAlign="Left" ToolTip="Seleccione si la materia está activa" />
-                                </div>
-                            </div>--%>
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="form-group">
                                     <asp:Label ID="lbPathPUA" class="text-dark font-weight-bold m-0" runat="server">Pua oficial</asp:Label>
@@ -200,8 +189,7 @@
                     CssClass="table thead-dark table-sm table-bordered table-responsive"
                     DataKeyNames="IdMateria"
                     OnRowDeleting="GrvMaterias_RowDeleting"
-                    OnRowEditing="GrvMaterias_RowEditing"
-                    OnSelectedIndexChanged="GrvMaterias_SelectedIndexChanged">
+                    OnRowEditing="GrvMaterias_RowEditing">
                     <Columns>
                         <asp:BoundField DataField="ClaveMateria" HeaderText="CLAVE" />
                         <asp:BoundField DataField="NombreMateria" HeaderText="MATERIA" />
@@ -211,7 +199,6 @@
                         <asp:BoundField DataField="HE" HeaderText="HE" />
                         <asp:BoundField DataField="HPP" HeaderText="HPC" />
                         <asp:BoundField DataField="CR" HeaderText="CR" />
-                        <%--<asp:BoundField DataField="EstadoMateria" HeaderText="ESTADO" />--%>
                         <asp:HyperLinkField DataNavigateUrlFields="PathPUA" HeaderText="PathPUA"
                             DataNavigateUrlFormatString="" DataTextField="PathPUA" Target="_BLANK"
                             ControlStyle-CssClass="btn btn-md btn-info" DataTextFormatString="Ver"></asp:HyperLinkField>
