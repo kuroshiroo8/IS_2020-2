@@ -96,5 +96,14 @@ namespace Negocios
                     PlanEstudioMateria.NombrePlanEstudio.ToUpper().Contains(CriterioBusqueda.ToUpper())
                     select PlanEstudioMateria).ToList();
         }
+
+        public List<E_PlanEstudioMateria> BuscaPlanEstudioMateriasPorMateria(string CriterioBusqueda)
+        {
+            return (from PlanEstudioMateria in LstPlanEstudioMateria()
+                    where
+                    PlanEstudioMateria.NombreMateria.ToUpper().Contains(CriterioBusqueda.ToUpper())
+                    select PlanEstudioMateria).ToList();
+        }
+        
     }
 }

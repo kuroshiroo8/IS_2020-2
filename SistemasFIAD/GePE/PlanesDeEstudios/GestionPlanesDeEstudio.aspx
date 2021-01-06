@@ -383,6 +383,72 @@
                 </div>
             </div>
         </asp:Panel>
+
+        <asp:Panel ID="PnlCapturaDatosCorreo" runat="server">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header text-center bg-success">
+                        <h5 class="card-title">
+                            <asp:Label ID="lblTituloAccionCorreo" runat="server" CssClass="text-white"></asp:Label></h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row pl-2 pr-2">
+                            <div class="col-lg-12 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbDestinatario" class="text-dark font-weight-bold m-0" runat="server">Destinatario</asp:Label>
+                                    <br />
+                                    <asp:DropDownList runat="server" ID="ddlDestinatario" CssClass="form-control">
+                                        <asp:ListItem Value="">No seleccionado</asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="rfvddlDestinatario" runat="server" CssClass="text-danger"
+                                        ControlToValidate="ddlDestinatario"
+                                        ErrorMessage="*Este campo es requerido."
+                                        InitialValue=""
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbRemitente" class="text-dark font-weight-bold m-0" runat="server">Remitente</asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" ID="TbRemitente" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbAsunto" class="text-dark font-weight-bold m-0" runat="server">Asunto</asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" ID="TbAsunto" CssClass="form-control"></asp:TextBox>
+
+                                    <asp:RequiredFieldValidator ID="rfvTbAsunto" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbAsunto"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lbObservaciones" class="text-dark font-weight-bold m-0" runat="server">Observaciones</asp:Label>
+                                    <br />
+                                    <asp:TextBox ID="TbObservaciones" runat="server" TextMode="MultiLine" MaxLength="400" CssClass="form-control"></asp:TextBox>
+
+                                    <asp:RequiredFieldValidator ID="rfvTbObservaciones" runat="server" CssClass="text-danger"
+                                        ControlToValidate="TbObservaciones"
+                                        ErrorMessage="*Este campo es requerido."
+                                        Display="Dynamic"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-footer text-muted" align="center">
+                            <asp:LinkButton ID="BtnEnviarPnlCapturaDatosCorreo" runat="server" CssClass="btn btn-md btn btn-success  pr-3" CausesValidation="true" OnClick="BtnEnviarPnlCapturaDatosCorreo_Click"><i class="fas fa-plus-square" ></i> Enviar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnCancelarPnlCapturaDatosCorreo" runat="server" CssClass="btn btn-md btn btn-dark pr-3" CausesValidation="false" OnClick="BtnCancelarPnlCapturaDatosCorreo_Click"><i class="fas fa-window-close"></i> Cancelar</asp:LinkButton>
+                            <asp:LinkButton ID="BtnAceptarPnlCapturaDatosCorreo" runat="server" CssClass="btn btn-md btn btn-primary pr-3" CausesValidation="false" OnClick="BtnAceptarPnlCapturaDatosCorreo_Click"><i class="fas fa-check"></i> Aceptar</asp:LinkButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </asp:Panel>
         <%--*******************************--%>
         <asp:Panel ID="PnlGrvPlanEstudio" runat="server" align="center">
             <div class="container-fluid">
@@ -402,8 +468,8 @@
 
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
                             <ItemTemplate>
-                                <asp:LinkButton ID="GrvBtnMapaCurricular" runat="server" CssClass="btn btn-md btn-outline-dark"
-                                    CausesValidation="false" CommandName="MapaCurricular" CommandArgument="<%# Container.DataItemIndex %>"><i class="far fa-calendar-alt"></i> Mapa Curricular</asp:LinkButton>
+                                <asp:LinkButton ID="GrvBtnMapaCurricular" runat="server" CssClass="btn btn-md btn-outline-primary"
+                                    CausesValidation="false" CommandName="MapaCurricular" CommandArgument="<%# Container.DataItemIndex %>"><i class="far fa-calendar-alt"></i>Generar Mapa Curricular</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -438,10 +504,45 @@
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
                             <ItemTemplate>
                                 <asp:LinkButton ID="GrvBtnListarMaterias" runat="server" CssClass="btn btn-md btn-outline-warning"
-                                    CausesValidation="false" CommandName="ListarMaterias" CommandArgument="<%# Container.DataItemIndex %>"><i class="fas fa-list"></i> Listar materia</asp:LinkButton>
+                                    CausesValidation="false" CommandName="ListarMaterias" CommandArgument="<%# Container.DataItemIndex %>"><i class="fas fa-list"></i> Listar materias</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
 
+                        <%--administrador********************************************************************************************************--%>
+
+                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="GrvBtnAprobar" runat="server" CssClass="btn btn-md btn-outline-secondary"
+                                    CausesValidation="false" CommandName="Aprobar" CommandArgument="<%# Container.DataItemIndex %>"><i class="fas fa-thumbs-up"></i> Aprobar</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="GrvBtnRecaptura" runat="server" CssClass="btn btn-md btn-outline-dark"
+                                    CausesValidation="false" CommandName="Recaptura" CommandArgument="<%# Container.DataItemIndex %>"><i class="far fa-thumbs-down"></i> Recaptura</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <%--administrador********************************************************************************************************--%>
+
+                        <%--capturista********************************************************************************************************--%>
+
+                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="GrvBtnRevisión" runat="server" CssClass="btn btn-md btn-outline-secondary"
+                                    CausesValidation="false" CommandName="Revisión" CommandArgument="<%# Container.DataItemIndex %>"><i class="far fa-check-square"></i> Revisión</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="GrvBtnPublicar" runat="server" CssClass="btn btn-md btn-outline-dark"
+                                    CausesValidation="false" CommandName="Publicar" CommandArgument="<%# Container.DataItemIndex %>"><i class="fas fa-upload"></i> Publicar</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <%--capturista********************************************************************************************************--%>
                     </Columns>
                     <HeaderStyle CssClass="bg-dark text-white" />
                 </asp:GridView>
@@ -495,7 +596,7 @@
                 </h5>
 
                 <asp:GridView ID="GrvMapaCurricular" runat="server" AutoGenerateColumns="False"
-                    CssClass="table thead-dark table-sm table-bordered table-responsive" >
+                    CssClass="table thead-dark table-sm table-bordered table-responsive">
                     <Columns>
                         <asp:BoundField DataField="I" HeaderText="I" />
                         <asp:BoundField DataField="II" HeaderText="II" />
@@ -511,35 +612,35 @@
 
                 <table class="table thead-dark table-sm table-bordered table-responsive">
                     <tr>
-                        <td style="border-style: none; width:10%"></td>
+                        <td style="border-style: none; width: 10%"></td>
                         <td style="border-style: none;"><b>Áreas del Conocimiento</b></td>
                     </tr>
                     <tr>
-                        <td style="background-color:#D98880; "></td>
+                        <td style="background-color: #D98880;"></td>
                         <td style="border-style: none;">CIENCIAS BÁSICAS</td>
                     </tr>
                     <tr>
-                        <td style="background-color:#C39BD3; "></td>
+                        <td style="background-color: #C39BD3;"></td>
                         <td style="border-style: none;">CIENCIAS SOCIALES Y HUMANIDADES</td>
                     </tr>
                     <tr>
-                        <td style="background-color:#7FB3D5"></td>
+                        <td style="background-color: #7FB3D5"></td>
                         <td style="border-style: none;">CIENCIAS DE LA INGENIERÍA</td>
                     </tr>
                     <tr>
-                        <td style="background-color:#7DCEA0"></td>
+                        <td style="background-color: #7DCEA0"></td>
                         <td style="border-style: none;">INGENIERÍA APLICADA</td>
                     </tr>
                     <tr>
-                        <td style="background-color:#F7DC6F"></td>
+                        <td style="background-color: #F7DC6F"></td>
                         <td style="border-style: none;">CIENCIAS ECONÓMICAS - ADMINISTRATIVAS</td>
                     </tr>
                     <tr>
-                        <td style="background-color:#F0B27A"></td>
+                        <td style="background-color: #F0B27A"></td>
                         <td style="border-style: none;">DISEÑO EN INGENIERÍA</td>
                     </tr>
                     <tr>
-                        <td style="background-color:#B2BABB"></td>
+                        <td style="background-color: #B2BABB"></td>
                         <td style="border-style: none;">CURSOS COMPLEMENTARIOS</td>
                     </tr>
 
@@ -648,7 +749,7 @@
                     <div class="modal-body">Si lo esta, presione "Borrar". </div>
                     <div class="modal-footer">
                         <button class="btn btn-md btn btn-dark pr-3" type="button" data-dismiss="modal"><i class="fas fa-window-close"></i>Cancelar</button>
-                        <asp:LinkButton ID="BtnBorrarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-danger pr-3" 
+                        <asp:LinkButton ID="BtnBorrarPlanEstudioMateria" runat="server" CssClass="btn btn-md btn btn-danger pr-3"
                             CausesValidation="false" OnClick="BtnBorrarPlanEstudioMateria_Click"><i class="fas fa-trash-alt"></i> Borrar</asp:LinkButton>
                     </div>
                 </div>

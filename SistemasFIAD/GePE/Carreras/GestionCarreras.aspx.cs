@@ -10,11 +10,39 @@ namespace GePE.Carreras
 {
     public partial class GestionCarreras : System.Web.UI.Page
     {
+        string CarreraEstatus = "";
+
         N_Carreras NC = new N_Carreras();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!IsPostBack) {
                 InicializaControles();
+            }
+
+            if (Convert.ToString(Session["TipoUsuario"]) == "ADMINISTRADOR")
+            {
+
+            }
+            else if (Convert.ToString(Session["TipoUsuario"]) == "CAPTURISTA")
+            {
+
+            }
+            else if (Convert.ToString(Session["TipoUsuario"]) == "INTERNO")
+            {
+
+            }
+            else if (Convert.ToString(Session["TipoUsuario"]) == "")
+            {
+                GrvCarreras.Columns[3].Visible = false;
+                GrvCarreras.Columns[4].Visible = false;
+
+                BtnMnuNuevo.Visible = false;
+
+                BtnMnuEditar.Visible = false;
+                BtnMnuBorrar.Visible = false;
+
+            }
+
         }
 
         #region Métodos generales
@@ -100,7 +128,8 @@ namespace GePE.Carreras
                 ClaveCarrera = TbClaveCarrera.Text,
                 NombreCarrera = TbNombreCarrera.Text,
                 AliasCarrera = TbAliasCarrera.Text,
-                EstadoCarrera = cbActivaCarrera.Checked
+                EstadoCarrera = cbActivaCarrera.Checked,
+                Estatus = CarreraEstatus
             };
             return Carrera;
         }
@@ -112,6 +141,7 @@ namespace GePE.Carreras
             TbNombreCarrera.Text = Carrera.NombreCarrera.Trim();
             TbAliasCarrera.Text = Carrera.AliasCarrera.Trim();
             cbActivaCarrera.Checked = Carrera.EstadoCarrera;
+            CarreraEstatus = Carrera.Estatus;
         }
         #endregion
 
@@ -180,8 +210,16 @@ namespace GePE.Carreras
                     hfIdCarrera.Value = LstCarrera[0].IdCarrera.ToString();
                     ObjetoEntidad_ControlesWebForm(Convert.ToInt32(hfIdCarrera.Value));
 
-                    BtnMnuEditar.Visible = true;
-                    BtnMnuBorrar.Visible = true;
+                    if (Convert.ToString(Session["TipoUsuario"]) == "")
+                    {
+                        BtnMnuEditar.Visible = false;
+                        BtnMnuBorrar.Visible = false;
+                    }
+                    else
+                    {
+                        BtnMnuEditar.Visible = true;
+                        BtnMnuBorrar.Visible = true;
+                    }
 
                     PnlCapturaDatos.Visible = true;
                     PnlGrvCarreras.Visible = false;
@@ -205,6 +243,9 @@ namespace GePE.Carreras
         #region Botones IBM (WebForm captura datos del cliente)
         protected void BtnGrabar_Click(object sender, EventArgs e)
         {
+            //Aqui se pone por defecto estatus EN ESPERA al agregarse
+            CarreraEstatus = "EN ESPERA";
+
             string R = NC.InsertaCarreras(ControlesWebForm_ObjetoEntidad());
             lblTituloAccion.Text = R;
 
@@ -214,6 +255,8 @@ namespace GePE.Carreras
             BtnGrabar.Visible = false;
             BtnCancelar.Visible = false;
             BtnAceptar.Visible = true;
+
+            CarreraEstatus = "";
 
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
@@ -241,6 +284,7 @@ namespace GePE.Carreras
         {
             E_Carreras Cliente = ControlesWebForm_ObjetoEntidad();
             Cliente.IdCarrera = Convert.ToInt32(hfIdCarrera.Value);
+
             string R = NC.ModificaCarreras(Cliente);
             lblTituloAccion.Text = R;
 
@@ -250,11 +294,12 @@ namespace GePE.Carreras
             BtnModificar.Visible = false;
             BtnCancelar.Visible = false;
             BtnAceptar.Visible = true;
-
+            
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
                 InicializaControles();
             }
+
         }
         protected void BtnMnuEditar_Click(object sender, EventArgs e)
         {
@@ -264,6 +309,7 @@ namespace GePE.Carreras
             BtnMnuBorrar.Visible = false;
             BtnMnuEditar.Visible = false;
             ControlesOnOFF(true);
+
         }
         protected void BtnMnuBorrar_Click(object sender, EventArgs e)
         {
@@ -289,6 +335,83 @@ namespace GePE.Carreras
             ControlesOFF();
             e.Cancel = true; //Deshabilitar las ediciones del registro
             hfIdCarrera.Value = GrvCarreras.DataKeys[e.RowIndex].Value.ToString();
+
+            //aqui se hace la validacion de estatus de carrera*****************************************************************************
+            String str = GrvCarreras.Rows[e.RowIndex].Cells[1].Text;
+
+            List<E_Carreras> LstCarreras = NC.BuscaCarrera(str);
+
+            foreach (var item in LstCarreras)
+            {
+                if (item != null)
+                {
+                    //Response.Write("<script language=javascript>alert(' Si encontro carreras');</script>");
+                    if (item.ClaveCarrera == GrvCarreras.Rows[e.RowIndex].Cells[0].Text)
+                    {
+                        //Response.Write("<script language=javascript>alert(' Si encontro una carrera con la misma clave');</script>");
+
+                        if (item.Estatus == "EN REVISION")
+                        {
+                            //no se puede borrar
+                            lblTituloAccion.Text = "Carrera asociada a plan de estudio con estatus \"EN REVISION\", no se puede borrar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                        else if (item.Estatus == "EN RECAPTURA")
+                        {
+                            //si se puede borrar
+
+                        }
+                        else if (item.Estatus == "EN ESPERA")
+                        {
+                            //si se puede borrar
+                        }
+                        else if (item.Estatus == "EN PUBLICADO")
+                        {
+                            //no se puede borrar
+                            lblTituloAccion.Text = "Carrera asociada a plan de estudio con estatus \"EN PUBLICADO\", no se puede borrar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                        else if (item.Estatus == "EN APROBADO")
+                        {
+                            //no se puede borrar
+                            lblTituloAccion.Text = "Carrera asociada a plan de estudio con estatus \"EN APROBADO\", no se puede borrar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                    }
+                }
+            }
+            //aqui se hace la validacion de estatus de carrera*****************************************************************************
+
             lblTituloAccion.Text = "Borrar Carrera";
 
             ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdCarrera.Value));
@@ -307,6 +430,81 @@ namespace GePE.Carreras
             InicializaControles();
             e.Cancel = true; //Deshabilitar las ediciones del registro
             hfIdCarrera.Value = GrvCarreras.DataKeys[e.NewEditIndex].Value.ToString();
+
+            //aqui se hace la validacion de estatus de carrera*****************************************************************************
+            String str = GrvCarreras.Rows[e.NewEditIndex].Cells[1].Text;
+
+            List<E_Carreras> LstCarreras = NC.BuscaCarrera(str);
+
+            foreach (var item in LstCarreras)
+            {
+                if (item != null)
+                {
+                    if (item.ClaveCarrera == GrvCarreras.Rows[e.NewEditIndex].Cells[0].Text)
+                    {
+                        if (item.Estatus == "EN REVISION")
+                        {
+                            //no se puede modificar
+                            lblTituloAccion.Text = "Carrera asociada a plan de estudio con estatus \"EN REVISION\", no se puede modificar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                        else if (item.Estatus == "EN RECAPTURA")
+                        {
+                            //si se puede modificar
+                        }
+                        else if (item.Estatus == "EN ESPERA")
+                        {
+                            //si se puede modificar
+                        }
+                        else if (item.Estatus == "EN PUBLICADO")
+                        {
+                            //no se puede modificar
+                            lblTituloAccion.Text = "Carrera asociada a plan de estudio con estatus \"EN PUBLICADO\", no se puede modificar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+
+                        }
+                        else if (item.Estatus == "EN APROBADO")
+                        {
+                            //no se puede modificar
+                            lblTituloAccion.Text = "Carrera asociada a plan de estudio con estatus \"EN APROBADO\", no se puede modificar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                    }
+                }
+            }
+            //aqui se hace la validacion de estatus de carrera*****************************************************************************
+
+
             lblTituloAccion.Text = "Modificar Carrera";
 
             ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdCarrera.Value));
@@ -320,7 +518,6 @@ namespace GePE.Carreras
             BtnModificar.Visible = true;
             BtnCancelar.Visible = true;
         }
-
         #endregion
 
         protected void GrvCarreras_SelectedIndexChanged(object sender, EventArgs e)

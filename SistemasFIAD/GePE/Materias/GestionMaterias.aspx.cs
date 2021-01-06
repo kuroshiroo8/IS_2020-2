@@ -11,11 +11,43 @@ namespace GePE.Materias
 {
     public partial class GestionMaterias : System.Web.UI.Page
     {
+        string MateriaEstatus = "";
+
         N_Materias NM = new N_Materias();
+        N_PlanEstudioMateria NPEM = new N_PlanEstudioMateria();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
+            {
                 InicializaControles();
+            }
+                
+
+            if (Convert.ToString(Session["TipoUsuario"]) == "ADMINISTRADOR")
+            {
+
+            }
+            else if (Convert.ToString(Session["TipoUsuario"]) == "CAPTURISTA")
+            {
+
+            }
+            else if (Convert.ToString(Session["TipoUsuario"]) == "INTERNO")
+            {
+
+            }
+            else if (Convert.ToString(Session["TipoUsuario"]) == "")
+            {
+                GrvMateria.Columns[8].Visible = false;
+                GrvMateria.Columns[10].Visible = false;
+                GrvMateria.Columns[11].Visible = false;
+
+                BtnMnuNuevo.Visible = false;
+
+                BtnMnuEditar.Visible = false;
+                BtnMnuBorrar.Visible = false;
+            }
+
         }
 
         #region Métodos generales
@@ -230,7 +262,7 @@ namespace GePE.Materias
             else
             {
                 if (lbStatusPathPUA.Text != "~/FilesSection/PUAnoexistente.pdf")
-                    //if (lbStatusPathPUA.Text != "../puaOFICIAL/PUAnoexistente.pdf")
+                //if (lbStatusPathPUA.Text != "../puaOFICIAL/PUAnoexistente.pdf")
                 {
 
                 }
@@ -292,7 +324,7 @@ namespace GePE.Materias
             else
             {
                 if (lbStatusPathPUAnoOficial.Text != "~/FilesSection/PUAnoexistente.pdf")
-                    //if (lbStatusPathPUAnoOficial.Text != "../puaNO/PUAnoexistente.pdf")
+                //if (lbStatusPathPUAnoOficial.Text != "../puaNO/PUAnoexistente.pdf")
                 {
 
                 }
@@ -327,7 +359,8 @@ namespace GePE.Materias
                 //EstadoMateria = cbEstadoMateria.Checked,
 
                 PathPUA = lbStatusPathPUA.Text,
-                PathPUAnoOficial = lbStatusPathPUAnoOficial.Text
+                PathPUAnoOficial = lbStatusPathPUAnoOficial.Text,
+                Estatus = MateriaEstatus
             };
             return Materia;
         }
@@ -347,6 +380,7 @@ namespace GePE.Materias
             //cbEstadoMateria.Checked = Materia.EstadoMateria;
             lbStatusPathPUA.Text = Materia.PathPUA;
             lbStatusPathPUAnoOficial.Text = Materia.PathPUAnoOficial;
+            MateriaEstatus = Materia.Estatus;
         }
         #endregion
 
@@ -418,8 +452,18 @@ namespace GePE.Materias
                     ObjetoEntidad_ControlesWebForm(Convert.ToInt32(hfIdMateria.Value));
 
                     PnlCapturaDatos.Visible = true;
-                    BtnMnuEditar.Visible = true;
-                    BtnMnuBorrar.Visible = true;
+
+                    if (Convert.ToString(Session["TipoUsuario"]) == "")
+                    {
+                        BtnMnuEditar.Visible = false;
+                        BtnMnuBorrar.Visible = false;
+                    }
+                    else
+                    {
+                        BtnMnuEditar.Visible = true;
+                        BtnMnuBorrar.Visible = true;
+                    }
+                    
                     PnlGrvMateria.Visible = false;
                 }
                 else
@@ -523,6 +567,8 @@ namespace GePE.Materias
 
             if (SumaRespuestaCR == 0 && SumaRespuestaFuPathPUA == 0 && SumaRespuestaFuPathPUAnoOficial == 0)
             {
+                MateriaEstatus = "EN ESPERA";
+
                 string R = NM.InsertaMaterias(ControlesWebForm_ObjetoEntidad());
                 lblTituloAccion.Text = R;
 
@@ -532,6 +578,8 @@ namespace GePE.Materias
                 BtnGrabar.Visible = false;
                 BtnCancelar.Visible = false;
                 BtnAceptar.Visible = true;
+
+                MateriaEstatus = "";
 
                 if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
                 {
@@ -620,7 +668,7 @@ namespace GePE.Materias
                 //Si lo que esta en la base de datos es diferente a ~/FilesSection/PUAnoexistente.pdf
                 //no hagas nada, quedate con ese dato.
                 if (lbStatusPathPUA.Text != "~/FilesSection/PUAnoexistente.pdf")
-                    //if (lbStatusPathPUA.Text != "../puaOFICIAL/PUAnoexistente.pdf")
+                //if (lbStatusPathPUA.Text != "../puaOFICIAL/PUAnoexistente.pdf")
                 {
 
                 }
@@ -661,7 +709,7 @@ namespace GePE.Materias
                 //Si lo que esta en la base de datos es diferente a ~/FilesSection/PUAnoexistente.pdf
                 //no hagas nada, quedate con ese dato.
                 if (lbStatusPathPUAnoOficial.Text != "~/FilesSection/PUAnoexistente.pdf")
-                    //if (lbStatusPathPUAnoOficial.Text != "../puaNO/PUAnoexistente.pdf")
+                //if (lbStatusPathPUAnoOficial.Text != "../puaNO/PUAnoexistente.pdf")
                 {
 
                 }
@@ -674,6 +722,7 @@ namespace GePE.Materias
 
             if (SumaRespuestaCR == 0 && SumaRespuestaFuPathPUA == 0 && SumaRespuestaFuPathPUAnoOficial == 0)
             {
+                
                 E_Materias Cliente = ControlesWebForm_ObjetoEntidad();
                 Cliente.IdMateria = Convert.ToInt32(hfIdMateria.Value);
 
@@ -686,7 +735,7 @@ namespace GePE.Materias
                 BtnModificar.Visible = false;
                 BtnCancelar.Visible = false;
                 BtnAceptar.Visible = true;
-
+                
                 if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
                 {
                     lblTituloAccion.Text = R;
@@ -739,6 +788,103 @@ namespace GePE.Materias
             ControlesOFF();
             e.Cancel = true; //Deshabilitar las ediciones del registro
             hfIdMateria.Value = GrvMateria.DataKeys[e.RowIndex].Value.ToString();
+
+            //aqui se hace la validacion de estatus de carrera*****************************************************************************
+            String str = GrvMateria.Rows[e.RowIndex].Cells[1].Text;
+            
+            List<E_PlanEstudioMateria> LstPlanEstudioMateria = NPEM.BuscaPlanEstudioMateriasPorMateria(str);
+            foreach (var item in LstPlanEstudioMateria)
+            {
+                if (item != null)
+                {
+                    //si se puede modificar
+                    lblTituloAccion.Text = "Materia asociada a plan de estudio con nombre \"" + item.NombrePlanEstudio + "\" y clave \"" + item.ClavePlanEstudio + "\", no se puede borrar.";
+
+                    PnlCapturaDatos.Visible = true;
+
+                    //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                    VisibleOnOFF(false);
+
+                    BtnModificar.Visible = false;
+                    BtnCancelar.Visible = false;
+                    BtnAceptar.Visible = true;
+
+                    return;
+                }
+            }
+
+            List<E_Materias> LstMaterias = NM.BuscaMateria(str);
+
+            foreach (var item in LstMaterias)
+            {
+                if (item != null)
+                {
+                    //Response.Write("<script language=javascript>alert(' Si encontro carreras');</script>");
+                    if (item.ClaveMateria == GrvMateria.Rows[e.RowIndex].Cells[0].Text)
+                    {
+                        //Response.Write("<script language=javascript>alert(' Si encontro una carrera con la misma clave');</script>");
+
+                        if (item.Estatus == "EN REVISION")
+                        {
+                            //no se puede borrar
+                            lblTituloAccion.Text = "Materia asociada a plan de estudio con estatus \"EN REVISION\", no se puede borrar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                        else if (item.Estatus == "EN RECAPTURA")
+                        {
+                            //si se puede borrar
+                        }
+                        else if (item.Estatus == "EN ESPERA")
+                        {
+                            //si se puede borrar
+                        }
+                        else if (item.Estatus == "EN PUBLICADO")
+                        {
+                            //no se puede borrar
+                            lblTituloAccion.Text = "Materia asociada a plan de estudio con estatus \"EN PUBLICADO\", no se puede borrar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                        else if (item.Estatus == "EN APROBADO")
+                        {
+                            //no se puede borrar
+                            lblTituloAccion.Text = "Materia asociada a plan de estudio con estatus \"EN APROBADO\", no se puede borrar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                    }
+                }
+            }
+            //aqui se hace la validacion de estatus de carrera*****************************************************************************
+
             lblTituloAccion.Text = "Borrar Materia";
 
             ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdMateria.Value));
@@ -757,6 +903,99 @@ namespace GePE.Materias
             InicializaControles();
             e.Cancel = true; //Deshabilitar las ediciones del registro
             hfIdMateria.Value = GrvMateria.DataKeys[e.NewEditIndex].Value.ToString();
+
+            //aqui se hace la validacion de estatus de carrera*****************************************************************************
+            String str = GrvMateria.Rows[e.NewEditIndex].Cells[1].Text;
+
+            List<E_PlanEstudioMateria> LstPlanEstudioMateria = NPEM.BuscaPlanEstudioMateriasPorMateria(str);
+            foreach (var item in LstPlanEstudioMateria)
+            {
+                if (item != null)
+                {
+                    //si se puede modificar
+                    lblTituloAccion.Text = "Materia asociada a plan de estudio con nombre \"" + item.NombrePlanEstudio + "\" y clave \"" + item.ClavePlanEstudio + "\", no se puede modificar.";
+
+                    PnlCapturaDatos.Visible = true;
+
+                    //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                    VisibleOnOFF(false);
+
+                    BtnModificar.Visible = false;
+                    BtnCancelar.Visible = false;
+                    BtnAceptar.Visible = true;
+
+                    return;
+                }
+            }
+
+            List<E_Materias> LstMaterias = NM.BuscaMateria(str);
+
+            foreach (var item in LstMaterias)
+            {
+                if (item != null)
+                {
+                    if (item.ClaveMateria == GrvMateria.Rows[e.NewEditIndex].Cells[0].Text)
+                    {
+                        if (item.Estatus == "EN REVISION")
+                        {
+                            //si se puede modificar
+                            lblTituloAccion.Text = "Materia asociada a plan de estudio con estatus \"EN REVISION\", no se puede modificar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                        else if (item.Estatus == "EN RECAPTURA")
+                        {
+                            //si se puede modificar
+                        }
+                        else if (item.Estatus == "EN ESPERA")
+                        {
+                            //si se puede modificar
+                        }
+                        else if (item.Estatus == "EN PUBLICADO")
+                        {
+                                lblTituloAccion.Text = "Materia asociada a plan de estudio con estatus \"EN PUBLICADO\", no se puede modificar.";
+
+                                PnlCapturaDatos.Visible = true;
+
+                                //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                                VisibleOnOFF(false);
+
+                                BtnModificar.Visible = false;
+                                BtnCancelar.Visible = false;
+                                BtnAceptar.Visible = true;
+
+                                return;
+
+                        }
+                        else if (item.Estatus == "EN APROBADO")
+                        {
+                            lblTituloAccion.Text = "Materia asociada a plan de estudio con estatus \"EN APROBADO\", no se puede modificar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                    }
+                }
+            }
+            //aqui se hace la validacion de estatus de carrera*****************************************************************************
+
             lblTituloAccion.Text = "Modificar Materia";
 
             ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdMateria.Value));

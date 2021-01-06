@@ -35,6 +35,7 @@ namespace Entidades
         private string _BibliografiaBasica;
         private string _BibliografiaComplementaria;
         private string _PerfilDocente;
+        private string _Estatus;
         #endregion
 
         #region Constructor
@@ -61,6 +62,7 @@ namespace Entidades
             _BibliografiaBasica = string.Empty;
             _BibliografiaComplementaria = string.Empty;
             _PerfilDocente = string.Empty;
+            _Estatus = string.Empty;
         }
         #endregion
 
@@ -86,6 +88,7 @@ namespace Entidades
         public string BibliografiaBasica { get => _BibliografiaBasica; set => _BibliografiaBasica = value; }
         public string BibliografiaComplementaria { get => _BibliografiaComplementaria; set => _BibliografiaComplementaria = value; }
         public string PerfilDocente { get => _PerfilDocente; set => _PerfilDocente = value; }
+        public string Estatus { get => _Estatus; set => _Estatus = value; }
         #endregion
     }
 }

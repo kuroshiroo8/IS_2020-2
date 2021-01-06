@@ -70,6 +70,7 @@
                                         </div>
                                         <div align="center">
                                             <asp:LinkButton ID="BtnLogin" runat="server" CssClass="btn btn-md btn btn-success pr-3" CausesValidation="true" OnClick="BtnLogin_Click"><i class="fas fa-sign-in-alt"></i>  Iniciar Sesión</asp:LinkButton>
+                                            <asp:LinkButton ID="BtnSinLogin" runat="server" CssClass="btn btn-md btn btn-warning pr-3" CausesValidation="false" OnClick="BtnSinLogin_Click"><i class="fas fa-sign-in-alt"></i>  Entrar sin iniciar sesión</asp:LinkButton>
                                         </div>
                                     </form>
                                 </div>

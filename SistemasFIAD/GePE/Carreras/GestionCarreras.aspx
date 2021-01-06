@@ -114,7 +114,7 @@
                         <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="">
                             <ItemTemplate>
                                 <asp:LinkButton ID="GrvBtnEditar" runat="server" CssClass="btn btn-md btn-primary "
-                                    CausesValidation="false" CommandName="Edit"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
+                                    CausesValidation="false" CommandName="Edit" RowIndex="<%# Container.DisplayIndex %>"><i class="fas fa-edit"></i> Modificar</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
 

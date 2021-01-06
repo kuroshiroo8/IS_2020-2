@@ -105,7 +105,7 @@ namespace GePE.Login
                                 {
                                     //lblNombreAccion.Text = "*Correo y contraseña correctos";
                                     //lblNombreAccion.Visible = true;
-                                    
+
                                     Session["IdUsuario"] = item.IdUsuario;
                                     Session["NombreUsuario"] = item.NombreUsuario;
                                     Session["CorreoUsuario"] = item.CorreoUsuario;
@@ -134,6 +134,20 @@ namespace GePE.Login
                     lblNombreAccion.Visible = true;
                 }
             }
+        }
+
+        protected void BtnSinLogin_Click(object sender, EventArgs e)
+        {
+            Session["IdUsuario"] = "";
+            Session["NombreUsuario"] = "";
+            Session["CorreoUsuario"] = "";
+            Session["PassUsuario"] = "";
+            Session["TipoUsuario"] = "";
+            Session["ClaveUsuario"] = "";
+            Session["ApellidoPaterno"] = "";
+            Session["ApellidoMaterno"] = "";
+
+            Response.Redirect("../Carreras/GestionCarreras.aspx");
         }
 
         #region Cargar DropDownList

@@ -7,6 +7,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using System.Net;
+using System.Net.Mail;
+
 using Entidades;
 using Negocios;
 
@@ -14,10 +17,17 @@ namespace GePE.PlanesDeEstudios
 {
     public partial class GestionPlanesDeEstudio : System.Web.UI.Page
     {
+        string PlanesDeEstudioEstatus = "";
+        int PlanesDeEstudioIdEstatus = 0;
 
+        string PlanEstudioMateriaEstatus = "";
+
+        N_Usuarios NU = new N_Usuarios();
+        N_Carreras NC = new N_Carreras();
         N_Materias NM = new N_Materias();
         N_PlanEstudio PE = new N_PlanEstudio();
         N_PlanEstudioMateria NPEM = new N_PlanEstudioMateria();
+
         public int entra = 1;
 
         int EBOB = 0;
@@ -35,13 +45,53 @@ namespace GePE.PlanesDeEstudios
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
+            {
                 InicializaControles();
+            }
 
-            //if (Session["mensaje1"] != null)
-            //{
-            //    string mensaje = Convert.ToString(Session["mensaje1"]);
-            //    Response.Write("<script language=javascript>alert('"+mensaje+"');</script>");
-            //}
+            if (Convert.ToString(Session["TipoUsuario"]) == "ADMINISTRADOR")
+            {
+                //Se quita la columna Revisar
+                GrvPlanEstudio.Columns[12].Visible = false;
+                //Se quita la columna Publicar
+                GrvPlanEstudio.Columns[13].Visible = false;
+
+            }
+            else if (Convert.ToString(Session["TipoUsuario"]) == "CAPTURISTA")
+            {
+                //Se quita la columna Generar mapa curricular
+                GrvPlanEstudio.Columns[4].Visible = false;
+                //Se quita la columna Mas detalles
+                GrvPlanEstudio.Columns[5].Visible = false;
+                //Se quita la columna Aprobar
+                GrvPlanEstudio.Columns[10].Visible = false;
+                //Se quita la columna Recaptura
+                GrvPlanEstudio.Columns[11].Visible = false;
+            }
+            else if (Convert.ToString(Session["TipoUsuario"]) == "INTERNO")
+            {
+
+            }
+            else if (Convert.ToString(Session["TipoUsuario"]) == "")
+            {
+                GrvPlanEstudio.Columns[3].Visible = false;
+                GrvPlanEstudio.Columns[4].Visible = false;
+                GrvPlanEstudio.Columns[5].Visible = false;
+                GrvPlanEstudio.Columns[6].Visible = false;
+                GrvPlanEstudio.Columns[7].Visible = false;
+                GrvPlanEstudio.Columns[8].Visible = false;
+                GrvPlanEstudio.Columns[9].Visible = false;
+                GrvPlanEstudio.Columns[10].Visible = false;
+                GrvPlanEstudio.Columns[11].Visible = false;
+                GrvPlanEstudio.Columns[12].Visible = false;
+                GrvPlanEstudio.Columns[13].Visible = false;
+
+                BtnMnuNuevo.Visible = false;
+
+                BtnMnuEditar.Visible = false;
+                BtnMnuBorrar.Visible = false;
+            }
+
         }
 
         #region Métodos generales
@@ -105,9 +155,16 @@ namespace GePE.PlanesDeEstudios
             BtnCancelarPlanEstudioMateria.Visible = false;
             BtnAceptarPlanEstudioMateria.Visible = false;
 
-            //Visible Panel
+            //Visible datos correo
             PnlCapturaDatosPlanEstudioMateria.Visible = false;
             PnlGrvPlanEstudioMateria.Visible = false;
+
+            lbDestinatario.Visible = false;
+            lbRemitente.Visible = false;
+            lbAsunto.Visible = false;
+            lbObservaciones.Visible = false;
+
+            PnlCapturaDatosCorreo.Visible = false;
 
         }
         protected void ControlesClear()
@@ -153,6 +210,12 @@ namespace GePE.PlanesDeEstudios
 
             //Clear CheckBox
             cbSeriada.Checked = false;
+
+            lblTituloAccionCorreo.Text = string.Empty;
+            ddlDestinatario.Items.Clear();
+            TbRemitente.Text = string.Empty;
+            TbAsunto.Text = string.Empty;
+            TbObservaciones.Text = string.Empty;
         }
         protected void ControlesOnOFF(bool TrueOrFalse)
         {
@@ -323,6 +386,39 @@ namespace GePE.PlanesDeEstudios
         }
         #endregion
 
+        #region Métodos generales DatosCorreo
+        protected void InicializaControlesDatosCorreo()
+        {
+            ControlesOFF();
+            ControlesClear();
+            ControlesOnOFFDatosCorreo(true);
+        }
+        protected void ControlesOnOFFDatosCorreo(bool TrueOrFalse)
+        {
+            lbDestinatario.Enabled = TrueOrFalse;
+            lbRemitente.Enabled = TrueOrFalse;
+            lbAsunto.Enabled = TrueOrFalse;
+            lbObservaciones.Enabled = TrueOrFalse;
+
+            ddlDestinatario.Enabled = TrueOrFalse;
+            TbRemitente.Enabled = TrueOrFalse;
+            TbAsunto.Enabled = TrueOrFalse;
+            TbObservaciones.Enabled = TrueOrFalse;
+        }
+        protected void VisibleOnOFFDatosCorreo(bool TrueOrFalse)
+        {
+            lbDestinatario.Visible = TrueOrFalse;
+            lbRemitente.Visible = TrueOrFalse;
+            lbAsunto.Visible = TrueOrFalse;
+            lbObservaciones.Visible = TrueOrFalse;
+
+            ddlDestinatario.Visible = TrueOrFalse;
+            TbRemitente.Visible = TrueOrFalse;
+            TbAsunto.Visible = TrueOrFalse;
+            TbObservaciones.Visible = TrueOrFalse;
+        }
+        #endregion
+
         #region Objeto Cliente
         protected E_PlanEstudio ControlesWebForm_ObjetoEntidad()
         {
@@ -341,13 +437,12 @@ namespace GePE.PlanesDeEstudios
                 PerfilDeEgreso = TbPerfilDeEgreso.Text,
                 CampoOcupacional = TbCampoOcupacional.Text,
                 UnidadAcademica = ddlUnidadAcademica.SelectedItem.Value,
-                Estatus = ddlEstatus.SelectedItem.Text,
-                IdEstatus = ddlEstatus.SelectedIndex,
+                Estatus = PlanesDeEstudioEstatus,
+                IdEstatus = PlanesDeEstudioIdEstatus,
                 NombreCarrera = ddlProgramaEducativo.SelectedItem.Text
 
             };
             return PlanEstudio;
-
         }
         protected void ObjetoEntidad_ControlesWebForm(int IdPlanEstudio)
         {
@@ -366,13 +461,140 @@ namespace GePE.PlanesDeEstudios
             TbCampoOcupacional.Text = planEstudio.CampoOcupacional.Trim();
             ddlUnidadAcademica.SelectedValue = Convert.ToString(planEstudio.UnidadAcademica);//------------------
             ddlEstatus.SelectedValue = Convert.ToString(planEstudio.IdEstatus);
+            PlanesDeEstudioEstatus = planEstudio.Estatus;
+            PlanesDeEstudioIdEstatus = planEstudio.IdEstatus;
+        }
+        protected E_PlanEstudio Actualizar_PlanEstudio(string ClavePlanEstudio, string estatus, int idestatus)
+        {
+            List<E_PlanEstudio> LstPlanEstudio = PE.BuscaPlanEstudioPorClave(ClavePlanEstudio);
+            foreach (var item in LstPlanEstudio)
+            {
+                if (item != null)
+                {
+                    E_PlanEstudio PlanEstudio = new E_PlanEstudio()
+                    {
+                        IdNivelAcademico = item.IdNivelAcademico,
+                        IdCarrera = item.IdCarrera,
+                        ClavePlanEstudio = item.ClavePlanEstudio,
+                        PlanEstudio = item.PlanEstudio,
+                        ProgramaEducativo = item.ProgramaEducativo,
+                        FechaCreacion = item.FechaCreacion,
+                        TotalCreditos = item.TotalCreditos,
+                        EstadoPlanEstudios = item.EstadoPlanEstudios,
+                        Comentarios = item.Comentarios,
+                        PerfilDeIngreso = item.PerfilDeIngreso,
+                        PerfilDeEgreso = item.PerfilDeEgreso,
+                        CampoOcupacional = item.CampoOcupacional,
+                        UnidadAcademica = item.UnidadAcademica,
+                        Estatus = estatus,
+                        IdEstatus = idestatus,
+                        NombreCarrera = item.NombreCarrera
+
+                    };
+                    return PlanEstudio;
+                }
+            }
+            E_PlanEstudio PlanEstudioNull = null;
+            return PlanEstudioNull;
+        }
+        protected E_Carreras Actualizar_Carrera(string NombreCarrera, int IdCarrera, string estatus)
+        {
+            List<E_Carreras> LstCarreras = NC.BuscaCarrera(NombreCarrera);
+            foreach (var item in LstCarreras)
+            {
+                if (item != null)
+                {
+                    if (item.IdCarrera == IdCarrera)
+                    {
+                        E_Carreras Carrera = new E_Carreras()
+                        {
+                            ClaveCarrera = item.ClaveCarrera,
+                            NombreCarrera = item.NombreCarrera,
+                            AliasCarrera = item.AliasCarrera,
+                            EstadoCarrera = item.EstadoCarrera,
+                            Estatus = estatus
+                        };
+                        return Carrera;
+                    }
+                }
+            }
+            E_Carreras CarreraNull = null;
+            return CarreraNull;
+        }
+        protected E_Materias Actualizar_Materia(string NombreMateria, int IdMateria, string estatus)
+        {
+            List<E_Materias> LstMaterias = NM.BuscaMateria(NombreMateria);
+            foreach (var item in LstMaterias)
+            {
+                if (item != null)
+                {
+                    if (item.IdMateria == IdMateria)
+                    {
+                        //agrega los datos a la base de datos
+                        E_Materias Materia = new E_Materias()
+                        {
+                            ClaveMateria = item.ClaveMateria,
+                            NombreMateria = item.NombreMateria,
+                            HC = item.HC,
+                            HL = item.HL,
+                            HT = item.HT,
+                            HE = item.HE,
+                            HPP = item.HPP,
+                            CR = item.CR,
+                            PathPUA = item.PathPUA,
+                            PathPUAnoOficial = item.PathPUAnoOficial,
+                            Estatus = estatus
+                        };
+                        return Materia;
+                    }
+                }
+            }
+
+            E_Materias MateriaNull = null;
+            return MateriaNull;
+        }
+        protected E_PlanEstudioMateria Actualizar_PlanEstudioMateria(string NombrePlanEstudio, int IdMateria, string estatus)
+        {
+            List<E_PlanEstudioMateria> LstPlanEstudioMateria = NPEM.BuscaPlanEstudioMaterias(NombrePlanEstudio);
+            foreach (var item in LstPlanEstudioMateria)
+            {
+                if (item != null)
+                {
+                    if (item.IdMateria == IdMateria)
+                    {
+                        //agrega los datos a la base de datos
+                        E_PlanEstudioMateria PlanEstudioMateria = new E_PlanEstudioMateria()
+                        {
+                            IdPlanEstudio = item.IdPlanEstudio,
+                            IdMateria = item.IdMateria,
+                            IdTipoMateria = item.IdTipoMateria,
+                            IdEtapa = item.IdEtapa,
+                            IdAreaConocimiento = item.IdAreaConocimiento,
+                            Semestre = item.Semestre,
+                            NombrePlanEstudio = item.NombrePlanEstudio,
+                            NombreMateria = item.NombreMateria,
+                            NombreTipoMateria = item.NombreTipoMateria,
+                            NombreEtapa = item.NombreEtapa,
+                            NombreArea = item.NombreArea,
+                            IdMateriaSeriada = item.IdMateriaSeriada,
+                            EstadoMateriaSeriada = item.EstadoMateriaSeriada,
+                            ClavePlanEstudio = item.ClavePlanEstudio,
+                            NombreMateriaSeriada = item.NombreMateriaSeriada,
+                            Estatus = estatus
+                        };
+                        return PlanEstudioMateria;
+                    }
+                }
+            }
+
+            E_PlanEstudioMateria PlanEstudioMateriaNull = null;
+            return PlanEstudioMateriaNull;
         }
         #endregion
 
         #region Objeto Cliente Plan Estudio - Materia
         protected E_PlanEstudioMateria ControlesWebForm_ObjetoEntidad2()
         {
-
             if (cbSeriada.Checked && ddlMateriaSeriada.SelectedIndex != 0)
             {
                 E_PlanEstudioMateria PlanEstudioMateria = new E_PlanEstudioMateria()
@@ -391,7 +613,8 @@ namespace GePE.PlanesDeEstudios
                     IdMateriaSeriada = Convert.ToInt32(ddlMateriaSeriada.SelectedItem.Value),
                     EstadoMateriaSeriada = cbSeriada.Checked,
                     ClavePlanEstudio = TbClavePlanEstudio.Text,
-                    NombreMateriaSeriada = ddlMateriaSeriada.SelectedItem.Text
+                    NombreMateriaSeriada = ddlMateriaSeriada.SelectedItem.Text,
+                    Estatus = PlanEstudioMateriaEstatus
                 };
                 return PlanEstudioMateria;
             }
@@ -411,13 +634,11 @@ namespace GePE.PlanesDeEstudios
                     NombreEtapa = ddlIdEtapa.SelectedItem.Text,
                     NombreArea = ddlIdAreaConocimiento.SelectedItem.Text,
                     EstadoMateriaSeriada = false,
-                    ClavePlanEstudio = TbClavePlanEstudio.Text
+                    ClavePlanEstudio = TbClavePlanEstudio.Text,
+                    Estatus = PlanEstudioMateriaEstatus
                 };
                 return PlanEstudioMateria;
             }
-
-
-
         }
         protected void ObjetoEntidad_ControlesWebForm2(int IdPlanEstudioMateria)
         {
@@ -446,7 +667,7 @@ namespace GePE.PlanesDeEstudios
                 ddlIdPlanEstudio.SelectedIndex = index;
                 DroplistMateriaSeriada();
                 ddlMateriaSeriada.SelectedValue = Convert.ToString(PlanEstudioMateria.IdMateriaSeriada);
-
+                PlanEstudioMateriaEstatus = PlanEstudioMateria.Estatus;
             }
             else
             {
@@ -469,6 +690,7 @@ namespace GePE.PlanesDeEstudios
                 }
                 ddlIdPlanEstudio.SelectedIndex = index;
                 TbClavePlanEstudio.Text = PlanEstudioMateria.ClavePlanEstudio.Trim();
+                PlanEstudioMateriaEstatus = PlanEstudioMateria.Estatus;
             }
 
         }
@@ -538,8 +760,16 @@ namespace GePE.PlanesDeEstudios
                     hfIdPlanEstudio.Value = LstPlanEstudio[0].IdPlanEstudio.ToString();
                     ObjetoEntidad_ControlesWebForm(Convert.ToInt32(hfIdPlanEstudio.Value));
 
-                    BtnMnuEditar.Visible = true;
-                    BtnMnuBorrar.Visible = true;
+                    if (Convert.ToString(Session["TipoUsuario"]) == "")
+                    {
+                        BtnMnuEditar.Visible = false;
+                        BtnMnuBorrar.Visible = false;
+                    }
+                    else
+                    {
+                        BtnMnuEditar.Visible = true;
+                        BtnMnuBorrar.Visible = true;
+                    }
 
                     PnlCapturaDatos.Visible = true;
                     PnlGrvPlanEstudio.Visible = false;
@@ -588,6 +818,9 @@ namespace GePE.PlanesDeEstudios
         #region Botones IBM (WebForm captura datos del cliente)
         protected void BtnGrabar_Click(object sender, EventArgs e)
         {
+            PlanesDeEstudioEstatus = "EN ESPERA";
+            PlanesDeEstudioIdEstatus = 4;
+
             string R = PE.InsertaPlanEstudio(ControlesWebForm_ObjetoEntidad());
             lblTituloAccion.Text = R;
 
@@ -597,6 +830,9 @@ namespace GePE.PlanesDeEstudios
             BtnGrabar.Visible = false;
             BtnCancelar.Visible = false;
             BtnAceptar.Visible = true;
+
+            PlanesDeEstudioEstatus = "";
+            PlanesDeEstudioIdEstatus = 0;
 
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
@@ -699,6 +935,9 @@ namespace GePE.PlanesDeEstudios
             //    " IdMateriaSeriada: " + str12 +
             //    " EstadoMateriaSeriada: " + str13 +
             //    " ');</script>");
+
+            PlanEstudioMateriaEstatus = "EN ESPERA";
+
             string R = NPEM.InsertaPlanEstudioMateria(ControlesWebForm_ObjetoEntidad2());
             lblTituloAccionPlanEstudioMateria.Text = R;
 
@@ -708,6 +947,8 @@ namespace GePE.PlanesDeEstudios
             BtnGrabarPlanEstudioMateria.Visible = false;
             BtnCancelarPlanEstudioMateria.Visible = false;
             BtnAceptarPlanEstudioMateria.Visible = true;
+
+            PlanEstudioMateriaEstatus = "";
 
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
@@ -781,6 +1022,73 @@ namespace GePE.PlanesDeEstudios
         }
         #endregion
 
+        #region Botones IBM Datos Correo
+        protected void BtnEnviarPnlCapturaDatosCorreo_Click(object sender, EventArgs e)
+        {
+            string toname = "";
+            lblTituloAccionCorreo.Text = "Correo enviado.";
+
+            CambiarStatus(Convert.ToInt32(Session["hfIdPlanEstudioDatosCorreo"]), Convert.ToString(Session["EstatusDatosCorreo"]), Convert.ToInt32(Session["IdEstatus"]), Convert.ToString(Session["strDatosCorreo"]));
+
+            string fromname = Convert.ToString(Session["NombreUsuario"]) + " " + Convert.ToString(Session["ApellidoPaterno"]) + " " + Convert.ToString(Session["ApellidoMaterno"]);
+
+
+            List<E_Usuarios> LstUsuarios = NU.BuscaUsuario(ddlDestinatario.SelectedItem.Text);
+
+            foreach (var item in LstUsuarios)
+            {
+                if (item != null)
+                {
+                    toname = item.NombreUsuario + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno;
+                }
+            }
+
+
+
+            string subject = TbAsunto.Text;
+            string body = TbObservaciones.Text;
+
+            NotificarUsuario(Convert.ToString(Session["CorreoUsuario"]), fromname, Convert.ToString(Session["PassUsuario"]), ddlDestinatario.SelectedItem.Text, toname, subject, body);
+
+            Session["hfIdPlanEstudioDatosCorreo"] = "";
+            Session["strDatosCorreo"] = "";
+            Session["EstatusDatosCorreo"] = "";
+            Session["IdEstatus"] = "";
+
+            PlanesDeEstudioEstatus = "";
+            PlanesDeEstudioIdEstatus = 0;
+            
+            VisibleOnOFFDatosCorreo(false);
+            
+            BtnEnviarPnlCapturaDatosCorreo.Visible = false;
+            BtnCancelarPnlCapturaDatosCorreo.Visible = false;
+            BtnAceptarPnlCapturaDatosCorreo.Visible = true;
+        }
+        protected void BtnCancelarPnlCapturaDatosCorreo_Click(object sender, EventArgs e)
+        {
+            Session["hfIdPlanEstudioDatosCorreo"] = "";
+            Session["strDatosCorreo"] = "";
+            Session["EstatusDatosCorreo"] = "";
+            Session["IdEstatus"] = "";
+
+            PlanesDeEstudioEstatus = "";
+            PlanesDeEstudioIdEstatus = 0;
+            InicializaControles();
+        }
+        protected void BtnAceptarPnlCapturaDatosCorreo_Click(object sender, EventArgs e)
+        {
+            Session["hfIdPlanEstudioDatosCorreo"] = "";
+            Session["strDatosCorreo"] = "";
+            Session["EstatusDatosCorreo"] = "";
+            Session["IdEstatus"] = "";
+
+            PlanesDeEstudioEstatus = "";
+            PlanesDeEstudioIdEstatus = 0;
+
+            InicializaControles();
+        }
+        #endregion
+
         #region Métodos del GridView
         protected void GrvPlanEstudio_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -800,6 +1108,80 @@ namespace GePE.PlanesDeEstudios
             e.Cancel = true; //Deshabilitar las ediciones del registro
 
             hfIdPlanEstudio.Value = GrvPlanEstudio.DataKeys[e.RowIndex].Value.ToString();
+
+            //aqui se hace la validacion de estatus de carrera*****************************************************************************
+            String str = GrvPlanEstudio.Rows[e.RowIndex].Cells[1].Text;
+
+            List<E_PlanEstudio> LstPlanEstudio = PE.BuscaPlanEstudio(str);
+
+            foreach (var item in LstPlanEstudio)
+            {
+                if (item != null)
+                {
+                    if (item.ClavePlanEstudio == GrvPlanEstudio.Rows[e.RowIndex].Cells[0].Text)
+                    {
+                        if (item.Estatus == "EN REVISION")
+                        {
+                            //no se puede borrar
+                            lblTituloAccion.Text = "Plan de estudio con estatus \"EN REVISION\", no se puede borrar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                        else if (item.Estatus == "EN RECAPTURA")
+                        {
+                            //si se puede borrar
+
+                        }
+                        else if (item.Estatus == "EN ESPERA")
+                        {
+                            //si se puede borrar
+                        }
+                        else if (item.Estatus == "EN PUBLICADO")
+                        {
+                            //no se puede borrar
+                            lblTituloAccion.Text = "Plan de estudio con estatus \"EN PUBLICADO\", no se puede borrar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                        else if (item.Estatus == "EN APROBADO")
+                        {
+                            //no se puede borrar
+                            lblTituloAccion.Text = "Plan de estudio con estatus \"EN APROBADO\", no se puede borrar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                    }
+                }
+            }
+            //aqui se hace la validacion de estatus de carrera*****************************************************************************
+
             lblTituloAccion.Text = "Borrar Plan de estudio";
             DroplistMateriaSeriada();
             ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdPlanEstudio.Value));
@@ -834,6 +1216,79 @@ namespace GePE.PlanesDeEstudios
 
             e.Cancel = true; //Deshabilitar las ediciones del registro
             hfIdPlanEstudio.Value = GrvPlanEstudio.DataKeys[e.NewEditIndex].Value.ToString();
+
+            //aqui se hace la validacion de estatus de carrera*****************************************************************************
+            String str = GrvPlanEstudio.Rows[e.NewEditIndex].Cells[1].Text;
+
+            List<E_PlanEstudio> LstPlanEstudio = PE.BuscaPlanEstudio(str);
+
+            foreach (var item in LstPlanEstudio)
+            {
+                if (item != null)
+                {
+                    if (item.ClavePlanEstudio == GrvPlanEstudio.Rows[e.NewEditIndex].Cells[0].Text)
+                    {
+                        if (item.Estatus == "EN REVISION")
+                        {
+                            //si se puede modificar
+                            lblTituloAccion.Text = "Plan de estudio con estatus \"EN REVISION\", no se puede modificar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                        else if (item.Estatus == "EN RECAPTURA")
+                        {
+                            //si se puede modificar
+                        }
+                        else if (item.Estatus == "EN ESPERA")
+                        {
+                            //si se puede modificar
+                        }
+                        else if (item.Estatus == "EN PUBLICADO")
+                        {
+                            //si se puede modificar
+                            lblTituloAccion.Text = "Plan de estudio con estatus \"EN PUBLICADO\", no se puede modificar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                        else if (item.Estatus == "EN APROBADO")
+                        {
+                            //si se puede modificar
+                            lblTituloAccion.Text = "Plan de estudio con estatus \"EN APROBADO\", no se puede modificar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                    }
+                }
+            }
+            //aqui se hace la validacion de estatus de carrera*****************************************************************************
+
             lblTituloAccion.Text = "Modificar Plan de estudio";
 
             ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdPlanEstudio.Value));
@@ -863,6 +1318,9 @@ namespace GePE.PlanesDeEstudios
             {
                 throw new ArgumentNullException(nameof(e));
             }
+
+            PlanEstudioMateriaEstatus = "EN ESPERA";
+
             InicializaControlesPlanEstudioMateria();
 
             lblTituloAccionPlanEstudioMateria.Text = "Agregar Materia";
@@ -912,6 +1370,158 @@ namespace GePE.PlanesDeEstudios
             if (e == null)
             {
                 throw new ArgumentNullException(nameof(e));
+            }
+            if (e.CommandName == "Aprobar")
+            {
+                lblTituloAccionCorreo.Text = "Enviar plan de estudio a aprobado";
+
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = GrvPlanEstudio.Rows[index];
+                string str = row.Cells[0].Text;
+
+                hfIdPlanEstudio.Value = GrvPlanEstudio.DataKeys[row.RowIndex].Value.ToString();
+                ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdPlanEstudio.Value));
+
+                PlanesDeEstudioEstatus = "EN APROBADO";
+                PlanesDeEstudioIdEstatus = 1;
+
+                Session["hfIdPlanEstudioDatosCorreo"] = Convert.ToInt16(hfIdPlanEstudio.Value);
+                Session["strDatosCorreo"] = str;
+                Session["EstatusDatosCorreo"] = PlanesDeEstudioEstatus;
+                Session["IdEstatus"] = PlanesDeEstudioIdEstatus;
+
+                //Aqui se cargan los datos de el remitente
+                DroplistUsuarios();
+
+                //Aqui se hacen no visible los Label, TextBox y el CheckBox
+                VisibleOnOFFDatosCorreo(true);
+
+                TbRemitente.Text = Convert.ToString(Session["CorreoUsuario"]);
+                TbRemitente.Enabled = false;
+
+                PnlCapturaDatosCorreo.Visible = true;
+
+                PnlGrvPlanEstudio.Visible = false;
+
+                BtnEnviarPnlCapturaDatosCorreo.Visible = true;
+                BtnCancelarPnlCapturaDatosCorreo.Visible = true;
+                BtnAceptarPnlCapturaDatosCorreo.Visible = false;
+            }
+            if (e.CommandName == "Recaptura")
+            {
+                lblTituloAccionCorreo.Text = "Enviar plan de estudio a recaptura";
+
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = GrvPlanEstudio.Rows[index];
+                string str = row.Cells[0].Text;
+
+                hfIdPlanEstudio.Value = GrvPlanEstudio.DataKeys[row.RowIndex].Value.ToString();
+                ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdPlanEstudio.Value));
+
+                PlanesDeEstudioEstatus = "EN RECAPTURA";
+                PlanesDeEstudioIdEstatus = 3;
+
+                Session["hfIdPlanEstudioDatosCorreo"] = Convert.ToInt16(hfIdPlanEstudio.Value);
+                Session["strDatosCorreo"] = str;
+                Session["EstatusDatosCorreo"] = PlanesDeEstudioEstatus;
+                Session["IdEstatus"] = PlanesDeEstudioIdEstatus;
+
+                ControlesOFF();
+
+                //Aqui se cargan los datos de el remitente
+                DroplistUsuarios();
+
+                //Aqui se hacen no visible los Label, TextBox y el CheckBox
+                VisibleOnOFFDatosCorreo(true);
+
+                TbRemitente.Text = Convert.ToString(Session["CorreoUsuario"]);
+                TbRemitente.Enabled = false;
+
+                PnlCapturaDatosCorreo.Visible = true;
+
+                PnlGrvPlanEstudio.Visible = false;
+
+                BtnEnviarPnlCapturaDatosCorreo.Visible = true;
+                BtnCancelarPnlCapturaDatosCorreo.Visible = true;
+                BtnAceptarPnlCapturaDatosCorreo.Visible = false;
+            }
+            if (e.CommandName == "Revisión")
+            {
+                lblTituloAccionCorreo.Text = "Enviar plan de estudio a revision";
+
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = GrvPlanEstudio.Rows[index];
+                string str = row.Cells[0].Text;
+
+                hfIdPlanEstudio.Value = GrvPlanEstudio.DataKeys[row.RowIndex].Value.ToString();
+                ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdPlanEstudio.Value));
+
+                PlanesDeEstudioEstatus = "EN REVISION";
+                PlanesDeEstudioIdEstatus = 2;
+
+                Session["hfIdPlanEstudioDatosCorreo"] = Convert.ToInt16(hfIdPlanEstudio.Value);
+                Session["strDatosCorreo"] = str;
+                Session["EstatusDatosCorreo"] = PlanesDeEstudioEstatus;
+                Session["IdEstatus"] = PlanesDeEstudioIdEstatus;
+
+                ControlesOFF();
+
+                //Aqui se cargan los datos de el remitente
+                DroplistUsuarios();
+
+                //Aqui se hacen no visible los Label, TextBox y el CheckBox
+                VisibleOnOFFDatosCorreo(true);
+
+                TbRemitente.Text = Convert.ToString(Session["CorreoUsuario"]);
+                TbRemitente.Enabled = false;
+
+                PnlCapturaDatosCorreo.Visible = true;
+
+                PnlGrvPlanEstudio.Visible = false;
+
+                BtnEnviarPnlCapturaDatosCorreo.Visible = true;
+                BtnCancelarPnlCapturaDatosCorreo.Visible = true;
+                BtnAceptarPnlCapturaDatosCorreo.Visible = false;
+
+            }
+            if (e.CommandName == "Publicar")
+            {
+                lblTituloAccionCorreo.Text = "Enviar plan de estudio a publicar";
+
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = GrvPlanEstudio.Rows[index];
+                string str = row.Cells[0].Text;
+
+                hfIdPlanEstudio.Value = GrvPlanEstudio.DataKeys[row.RowIndex].Value.ToString();
+                ObjetoEntidad_ControlesWebForm(Convert.ToInt16(hfIdPlanEstudio.Value));
+
+                PlanesDeEstudioEstatus = "EN PUBLICADO";
+                PlanesDeEstudioIdEstatus = 5;
+
+                Session["hfIdPlanEstudioDatosCorreo"] = Convert.ToInt16(hfIdPlanEstudio.Value);
+                Session["strDatosCorreo"] = str;
+                Session["EstatusDatosCorreo"] = PlanesDeEstudioEstatus;
+                Session["IdEstatus"] = PlanesDeEstudioIdEstatus;
+
+                ControlesOFF();
+
+                //Aqui se cargan los datos de el remitente
+                DroplistUsuarios();
+
+                //Aqui se hacen no visible los Label, TextBox y el CheckBox
+                VisibleOnOFFDatosCorreo(true);
+
+                TbRemitente.Text = Convert.ToString(Session["CorreoUsuario"]);
+                TbRemitente.Enabled = false;
+
+                PnlCapturaDatosCorreo.Visible = true;
+
+                PnlGrvPlanEstudio.Visible = false;
+
+                BtnEnviarPnlCapturaDatosCorreo.Visible = true;
+                BtnCancelarPnlCapturaDatosCorreo.Visible = true;
+                BtnAceptarPnlCapturaDatosCorreo.Visible = false;
+
             }
             if (e.CommandName == "MapaCurricular")
             {
@@ -1372,7 +1982,10 @@ namespace GePE.PlanesDeEstudios
                         {
                         }
 
-                        index = index + 1;
+                        if (index <= 12)
+                        {
+                            index = index + 1;
+                        }
 
                         //Esto son los encabezados 
                         lbPnlGrvMapaCurricularNombreCarrera.Visible = true;
@@ -1567,6 +2180,80 @@ namespace GePE.PlanesDeEstudios
             e.Cancel = true; //Deshabilitar las ediciones del registro
 
             hfIdPlanEstudio.Value = GrvPlanEstudioMateria.DataKeys[e.RowIndex].Value.ToString();
+
+            //aqui se hace la validacion de estatus de carrera*****************************************************************************
+            String str = GrvPlanEstudioMateria.Rows[e.RowIndex].Cells[0].Text;
+
+            List<E_PlanEstudioMateria> LstPlanEstudioMateria = NPEM.BuscaPlanEstudioMaterias(str);
+
+            foreach (var item in LstPlanEstudioMateria)
+            {
+                if (item != null)
+                {
+                    if (item.ClavePlanEstudio == GrvPlanEstudio.Rows[e.RowIndex].Cells[0].Text)
+                    {
+                        if (item.Estatus == "EN REVISION")
+                        {
+                            //no se puede borrar
+                            lblTituloAccion.Text = "Materia asosiada a plan de estudio con estatus \"EN REVISIÓN\", no se puede borrar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                        else if (item.Estatus == "EN RECAPTURA")
+                        {
+                            //si se puede borrar
+
+                        }
+                        else if (item.Estatus == "EN ESPERA")
+                        {
+                            //si se puede borrar
+                        }
+                        else if (item.Estatus == "EN PUBLICADO")
+                        {
+                            //no se puede borrar
+                            lblTituloAccion.Text = "Materia asosiada a plan de estudio con estatus \"EN PUBLICADO\", no se puede borrar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                        else if (item.Estatus == "EN APROBADO")
+                        {
+                            //no se puede borrar
+                            lblTituloAccion.Text = "Materia asosiada a plan de estudio con estatus \"EN APROBADO\", no se puede borrar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                    }
+                }
+            }
+            //aqui se hace la validacion de estatus de carrera*****************************************************************************
+
             lblTituloAccion.Text = "Borrar Materia de plan de estudio";
 
             ObjetoEntidad_ControlesWebForm2(Convert.ToInt16(hfIdPlanEstudio.Value));
@@ -1602,6 +2289,79 @@ namespace GePE.PlanesDeEstudios
             e.Cancel = true; //Deshabilitar las ediciones del registro
 
             hfIdPlanEstudio.Value = GrvPlanEstudioMateria.DataKeys[e.NewEditIndex].Value.ToString();
+
+            //aqui se hace la validacion de estatus de carrera*****************************************************************************
+            String str = GrvPlanEstudioMateria.Rows[e.NewEditIndex].Cells[0].Text;
+
+            List<E_PlanEstudioMateria> LstPlanEstudioMateria = NPEM.BuscaPlanEstudioMaterias(str);
+
+            foreach (var item in LstPlanEstudioMateria)
+            {
+                if (item != null)
+                {
+                    if (item.ClavePlanEstudio == GrvPlanEstudio.Rows[e.NewEditIndex].Cells[0].Text)
+                    {
+                        if (item.Estatus == "EN REVISION")
+                        {
+                            //si se puede modificar
+                            lblTituloAccion.Text = "Materia asosiada a plan de estudio con estatus \"EN REVISION\", no se puede modificar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                        else if (item.Estatus == "EN RECAPTURA")
+                        {
+                            //si se puede modificar
+                        }
+                        else if (item.Estatus == "EN ESPERA")
+                        {
+                            //si se puede modificar
+                        }
+                        else if (item.Estatus == "EN PUBLICADO")
+                        {
+                            //si se puede modificar
+                            lblTituloAccion.Text = "Materia asosiada a plan de estudio con estatus \"EN PUBLICADO\", no se puede modificar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                        else if (item.Estatus == "EN APROBADO")
+                        {
+                            //si se puede modificar
+                            lblTituloAccion.Text = "Materia asosiada a plan de estudio con estatus \"EN APROBADO\", no se puede modificar.";
+
+                            PnlCapturaDatos.Visible = true;
+
+                            //Aqui se ponen no visibles los Label, TextBox y el CheckBox
+                            VisibleOnOFF(false);
+
+                            BtnModificar.Visible = false;
+                            BtnCancelar.Visible = false;
+                            BtnAceptar.Visible = true;
+
+                            return;
+                        }
+                    }
+                }
+            }
+            //aqui se hace la validacion de estatus de carrera*****************************************************************************
+
             lblTituloAccionPlanEstudioMateria.Text = "Modificar materia de plan de estudio";
 
             ObjetoEntidad_ControlesWebForm2(Convert.ToInt16(hfIdPlanEstudio.Value));
@@ -1698,15 +2458,15 @@ namespace GePE.PlanesDeEstudios
 
             i = new ListItem("<Seleccione>", "");
             ddlEstatus.Items.Add(i);
-            i = new ListItem("APROBADO", "1");
+            i = new ListItem("EN APROBADO", "1");
             ddlEstatus.Items.Add(i);
-            i = new ListItem("REVISION", "2");
+            i = new ListItem("EN REVISION", "2");
             ddlEstatus.Items.Add(i);
-            i = new ListItem("RECAPTURA", "3");
+            i = new ListItem("EN RECAPTURA", "3");
             ddlEstatus.Items.Add(i);
             i = new ListItem("EN ESPERA", "4");
             ddlEstatus.Items.Add(i);
-            i = new ListItem("PUBLICADO", "5");
+            i = new ListItem("EN PUBLICADO", "5");
             ddlEstatus.Items.Add(i);
         }
         private void DroplistGradoAcademico()
@@ -1980,6 +2740,36 @@ namespace GePE.PlanesDeEstudios
                 ddlSemestre.Items.Add(i);
             }
         }
+
+        private void DroplistUsuarios()
+        {
+
+            //carga los datos de la base de datos y los pone en dropdownlist
+
+            DataTable subjects = new DataTable();
+
+            using (SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=Propuesta;Integrated Security=True"))
+            //using (SqlConnection con = new SqlConnection("Data Source=WIN-URE2BDKARPV\\SQLEXPRESS;Initial Catalog=Propuesta;Integrated Security=True"))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT IdUsuario, CorreoUsuario FROM Propuesta.dbo.Usuarios", con);
+                    adapter.Fill(subjects);
+                    ddlDestinatario.DataSource = subjects;
+                    ddlDestinatario.DataTextField = "CorreoUsuario";
+                    ddlDestinatario.DataValueField = "IdUsuario";
+                    ddlDestinatario.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    // Handle the error 
+                }
+            }
+            // Add the initial item - you can add this even if the options from the 
+            // db were not successfully loaded 
+            ddlDestinatario.Items.Insert(0, new ListItem("<Seleccione Destinatario>", ""));
+        }
+
         //se ejecutara cuando un elemento en el dropdownlist de materias cambie
         //eliminando la materia seleccionada de las que se pueden seriar
         protected void ItemSelected(Object sender, EventArgs e)//para el ddlIdMateria
@@ -2116,6 +2906,83 @@ namespace GePE.PlanesDeEstudios
         }
         #endregion
 
+
+        private void NotificarUsuario(string fromaddress, string fromname, string frompass, string toaddress, string toname, string sub, string bod)
+        {
+            var fromAddress = new MailAddress(fromaddress, fromname);
+            var toAddress = new MailAddress(toaddress, toname);
+            string fromPassword = frompass;
+            string subject = sub;
+            string body = bod;
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                try
+                {
+                    smtp.Send(message);
+                }
+                catch (Exception ex)
+                {
+                    //el mensaje no se envio
+                }
+            }
+        }
+
+        private void CambiarStatus(int hfIdPlanEstudio, string estatus, int idestatus, string str)
+        {
+            string R = "";
+
+            List<E_PlanEstudio> LstPlanEstudio = PE.BuscaPlanEstudioPorClave(str);
+            foreach (var item in LstPlanEstudio)
+            {
+                if (item != null)
+                {
+                    //plan estudio
+                    E_PlanEstudio ClientePlanEstudio = Actualizar_PlanEstudio(item.ClavePlanEstudio, estatus, idestatus);
+                    ClientePlanEstudio.IdPlanEstudio = item.IdPlanEstudio;
+                    R = PE.ModificaPlanEstudio(ClientePlanEstudio);
+
+                    //carrera
+                    E_Carreras ClienteCarrera = Actualizar_Carrera(item.NombreCarrera, item.IdCarrera, estatus);
+                    ClienteCarrera.IdCarrera = item.IdCarrera;
+                    R = NC.ModificaCarreras(ClienteCarrera);
+
+                }
+            }
+
+            List<E_PlanEstudioMateria> LstPlanEstudioMateria = NPEM.BuscaPlanEstudioMaterias(str);
+            foreach (var item in LstPlanEstudioMateria)
+            {
+                if (item != null)
+                {
+                    //materia
+                    E_Materias ClienteMateria = Actualizar_Materia(item.NombreMateria, item.IdMateria, estatus);
+                    ClienteMateria.IdMateria = item.IdMateria;
+                    R = NM.ModificaMaterias(ClienteMateria);
+
+                    //Plan estudio materia
+                    E_PlanEstudioMateria ClientePlanEstudioMateria = Actualizar_PlanEstudioMateria(str, item.IdMateria, estatus);
+                    ClientePlanEstudioMateria.IdPlanEstudioMateria = item.IdPlanEstudioMateria;
+                    R = NPEM.ModificaPlanEstudioMateria(ClientePlanEstudioMateria);
+                }
+            }
+
+            PlanesDeEstudioEstatus = "";
+            PlanesDeEstudioIdEstatus = 0;
+        }
 
     }
 }
