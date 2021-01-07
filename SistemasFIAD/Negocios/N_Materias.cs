@@ -93,7 +93,8 @@ namespace Negocios
         {
             return (from Materias in LstMaterias()
                     where
-                        Materias.NombreMateria.ToUpper().Contains(CriterioBusqueda.ToUpper())
+                        Materias.NombreMateria.ToUpper().Contains(CriterioBusqueda.ToUpper()) ||
+                        Materias.ClaveMateria.ToUpper().Contains(CriterioBusqueda.ToUpper())
                     select Materias).ToList();
         }
         public List<E_Materias> BuscaMateriaEstatus(string CriterioBusqueda)
@@ -107,7 +108,8 @@ namespace Negocios
         {
             return (from Materias in LstMaterias()
                     where
-                        Materias.NombreMateria.ToUpper().Contains(CriterioBusqueda.ToUpper()) &&
+                        Materias.NombreMateria.ToUpper().Contains(CriterioBusqueda.ToUpper()) ||
+                        Materias.ClaveMateria.ToUpper().Contains(CriterioBusqueda.ToUpper()) &&
                         Materias.Estatus.ToUpper().Contains(Estatus.ToUpper())
                     select Materias).ToList();
         }

@@ -243,10 +243,9 @@ namespace GePE.usuarios
 
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
-                string fromname = Convert.ToString(Session["NombreUsuario"]) + " " + Convert.ToString(Session["ApellidoPaterno"]) + " " + Convert.ToString(Session["ApellidoMaterno"]);
                 string toname = TbNombreUsuario.Text + " " + TbApellidoPaterno.Text + " " + TbApellidoMaterno.Text;
 
-                NotificarUsuario(Convert.ToString(Session["CorreoUsuario"]), fromname, Convert.ToString(Session["PassUsuario"]), TbCorreoUsuario.Text, toname, TbnumClaveUsuario1.Text, TbCorreoUsuario.Text, TbContraseñaUsuario1.Text, ddlTipoUsuario.SelectedItem.Text);
+                NotificarUsuario(TbCorreoUsuario.Text, toname, TbnumClaveUsuario1.Text, TbContraseñaUsuario1.Text, ddlTipoUsuario.SelectedItem.Text);
 
                 InicializaControles();
             }
@@ -256,19 +255,7 @@ namespace GePE.usuarios
             string R = NU.BorraUsuario(Convert.ToInt32(hfIdUsuario.Value));
             lblTituloAccion.Text = R;
 
-            if (Convert.ToInt32(hfIdUsuario.Value) == Convert.ToInt32(Session["IdUsuario"]))
-            {
-                Session["IdUsuario"] = "";
-                Session["NombreUsuario"] = "";
-                Session["CorreoUsuario"] = "";
-                Session["PassUsuario"] = "";
-                Session["TipoUsuario"] = "";
-                Session["ClaveUsuario"] = "";
-                Session["ApellidoPaterno"] = "";
-                Session["ApellidoMaterno"] = "";
-
-                Response.Redirect("../Carreras/GestionCarreras.aspx");
-            }
+            
 
             //Aqui se ponen no visibles los Label, TextBox y el CheckBox
             VisibleOnOFF(false);
@@ -279,6 +266,19 @@ namespace GePE.usuarios
 
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
+                if (Convert.ToInt32(hfIdUsuario.Value) == Convert.ToInt32(Session["IdUsuario"]))
+                {
+                    Session["IdUsuario"] = "";
+                    Session["NombreUsuario"] = "";
+                    Session["CorreoUsuario"] = "";
+                    Session["PassUsuario"] = "";
+                    Session["TipoUsuario"] = "";
+                    Session["ClaveUsuario"] = "";
+                    Session["ApellidoPaterno"] = "";
+                    Session["ApellidoMaterno"] = "";
+
+                    Response.Redirect("../Carreras/GestionCarreras.aspx");
+                }
                 InicializaControles();
             }
         }
@@ -298,11 +298,22 @@ namespace GePE.usuarios
 
             if (R.Contains("Las acciones se completaron con exito"))/*"Exito"*/
             {
-                string fromname = Convert.ToString(Session["NombreUsuario"]) + " " + Convert.ToString(Session["ApellidoPaterno"]) + " " + Convert.ToString(Session["ApellidoMaterno"]);
                 string toname = TbNombreUsuario.Text + " " + TbApellidoPaterno.Text + " " + TbApellidoMaterno.Text;
 
-                NotificarUsuario(Convert.ToString(Session["CorreoUsuario"]), fromname, Convert.ToString(Session["PassUsuario"]), TbCorreoUsuario.Text, toname, TbnumClaveUsuario1.Text, TbCorreoUsuario.Text, TbContraseñaUsuario1.Text, ddlTipoUsuario.SelectedItem.Text);
+                NotificarUsuario(TbCorreoUsuario.Text, toname, TbnumClaveUsuario1.Text, TbContraseñaUsuario1.Text, ddlTipoUsuario.SelectedItem.Text);
+                if (Convert.ToInt32(hfIdUsuario.Value) == Convert.ToInt32(Session["IdUsuario"]))
+                {
+                    Session["IdUsuario"] = "";
+                    Session["NombreUsuario"] = "";
+                    Session["CorreoUsuario"] = "";
+                    Session["PassUsuario"] = "";
+                    Session["TipoUsuario"] = "";
+                    Session["ClaveUsuario"] = "";
+                    Session["ApellidoPaterno"] = "";
+                    Session["ApellidoMaterno"] = "";
 
+                    Response.Redirect("../Carreras/GestionCarreras.aspx");
+                }
                 InicializaControles();
             }
         }
@@ -398,15 +409,18 @@ namespace GePE.usuarios
             {
                 if (item != null)
                 {
-                    string fromname = Convert.ToString(Session["NombreUsuario"]) + " " + Convert.ToString(Session["ApellidoPaterno"]) + " " + Convert.ToString(Session["ApellidoMaterno"]);
                     string toname = item.NombreUsuario + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno;
 
-                    NotificarUsuario(Convert.ToString(Session["CorreoUsuario"]), fromname, Convert.ToString(Session["PassUsuario"]), item.CorreoUsuario, toname, item.ClaveUsuario, item.CorreoUsuario, item.PassUsuario, item.TipoUsuario);
-
+                    NotificarUsuario(item.CorreoUsuario, toname, item.ClaveUsuario, item.PassUsuario, item.TipoUsuario);
+                    PnlCapturaDatos.Visible = true;
+                    PnlGrvUsuarios.Visible = false;
+                    lblTituloAccion.Text = "Notificacion de usuario enviada";
+                    VisibleOnOFF(false);
+                    BtnAceptar.Visible = true;
                 }
                 else
                 {
-
+                    
                 }
             }
         }
@@ -426,18 +440,18 @@ namespace GePE.usuarios
             ddlTipoUsuario.Items.Add(i);
         }
 
-        private void NotificarUsuario(string fromaddress, string fromname, string frompass, string toaddress, string toname, string clave, string correo, string pass, string tipo)
+        private void NotificarUsuario(string to, string toname, string clave, string pass, string tipo)
         {
-            var fromAddress = new MailAddress(fromaddress, fromname);
-            var toAddress = new MailAddress(toaddress, toname);
-            string fromPassword = frompass;
-            const string subject = "Datos de cuenta";
-            string str = "Nombre: " + toname
-                + " Clave: " + clave
-                + " Correo: " + correo
-                + " Contraseña: " + pass
-                + " Tipo de usuario: " + tipo;
-            string body1 = str;
+            var fromAddress = new MailAddress("gepe.adpruebamin@gmail.com", "gepe adpruebamin");
+            var toAddress = new MailAddress(to, toname);
+            const string fromPassword = "Gepe.adpruebamin1";
+            string subject = "Datos de cuenta";
+            string body = "Nombre: " + toname + "\n"
+                + " Clave: " + clave + "\n"
+                + " Correo: " + to + "\n"
+                + " Contraseña: " + pass + "\n"
+                + " Tipo de usuario: " + tipo + "\n"
+                + "Inicia sesión en la siguiente direccion: http://vivi.ens.uabc.mx/GePE/Login/Login.aspx";
 
             var smtp = new SmtpClient
             {
@@ -451,20 +465,22 @@ namespace GePE.usuarios
             using (var message = new MailMessage(fromAddress, toAddress)
             {
                 Subject = subject,
-                Body = body1
+                Body = body
             })
             {
                 try
                 {
                     smtp.Send(message);
+                    lblTituloAccion.Text = "Exito al enviar notificación";
                 }
                 catch (Exception ex)
                 {
                     //el mensaje no se envio
+                    lblTituloAccion.Text = "Error al enviar notificación. (Asegurese que los datos esten correctos)";
                 }
             }
+
+
         }
-
-
     }
 }

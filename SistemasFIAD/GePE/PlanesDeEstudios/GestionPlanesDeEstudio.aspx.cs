@@ -7,8 +7,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using System.Net;
 using System.Net.Mail;
+using System.Net;
 
 using Entidades;
 using Negocios;
@@ -1086,9 +1086,7 @@ namespace GePE.PlanesDeEstudios
         protected void BtnEnviarPnlCapturaDatosCorreo_Click(object sender, EventArgs e)
         {
             string toname = "";
-            lblTituloAccionCorreo.Text = "Correo enviado.";
-
-            CambiarStatus(Convert.ToInt32(Session["hfIdPlanEstudioDatosCorreo"]), Convert.ToString(Session["EstatusDatosCorreo"]), Convert.ToInt32(Session["IdEstatus"]), Convert.ToString(Session["strDatosCorreo"]));
+            
 
             string fromname = Convert.ToString(Session["NombreUsuario"]) + " " + Convert.ToString(Session["ApellidoPaterno"]) + " " + Convert.ToString(Session["ApellidoMaterno"]);
 
@@ -1107,8 +1105,10 @@ namespace GePE.PlanesDeEstudios
 
             string subject = TbAsunto.Text;
             string body = TbObservaciones.Text;
-
-            NotificarUsuario(Convert.ToString(Session["CorreoUsuario"]), fromname, Convert.ToString(Session["PassUsuario"]), ddlDestinatario.SelectedItem.Text, toname, subject, body);
+            string to = ddlDestinatario.SelectedItem.Text;
+            
+            //NotificarUsuario( ddlDestinatario.SelectedItem.Text, toname, subject, body);
+            SendEmail(subject, body, to, toname);
 
             Session["hfIdPlanEstudioDatosCorreo"] = "";
             Session["strDatosCorreo"] = "";
@@ -2926,12 +2926,11 @@ namespace GePE.PlanesDeEstudios
         }
         #endregion
 
-
-        private void NotificarUsuario(string fromaddress, string fromname, string frompass, string toaddress, string toname, string sub, string bod)
+        private void SendEmail(string sub, string bod,string to, string toname)
         {
-            var fromAddress = new MailAddress(fromaddress, fromname);
-            var toAddress = new MailAddress(toaddress, toname);
-            string fromPassword = frompass;
+            var fromAddress = new MailAddress("gepe.adpruebamin@gmail.com", "gepe adpruebamin");
+            var toAddress = new MailAddress(to, toname);
+            const string fromPassword = "Gepe.adpruebamin1";
             string subject = sub;
             string body = bod;
 
@@ -2953,12 +2952,18 @@ namespace GePE.PlanesDeEstudios
                 try
                 {
                     smtp.Send(message);
+                    lblTituloAccionCorreo.Text = "Notificación en proceso. (Revise su correo para comprobar la notificación)";
+                    CambiarStatus(Convert.ToInt32(Session["hfIdPlanEstudioDatosCorreo"]), Convert.ToString(Session["EstatusDatosCorreo"]), Convert.ToInt32(Session["IdEstatus"]), Convert.ToString(Session["strDatosCorreo"]));
+
                 }
                 catch (Exception ex)
                 {
                     //el mensaje no se envio
+                    lblTituloAccionCorreo.Text = "Error al enviar notificación. (Asegurese que los datos esten correctos)";
                 }
             }
+
+
         }
 
         private void CambiarStatus(int hfIdPlanEstudio, string estatus, int idestatus, string str)

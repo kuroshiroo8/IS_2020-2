@@ -96,7 +96,8 @@ namespace Negocios
             return (from Carreras in LstCarreras()
                     where
                         Carreras.NombreCarrera.ToUpper().Contains(CriterioBusqueda.ToUpper()) ||
-                        Carreras.AliasCarrera.Contains(CriterioBusqueda)
+                        Carreras.AliasCarrera.Contains(CriterioBusqueda) || 
+                        Carreras.ClaveCarrera.ToUpper().Contains(CriterioBusqueda.ToUpper())
                     select Carreras).ToList();
         }
         public List<E_Carreras> BuscaCarreraEstatus(string CriterioBusqueda)
@@ -110,7 +111,9 @@ namespace Negocios
         {
             return (from Carreras in LstCarreras()
                     where
-                        Carreras.NombreCarrera.ToUpper().Contains(CriterioBusqueda.ToUpper()) &&
+                        Carreras.NombreCarrera.ToUpper().Contains(CriterioBusqueda.ToUpper()) ||
+                        Carreras.AliasCarrera.Contains(CriterioBusqueda) ||
+                        Carreras.ClaveCarrera.ToUpper().Contains(CriterioBusqueda.ToUpper()) &&
                         Carreras.Estatus.ToUpper().Contains(Estatus.ToUpper())
                     select Carreras).ToList();
         }

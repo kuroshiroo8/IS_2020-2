@@ -30,10 +30,10 @@ namespace Negocios
             string R = NU.IBM_Entidad<E_Usuarios>("IBM_Usuarios", pEntidad);
 
             if (R.Contains("Exito"))
-                return "Exito: Los datos fueron insertados correctamente.";
+                return "Exito: El usuario se creo correctamente.";
             else
                 if (R.Contains("Error"))
-                return "Error: Los datos no se insertaron en el sistema. La clave o correo ya existen.";
+                return "Error: El usuario no se creo. (clave o correo repetidos)";
             else
                 return R;
         }
@@ -49,10 +49,10 @@ namespace Negocios
             string R = NU.IBM_Entidad<E_Usuarios>("IBM_Usuarios", Entidad);
 
             if (R.Contains("Exito"))
-                return "Exito: Los datos fueron borrados correctamente.";
+                return "Exito: El usuario se borro correctamente.";
             else
                 if (R.Contains("Error"))
-                return "Error: Los datos no se borraron del sistema.";
+                return "Error: El usuario no se borro.";
             else
                 return R;
         }
@@ -64,10 +64,10 @@ namespace Negocios
             string R = NU.IBM_Entidad<E_Usuarios>("IBM_Usuarios", pEntidad);
 
             if (R.Contains("Exito"))
-                return "Exito: Los datos fueron modificados correctamente.";
+                return "Exito: El usuario se modifico correctamente.";
             else
                 if (R.Contains("Error"))
-                return "Error: Los datos no se modificaron en el sistema. La clave o correo ya existen.";
+                return "Error: El usuario no se modifico. (clave o correo repetidos)";
             else
                 return R;
         }
