@@ -587,7 +587,7 @@ namespace GePE.Carreras
 
             //Aqui se ponen visibles los Label, TextBox y el CheckBox
             VisibleOnOFF(true);
-
+            TbClaveCarrera.Enabled = false;
             BtnModificar.Visible = true;
             BtnCancelar.Visible = true;
         }

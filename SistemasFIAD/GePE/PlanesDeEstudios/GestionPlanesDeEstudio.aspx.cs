@@ -149,6 +149,7 @@ namespace GePE.PlanesDeEstudios
             lbPerfilDeEgreso.Visible = false;
             lbCampoOcupacional.Visible = false;
             lbUnidadAcademica.Visible = false;
+            lbEstatus.Visible = false;
 
             //Visible LinkButton
             BtnGrabar.Visible = false;
@@ -260,6 +261,7 @@ namespace GePE.PlanesDeEstudios
             lbPerfilDeEgreso.Enabled = TrueOrFalse;
             lbCampoOcupacional.Enabled = TrueOrFalse;
             lbUnidadAcademica.Enabled = TrueOrFalse;
+            lbEstatus.Enabled = TrueOrFalse;
 
             //Clear TextBox
             TbClavePlanEstudio.Enabled = TrueOrFalse;
@@ -295,6 +297,7 @@ namespace GePE.PlanesDeEstudios
             lbPerfilDeEgreso.Visible = TrueOrFalse;
             lbCampoOcupacional.Visible = TrueOrFalse;
             lbUnidadAcademica.Visible = TrueOrFalse;
+            lbEstatus.Visible = TrueOrFalse;
 
             //Visible TextBox
             TbClavePlanEstudio.Visible = TrueOrFalse;
@@ -486,6 +489,7 @@ namespace GePE.PlanesDeEstudios
             TbPerfilDeEgreso.Text = planEstudio.PerfilDeEgreso.Trim();
             TbCampoOcupacional.Text = planEstudio.CampoOcupacional.Trim();
             ddlUnidadAcademica.SelectedValue = Convert.ToString(planEstudio.UnidadAcademica);
+            DroplistEstatus();
             ddlEstatus.SelectedValue = Convert.ToString(planEstudio.IdEstatus);
             PlanesDeEstudioEstatus = planEstudio.Estatus;
             PlanesDeEstudioIdEstatus = planEstudio.IdEstatus;
@@ -1453,7 +1457,7 @@ namespace GePE.PlanesDeEstudios
                 //Aqui se hacen no visible los Label, TextBox y el CheckBox
                 VisibleOnOFFDatosCorreo(true);
 
-                TbRemitente.Text = Convert.ToString(Session["CorreoUsuario"]);
+                TbRemitente.Text = "gepe.adpruebamin@gmail.com";
                 TbRemitente.Enabled = false;
 
                 PnlCapturaDatosCorreo.Visible = true;
@@ -1491,7 +1495,7 @@ namespace GePE.PlanesDeEstudios
                 //Aqui se hacen no visible los Label, TextBox y el CheckBox
                 VisibleOnOFFDatosCorreo(true);
 
-                TbRemitente.Text = Convert.ToString(Session["CorreoUsuario"]);
+                TbRemitente.Text = "gepe.adpruebamin@gmail.com";
                 TbRemitente.Enabled = false;
 
                 PnlCapturaDatosCorreo.Visible = true;
@@ -1529,7 +1533,7 @@ namespace GePE.PlanesDeEstudios
                 //Aqui se hacen no visible los Label, TextBox y el CheckBox
                 VisibleOnOFFDatosCorreo(true);
 
-                TbRemitente.Text = Convert.ToString(Session["CorreoUsuario"]);
+                TbRemitente.Text = "gepe.adpruebamin@gmail.com";
                 TbRemitente.Enabled = false;
 
                 PnlCapturaDatosCorreo.Visible = true;
@@ -1568,7 +1572,7 @@ namespace GePE.PlanesDeEstudios
                 //Aqui se hacen no visible los Label, TextBox y el CheckBox
                 VisibleOnOFFDatosCorreo(true);
 
-                TbRemitente.Text = Convert.ToString(Session["CorreoUsuario"]);
+                TbRemitente.Text = "gepe.adpruebamin@gmail.com";
                 TbRemitente.Enabled = false;
 
                 PnlCapturaDatosCorreo.Visible = true;

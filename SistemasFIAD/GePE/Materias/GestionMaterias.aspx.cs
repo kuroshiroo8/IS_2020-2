@@ -1093,7 +1093,7 @@ namespace GePE.Materias
 
             //Aqui se ponen visibles los Label, TextBox y el CheckBox
             VisibleOnOFF(true);
-
+            TbClaveMateria.Enabled = false;
             BtnModificar.Visible = true;
             BtnCancelar.Visible = true;
         }
